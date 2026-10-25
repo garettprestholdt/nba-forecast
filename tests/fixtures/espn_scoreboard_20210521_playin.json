@@ -1,0 +1,139 @@
+{
+ "leagues": [
+  {
+   "season": {
+    "year": 2021,
+    "startDate": "2020-12-02T08:00Z",
+    "endDate": "2021-07-23T06:59Z",
+    "displayName": "2020-21",
+    "type": {
+     "id": "2",
+     "type": 2,
+     "name": "Regular Season",
+     "abbreviation": "reg"
+    }
+   },
+   "calendarType": "day",
+   "calendar": [
+    "2020-12-11T08:00Z",
+    "2020-12-12T08:00Z",
+    "2020-12-13T08:00Z",
+    "2021-07-17T07:00Z",
+    "2021-07-20T07:00Z"
+   ]
+  }
+ ],
+ "events": [
+  {
+   "id": "401326994",
+   "date": "2021-05-22T01:00Z",
+   "name": "Memphis Grizzlies at Golden State Warriors",
+   "season": {
+    "year": 2021,
+    "type": 5,
+    "slug": "play-in-season"
+   },
+   "competitions": [
+    {
+     "id": "401326994",
+     "date": "2021-05-22T01:00Z",
+     "neutralSite": false,
+     "venue": {
+      "fullName": "Chase Center"
+     },
+     "competitors": [
+      {
+       "homeAway": "home",
+       "score": "112",
+       "winner": false,
+       "linescores": [
+        {
+         "value": 29.0
+        },
+        {
+         "value": 20.0
+        },
+        {
+         "value": 24.0
+        },
+        {
+         "value": 26.0
+        },
+        {
+         "value": 13.0
+        }
+       ],
+       "team": {
+        "id": "9",
+        "location": "Golden State",
+        "name": "Warriors",
+        "abbreviation": "GS",
+        "displayName": "Golden State Warriors"
+       }
+      },
+      {
+       "homeAway": "away",
+       "score": "117",
+       "winner": true,
+       "linescores": [
+        {
+         "value": 30.0
+        },
+        {
+         "value": 32.0
+        },
+        {
+         "value": 16.0
+        },
+        {
+         "value": 21.0
+        },
+        {
+         "value": 18.0
+        }
+       ],
+       "team": {
+        "id": "29",
+        "location": "Memphis",
+        "name": "Grizzlies",
+        "abbreviation": "MEM",
+        "displayName": "Memphis Grizzlies"
+       }
+      }
+     ],
+     "status": {
+      "clock": 0.0,
+      "displayClock": "0.0",
+      "period": 5,
+      "type": {
+       "id": "3",
+       "name": "STATUS_FINAL",
+       "state": "post",
+       "completed": true,
+       "description": "Final",
+       "detail": "Final/OT",
+       "shortDetail": "Final/OT",
+       "altDetail": "OT"
+      }
+     },
+     "startDate": "2021-05-22T01:00Z"
+    }
+   ],
+   "status": {
+    "clock": 0.0,
+    "displayClock": "0.0",
+    "period": 5,
+    "type": {
+     "id": "3",
+     "name": "STATUS_FINAL",
+     "state": "post",
+     "completed": true,
+     "description": "Final",
+     "detail": "Final/OT",
+     "shortDetail": "Final/OT",
+     "altDetail": "OT"
+    }
+   }
+  }
+ ]
+}
