@@ -13,9 +13,16 @@ See `docs/roadmap.md` for the phased plan.
 - Tests: `uv run pytest`
 - CLI: `uv run nbaf --help`
 
+## Data layout
+- **Raw and large data never goes in git.** It lives in `config.local_data_dir()`
+  (default `~/Desktop/nbaforecast`, override with `NBAF_DATA_DIR`).
+- **Only small published outputs are committed**, under `data/published/` (predictions log,
+  current ratings, scorecard). Pre-commit rejects any file over 500 KB.
+
 ## Rules
 - **Never push to `main`.** Work on a branch and open a PR; CI must pass before merge.
-- **Predictions are append-only.** Never edit or delete rows in `data/predictions/`. A prediction
+- **No `Co-Authored-By` trailers** in commit messages.
+- **Predictions are append-only.** Never edit or delete rows in `data/published/predictions/`. A prediction
   is only valid if its `predicted_at` is before the game's tip-off.
 - **No network calls in tests.** Parsers are tested against saved JSON fixtures in `tests/fixtures/`.
 - **Every data source sits behind the `ingest/` interface**, so a source can be swapped or added
