@@ -10,7 +10,7 @@ scorecard covers as much of it as possible. Everything after that is improvement
 
 ## Phase 1: Historical data
 - [ ] Backfill game results 2004-05 → 2025-26 with `nba_api` (run locally, since stats.nba.com
-      blocks cloud IPs) into `data/raw/games.parquet`
+      blocks cloud IPs) into the local data directory (outside the repo, never pushed)
 - [ ] dbt staging models + data tests (unique game IDs, two teams per game, no ties, sane counts)
 - [ ] Flag unusual seasons (2011 lockout, 2019-20 bubble, 2020-21 shortened season)
 

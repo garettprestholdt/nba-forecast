@@ -18,8 +18,10 @@ site/node_modules/
 site/.evidence/
 site/build/
 
-# Local data scratch (committed data lives in data/raw, data/predictions, data/ratings)
-data/scratch/
+# Data: raw/large data lives outside the repo (see src/nbaforecast/config.py).
+# Only small published outputs under data/published/ are committed.
+data/*
+!data/published/
 *.duckdb
 *.duckdb.wal
 
