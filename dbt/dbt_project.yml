@@ -1,0 +1,34 @@
+name: nbaforecast
+version: "1.0.0"
+profile: nbaforecast
+
+model-paths: ["models"]
+seed-paths: ["seeds"]
+test-paths: ["tests"]
+clean-targets: ["target", "dbt_packages"]
+
+vars:
+  # Exact game-count tests need full seasons; CI runs on a small fixture and turns them off.
+  check_season_counts: true
+
+models:
+  nbaforecast:
+    staging:
+      +materialized: view
+    marts:
+      +materialized: table
+
+seeds:
+  nbaforecast:
+    franchises:
+      +column_types:
+        franchise_id: varchar
+    known_data_issues:
+      +column_types:
+        game_id: varchar
+        issue: varchar
+    seasons:
+      +column_types:
+        season: varchar
+        expected_regular_season_games: integer
+        note: varchar

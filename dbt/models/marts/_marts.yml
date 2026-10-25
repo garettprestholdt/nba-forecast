@@ -1,0 +1,60 @@
+version: 2
+
+models:
+  - name: fct_games
+    description: >
+      Every completed, competitive NBA game since 2004-05 (regular season, play-in, playoffs).
+      Includes the NBA Cup final, which is a real game even though it doesn't count in the
+      standings. Excludes All-Star games and postponed or cancelled games.
+    columns:
+      - name: game_id
+        data_tests: [unique, not_null]
+      - name: home_team_id
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('franchises')
+                field: franchise_id
+      - name: away_team_id
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('franchises')
+                field: franchise_id
+      - name: home_score
+        data_tests: [not_null]
+      - name: away_score
+        data_tests: [not_null]
+      - name: home_margin
+        description: Home score minus away score. Never zero (no ties in the NBA).
+      - name: overtime_periods
+        description: Null when ESPN's line scores are incomplete (see known_issue).
+      - name: known_issue
+        description: Why this game is in seeds/known_data_issues.csv, if it is.
+      - name: is_bubble
+        description: Played in the 2020 Orlando bubble (from July 30, 2020).
+      - name: is_neutral_site
+        description: >
+          ESPN's neutral-site flag (international games, NBA Cup knockouts in Las Vegas)
+          or a bubble game. Rating models should drop home-court advantage for these.
+
+seeds:
+  - name: franchises
+    description: ESPN's 30 franchise IDs. IDs follow the franchise through renames and moves.
+    columns:
+      - name: franchise_id
+        data_tests: [unique, not_null]
+  - name: seasons
+    description: Expected regular-season game counts for completed seasons, with notes.
+    columns:
+      - name: season
+        data_tests: [unique, not_null]
+  - name: known_data_issues
+    description: >
+      Source-data problems found by the data tests and investigated by hand. Games are kept
+      and flagged, not edited, unless the correct value is certain.
+    columns:
+      - name: game_id
+        data_tests: [unique, not_null]

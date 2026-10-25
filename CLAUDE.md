@@ -12,6 +12,14 @@ See `docs/roadmap.md` for the phased plan.
 - Lint + format: `uv run ruff check . && uv run ruff format .`
 - Tests: `uv run pytest`
 - CLI: `uv run nbaf --help`
+- Backfill history (local only): `uv run nbaf backfill` (finished seasons already on disk are skipped)
+- dbt: `uv run nbaf dbt build` (sets `NBAF_DATA_DIR` and the project/profile paths for you)
+- dbt on the CI fixture: copy `tests/fixtures/nbaf_data` somewhere temporary, point
+  `NBAF_DATA_DIR` at it, and add `--vars '{check_season_counts: false}'`
+
+## Data sources
+- **ESPN scoreboard JSON** (`ingest/espn.py`) for both the backfill and daily results.
+  stats.nba.com and cdn.nba.com reject non-browser clients; don't try to get around that.
 
 ## Data layout
 - **Raw and large data never goes in git.** It lives in `config.local_data_dir()`

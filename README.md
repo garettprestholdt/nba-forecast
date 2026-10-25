@@ -4,7 +4,7 @@ Daily NBA win probabilities, published before tip-off and scored in public again
 market. Every prediction is committed to git with a timestamp, so the track record can't be
 edited after the fact.
 
-> **Status:** Phase 0 (foundations). See the [roadmap](docs/roadmap.md).
+> **Status:** Phase 1 (historical data). See the [roadmap](docs/roadmap.md).
 
 ## How it works
 1. **Ingest:** last night's results, today's schedule, and market odds (GitHub Actions, daily).

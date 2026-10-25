@@ -1,0 +1,21 @@
+version: 2
+
+models:
+  - name: stg_espn_games
+    description: One row per ESPN game, typed. Nothing is dropped here; problem rows are flagged.
+    columns:
+      - name: game_id
+        data_tests: [unique, not_null]
+      - name: season
+        data_tests: [not_null]
+      - name: season_type
+        data_tests:
+          - accepted_values:
+              arguments:
+                values: [regular_season, playin, playoffs]
+      - name: tipoff_utc
+        data_tests: [not_null]
+      - name: is_exhibition
+        description: True for All-Star games (teams that aren't one of the 30 franchises).
+      - name: is_completed
+        description: False for scheduled, in-progress, postponed, or cancelled games.
