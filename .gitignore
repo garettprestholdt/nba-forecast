@@ -1,0 +1,28 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+.pytest_cache/
+.ruff_cache/
+*.egg-info/
+dist/
+build/
+
+# dbt
+dbt/target/
+dbt/dbt_packages/
+dbt/logs/
+
+# Site (Evidence)
+site/node_modules/
+site/.evidence/
+site/build/
+
+# Local data scratch (committed data lives in data/raw, data/predictions, data/ratings)
+data/scratch/
+*.duckdb
+*.duckdb.wal
+
+# Secrets and OS
+.env
+.DS_Store
