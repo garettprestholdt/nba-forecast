@@ -13,6 +13,11 @@ edited after the fact.
 4. **Score:** log-loss, Brier score, and calibration vs. the market and simple baselines.
 5. **Publish:** a static dashboard on GitHub Pages, plus agent-written daily recaps (as PRs).
 
+## Data
+Raw and historical data stays local (outside the repo, set by `NBAF_DATA_DIR`) and is never
+pushed. Only small published outputs live in git under `data/published/`: the predictions log,
+current team ratings, and the scorecard.
+
 ## Stack
 Python · uv · DuckDB + Parquet · dbt · pytest · ruff · GitHub Actions · Evidence.dev · Claude
 
