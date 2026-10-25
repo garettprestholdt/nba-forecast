@@ -35,6 +35,73 @@ def brier_score(probs: Sequence[float], outcomes: Sequence[int]) -> float:
     return sum((p - y) ** 2 for p, y in zip(probs, outcomes, strict=True)) / len(probs)
 
 
+def accuracy(probs: Sequence[float], outcomes: Sequence[int]) -> float:
+    """Share of games where the favored side won. A 50/50 forecast gets half credit."""
+    _validate(probs, outcomes)
+    credit = 0.0
+    for p, y in zip(probs, outcomes, strict=True):
+        credit += 0.5 if p == 0.5 else float((p > 0.5) == (y == 1))
+    return credit / len(probs)
+
+
+def _bin_index(p: float, bins: int) -> int:
+    return min(int(p * bins), bins - 1)
+
+
+def calibration_table(
+    probs: Sequence[float], outcomes: Sequence[int], bins: int = 10
+) -> list[dict[str, float]]:
+    """Forecasts grouped into equal-width probability bins: mean forecast vs. observed rate.
+
+    A calibrated model's games forecast at ~70% are won ~70% of the time.
+    """
+    _validate(probs, outcomes)
+    groups: list[list[tuple[float, int]]] = [[] for _ in range(bins)]
+    for p, y in zip(probs, outcomes, strict=True):
+        groups[_bin_index(p, bins)].append((p, y))
+    table = []
+    for i, group in enumerate(groups):
+        if not group:
+            continue
+        table.append(
+            {
+                "bin_low": i / bins,
+                "bin_high": (i + 1) / bins,
+                "n": len(group),
+                "mean_forecast": sum(p for p, _ in group) / len(group),
+                "observed_rate": sum(y for _, y in group) / len(group),
+            }
+        )
+    return table
+
+
+def brier_decomposition(
+    probs: Sequence[float], outcomes: Sequence[int], bins: int = 10
+) -> dict[str, float]:
+    """Murphy's decomposition: Brier ≈ reliability - resolution + uncertainty.
+
+    - reliability: how far forecasts are from observed rates (lower is better; 0 = calibrated)
+    - resolution: how much forecasts separate games with different outcomes (higher is better)
+    - uncertainty: base-rate variance, the same for every model on the same games
+
+    Binning makes this approximate; `within_bin` is the leftover term so the parts add up.
+    """
+    table = calibration_table(probs, outcomes, bins)
+    n = len(probs)
+    base_rate = sum(outcomes) / n
+    reliability = sum(r["n"] * (r["mean_forecast"] - r["observed_rate"]) ** 2 for r in table) / n
+    resolution = sum(r["n"] * (r["observed_rate"] - base_rate) ** 2 for r in table) / n
+    uncertainty = base_rate * (1 - base_rate)
+    brier = brier_score(probs, outcomes)
+    return {
+        "brier": brier,
+        "reliability": reliability,
+        "resolution": resolution,
+        "uncertainty": uncertainty,
+        "within_bin": brier - (reliability - resolution + uncertainty),
+    }
+
+
 def devig_two_way(home_decimal_odds: float, away_decimal_odds: float) -> tuple[float, float]:
     """Market-implied (home, away) win probabilities with the bookmaker margin removed.
 

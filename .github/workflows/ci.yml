@@ -14,11 +14,21 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # full history for the attribution check
       - uses: astral-sh/setup-uv@v6
         with:
           enable-cache: true
       - name: Install dependencies
         run: uv sync --locked
+      - name: Attribution check (no Claude/Anthropic co-authors or bot authors)
+        # On a PR, check the commits it adds; on main, check all of history.
+        run: |
+          if [ "${{ github.event_name }}" = "pull_request" ]; then
+            uv run python -m nbaforecast.attribution "origin/${{ github.base_ref }}..HEAD"
+          else
+            uv run python -m nbaforecast.attribution HEAD
+          fi
       - name: Lint
         run: uv run ruff check .
       - name: Format check
