@@ -1,0 +1,14 @@
+version: 2
+
+sources:
+  - name: raw
+    description: Raw files written by `nbaf backfill` into the local data directory.
+    meta:
+      external_location: >-
+        read_parquet('{{ env_var('NBAF_DATA_DIR') }}/raw/{name}/*.parquet',
+        hive_partitioning = false, union_by_name = true)
+    tables:
+      - name: espn_games
+        description: >
+          One row per game from ESPN's scoreboard, including All-Star games and postponed
+          games, which staging flags.

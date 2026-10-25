@@ -25,3 +25,9 @@ jobs:
         run: uv run ruff format --check .
       - name: Tests
         run: uv run pytest
+      - name: dbt build (fixture data)
+        # Real data lives only on the maintainer's machine, so CI builds every model and runs
+        # every data test on a small slice of real games. Full-season count checks are off.
+        run: |
+          cp -R tests/fixtures/nbaf_data "$RUNNER_TEMP/nbaf_data"
+          NBAF_DATA_DIR="$RUNNER_TEMP/nbaf_data" uv run nbaf dbt build --vars '{check_season_counts: false}'

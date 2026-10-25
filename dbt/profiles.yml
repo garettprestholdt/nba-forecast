@@ -1,0 +1,9 @@
+# The warehouse lives in the local data directory, never in the repo.
+# `nbaf dbt ...` sets NBAF_DATA_DIR; set it yourself if you run dbt directly.
+nbaforecast:
+  target: local
+  outputs:
+    local:
+      type: duckdb
+      path: "{{ env_var('NBAF_DATA_DIR') }}/warehouse.duckdb"
+      threads: 4
