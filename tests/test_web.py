@@ -155,3 +155,28 @@ def test_colors_are_tokens_not_hex(site):
     for page in ["index.html", "ratings.html", "model.html"]:
         for spec in specs((site / page).read_text()).values():
             assert not re.search(r"#[0-9a-fA-F]{6}", json.dumps(spec)), page
+
+
+def test_latest_recap_shown_with_its_source(data_dir, tmp_path_factory):
+    recaps = data_dir / "recaps"
+    recaps.mkdir()
+    (recaps / "2026-10-27.md").write_text("<!-- source: template; model: none -->\nOld recap.\n")
+    (recaps / "2026-10-28.md").write_text(
+        "<!-- source: agent; model: m -->\nElo went 1 of 1.\n\n- Away 17 101, Home 2 110\n"
+    )
+    out = tmp_path_factory.mktemp("site-recap")
+    web.build(data_dir, out, published_dir=config.PUBLISHED_DIR)
+    html = (out / "index.html").read_text()
+    assert "Morning recap · Wed, Oct 28" in html
+    assert "<p>Elo went 1 of 1.</p>" in html and "<li>Away 17 101, Home 2 110</li>" in html
+    assert "Written by an AI agent" in html and "Old recap" not in html
+    assert "/blob/data/recaps/2026-10-28.json" in html
+
+
+def test_recap_text_is_escaped(data_dir, tmp_path_factory):
+    recaps = data_dir / "recaps"
+    recaps.mkdir()
+    (recaps / "2026-10-28.md").write_text("<!-- source: agent; model: m -->\n<script>x</script>\n")
+    out = tmp_path_factory.mktemp("site-escape")
+    web.build(data_dir, out, published_dir=config.PUBLISHED_DIR)
+    assert "<script>x</script>" not in (out / "index.html").read_text()

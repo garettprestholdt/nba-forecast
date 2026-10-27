@@ -141,6 +141,9 @@ summary { cursor: pointer; color: var(--ink-secondary); font-size: 13.5px; }
 #vg-tooltip-element td.value { color: var(--ink-primary) !important; }
 
 .prose { max-width: 72ch; }
+.recap p, .recap ul { max-width: 72ch; margin: 8px 0; }
+.recap ul { padding-left: 20px; }
+.recap .note { color: var(--ink-muted); font-size: 12.5px; margin-top: 12px; }
 .prose li { margin-bottom: 6px; }
 code { font: 13px ui-monospace, SFMono-Regular, Menlo, monospace; background: var(--accent-wash); padding: 1px 5px; border-radius: 4px; }
 

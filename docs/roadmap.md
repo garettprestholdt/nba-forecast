@@ -41,7 +41,11 @@ scorecard covers as much of it as possible. Everything after that is improvement
 - [x] Chart palette validated for color-vision deficiency in light and dark mode
 
 ## Phase 5: Agent layer
-- [ ] Daily recap agent (opens a PR with `recaps/YYYY-MM-DD.md`)
+- [x] Daily recap agent: Claude Code (headless, in GitHub Actions) writes the morning recap
+      from a facts file in an isolated folder; a fact-checker publishes it to the `data` branch
+      only if every number and team matches the facts, otherwise a plain template goes out.
+      (Auto-publishing replaced the original "recap as a PR" idea: no daily clicks, and agent
+      commits never touch `main` or the contributors list.)
 - [ ] Failure-triage agent (reads failed run logs, opens a fix PR)
 - [ ] Injury-report extraction (official PDF → structured data, validated against box scores)
 - [ ] Monthly source-scout agent (evaluates candidate APIs from

@@ -18,9 +18,16 @@ concurrency:
 jobs:
   daily:
     runs-on: ubuntu-latest
+    env:
+      RECAP_MODEL: claude-sonnet-5-5
+      HAS_CLAUDE_TOKEN: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN != '' }}
     steps:
       - name: Check out code (main)
         uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Recap date (US Eastern)
+        run: echo "RECAP_DATE=$(TZ=America/New_York date +%F)" >> "$GITHUB_ENV"
       - name: Check out data branch
         uses: actions/checkout@v4
         with:
@@ -37,6 +44,40 @@ jobs:
         run: uv run nbaf daily --data-dir data-branch
       - name: Verify (append-only, every prediction before tip-off)
         run: uv run nbaf verify --data-dir data-branch
+
+      # Morning recap: Claude Code writes a draft from the facts file, in a folder that holds
+      # nothing else (no code, no git credentials); the fact-checker decides what's published.
+      - name: Prepare recap facts
+        id: recap
+        run: >-
+          uv run nbaf recap-prepare --data-dir data-branch
+          --workdir "$RUNNER_TEMP/recap" --date "$RECAP_DATE"
+      - name: Set up Node (for Claude Code)
+        if: steps.recap.outputs.ready == 'true' && env.HAS_CLAUDE_TOKEN == 'true'
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Recap agent (Claude Code, headless)
+        if: steps.recap.outputs.ready == 'true' && env.HAS_CLAUDE_TOKEN == 'true'
+        continue-on-error: true # if the agent fails, the template recap is published
+        timeout-minutes: 8
+        working-directory: ${{ runner.temp }}/recap
+        env:
+          CLAUDE_CODE_OAUTH_TOKEN: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+        run: |
+          npm install -g @anthropic-ai/claude-code@2.1.304
+          claude -p "$(cat prompt.txt)" \
+            --model "$RECAP_MODEL" \
+            --allowedTools Read Write \
+            --disallowedTools Bash Edit WebFetch WebSearch \
+            --output-format json > agent_log.json
+          head -c 3000 agent_log.json
+      - name: Fact-check and publish recap
+        if: steps.recap.outputs.ready == 'true'
+        run: >-
+          uv run nbaf recap-publish --data-dir data-branch
+          --workdir "$RUNNER_TEMP/recap" --date "$RECAP_DATE" --model "$RECAP_MODEL"
+
       - name: Commit to the data branch
         working-directory: data-branch
         run: |

@@ -17,7 +17,7 @@ from typing import Any
 
 from jinja2 import Environment, FileSystemLoader, select_autoescape
 
-from nbaforecast import config, metrics
+from nbaforecast import config, metrics, recap
 from nbaforecast.ingest.espn import EASTERN
 from nbaforecast.live import Store
 from nbaforecast.models.elo import win_probability
@@ -437,6 +437,23 @@ def _live_calibration(games: list[Game]) -> list[dict]:
     ]
 
 
+def _latest_recap(store: Store) -> dict[str, Any] | None:
+    """The newest published recap as blocks: {"p": text} paragraphs and {"ul": [items]} lists."""
+    files = sorted((store.root / "recaps").glob("*.md"))
+    if not files:
+        return None
+    source, body = recap.read_published(files[-1])
+    blocks = []
+    for chunk in body.split("\n\n"):
+        lines = [line.strip() for line in chunk.strip().splitlines() if line.strip()]
+        if lines and all(line.startswith("- ") for line in lines):
+            blocks.append({"ul": [line[2:] for line in lines]})
+        elif lines:
+            blocks.append({"p": " ".join(lines)})
+    day = files[-1].stem
+    return {"date": day, "source": source, "blocks": blocks, "facts_file": f"recaps/{day}.json"}
+
+
 def build_context(data_dir: Path, published_dir: Path | None = None) -> dict[str, Any]:
     store = Store(data_dir)
     published = published_dir or config.PUBLISHED_DIR
@@ -541,6 +558,7 @@ def build_context(data_dir: Path, published_dir: Path | None = None) -> dict[str
         "live_calibration_min": LIVE_CALIBRATION_MIN_GAMES,
         "backtest_calibration": backtest_calibration,
         "games_scored": sum(1 for g in games if g.final),
+        "recap": _latest_recap(store),
     }
 
 
