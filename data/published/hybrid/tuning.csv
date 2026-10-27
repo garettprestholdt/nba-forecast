@@ -1,0 +1,30 @@
+stage,setting,train_log_loss
+players 1,"decay=0.995, carryover=0.7, prior_minutes=1200, replacement=0.2, pm_prior_minutes=1500, minutes_decay=0.85, new_player_minutes=10",0.59389
+players 1,"decay=0.995, carryover=0.7, prior_minutes=600, replacement=0.2, pm_prior_minutes=1500, minutes_decay=0.85, new_player_minutes=10",0.59398
+players 1,"decay=0.995, carryover=0.7, prior_minutes=300, replacement=0.2, pm_prior_minutes=1500, minutes_decay=0.85, new_player_minutes=10",0.59410
+players 1,"decay=0.99, carryover=0.7, prior_minutes=1200, replacement=0.2, pm_prior_minutes=1500, minutes_decay=0.85, new_player_minutes=10",0.59410
+players 1,"decay=0.99, carryover=0.7, prior_minutes=600, replacement=0.2, pm_prior_minutes=1500, minutes_decay=0.85, new_player_minutes=10",0.59421
+players 1,"decay=0.99, carryover=0.7, prior_minutes=300, replacement=0.2, pm_prior_minutes=1500, minutes_decay=0.85, new_player_minutes=10",0.59435
+players 1,"decay=0.97, carryover=0.7, prior_minutes=1200, replacement=0.2, pm_prior_minutes=1500, minutes_decay=0.85, new_player_minutes=10",0.59531
+players 1,"decay=0.97, carryover=0.7, prior_minutes=600, replacement=0.2, pm_prior_minutes=1500, minutes_decay=0.85, new_player_minutes=10",0.59539
+players 1,"decay=0.97, carryover=0.7, prior_minutes=300, replacement=0.2, pm_prior_minutes=1500, minutes_decay=0.85, new_player_minutes=10",0.59552
+players 2,"decay=0.995, carryover=0.7, prior_minutes=1200, replacement=0.2, pm_prior_minutes=1500, minutes_decay=0.5, new_player_minutes=10",0.59255
+players 2,"decay=0.995, carryover=0.9, prior_minutes=1200, replacement=0.2, pm_prior_minutes=1500, minutes_decay=0.5, new_player_minutes=10",0.59269
+players 2,"decay=0.995, carryover=1, prior_minutes=1200, replacement=0.2, pm_prior_minutes=1500, minutes_decay=0.5, new_player_minutes=10",0.59282
+players 2,"decay=0.995, carryover=0.7, prior_minutes=1200, replacement=0.2, pm_prior_minutes=1500, minutes_decay=0.7, new_player_minutes=10",0.59299
+players 2,"decay=0.995, carryover=0.9, prior_minutes=1200, replacement=0.2, pm_prior_minutes=1500, minutes_decay=0.7, new_player_minutes=10",0.59315
+players 2,"decay=0.995, carryover=1, prior_minutes=1200, replacement=0.2, pm_prior_minutes=1500, minutes_decay=0.7, new_player_minutes=10",0.59328
+players 2,"decay=0.995, carryover=0.7, prior_minutes=1200, replacement=0.2, pm_prior_minutes=1500, minutes_decay=0.85, new_player_minutes=10",0.59389
+players 2,"decay=0.995, carryover=0.9, prior_minutes=1200, replacement=0.2, pm_prior_minutes=1500, minutes_decay=0.85, new_player_minutes=10",0.59404
+players 2,"decay=0.995, carryover=1, prior_minutes=1200, replacement=0.2, pm_prior_minutes=1500, minutes_decay=0.85, new_player_minutes=10",0.59416
+regression,"logistic, l2=10, no intercept",0.59552
+regression,"logistic, l2=1, no intercept",0.59561
+regression,"logistic, l2=0.1, no intercept",0.59564
+regression,"logistic, l2=100, no intercept",0.59568
+regression,"margin, l2=10, no intercept",0.59645
+regression,"margin, l2=1, no intercept",0.59645
+regression,"margin, l2=0.1, no intercept",0.59645
+regression,"margin, l2=100, no intercept",0.59649
+team form,form_decay=0.95,0.59255
+team form,form_decay=0.98,0.59255
+team form,form_decay=0.99,0.59296

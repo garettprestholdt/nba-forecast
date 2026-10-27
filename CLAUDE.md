@@ -26,6 +26,10 @@ See `docs/roadmap.md` for the phased plan.
   or missing player ids go in `seeds/player_id_aliases.csv`.
 - dbt: `uv run nbaf dbt build` (sets `NBAF_DATA_DIR` and the project/profile paths for you)
 - Backtest: `uv run nbaf backtest` (~4 min; writes `data/published/backtest/`)
+- Hybrid backtest: `uv run nbaf hybrid` (~12 min; writes `data/published/hybrid/`). Team history
+  (Elo, rest, box-score form) + player layer (`models/players.py`), stacked walk-forward
+  (`models/hybrid.py`). Player features must stay pre-game: "knows the lineup" may use who was
+  *available* (played or healthy scratch), never who got minutes or how many.
 - Daily job (what GitHub Actions runs): `uv run nbaf daily --data-dir <data-branch checkout>`,
   then `uv run nbaf verify --data-dir <same>`
 - First live state (local, once): `uv run nbaf bootstrap --out <empty dir>`

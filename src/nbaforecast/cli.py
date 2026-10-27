@@ -55,6 +55,28 @@ def _pbp(args: argparse.Namespace) -> int:
     return 0
 
 
+def _hybrid(args: argparse.Namespace) -> int:
+    from nbaforecast import hybrid_backtest, warehouse
+
+    inputs = hybrid_backtest.Inputs(
+        warehouse.load_games(), warehouse.load_team_games(), warehouse.load_player_games()
+    )
+    print("Tuning the hybrid on training seasons (each player setting is a ~30 s walk)")
+    best, trials = hybrid_backtest.tune(inputs)
+    print(f"Chosen: {best['fit'].label()}; {best['players'].label()}; form={best['form_decay']}")
+    result = hybrid_backtest.compare(inputs, best)
+    out_dir = config.PUBLISHED_DIR / "hybrid"
+    hybrid_backtest.write(result, trials, out_dir)
+    cols = ["model", "train_log_loss", "log_loss", "brier", "accuracy", "reliability"]
+    print(result["holdout"][cols].to_string(index=False, float_format=lambda v: f"{v:.4f}"))
+    for name, diff in result["paired"].items():
+        lo, hi = diff["ci95"]
+        print(f"{name}: {diff['mean_difference']:+.4f} (95% CI {lo:+.4f} to {hi:+.4f})")
+    print(result["absences"].to_string(index=False, float_format=lambda v: f"{v:.4f}"))
+    print(f"Wrote {out_dir}")
+    return 0
+
+
 def _dbt(args: argparse.Namespace) -> int:
     """Run dbt with this repo's project and profile, pointed at the local data directory."""
     from dbt.cli.main import dbtRunner
@@ -407,6 +429,9 @@ def main(argv: list[str] | None = None) -> int:
     pb.add_argument("--pause", type=float, default=0.2, help="seconds between requests")
     pb.add_argument("--rebuild-only", action="store_true", help="skip fetching; rebuild the cache")
     pb.set_defaults(func=_pbp)
+
+    hy = sub.add_parser("hybrid", help="backtest the team + player hybrid model (~15 min)")
+    hy.set_defaults(func=_hybrid)
 
     dbt = sub.add_parser("dbt", help="run dbt against the local data directory")
     dbt.add_argument("dbt_args", nargs=argparse.REMAINDER, help="e.g. build, test, docs generate")
