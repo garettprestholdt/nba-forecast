@@ -13,6 +13,12 @@ See `docs/roadmap.md` for the phased plan.
 - Tests: `uv run pytest`
 - CLI: `uv run nbaf --help`
 - Backfill history (local only): `uv run nbaf backfill` (finished seasons already on disk are skipped)
+- Player box scores (local only, ~3 hours for every season): `uv run nbaf boxscores`; for the current
+  season it fetches only games not already on disk. Plus-minus is null where ESPN didn't record it
+  (before 2008-09). About 13% of 2012-18 team box scores have the roster but no stats at ESPN;
+  staging flags them `stats_missing` with null stats. ESPN source errors found by the box-score
+  tests go in `seeds/known_data_issues.csv`; duplicate or missing player ids go in
+  `seeds/player_id_aliases.csv`.
 - dbt: `uv run nbaf dbt build` (sets `NBAF_DATA_DIR` and the project/profile paths for you)
 - Backtest: `uv run nbaf backtest` (~4 min; writes `data/published/backtest/`)
 - Daily job (what GitHub Actions runs): `uv run nbaf daily --data-dir <data-branch checkout>`,

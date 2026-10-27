@@ -63,7 +63,10 @@ scorecard covers as much of it as possible. Everything after that is improvement
       Elo, tuned on training seasons: [rest matters; the model family doesn't](findings/kalman-vs-elo.md)
 - [x] Optional back-to-back penalty for Elo (+0.0022 log-loss on the holdout, 95% CI excludes 0)
 - [ ] Promote Elo + back-to-back to the live model (decision pending)
-- [ ] Player box-score backfill (every game since 2004-05) with reconciliation tests
+- [x] Player box-score backfill (every game since 2004-05) with reconciliation tests
+      (758k player rows, 28,430 games; stats missing at ESPN for ~13% of 2012-18 games)
+- [ ] Rebuild the 2012-18 box scores ESPN left blank from play-by-play, validated against games
+      that have both
 - [ ] Hybrid model: team history (Elo, efficiency, four factors) + player layer (player values ×
       projected minutes, missing value, roster continuity), stacked with a regularized
       regression; walk-forward evaluation, including "knows the lineup" vs. realistic versions

@@ -20,6 +20,19 @@ def _backfill(args: argparse.Namespace) -> int:
     return 0
 
 
+def _boxscores(args: argparse.Namespace) -> int:
+    from nbaforecast.ingest.boxscores import backfill
+
+    data_dir = config.local_data_dir()
+    print(f"Backfilling player box scores into {data_dir}")
+    results = backfill(data_dir, args.first, args.last, limit=args.limit, pause=args.pause)
+    for r in results:
+        print(
+            f"{r.season}: {r.status}, {r.games} games, {r.rows:,} player rows, {r.missing} missing"
+        )
+    return 0
+
+
 def _dbt(args: argparse.Namespace) -> int:
     """Run dbt with this repo's project and profile, pointed at the local data directory."""
     from dbt.cli.main import dbtRunner
@@ -359,6 +372,13 @@ def main(argv: list[str] | None = None) -> int:
     bf.add_argument("--last", type=int, default=None, help="last season start year")
     bf.add_argument("--force", action="store_true", help="re-download finished seasons")
     bf.set_defaults(func=_backfill)
+
+    bs = sub.add_parser("boxscores", help="download player box scores (run locally)")
+    bs.add_argument("--first", type=int, default=2004, help="first season start year")
+    bs.add_argument("--last", type=int, default=None, help="last season start year")
+    bs.add_argument("--limit", type=int, default=None, help="pilot: at most N new games/season")
+    bs.add_argument("--pause", type=float, default=0.2, help="seconds between requests")
+    bs.set_defaults(func=_boxscores)
 
     dbt = sub.add_parser("dbt", help="run dbt against the local data directory")
     dbt.add_argument("dbt_args", nargs=argparse.REMAINDER, help="e.g. build, test, docs generate")

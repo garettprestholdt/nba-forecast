@@ -40,6 +40,45 @@ models:
           ESPN's neutral-site flag (international games, NBA Cup knockouts in Las Vegas)
           or a bubble game. Rating models should drop home-court advantage for these.
 
+  - name: fct_player_games
+    description: >
+      One row per player per competitive game (including DNPs), from ESPN box scores, with
+      Hollinger's Game Score. plus_minus is null in seasons ESPN didn't record it. Stats are
+      null where ESPN's box score has the roster but no stats (stats_missing).
+    columns:
+      - name: player_game_id
+        data_tests: [unique, not_null]
+      - name: game_id
+        data_tests:
+          - relationships:
+              arguments:
+                to: ref('fct_games')
+                field: game_id
+      - name: team_id
+        data_tests:
+          - relationships:
+              arguments:
+                to: ref('franchises')
+                field: franchise_id
+      - name: stats_missing
+        description: >
+          ESPN listed this team's players but no stats (about 13% of games from 2012-13 to
+          2017-18, plus a handful in 2020-21). Who started and who sat is still known.
+        data_tests: [not_null]
+      - name: played
+        description: Logged minutes; where stats are missing, ESPN didn't mark them as DNP.
+
+  - name: fct_team_games
+    description: >
+      One row per team per game: totals, possessions, offensive/defensive/net rating, and the
+      four factors for both sides. Only games where both box scores have stats. Points are the
+      final score.
+    columns:
+      - name: game_id
+        data_tests: [not_null]
+      - name: possessions
+        data_tests: [not_null]
+
 seeds:
   - name: franchises
     description: ESPN's 30 franchise IDs. IDs follow the franchise through renames and moves.
@@ -50,6 +89,13 @@ seeds:
     description: Expected regular-season game counts for completed seasons, with notes.
     columns:
       - name: season
+        data_tests: [unique, not_null]
+  - name: player_id_aliases
+    description: >
+      Extra ESPN ids for a player (ESPN listed some players twice in 2018-20). Each alias maps
+      to the id the player has in most of their games. assert_box_no_duplicate_players finds new ones.
+    columns:
+      - name: alias_id
         data_tests: [unique, not_null]
   - name: known_data_issues
     description: >
