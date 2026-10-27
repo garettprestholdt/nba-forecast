@@ -187,11 +187,13 @@ def ingest_results(
         if final:
             state.start_day(final[0]["season"])
             forecasts = [
-                state.predict(g["home_team_id"], g["away_team_id"], g["neutral_site"])
+                state.predict(g["home_team_id"], g["away_team_id"], g["neutral_site"], day)
                 for g in final
             ]
             for g, f in zip(final, forecasts, strict=True):
                 state.update(f, g["home_score"], g["away_score"])
+            for g in final:
+                state.record_played((g["home_team_id"], g["away_team_id"]), day)
             for season in {g["season"] for g in final}:
                 known = {r["game_id"] for r in store.read(store.results_path(season))}
                 rows = [
@@ -233,7 +235,7 @@ def predict_games(
         already = {r["game_id"] for r in store.read(store.predictions_path(g["season"]))}
         if g["game_id"] in already:
             continue
-        f = preview.predict(g["home_team_id"], g["away_team_id"], g["neutral_site"])
+        f = preview.predict(g["home_team_id"], g["away_team_id"], g["neutral_site"], g["game_date"])
         line = odds.match(market, g["home_team_name"], g["away_team_name"], g["tipoff_utc"])
         rows.append(
             {

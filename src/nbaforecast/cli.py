@@ -318,6 +318,27 @@ def _availability_publish(args: argparse.Namespace) -> int:
     return 0
 
 
+def _challenger(args: argparse.Namespace) -> int:
+    from nbaforecast import challenger, warehouse
+
+    games = warehouse.load_games()
+    print(f"Tuning the Kalman challenger on {len(games):,} games (two-stage grid, train seasons)")
+    result = challenger.compare(games)
+    out_dir = config.PUBLISHED_DIR / "challenger"
+    challenger.write(result, out_dir)
+    print(f"Chosen: {result['params'].label()}")
+    print(result["holdout"].to_string(index=False, float_format=lambda v: f"{v:.4f}"))
+    for name, paired in result["paired"].items():
+        lo, hi = paired["ci95"]
+        print(
+            f"Paired log-loss, {name}: {paired['mean_difference']:+.4f} "
+            f"(95% CI {lo:+.4f} to {hi:+.4f})"
+        )
+    print("Learned coefficients now:", {k: round(v, 2) for k, v in result["coefficients"].items()})
+    print(f"Wrote {out_dir}")
+    return 0
+
+
 def _site(args: argparse.Namespace) -> int:
     from pathlib import Path
 
@@ -345,6 +366,9 @@ def main(argv: list[str] | None = None) -> int:
 
     bt = sub.add_parser("backtest", help="tune Elo on 2005-2019, score it on 2020-2026")
     bt.set_defaults(func=_backtest)
+
+    ch = sub.add_parser("challenger", help="tune the Kalman model and compare it with Elo")
+    ch.set_defaults(func=_challenger)
 
     boot = sub.add_parser("bootstrap", help="create the first live state from local history")
     boot.add_argument("--out", required=True, help="checkout of the data branch")

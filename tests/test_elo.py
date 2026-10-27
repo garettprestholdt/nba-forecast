@@ -163,3 +163,30 @@ def test_grid():
     params = elo.grid(k=[15, 20], carryover=[0.7, 0.8])
     assert len(params) == 4
     assert {p.k for p in params} == {15, 20}
+
+
+def test_back_to_back_penalty_applies_only_on_the_second_night():
+    rows = [
+        (D, "A", "B", 110, 100),
+        (D + timedelta(days=1), "C", "A", 100, 99),  # A away on the second night
+        (D + timedelta(days=3), "C", "A", 100, 99),  # two days' rest: no penalty
+    ]
+    plain, _ = elo.run(make_games(rows), EloParams(rest_penalty=0))
+    rested, _ = elo.run(make_games(rows), EloParams(rest_penalty=50))
+    assert rested.p_home.iloc[1] > plain.p_home.iloc[1]  # tired away team -> home more likely
+    assert rested.p_home.iloc[2] - plain.p_home.iloc[2] == pytest.approx(0, abs=0.02)
+
+
+def test_last_played_survives_json_round_trip():
+    import json
+
+    _, _ = elo.run(make_games([(D, "A", "B", 110, 100)]))
+    state = elo.EloState(EloParams(rest_penalty=40))
+    elo.walk(make_games([(D, "A", "B", 110, 100)]), state)
+    again = elo.EloState.from_dict(json.loads(json.dumps(state.to_dict())))
+    assert again.last_played == {"A": D, "B": D}
+    assert again.back_to_back("A", D + timedelta(days=1))
+    # Older state files without last_played still load.
+    data = state.to_dict()
+    data.pop("last_played")
+    assert elo.EloState.from_dict(data).last_played == {}
