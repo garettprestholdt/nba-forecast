@@ -27,10 +27,12 @@ scorecard covers as much of it as possible. Everything after that is improvement
       fixes the calibration error and will be the live model
 
 ## Phase 3: Daily pipeline (MVP)
-- [ ] Daily GitHub Actions run: results + schedule (ESPN), odds (The Odds API)
-- [ ] Append predictions with `predicted_at` + git SHA; score finished games
-- [ ] dbt tests gate the run: a failure means nothing is committed
-- [ ] CI check that every prediction was made before tip-off
+- [x] Daily GitHub Actions run: results + schedule (ESPN), odds (The Odds API)
+- [x] Resumable Elo state on the `data` branch; daily runs reproduce the batch backtest exactly
+- [x] Append predictions with `predicted_at`, ratings date, and code SHA; score finished games
+- [x] `nbaf verify` gates every commit: append-only predictions, all made before tip-off,
+      no duplicates. A failure means nothing is committed
+- [x] `data` branch blocks force-pushes and deletion, so the prediction log can't be rewritten
 
 ## Phase 4: Public site
 - [ ] Evidence.dev on GitHub Pages: today's games, ratings, scorecard, calibration, methodology

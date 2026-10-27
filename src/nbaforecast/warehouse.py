@@ -9,7 +9,8 @@ from nbaforecast import config
 
 GAME_COLUMNS = """
     game_id, season, season_type, game_date, tipoff_utc,
-    home_team_id, home_team_abbr, away_team_id, away_team_abbr,
+    home_team_id, home_team_abbr, home_team_name,
+    away_team_id, away_team_abbr, away_team_name,
     home_score, away_score, is_neutral_site
 """
 
