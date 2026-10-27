@@ -1,0 +1,96 @@
+{
+  "generated_at": "2026-10-27T18:58:38+00:00",
+  "challenger_params": {
+    "sigma": 11.0,
+    "team_drift": 0.15,
+    "season_var": 4.0,
+    "carryover": 0.8,
+    "prior_var": 36.0,
+    "hca_prior": 3.0,
+    "hca_prior_var": 4.0,
+    "hca_drift": 0.005,
+    "feature_prior_var": 4.0,
+    "margin_cap": 30.0,
+    "use_features": true
+  },
+  "learned_coefficients_now": {
+    "home_court": 1.7947818704917327,
+    "home_back_to_back": -1.769068904543818,
+    "away_back_to_back": 1.8996827673961354,
+    "travel_gap_1000km": 0.08136732553037788
+  },
+  "holdout": [
+    {
+      "model": "Elo, adaptive home court (live model)",
+      "train_log_loss": 0.6026638821458528,
+      "n": 7776,
+      "log_loss": 0.625426472122768,
+      "brier": 0.2180283243411662,
+      "accuracy": 0.6498199588477366,
+      "mean_forecast": 0.5489950363546319,
+      "home_win_rate": 0.5540123456790124,
+      "reliability": 0.00012512924520698766
+    },
+    {
+      "model": "Elo + back-to-back (35 pts)",
+      "train_log_loss": 0.6010893026158851,
+      "n": 7776,
+      "log_loss": 0.6231919661247541,
+      "brier": 0.2170419971839536,
+      "accuracy": 0.6504629629629629,
+      "mean_forecast": 0.550158276713165,
+      "home_win_rate": 0.5540123456790124,
+      "reliability": 9.54804169279941e-05
+    },
+    {
+      "model": "Kalman, rest + travel (challenger)",
+      "train_log_loss": 0.5999309526275505,
+      "n": 7776,
+      "log_loss": 0.6230713121980165,
+      "brier": 0.21682358368630364,
+      "accuracy": 0.6539351851851852,
+      "mean_forecast": 0.5650551778945511,
+      "home_win_rate": 0.5540123456790124,
+      "reliability": 0.0002947269695917019
+    },
+    {
+      "model": "Kalman, no rest/travel (ablation)",
+      "train_log_loss": 0.6011080077194695,
+      "n": 7776,
+      "log_loss": 0.6256384372361234,
+      "brier": 0.21793853148998504,
+      "accuracy": 0.650977366255144,
+      "mean_forecast": 0.5673126509938702,
+      "home_win_rate": 0.5540123456790124,
+      "reliability": 0.0002880183462628158
+    }
+  ],
+  "paired_log_loss_differences": {
+    "Elo, adaptive home court (live model) minus Kalman challenger": {
+      "games": 7776,
+      "mean_difference": 0.002355159924753565,
+      "ci95": [
+        6.345675591938084e-05,
+        0.004646863093587749
+      ]
+    },
+    "Elo + back-to-back (35 pts) minus Kalman challenger": {
+      "games": 7776,
+      "mean_difference": 0.00012065392674126081,
+      "ci95": [
+        -0.0017771048195556116,
+        0.0020184126730381333
+      ]
+    },
+    "Live Elo minus Elo + back-to-back": {
+      "games": 7776,
+      "mean_difference": 0.0022345059980123042,
+      "ci95": [
+        0.0011881538138103296,
+        0.0032808581822142786
+      ]
+    }
+  },
+  "elo_rest_penalty_chosen": 35.0,
+  "trials": 36
+}

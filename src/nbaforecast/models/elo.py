@@ -45,10 +45,12 @@ class EloParams:
     carryover: float = 0.75  # share of a rating kept between seasons
     mov: bool = True
     mean: float = 1500.0
+    rest_penalty: float = 0.0  # Elo points lost on the second night of a back-to-back
 
     def label(self) -> str:
         hca = f"adaptive{self.hca_window}" if self.hca_window else f"{self.home_advantage:g}"
-        return f"k={self.k:g} hca={hca} carry={self.carryover:g} mov={self.mov}"
+        rest = f" rest={self.rest_penalty:g}" if self.rest_penalty else ""
+        return f"k={self.k:g} hca={hca} carry={self.carryover:g} mov={self.mov}{rest}"
 
     def as_dict(self) -> dict:
         return asdict(self)
@@ -85,6 +87,7 @@ class GameForecast:
     home_court: float
     p_home: float
     is_neutral_site: bool
+    rest_adjust: float = 0.0  # Elo points added to the home side for back-to-backs
 
 
 class EloState:
@@ -101,8 +104,10 @@ class EloState:
         season: str | None = None,
         home_results: Iterable[int] = (),
         last_date: date | None = None,
+        last_played: dict[str, date] | None = None,
     ):
         self.params = params
+        self.last_played: dict[str, date] = dict(last_played or {})
         self.ratings: dict[str, float] = dict(ratings or {})
         self.season = season
         self.home_results: deque[int] = deque(home_results, maxlen=params.hca_window or 1)
@@ -128,18 +133,37 @@ class EloState:
                 }
             self.season = season
 
-    def predict(self, home_team_id: str, away_team_id: str, is_neutral_site: bool) -> GameForecast:
+    def back_to_back(self, team_id: str, game_date: date | None) -> bool:
+        last = self.last_played.get(team_id)
+        return game_date is not None and last is not None and (game_date - last).days == 1
+
+    def predict(
+        self,
+        home_team_id: str,
+        away_team_id: str,
+        is_neutral_site: bool,
+        game_date: date | None = None,
+    ) -> GameForecast:
         home_elo, away_elo = self.rating(home_team_id), self.rating(away_team_id)
         hca = 0.0 if is_neutral_site else self.home_court()
+        rest = self.params.rest_penalty * (
+            int(self.back_to_back(away_team_id, game_date))
+            - int(self.back_to_back(home_team_id, game_date))
+        )
         return GameForecast(
             home_team_id,
             away_team_id,
             home_elo,
             away_elo,
             hca,
-            win_probability(home_elo + hca - away_elo),
+            win_probability(home_elo + hca - away_elo + rest),
             bool(is_neutral_site),
+            rest,
         )
+
+    def record_played(self, team_ids: Iterable[str], game_date: date) -> None:
+        for team in team_ids:
+            self.last_played[team] = game_date
 
     def update(self, forecast: GameForecast, home_score: int, away_score: int) -> None:
         """Apply a result. `+=` so a team listed twice on one date gets both updates."""
@@ -148,7 +172,7 @@ class EloState:
         home_won = margin > 0
         mult = 1.0
         if self.params.mov:
-            edge = f.home_elo + f.home_court - f.away_elo
+            edge = f.home_elo + f.home_court - f.away_elo + f.rest_adjust
             mult = mov_multiplier(margin, edge if home_won else -edge)
         delta = self.params.k * mult * (int(home_won) - f.p_home)
         self.ratings[f.home_team_id] = self.rating(f.home_team_id) + delta
@@ -163,6 +187,7 @@ class EloState:
             "last_date": self.last_date.isoformat() if self.last_date else None,
             "home_court_now": self.home_court(),
             "home_results": "".join(map(str, self.home_results)),
+            "last_played": {t: d.isoformat() for t, d in sorted(self.last_played.items())},
             "ratings": dict(
                 sorted(
                     self.ratings.items(), key=lambda kv: int(kv[0]) if kv[0].isdigit() else kv[0]
@@ -178,6 +203,7 @@ class EloState:
             season=data["season"],
             home_results=[int(c) for c in data["home_results"]],
             last_date=date.fromisoformat(data["last_date"]) if data["last_date"] else None,
+            last_played={t: date.fromisoformat(d) for t, d in data.get("last_played", {}).items()},
         )
 
 
@@ -193,7 +219,8 @@ def walk(games: pd.DataFrame, state: EloState) -> pd.DataFrame:
         state.start_day(day_games[0].season)
         # 1. Predict every game on this date from start-of-day ratings...
         forecasts = [
-            state.predict(g.home_team_id, g.away_team_id, g.is_neutral_site) for g in day_games
+            state.predict(g.home_team_id, g.away_team_id, g.is_neutral_site, game_date)
+            for g in day_games
         ]
         # 2. ...then apply the results.
         for g, f in zip(day_games, forecasts, strict=True):
@@ -214,6 +241,8 @@ def walk(games: pd.DataFrame, state: EloState) -> pd.DataFrame:
                     "is_neutral_site": f.is_neutral_site,
                 }
             )
+        for g in day_games:
+            state.record_played((g.home_team_id, g.away_team_id), game_date)
         state.last_date = game_date
     return pd.DataFrame(rows)
 

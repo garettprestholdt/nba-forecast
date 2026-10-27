@@ -1,0 +1,41 @@
+model,bin_low,bin_high,n,mean_forecast,observed_rate
+"Elo, adaptive home court (live model)",0.00000,0.10000,12,0.08484,0.08333
+"Elo, adaptive home court (live model)",0.10000,0.20000,183,0.16460,0.15301
+"Elo, adaptive home court (live model)",0.20000,0.30000,554,0.25585,0.27798
+"Elo, adaptive home court (live model)",0.30000,0.40000,934,0.35274,0.36510
+"Elo, adaptive home court (live model)",0.40000,0.50000,1270,0.45120,0.45669
+"Elo, adaptive home court (live model)",0.50000,0.60000,1661,0.55129,0.56653
+"Elo, adaptive home court (live model)",0.60000,0.70000,1488,0.64886,0.64516
+"Elo, adaptive home court (live model)",0.70000,0.80000,1047,0.74642,0.74212
+"Elo, adaptive home court (live model)",0.80000,0.90000,573,0.83984,0.83421
+"Elo, adaptive home court (live model)",0.90000,1.00000,54,0.92018,0.88889
+Elo + back-to-back (35 pts),0.00000,0.10000,14,0.08202,0.14286
+Elo + back-to-back (35 pts),0.10000,0.20000,190,0.16446,0.14737
+Elo + back-to-back (35 pts),0.20000,0.30000,534,0.25542,0.26217
+Elo + back-to-back (35 pts),0.30000,0.40000,943,0.35168,0.37328
+Elo + back-to-back (35 pts),0.40000,0.50000,1265,0.45208,0.45534
+Elo + back-to-back (35 pts),0.50000,0.60000,1652,0.55182,0.55932
+Elo + back-to-back (35 pts),0.60000,0.70000,1465,0.64943,0.64846
+Elo + back-to-back (35 pts),0.70000,0.80000,1078,0.74618,0.74583
+Elo + back-to-back (35 pts),0.80000,0.90000,568,0.83933,0.82923
+Elo + back-to-back (35 pts),0.90000,1.00000,67,0.91916,0.91045
+"Kalman, rest + travel (challenger)",0.00000,0.10000,19,0.07172,0.05263
+"Kalman, rest + travel (challenger)",0.10000,0.20000,174,0.16122,0.17241
+"Kalman, rest + travel (challenger)",0.20000,0.30000,495,0.25566,0.24444
+"Kalman, rest + travel (challenger)",0.30000,0.40000,850,0.35304,0.35765
+"Kalman, rest + travel (challenger)",0.40000,0.50000,1213,0.45360,0.43776
+"Kalman, rest + travel (challenger)",0.50000,0.60000,1573,0.55159,0.55563
+"Kalman, rest + travel (challenger)",0.60000,0.70000,1507,0.64865,0.62774
+"Kalman, rest + travel (challenger)",0.70000,0.80000,1147,0.74811,0.73670
+"Kalman, rest + travel (challenger)",0.80000,0.90000,661,0.84334,0.81089
+"Kalman, rest + travel (challenger)",0.90000,1.00000,137,0.92632,0.87591
+"Kalman, no rest/travel (ablation)",0.00000,0.10000,15,0.07319,0.00000
+"Kalman, no rest/travel (ablation)",0.10000,0.20000,166,0.16280,0.17470
+"Kalman, no rest/travel (ablation)",0.20000,0.30000,495,0.25701,0.25859
+"Kalman, no rest/travel (ablation)",0.30000,0.40000,837,0.35442,0.34648
+"Kalman, no rest/travel (ablation)",0.40000,0.50000,1169,0.45222,0.44226
+"Kalman, no rest/travel (ablation)",0.50000,0.60000,1593,0.55113,0.54677
+"Kalman, no rest/travel (ablation)",0.60000,0.70000,1559,0.64879,0.62989
+"Kalman, no rest/travel (ablation)",0.70000,0.80000,1119,0.74789,0.72565
+"Kalman, no rest/travel (ablation)",0.80000,0.90000,691,0.84282,0.81476
+"Kalman, no rest/travel (ablation)",0.90000,1.00000,132,0.92493,0.87879

@@ -59,8 +59,20 @@ scorecard covers as much of it as possible. Everything after that is improvement
       [public-apis](https://github.com/public-apis/public-apis) and proposes an adapter)
 
 ## Phase 6: Better model
-- [ ] Bayesian dynamic team-strength model (offense/defense random walk, rest, travel, injuries)
+- [x] Kalman-filter team-strength model (uncertainty, drifting home court, rest and travel) vs.
+      Elo, tuned on training seasons: [rest matters; the model family doesn't](findings/kalman-vs-elo.md)
+- [x] Optional back-to-back penalty for Elo (+0.0022 log-loss on the holdout, 95% CI excludes 0)
+- [ ] Promote Elo + back-to-back to the live model (decision pending)
+- [ ] Player box-score backfill (every game since 2004-05) with reconciliation tests
+- [ ] Hybrid model: team history (Elo, efficiency, four factors) + player layer (player values ×
+      projected minutes, missing value, roster continuity), stacked with a regularized
+      regression; walk-forward evaluation, including "knows the lineup" vs. realistic versions
+- [ ] Test whether players have real individual home/away effects (hierarchical shrinkage)
 - [ ] Champion vs. challenger: shadow predictions, promote only on backtest + live wins
+
+## Phase 6.5: Fan-friendly site
+- [ ] Ratings in points vs. an average team, projected records, playoff and title odds from
+      season simulations; a cleaner, higher-quality GitHub Pages design
 
 ## Phase 7: Write-up
 - [ ] README with architecture diagram, live link, headline results, reproduction steps
