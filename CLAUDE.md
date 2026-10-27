@@ -15,6 +15,9 @@ See `docs/roadmap.md` for the phased plan.
 - Backfill history (local only): `uv run nbaf backfill` (finished seasons already on disk are skipped)
 - dbt: `uv run nbaf dbt build` (sets `NBAF_DATA_DIR` and the project/profile paths for you)
 - Backtest: `uv run nbaf backtest` (~4 min; writes `data/published/backtest/`)
+- Daily job (what GitHub Actions runs): `uv run nbaf daily --data-dir <data-branch checkout>`,
+  then `uv run nbaf verify --data-dir <same>`
+- First live state (local, once): `uv run nbaf bootstrap --out <empty dir>`
 - dbt on the CI fixture: copy `tests/fixtures/nbaf_data` somewhere temporary, point
   `NBAF_DATA_DIR` at it, and add `--vars '{check_season_counts: false}'`
 
@@ -25,15 +28,17 @@ See `docs/roadmap.md` for the phased plan.
 ## Data layout
 - **Raw and large data never goes in git.** It lives in `config.local_data_dir()`
   (default `~/Desktop/nbaforecast`, override with `NBAF_DATA_DIR`).
-- **Only small published outputs are committed**, under `data/published/` (predictions log,
-  current ratings, scorecard). Pre-commit rejects any file over 500 KB.
+- **Only small published outputs are committed.** On `main`: `data/published/` (backtest
+  summaries). The daily predictions, results, scorecard, and Elo state live on the separate
+  `data` branch, written only by the daily workflow. Pre-commit rejects any file over 500 KB.
+- **Never rewrite the `data` branch.** It's the public, timestamped prediction log.
 
 ## Rules
 - **Never push to `main`.** Work on a branch and open a PR; CI must pass before merge.
 - **No Claude/Anthropic `Co-Authored-By` trailers, and no commits authored by `claude[bot]`.**
   The maintainer doesn't want AI tools in the GitHub contributors list. A commit-msg hook and a
   CI step (`python -m nbaforecast.attribution`) enforce this.
-- **Predictions are append-only.** Never edit or delete rows in `data/published/predictions/`. A prediction
+- **Predictions are append-only.** Never edit or delete rows in the `data` branch's `predictions/`. A prediction
   is only valid if its `predicted_at` is before the game's tip-off.
 - **No network calls in tests.** Parsers are tested against saved JSON fixtures in `tests/fixtures/`.
 - **Every data source sits behind the `ingest/` interface**, so a source can be swapped or added

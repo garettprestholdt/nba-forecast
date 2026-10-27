@@ -4,7 +4,9 @@ Daily NBA win probabilities, published before tip-off and scored in public again
 market. Every prediction is committed to git with a timestamp, so the track record can't be
 edited after the fact.
 
-> **Status:** Phase 2 (Elo + backtest). See the [roadmap](docs/roadmap.md).
+> **Status:** Phase 3. Predictions are published every morning to the
+> [`data` branch](https://github.com/garettprestholdt/nba-forecast/tree/data). See the
+> [roadmap](docs/roadmap.md).
 
 ## Results so far
 On 7,776 held-out games (2020-21 to 2025-26), Elo predicts the winner **65.0%** of the time
@@ -21,8 +23,10 @@ advantage has shrunk enough to miscalibrate a fixed-bonus model:
 
 ## Data
 Raw and historical data stays local (outside the repo, set by `NBAF_DATA_DIR`) and is never
-pushed. Only small published outputs live in git under `data/published/`: the predictions log,
-current team ratings, and the scorecard.
+pushed. Small outputs live in git:
+- the [`data` branch](https://github.com/garettprestholdt/nba-forecast/tree/data): the daily
+  predictions log (append-only, force-pushes blocked), results, scorecard, and Elo state
+- `data/published/` on `main`: backtest summaries
 
 ## Stack
 Python · uv · DuckDB + Parquet · dbt · pytest · ruff · GitHub Actions · Evidence.dev · Claude

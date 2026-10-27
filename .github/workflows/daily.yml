@@ -1,0 +1,51 @@
+name: Daily predictions
+
+on:
+  schedule:
+    # 14:00 UTC = 10am ET (9am in winter): last night's games are final, today's haven't
+    # started. GitHub can start scheduled runs late; games that tip off first are skipped,
+    # never predicted late.
+    - cron: "0 14 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write # push to the data branch only; main is protected
+
+concurrency:
+  group: daily
+  cancel-in-progress: false
+
+jobs:
+  daily:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out code (main)
+        uses: actions/checkout@v4
+      - name: Check out data branch
+        uses: actions/checkout@v4
+        with:
+          ref: data
+          path: data-branch
+      - uses: astral-sh/setup-uv@v6
+        with:
+          enable-cache: true
+      - name: Install dependencies
+        run: uv sync --locked
+      - name: Ingest results, update ratings, predict today
+        env:
+          ODDS_API_KEY: ${{ secrets.ODDS_API_KEY }}
+        run: uv run nbaf daily --data-dir data-branch
+      - name: Verify (append-only, every prediction before tip-off)
+        run: uv run nbaf verify --data-dir data-branch
+      - name: Commit to the data branch
+        working-directory: data-branch
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          if git diff --cached --quiet; then
+            echo "Nothing new today."
+            exit 0
+          fi
+          git commit -m "Daily update $(TZ=America/New_York date +%F)"
+          git push origin HEAD:data

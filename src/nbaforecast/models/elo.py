@@ -16,9 +16,10 @@ Additions:
 """
 
 import math
-from collections import defaultdict, deque
+from collections import deque
 from collections.abc import Iterable
 from dataclasses import asdict, dataclass
+from datetime import date
 
 import pandas as pd
 
@@ -73,57 +74,130 @@ def mov_multiplier(margin: int, winner_rating_diff: float) -> float:
     return (abs(margin) + 3) ** 0.8 / (7.5 + 0.006 * winner_rating_diff)
 
 
-class _HomeCourt:
-    """Fixed or adaptive home-court advantage, in Elo points."""
+@dataclass
+class GameForecast:
+    """A pre-game prediction, kept so the matching update uses exactly the same numbers."""
 
-    def __init__(self, params: EloParams):
-        self.params = params
-        self.results: deque[int] = deque(maxlen=params.hca_window or 1)
-
-    def value(self) -> float:
-        window = self.params.hca_window
-        if not window or len(self.results) < window:
-            return self.params.home_advantage
-        return elo_from_probability(sum(self.results) / len(self.results))
-
-    def record(self, home_won: bool) -> None:
-        if self.params.hca_window:
-            self.results.append(int(home_won))
+    home_team_id: str
+    away_team_id: str
+    home_elo: float
+    away_elo: float
+    home_court: float
+    p_home: float
+    is_neutral_site: bool
 
 
-def run(games: pd.DataFrame, params: EloParams | None = None) -> tuple[pd.DataFrame, dict]:
-    """Walk forward through `games` and return (pre-game predictions, final ratings).
+class EloState:
+    """Everything needed to continue rating games: resumable from JSON between daily runs.
 
-    Every prediction uses only games from earlier dates.
+    Use it one date at a time: `start_day`, then `predict` every game on that date, then
+    `update` with each result. Predictions never see results from the same date.
     """
-    params = params or EloParams()
+
+    def __init__(
+        self,
+        params: EloParams,
+        ratings: dict[str, float] | None = None,
+        season: str | None = None,
+        home_results: Iterable[int] = (),
+        last_date: date | None = None,
+    ):
+        self.params = params
+        self.ratings: dict[str, float] = dict(ratings or {})
+        self.season = season
+        self.home_results: deque[int] = deque(home_results, maxlen=params.hca_window or 1)
+        self.last_date = last_date
+
+    def rating(self, team_id: str) -> float:
+        return self.ratings.get(team_id, self.params.mean)
+
+    def home_court(self) -> float:
+        """Fixed bonus, or the Elo equivalent of the recent home win rate once the window fills."""
+        window = self.params.hca_window
+        if not window or len(self.home_results) < window:
+            return self.params.home_advantage
+        return elo_from_probability(sum(self.home_results) / len(self.home_results))
+
+    def start_day(self, season: str) -> None:
+        """Regress every rating toward the mean when a new season starts."""
+        if season != self.season:
+            if self.season is not None:
+                p = self.params
+                self.ratings = {
+                    team: p.mean + p.carryover * (r - p.mean) for team, r in self.ratings.items()
+                }
+            self.season = season
+
+    def predict(self, home_team_id: str, away_team_id: str, is_neutral_site: bool) -> GameForecast:
+        home_elo, away_elo = self.rating(home_team_id), self.rating(away_team_id)
+        hca = 0.0 if is_neutral_site else self.home_court()
+        return GameForecast(
+            home_team_id,
+            away_team_id,
+            home_elo,
+            away_elo,
+            hca,
+            win_probability(home_elo + hca - away_elo),
+            bool(is_neutral_site),
+        )
+
+    def update(self, forecast: GameForecast, home_score: int, away_score: int) -> None:
+        """Apply a result. `+=` so a team listed twice on one date gets both updates."""
+        f = forecast
+        margin = int(home_score - away_score)
+        home_won = margin > 0
+        mult = 1.0
+        if self.params.mov:
+            edge = f.home_elo + f.home_court - f.away_elo
+            mult = mov_multiplier(margin, edge if home_won else -edge)
+        delta = self.params.k * mult * (int(home_won) - f.p_home)
+        self.ratings[f.home_team_id] = self.rating(f.home_team_id) + delta
+        self.ratings[f.away_team_id] = self.rating(f.away_team_id) - delta
+        if not f.is_neutral_site and self.params.hca_window:
+            self.home_results.append(int(home_won))
+
+    def to_dict(self) -> dict:
+        return {
+            "params": self.params.as_dict(),
+            "season": self.season,
+            "last_date": self.last_date.isoformat() if self.last_date else None,
+            "home_court_now": self.home_court(),
+            "home_results": "".join(map(str, self.home_results)),
+            "ratings": dict(
+                sorted(
+                    self.ratings.items(), key=lambda kv: int(kv[0]) if kv[0].isdigit() else kv[0]
+                )
+            ),
+        }
+
+    @classmethod
+    def from_dict(cls, data: dict) -> "EloState":
+        return cls(
+            params=EloParams(**data["params"]),
+            ratings=data["ratings"],
+            season=data["season"],
+            home_results=[int(c) for c in data["home_results"]],
+            last_date=date.fromisoformat(data["last_date"]) if data["last_date"] else None,
+        )
+
+
+def walk(games: pd.DataFrame, state: EloState) -> pd.DataFrame:
+    """Advance `state` through `games` date by date; return the pre-game predictions."""
     missing = REQUIRED_COLUMNS - set(games.columns)
     if missing:
         raise ValueError(f"games is missing columns {sorted(missing)}")
 
-    ordered = games.sort_values(["tipoff_utc", "game_id"])
-    ratings: dict[str, float] = defaultdict(lambda: params.mean)
-    home_court = _HomeCourt(params)
-    season = None
     rows = []
-
-    for game_date, day in ordered.groupby("game_date", sort=True):
+    for game_date, day in games.sort_values(["tipoff_utc", "game_id"]).groupby("game_date"):
         day_games = list(day.itertuples(index=False))
-        day_season = day_games[0].season
-        if day_season != season:
-            if season is not None:
-                for team in ratings:
-                    ratings[team] = params.mean + params.carryover * (ratings[team] - params.mean)
-            season = day_season
-
-        # 1. Predict every game on this date from start-of-day ratings.
-        hca_today = home_court.value()
-        predictions = []
-        for g in day_games:
-            home_elo, away_elo = ratings[g.home_team_id], ratings[g.away_team_id]
-            hca = 0.0 if g.is_neutral_site else hca_today
-            p_home = win_probability(home_elo + hca - away_elo)
-            predictions.append((g, home_elo, away_elo, hca, p_home))
+        state.start_day(day_games[0].season)
+        # 1. Predict every game on this date from start-of-day ratings...
+        forecasts = [
+            state.predict(g.home_team_id, g.away_team_id, g.is_neutral_site) for g in day_games
+        ]
+        # 2. ...then apply the results.
+        for g, f in zip(day_games, forecasts, strict=True):
+            state.update(f, g.home_score, g.away_score)
             rows.append(
                 {
                     "game_id": g.game_id,
@@ -132,31 +206,23 @@ def run(games: pd.DataFrame, params: EloParams | None = None) -> tuple[pd.DataFr
                     "game_date": game_date,
                     "home_team_id": g.home_team_id,
                     "away_team_id": g.away_team_id,
-                    "home_elo_pre": home_elo,
-                    "away_elo_pre": away_elo,
-                    "home_court": hca,
-                    "p_home": p_home,
+                    "home_elo_pre": f.home_elo,
+                    "away_elo_pre": f.away_elo,
+                    "home_court": f.home_court,
+                    "p_home": f.p_home,
                     "home_win": int(g.home_score > g.away_score),
-                    "is_neutral_site": bool(g.is_neutral_site),
+                    "is_neutral_site": f.is_neutral_site,
                 }
             )
+        state.last_date = game_date
+    return pd.DataFrame(rows)
 
-        # 2. Then apply the results. `+=` so a team listed twice on one date (a known ESPN
-        #    data issue) gets both updates.
-        for g, home_elo, away_elo, hca, p_home in predictions:
-            margin = int(g.home_score - g.away_score)
-            home_won = margin > 0
-            mult = 1.0
-            if params.mov:
-                edge = home_elo + hca - away_elo
-                mult = mov_multiplier(margin, edge if home_won else -edge)
-            delta = params.k * mult * (int(home_won) - p_home)
-            ratings[g.home_team_id] += delta
-            ratings[g.away_team_id] -= delta
-            if not g.is_neutral_site:
-                home_court.record(home_won)
 
-    return pd.DataFrame(rows), dict(ratings)
+def run(games: pd.DataFrame, params: EloParams | None = None) -> tuple[pd.DataFrame, dict]:
+    """Walk forward through `games` from scratch: (pre-game predictions, final ratings)."""
+    state = EloState(params or EloParams())
+    preds = walk(games, state)
+    return preds, dict(state.ratings)
 
 
 def grid(**options: Iterable) -> list[EloParams]:
