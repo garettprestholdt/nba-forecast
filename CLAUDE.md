@@ -15,10 +15,15 @@ See `docs/roadmap.md` for the phased plan.
 - Backfill history (local only): `uv run nbaf backfill` (finished seasons already on disk are skipped)
 - Player box scores (local only, ~3 hours for every season): `uv run nbaf boxscores`; for the current
   season it fetches only games not already on disk. Plus-minus is null where ESPN didn't record it
-  (before 2008-09). About 13% of 2012-18 team box scores have the roster but no stats at ESPN;
-  staging flags them `stats_missing` with null stats. ESPN source errors found by the box-score
-  tests go in `seeds/known_data_issues.csv`; duplicate or missing player ids go in
-  `seeds/player_id_aliases.csv`.
+  (before 2008-09). About 13% of 2012-18 team box scores have the roster but no stats at ESPN.
+- Rebuild those from play-by-play (local only, ~15 min): `uv run nbaf pbp` caches plays for the
+  blank games plus 150 validation games per season, then rebuilds; `--rebuild-only` re-runs the
+  builder on the cache. A rebuilt team box is used (`stats_source = 'pbp'`) only if its points
+  match the final score and lineups stayed consistent; otherwise `stats_missing`.
+  `assert_pbp_rebuild_accurate` checks the rebuild against real box scores
+  (docs/findings/pbp-box-rebuild.md).
+- ESPN source errors found by the box-score tests go in `seeds/known_data_issues.csv`; duplicate
+  or missing player ids go in `seeds/player_id_aliases.csv`.
 - dbt: `uv run nbaf dbt build` (sets `NBAF_DATA_DIR` and the project/profile paths for you)
 - Backtest: `uv run nbaf backtest` (~4 min; writes `data/published/backtest/`)
 - Daily job (what GitHub Actions runs): `uv run nbaf daily --data-dir <data-branch checkout>`,

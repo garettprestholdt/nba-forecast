@@ -3,7 +3,10 @@
 --     ESPN sometimes listed a player twice under both ids; the row with minutes is kept. The
 --     seed also maps stand-in ids for players ESPN listed without one (`noid-...`).
 --   * Some team box scores have the roster but no stats (every line blank, mostly 2012-18).
---     Those rows keep who started and who sat, with stats null instead of fake zeros.
+--     Those team-games take their stats from the play-by-play rebuild when it is usable (points
+--     add up to the final score and lineups were tracked consistently; stats_source = 'pbp');
+--     otherwise stats are null (stats_missing), never fake zeros. Who started and who sat is
+--     always ESPN's.
 
 with raw as (
     select
@@ -55,8 +58,22 @@ flagged as (
     select
         *,
         max(minutes + pts + fga + reb + ast) over (partition by game_id, team_id) = 0
-            as stats_missing
+            as box_blank
     from deduped
+),
+
+sourced as (
+    select
+        flagged.*,
+        case
+            when not flagged.box_blank then 'box'
+            when pbp.usable then 'pbp'
+        end as stats_source,
+        {% for col in box_stat_columns() -%}
+        pbp.{{ col }} as pbp_{{ col }}{{ ',' if not loop.last }}
+        {% endfor %}
+    from flagged
+    left join {{ ref('stg_espn_pbp_player_games') }} as pbp using (game_id, player_id)
 )
 
 select
@@ -74,9 +91,13 @@ select
     did_not_play,
     dnp_reason,
     was_ejected,
-    stats_missing,
-    {% for col in ['minutes', 'pts', 'fgm', 'fga', 'fg3m', 'fg3a', 'ftm', 'fta', 'oreb', 'dreb',
-                   'reb', 'ast', 'stl', 'blk', 'tov', 'pf', 'plus_minus'] -%}
-    case when not stats_missing then {{ col }} end as {{ col }}{{ ',' if not loop.last }}
+    box_blank,
+    stats_source,
+    stats_source is null as stats_missing,
+    {% for col in box_stat_columns() -%}
+    case stats_source
+        when 'box' then {{ col }}
+        when 'pbp' then pbp_{{ col }}
+    end as {{ col }}{{ ',' if not loop.last }}
     {% endfor %}
-from flagged
+from sourced

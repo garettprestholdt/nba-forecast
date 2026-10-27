@@ -16,3 +16,7 @@ sources:
         description: >
           One row per player per game from ESPN's game summaries (`nbaf boxscores`), for every
           completed franchise game. Plus-minus is null in seasons ESPN didn't record it.
+      - name: espn_pbp_boxscores
+        description: >
+          Player lines rebuilt from ESPN play-by-play (`nbaf pbp`) for games whose box score is
+          blank, plus a validation sample of games that have one. Same columns as espn_boxscores.

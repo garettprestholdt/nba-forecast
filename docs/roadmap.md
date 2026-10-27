@@ -65,8 +65,8 @@ scorecard covers as much of it as possible. Everything after that is improvement
 - [ ] Promote Elo + back-to-back to the live model (decision pending)
 - [x] Player box-score backfill (every game since 2004-05) with reconciliation tests
       (758k player rows, 28,430 games; stats missing at ESPN for ~13% of 2012-18 games)
-- [ ] Rebuild the 2012-18 box scores ESPN left blank from play-by-play, validated against games
-      that have both
+- [x] Rebuild the 2012-18 box scores ESPN left blank from play-by-play, validated against games
+      that have both: [1,777 of 2,062 rebuilt; counting stats 98.9–99.99% exact](findings/pbp-box-rebuild.md)
 - [ ] Hybrid model: team history (Elo, efficiency, four factors) + player layer (player values ×
       projected minutes, missing value, roster continuity), stacked with a regularized
       regression; walk-forward evaluation, including "knows the lineup" vs. realistic versions

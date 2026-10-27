@@ -62,22 +62,31 @@ models:
                 field: franchise_id
       - name: stats_missing
         description: >
-          ESPN listed this team's players but no stats (about 13% of games from 2012-13 to
-          2017-18, plus a handful in 2020-21). Who started and who sat is still known.
+          No usable stats: ESPN's box score is blank (about 13% of games from 2012-13 to
+          2017-18, plus a handful in 2020-21) and the play-by-play rebuild couldn't stand in.
+          Who started and who sat is still known.
         data_tests: [not_null]
+      - name: stats_source
+        description: "'box' (ESPN's box score), 'pbp' (rebuilt from play-by-play), or null."
       - name: played
         description: Logged minutes; where stats are missing, ESPN didn't mark them as DNP.
 
   - name: fct_team_games
     description: >
       One row per team per game: totals, possessions, offensive/defensive/net rating, and the
-      four factors for both sides. Only games where both box scores have stats. Points are the
-      final score.
+      four factors for both sides. Only games where both teams have stats (from ESPN's box score
+      or the play-by-play rebuild). Points are the final score.
     columns:
       - name: game_id
         data_tests: [not_null]
       - name: possessions
         data_tests: [not_null]
+
+  - name: fct_pbp_validation
+    description: >
+      The play-by-play rebuild checked against real box scores: one row per player per stat
+      for every validation game, with ESPN's value, the rebuilt value, and the error.
+      assert_pbp_rebuild_accurate holds the rebuild to the accuracy it achieved.
 
 seeds:
   - name: franchises

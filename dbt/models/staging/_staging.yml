@@ -24,3 +24,18 @@ models:
     columns:
       - name: player_game_id
         data_tests: [unique, not_null]
+      - name: stats_source
+        description: >
+          Where this row's stats come from: 'box' (ESPN's box score), 'pbp' (rebuilt from
+          play-by-play because ESPN's box score is blank), or null (no usable stats).
+        data_tests:
+          - accepted_values:
+              arguments:
+                values: [box, pbp]
+  - name: stg_espn_pbp_player_games
+    description: >
+      Player lines rebuilt from ESPN play-by-play for blank box scores, plus a validation
+      sample. usable = points add up to the final score and lineups were tracked consistently.
+    columns:
+      - name: player_game_id
+        data_tests: [unique, not_null]
