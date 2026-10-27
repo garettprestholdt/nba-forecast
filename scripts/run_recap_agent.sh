@@ -5,6 +5,12 @@
 # The agent's JSON log and stderr are always printed, so a failure shows its reason.
 set -uo pipefail
 
+# Describe the token's shape (never its value) so a bad copy-paste is easy to spot.
+token="${CLAUDE_CODE_OAUTH_TOKEN:-}"
+echo "token check: length ${#token}; \
+prefix sk-ant-oat01-: $([[ "$token" == sk-ant-oat01-* ]] && echo yes || echo NO); \
+whitespace or line breaks inside: $([[ "$token" =~ [[:space:]] ]] && echo YES || echo no)"
+
 npm install -g "@anthropic-ai/claude-code@${CLAUDE_CODE_VERSION:-2.1.304}" --silent
 
 claude -p "$(cat prompt.txt)" \
