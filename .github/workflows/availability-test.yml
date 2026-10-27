@@ -1,0 +1,66 @@
+name: Availability agent test
+
+# Runs the real injury-availability agent on today's live candidates (a throwaway copy of the
+# data branch) and validates its answers. Nothing is committed. Runs on PRs that change the
+# agent's prompt or code, and on demand.
+on:
+  pull_request:
+    paths:
+      - "prompts/availability.md"
+      - "src/nbaforecast/availability.py"
+      - "src/nbaforecast/ingest/injuries.py"
+      - "scripts/run_agent.sh"
+      - ".github/workflows/availability-test.yml"
+      - ".github/workflows/daily.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  availability-test:
+    runs-on: ubuntu-latest
+    env:
+      AGENT_MODEL: claude-sonnet-5-5
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Check out data branch (read-only)
+        uses: actions/checkout@v4
+        with:
+          ref: data
+          path: data-branch
+          persist-credentials: false
+      - uses: astral-sh/setup-uv@v6
+        with:
+          enable-cache: true
+      - name: Install dependencies
+        run: uv sync --locked
+      - name: Prepare today's candidates on a throwaway copy
+        id: avail
+        run: |
+          cp -R data-branch "$RUNNER_TEMP/data-copy"
+          uv run nbaf availability-prepare --data-dir "$RUNNER_TEMP/data-copy" \
+            --workdir "$RUNNER_TEMP/availability"
+      - uses: actions/setup-node@v4
+        if: steps.avail.outputs.ready == 'true'
+        with:
+          node-version: 22
+      - name: Availability agent (Claude Code, headless)
+        if: steps.avail.outputs.ready == 'true'
+        timeout-minutes: 8
+        working-directory: ${{ runner.temp }}/availability/agent
+        env:
+          CLAUDE_CODE_OAUTH_TOKEN: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+          AGENT_OUTPUT: availability.json
+        run: bash "$GITHUB_WORKSPACE/scripts/run_agent.sh"
+      - name: Validate the agent's calls (nothing is committed)
+        if: steps.avail.outputs.ready == 'true'
+        run: >-
+          uv run nbaf availability-publish --data-dir "$RUNNER_TEMP/data-copy"
+          --workdir "$RUNNER_TEMP/availability" --require-agent
+      - name: No candidates today
+        if: steps.avail.outputs.ready != 'true'
+        run: echo "No Day-To-Day players with a game today; nothing to test."

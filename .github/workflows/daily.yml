@@ -53,7 +53,7 @@ jobs:
           uv run nbaf recap-prepare --data-dir data-branch
           --workdir "$RUNNER_TEMP/recap" --date "$RECAP_DATE"
       - name: Set up Node (for Claude Code)
-        if: steps.recap.outputs.ready == 'true' && env.HAS_CLAUDE_TOKEN == 'true'
+        if: env.HAS_CLAUDE_TOKEN == 'true'
         uses: actions/setup-node@v4
         with:
           node-version: 22
@@ -70,6 +70,31 @@ jobs:
         run: >-
           uv run nbaf recap-publish --data-dir data-branch
           --workdir "$RUNNER_TEMP/recap" --date "$RECAP_DATE" --model "$RECAP_MODEL"
+
+      # Injury calls: score yesterday's against box scores, then the agent estimates whether
+      # each Day-To-Day player plays tonight. Its folder holds only the candidates and prompt;
+      # the keyword rule's answers stay outside it.
+      - name: Prepare injury calls
+        id: avail
+        run: >-
+          uv run nbaf availability-prepare --data-dir data-branch
+          --workdir "$RUNNER_TEMP/availability" --date "$RECAP_DATE"
+      - name: Availability agent (Claude Code, headless)
+        if: steps.avail.outputs.ready == 'true' && env.HAS_CLAUDE_TOKEN == 'true'
+        continue-on-error: true # without the agent, the keyword rule is still logged
+        timeout-minutes: 8
+        working-directory: ${{ runner.temp }}/availability/agent
+        env:
+          CLAUDE_CODE_OAUTH_TOKEN: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+          AGENT_OUTPUT: availability.json
+        run: bash "$GITHUB_WORKSPACE/scripts/run_agent.sh"
+      - name: Validate and log injury calls
+        if: steps.avail.outputs.ready == 'true'
+        run: >-
+          uv run nbaf availability-publish --data-dir data-branch
+          --workdir "$RUNNER_TEMP/availability" --date "$RECAP_DATE"
+      - name: Verify again (injury calls included)
+        run: uv run nbaf verify --data-dir data-branch
 
       - name: Commit to the data branch
         working-directory: data-branch

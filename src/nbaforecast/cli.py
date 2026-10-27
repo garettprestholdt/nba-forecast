@@ -255,6 +255,59 @@ def _triage_file(args: argparse.Namespace) -> int:
     return 0
 
 
+def _availability_prepare(args: argparse.Namespace) -> int:
+    from datetime import UTC, datetime
+    from pathlib import Path
+
+    import requests
+
+    from nbaforecast import availability, live
+    from nbaforecast.ingest import injuries
+
+    session = requests.Session()
+    summary = availability.prepare(
+        live.Store(Path(args.data_dir)),
+        _recap_date(args),
+        datetime.now(UTC),
+        Path(args.workdir),
+        fetch_injuries=lambda: injuries.fetch_injuries(session),
+        fetch_summary=lambda game_id: injuries.fetch_summary(game_id, session),
+    )
+    print(summary)
+    _github_output(ready="true" if summary["candidates"] else "false")
+    return 0
+
+
+def _availability_publish(args: argparse.Namespace) -> int:
+    import json
+    from datetime import UTC, datetime
+    from pathlib import Path
+
+    from nbaforecast import availability, live
+
+    out = availability.publish(
+        live.Store(Path(args.data_dir)), _recap_date(args), datetime.now(UTC), Path(args.workdir)
+    )
+    print(json.dumps(out, indent=2))
+    if step_summary := os.environ.get("GITHUB_STEP_SUMMARY"):
+        with open(step_summary, "a") as f:
+            f.write(
+                f"### Injury calls\n- logged: {out['logged']} "
+                f"({out['agent_answers']} with an accepted agent answer)\n"
+            )
+            for problem in out["problems"]:
+                f.write(f"- validation: {problem}\n")
+            h2h = out["scorecard"]["head_to_head"]
+            f.write(
+                f"- season so far: {h2h['calls']} scored head-to-head; agent {h2h['agent']}, "
+                f"keyword rule {h2h['keyword_rule']}\n"
+            )
+    if args.require_agent and out["logged"] and not out["agent_answers"]:
+        print("No agent answers were accepted.")
+        return 1
+    return 0
+
+
 def _site(args: argparse.Namespace) -> int:
     from pathlib import Path
 
@@ -314,6 +367,19 @@ def main(argv: list[str] | None = None) -> int:
             help="recap test only: fail if the template is used",
         )
         rp.set_defaults(func=func)
+
+    for name, func, helptext in [
+        ("availability-prepare", _availability_prepare, "score past injury calls; pick today's"),
+        ("availability-publish", _availability_publish, "validate the agent's calls and log them"),
+    ]:
+        ap = sub.add_parser(name, help=helptext)
+        ap.add_argument("--data-dir", required=True, help="checkout of the data branch")
+        ap.add_argument("--workdir", required=True, help="isolated folder the agent works in")
+        ap.add_argument("--date", help="game date (default: today, US Eastern)")
+        ap.add_argument(
+            "--require-agent", action="store_true", help="test only: fail without answers"
+        )
+        ap.set_defaults(func=func)
 
     tp = sub.add_parser("triage-prepare", help="collect a failed run's context for the agent")
     tp.add_argument("--run-id", required=True, help="GitHub Actions run id that failed")

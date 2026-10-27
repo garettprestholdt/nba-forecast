@@ -50,7 +50,11 @@ scorecard covers as much of it as possible. Everything after that is improvement
       from the logs and a read-only copy of the code; our code files a GitHub issue (or comments
       on the open one). You hand the issue to Claude Code locally for the fix PR, so no bot
       commits and CI runs normally. PRs touching triage run a dry-run drill on a real failure.
-- [ ] Injury-report extraction (official PDF → structured data, validated against box scores)
+- [x] Injury availability agent: for each Day-To-Day player whose team plays, Claude Code reads
+      ESPN's injury note and estimates the chance they play (quoting the sentence it relied on;
+      quotes are checked against the note). A keyword rule makes the same calls as a baseline,
+      and box scores score both the next morning. (The NBA's official PDF rejects scripts, and
+      ESPN's injury JSON is already structured, so the LLM works on the free-text notes.)
 - [ ] Monthly source-scout agent (evaluates candidate APIs from
       [public-apis](https://github.com/public-apis/public-apis) and proposes an adapter)
 

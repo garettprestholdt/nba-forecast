@@ -389,27 +389,49 @@ def bootstrap(
 def verify(root: Path, previous: Callable[[Path], str | None]) -> list[str]:
     """Integrity checks run before every daily commit. Returns a list of problems.
 
-    - predictions are append-only: the committed file must be an exact prefix of the new one
-    - every prediction was made before its game's tip-off
-    - no game is predicted or recorded twice
+    For game predictions and injury (availability) calls alike:
+    - the log is append-only: the committed file must be an exact prefix of the new one
+    - every row was written before its game's tip-off
+    - nothing is predicted twice
+    Results files must not record a game (or a player in a game) twice.
     """
     store = Store(root)
     problems = []
-    for path in sorted((store.root / "predictions").glob("*.csv")):
-        rel = path.relative_to(store.root)
-        new_text = path.read_text()
-        old_text = previous(rel)
-        if old_text is not None and not new_text.startswith(old_text):
-            problems.append(f"{rel}: existing predictions were changed (must be append-only)")
-        rows = store.read(path)
-        ids = [r["game_id"] for r in rows]
-        if len(ids) != len(set(ids)):
-            problems.append(f"{rel}: duplicate game_id")
-        for r in rows:
-            if datetime.fromisoformat(r["predicted_at"]) >= datetime.fromisoformat(r["tipoff_utc"]):
-                problems.append(f"{rel}: game {r['game_id']} predicted at/after tip-off")
-    for path in sorted((store.root / "results").glob("*.csv")):
-        ids = [r["game_id"] for r in store.read(path)]
-        if len(ids) != len(set(ids)):
-            problems.append(f"{path.relative_to(store.root)}: duplicate game_id")
+    logs = [
+        (sorted((store.root / "predictions").glob("*.csv")), ("game_id",)),
+        (
+            [
+                p
+                for p in sorted((store.root / "availability").glob("*.csv"))
+                if not p.stem.endswith("-results")
+            ],
+            ("game_id", "player_id"),
+        ),
+    ]
+    for files, key in logs:
+        for path in files:
+            rel = path.relative_to(store.root)
+            old_text = previous(rel)
+            if old_text is not None and not path.read_text().startswith(old_text):
+                problems.append(f"{rel}: existing rows were changed (must be append-only)")
+            rows = store.read(path)
+            keys = [tuple(r[k] for k in key) for r in rows]
+            if len(keys) != len(set(keys)):
+                problems.append(f"{rel}: duplicate {'/'.join(key)}")
+            for r in rows:
+                if datetime.fromisoformat(r["predicted_at"]) >= datetime.fromisoformat(
+                    r["tipoff_utc"]
+                ):
+                    problems.append(
+                        f"{rel}: {'/'.join(r[k] for k in key)} written at/after tip-off"
+                    )
+    results = [(p, ("game_id",)) for p in sorted((store.root / "results").glob("*.csv"))]
+    results += [
+        (p, ("game_id", "player_id"))
+        for p in sorted((store.root / "availability").glob("*-results.csv"))
+    ]
+    for path, key in results:
+        keys = [tuple(r[k] for k in key) for r in store.read(path)]
+        if len(keys) != len(set(keys)):
+            problems.append(f"{path.relative_to(store.root)}: duplicate {'/'.join(key)}")
     return problems
