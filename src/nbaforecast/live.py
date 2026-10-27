@@ -391,7 +391,7 @@ def bootstrap(
 def verify(root: Path, previous: Callable[[Path], str | None]) -> list[str]:
     """Integrity checks run before every daily commit. Returns a list of problems.
 
-    For game predictions and injury (availability) calls alike:
+    For game predictions (live and shadow models) and injury (availability) calls alike:
     - the log is append-only: the committed file must be an exact prefix of the new one
     - every row was written before its game's tip-off
     - nothing is predicted twice
@@ -401,6 +401,7 @@ def verify(root: Path, previous: Callable[[Path], str | None]) -> list[str]:
     problems = []
     logs = [
         (sorted((store.root / "predictions").glob("*.csv")), ("game_id",)),
+        (sorted((store.root / "shadow").glob("*/*.csv")), ("game_id",)),
         (
             [
                 p

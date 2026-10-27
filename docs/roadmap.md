@@ -69,9 +69,10 @@ scorecard covers as much of it as possible. Everything after that is improvement
       that have both: [1,777 of 2,062 rebuilt; counting stats 98.9–99.99% exact](findings/pbp-box-rebuild.md)
 - [x] Hybrid model: team history (Elo, efficiency, four factors) + player layer (player values ×
       projected minutes, roster continuity), stacked with a regularized regression; walk-forward:
-      [players add +0.0060 log-loss over Elo + back-to-back; knowing the lineup adds +0.0074 more](findings/hybrid-model.md)
-- [ ] Run the realistic hybrid live in shadow mode (player state on the `data` branch, updated
-      from each night's box scores)
+      [players add +0.0061 log-loss over Elo + back-to-back; knowing the lineup adds +0.0074 more](findings/hybrid-model.md)
+- [x] Run the realistic hybrid live in shadow mode (player state on the `data` branch, updated
+      from each night's box scores; predictions logged next to Elo's)
+- [ ] Promote the hybrid if it beats Elo live (decide the bar and window before looking)
 - [ ] Feed pre-game availability (the injury agent's calls) into the lineup version
 - [ ] Test whether players have real individual home/away effects (hierarchical shrinkage)
 - [ ] Champion vs. challenger: shadow predictions, promote only on backtest + live wins

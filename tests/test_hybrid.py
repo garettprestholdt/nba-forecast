@@ -1,3 +1,4 @@
+import json
 from datetime import UTC, date, datetime, timedelta
 
 import numpy as np
@@ -54,24 +55,35 @@ def test_walk_forward_never_sees_the_season_it_predicts():
     assert np.allclose(a, b)
 
 
-def test_team_form_is_pre_game_and_shrunk():
-    days = [date(2021, 1, 1) + timedelta(days=i) for i in range(3)]
+def test_team_form_is_pre_game_shrunk_and_given_for_every_game():
+    t0 = datetime(2021, 1, 1, tzinfo=UTC)
+    days = [date(2021, 1, 1) + timedelta(days=i) for i in range(4)]
+    games = pd.DataFrame(
+        [{"game_id": f"g{i}", "season": "2020-21", "game_date": d, "home_team_id": "A",
+          "away_team_id": "B", "tipoff_utc": t0 + timedelta(days=i)} for i, d in enumerate(days)]
+    )  # fmt: skip
+    # Game g2 has no box-score stats, so it isn't in team_games and doesn't update form.
     tg = pd.DataFrame(
-        [
-            {
-                "game_id": f"g{i}",
-                "team_id": "A",
-                "season": "2020-21",
-                "game_date": d,
-                **dict.fromkeys(FORM_COLUMNS, 10.0),
-            }
-            for i, d in enumerate(days)
-        ]  # fmt: skip
-    )
-    form = hybrid.team_form(tg, decay=1.0, carryover=1.0, prior=1.0).set_index("game_id")
-    assert form.loc["g0", "net_rating"] == 0  # no history yet
-    assert form.loc["g1", "net_rating"] == pytest.approx(10 * 1 / 2)  # one game + prior of 1
-    assert form.loc["g2", "net_rating"] == pytest.approx(10 * 2 / 3)
+        [{"game_id": f"g{i}", "team_id": "A", "season": "2020-21", "game_date": d,
+          **dict.fromkeys(FORM_COLUMNS, 10.0)} for i, d in enumerate(days) if i != 2]
+    )  # fmt: skip
+    form = hybrid.team_form(games, tg, decay=1.0, carryover=1.0, prior=1.0)
+    a = form[form["team_id"] == "A"].set_index("game_id")["net_rating"]
+    assert a["g0"] == 0  # no history yet
+    assert a["g1"] == pytest.approx(10 * 1 / 2)  # one game + prior of 1
+    assert a["g2"] == pytest.approx(10 * 2 / 3)  # current form, even though g2 has no stats
+    assert a["g3"] == pytest.approx(10 * 2 / 3)  # g2 didn't update it
+    assert set(form["game_id"]) == {"g0", "g1", "g2", "g3"}
+
+
+def test_form_state_round_trip():
+    state = hybrid.FormState(decay=0.9, carryover=0.5, prior=2.0)
+    state.start_season("2020-21")
+    state.update("A", [1, 2, 3, 4, 5])
+    again = hybrid.FormState.from_dict(json.loads(json.dumps(state.to_dict())))
+    assert np.allclose(again.value("A"), state.value("A")) and again.season == "2020-21"
+    again.start_season("2021-22")
+    assert np.allclose(again.value("A") * 0 + again.num["A"], state.num["A"] * 0.5)
 
 
 def test_back_to_backs():

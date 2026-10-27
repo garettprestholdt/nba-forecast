@@ -42,6 +42,12 @@ jobs:
         env:
           ODDS_API_KEY: ${{ secrets.ODDS_API_KEY }}
         run: uv run nbaf daily --data-dir data-branch
+      # The hybrid (team + player) model in shadow mode: it reads last night's box scores and
+      # logs its own predictions next to Elo's, but isn't the published forecast. If it fails,
+      # its state isn't saved and the next run catches up; Elo's run is never blocked.
+      - name: Hybrid shadow run (box scores, then today's predictions)
+        continue-on-error: true
+        run: uv run nbaf shadow --data-dir data-branch
       - name: Verify (append-only, every prediction before tip-off)
         run: uv run nbaf verify --data-dir data-branch
 

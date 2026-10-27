@@ -121,6 +121,12 @@ No code lives here.
 - `scorecard/<season>.json`: season-to-date log-loss, Brier score and accuracy for the model,
   the betting market (same games), and a coin flip
 - `state/elo_state.json`: the ratings and settings the next run resumes from
+- `availability/`, `injuries/`, `recaps/`: injury calls (append-only), the injury lists they
+  were made from, and the morning recaps
+- `shadow/hybrid/<season>.csv`: **append-only.** The challenger (team + player hybrid) model's
+  predictions, logged before tip-off next to Elo's but not the published forecast
+- `scorecard/<season>-hybrid.json`: the challenger vs. Elo (and the market) on the same games
+- `state/hybrid_state.json`: player ratings and team form the challenger resumes from
 
 A forecasting and calibration study, not betting advice.
 """
@@ -197,6 +203,87 @@ def _daily(args: argparse.Namespace) -> int:
                 f"- games predicted: {summary['predicted']} "
                 f"({summary['with_market']} with market odds)\n"
                 f"- season so far: {card['games_scored']} games scored, Elo {card['elo']}\n"
+            )
+    return 0
+
+
+def _code_sha() -> str:
+    import subprocess
+
+    return (
+        os.environ.get("GITHUB_SHA")
+        or subprocess.run(
+            ["git", "rev-parse", "HEAD"], capture_output=True, text=True, cwd=config.REPO_ROOT
+        ).stdout.strip()
+    )[:12]
+
+
+def _hybrid_fit(args: argparse.Namespace) -> int:
+    import json
+
+    from nbaforecast import shadow, warehouse
+
+    chosen = json.loads((config.PUBLISHED_DIR / "hybrid" / "summary.json").read_text())["chosen"]
+    model = shadow.fit_model(
+        warehouse.load_games(), warehouse.load_team_games(), warehouse.load_player_games(),
+        chosen, args.last_season,
+    )  # fmt: skip
+    shadow.MODEL_PATH.write_text(json.dumps(model.to_dict(), indent=2) + "\n")
+    print(f"Wrote {shadow.MODEL_PATH}: fit on {model.meta['fit_seasons']}")
+    print(json.dumps(model.fit.coefficients(), indent=2))
+    return 0
+
+
+def _shadow_bootstrap(args: argparse.Namespace) -> int:
+    from datetime import date
+    from pathlib import Path
+
+    from nbaforecast import live, shadow, warehouse
+
+    root = Path(args.data_dir)
+    elo_through = live.Store(root).load_state().last_date
+    through = date.fromisoformat(args.through) if args.through else elo_through
+    state = shadow.bootstrap(
+        root, shadow.Model.load(), warehouse.load_games(), warehouse.load_team_games(),
+        warehouse.load_player_games(), through,
+    )  # fmt: skip
+    print(
+        f"Bootstrapped {shadow.state_path(root)}: through {state.last_date}, "
+        f"{len(state.to_dict()['players']['players'])} players kept"
+    )
+    return 0
+
+
+def _shadow(args: argparse.Namespace) -> int:
+    import json
+    from datetime import UTC, datetime
+    from pathlib import Path
+
+    import requests
+
+    from nbaforecast import shadow
+    from nbaforecast.ingest.injuries import fetch_summary
+
+    session = requests.Session()
+    summary = shadow.run(
+        Path(args.data_dir),
+        today=_today_eastern(),
+        now=datetime.now(UTC),
+        fetch_summary=lambda game_id: fetch_summary(game_id, session),
+        model=shadow.Model.load(),
+        code_sha=_code_sha(),
+    )
+    print(json.dumps(summary, indent=2))
+    if step_summary := os.environ.get("GITHUB_STEP_SUMMARY"):
+        card = summary["scorecard"]
+        with open(step_summary, "a") as f:
+            f.write(
+                f"### Hybrid shadow run\n"
+                f"- box scores ingested: {summary['ingested_box_scores']} "
+                f"({summary['ingested_missing']} missing)\n"
+                f"- games predicted: {summary['predicted']}\n"
+                f"- season so far: {card['games_scored']} games, hybrid {card['hybrid']}, "
+                f"Elo {card['elo']}\n"
             )
     return 0
 
@@ -451,6 +538,19 @@ def main(argv: list[str] | None = None) -> int:
     daily = sub.add_parser("daily", help="ingest results, update ratings, predict today")
     daily.add_argument("--data-dir", required=True, help="checkout of the data branch")
     daily.set_defaults(func=_daily)
+
+    hf = sub.add_parser("hybrid-fit", help="fit the live hybrid on every completed season")
+    hf.add_argument("--last-season", default="2025-26", help="last completed season to fit on")
+    hf.set_defaults(func=_hybrid_fit)
+
+    sb = sub.add_parser("shadow-bootstrap", help="create the hybrid's first shadow state")
+    sb.add_argument("--data-dir", required=True, help="checkout of the data branch")
+    sb.add_argument("--through", help="last date to include (default: Elo's ratings_through)")
+    sb.set_defaults(func=_shadow_bootstrap)
+
+    sh = sub.add_parser("shadow", help="hybrid shadow run: ingest box scores, predict today")
+    sh.add_argument("--data-dir", required=True, help="checkout of the data branch")
+    sh.set_defaults(func=_shadow)
 
     ver = sub.add_parser("verify", help="check the data branch before committing")
     ver.add_argument("--data-dir", required=True, help="checkout of the data branch")

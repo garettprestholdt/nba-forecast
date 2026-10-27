@@ -30,6 +30,11 @@ See `docs/roadmap.md` for the phased plan.
   (Elo, rest, box-score form) + player layer (`models/players.py`), stacked walk-forward
   (`models/hybrid.py`). Player features must stay pre-game: "knows the lineup" may use who was
   *available* (played or healthy scratch), never who got minutes or how many.
+- Hybrid in shadow mode (daily workflow, after `nbaf daily`): `uv run nbaf shadow --data-dir <data>`
+  ingests last night's box scores (same transforms as dbt; `shadow.clean_box`/`form_values`)
+  and logs predictions to `shadow/hybrid/<season>.csv` (append-only; `verify` checks it).
+  Coefficients: `data/published/hybrid/model.json` from `uv run nbaf hybrid-fit` (a model change
+  is a PR). First state (local, once): `uv run nbaf shadow-bootstrap --data-dir <data>`.
 - Daily job (what GitHub Actions runs): `uv run nbaf daily --data-dir <data-branch checkout>`,
   then `uv run nbaf verify --data-dir <same>`
 - First live state (local, once): `uv run nbaf bootstrap --out <empty dir>`
