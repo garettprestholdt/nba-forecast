@@ -288,7 +288,16 @@ def _availability_publish(args: argparse.Namespace) -> int:
     out = availability.publish(
         live.Store(Path(args.data_dir)), _recap_date(args), datetime.now(UTC), Path(args.workdir)
     )
+    calls = out.pop("calls")
     print(json.dumps(out, indent=2))
+    table = ["| Player | Team | Keyword rule | Agent | Agent's quote |", "|---|---|---|---|---|"]
+    for r in calls:
+        agent = f"{float(r['agent_p']):.0%}" if r["agent_p"] != "" else "–"
+        table.append(
+            f"| {r['player']} | {r['team']} | {float(r['baseline_p']):.0%} | {agent} "
+            f"| {r['agent_quote'] or '–'} |"
+        )
+    print("\n".join(table))
     if step_summary := os.environ.get("GITHUB_STEP_SUMMARY"):
         with open(step_summary, "a") as f:
             f.write(
@@ -297,6 +306,7 @@ def _availability_publish(args: argparse.Namespace) -> int:
             )
             for problem in out["problems"]:
                 f.write(f"- validation: {problem}\n")
+            f.write("\n" + "\n".join(table) + "\n\n")
             h2h = out["scorecard"]["head_to_head"]
             f.write(
                 f"- season so far: {h2h['calls']} scored head-to-head; agent {h2h['agent']}, "

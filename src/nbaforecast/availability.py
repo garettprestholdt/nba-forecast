@@ -273,6 +273,7 @@ def publish(store: live.Store, day: date, now: datetime, workdir: Path) -> dict[
     card_path.write_text(json.dumps(card, indent=2) + "\n")
     return {
         "logged": len(rows),
+        "calls": rows,
         "agent_answers": sum(1 for r in rows if r["agent_p"] != ""),
         "problems": problems,
         "scorecard": card,
