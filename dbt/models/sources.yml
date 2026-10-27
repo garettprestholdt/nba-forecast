@@ -12,3 +12,7 @@ sources:
         description: >
           One row per game from ESPN's scoreboard, including All-Star games and postponed
           games, which staging flags.
+      - name: espn_boxscores
+        description: >
+          One row per player per game from ESPN's game summaries (`nbaf boxscores`), for every
+          completed franchise game. Plus-minus is null in seasons ESPN didn't record it.

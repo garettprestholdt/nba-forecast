@@ -27,6 +27,11 @@ seeds:
       +column_types:
         game_id: varchar
         issue: varchar
+    player_id_aliases:
+      +column_types:
+        alias_id: varchar
+        player_id: varchar
+        player: varchar
     seasons:
       +column_types:
         season: varchar

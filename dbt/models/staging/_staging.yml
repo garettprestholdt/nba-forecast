@@ -19,3 +19,8 @@ models:
         description: True for All-Star games (teams that aren't one of the 30 franchises).
       - name: is_completed
         description: False for scheduled, in-progress, postponed, or cancelled games.
+  - name: stg_espn_player_games
+    description: One row per player per game from ESPN box scores, typed.
+    columns:
+      - name: player_game_id
+        data_tests: [unique, not_null]
