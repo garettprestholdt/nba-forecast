@@ -218,6 +218,43 @@ def _recap_publish(args: argparse.Namespace) -> int:
     return 0
 
 
+def _triage_prepare(args: argparse.Namespace) -> int:
+    from pathlib import Path
+
+    from nbaforecast import triage
+
+    summary = triage.prepare(args.run_id, Path(args.workdir))
+    print(f"Collected failure context for {summary.get('name')}: {summary.get('url')}")
+    for step in triage.failed_steps(summary):
+        print(f"  failed: {step}")
+    return 0
+
+
+def _triage_file(args: argparse.Namespace) -> int:
+    import json
+    from pathlib import Path
+
+    from nbaforecast import triage
+
+    workdir = Path(args.workdir)
+    summary = json.loads((workdir / "run.json").read_text())
+    outcome = triage.file_issue(summary, workdir, dry_run=args.dry_run)
+    body = outcome.pop("body", None)
+    print(json.dumps(outcome, indent=2))
+    if body is not None:
+        print(f"--- issue that would be filed ---\n# {outcome['title']}\n\n{body}")
+    if step_summary := os.environ.get("GITHUB_STEP_SUMMARY"):
+        with open(step_summary, "a") as f:
+            f.write(f"### Triage\n- {outcome['action']}\n- title: {outcome['title']}\n")
+            f.write(f"- agent diagnosis: {'yes' if outcome['agent_diagnosis'] else 'no'}\n")
+            if body is not None:
+                f.write(f"\n---\n\n{body}\n")
+    if args.require_agent and not outcome["agent_diagnosis"]:
+        print("The agent didn't write a diagnosis.")
+        return 1
+    return 0
+
+
 def _site(args: argparse.Namespace) -> int:
     from pathlib import Path
 
@@ -277,6 +314,17 @@ def main(argv: list[str] | None = None) -> int:
             help="recap test only: fail if the template is used",
         )
         rp.set_defaults(func=func)
+
+    tp = sub.add_parser("triage-prepare", help="collect a failed run's context for the agent")
+    tp.add_argument("--run-id", required=True, help="GitHub Actions run id that failed")
+    tp.add_argument("--workdir", required=True, help="isolated folder the agent works in")
+    tp.set_defaults(func=_triage_prepare)
+
+    tf = sub.add_parser("triage-file", help="file (or update) the triage issue")
+    tf.add_argument("--workdir", required=True, help="folder from triage-prepare")
+    tf.add_argument("--dry-run", action="store_true", help="print the issue; file nothing")
+    tf.add_argument("--require-agent", action="store_true", help="fail without a diagnosis")
+    tf.set_defaults(func=_triage_file)
 
     site = sub.add_parser("site", help="build the static site from the data branch")
     site.add_argument("--data-dir", required=True, help="checkout of the data branch")

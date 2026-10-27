@@ -1,0 +1,82 @@
+name: Triage failed runs
+
+# When the daily pipeline or the site deploy fails, a Claude Code agent diagnoses it from the
+# run's logs and a read-only copy of the code; our code files (or updates) a GitHub issue.
+#
+# - workflow_run:      a real failure -> issue
+# - workflow_dispatch: fire drill on any failed run id -> issue
+# - pull_request:      dry-run drill on a known failure when triage code changes -> no issue
+on:
+  workflow_run:
+    workflows: ["Daily predictions", "Publish site"]
+    types: [completed]
+  workflow_dispatch:
+    inputs:
+      run_id:
+        description: "Failed run id to triage (fire drill; files a real issue)"
+        required: true
+  pull_request:
+    paths:
+      - "prompts/triage.md"
+      - "src/nbaforecast/triage.py"
+      - "scripts/run_agent.sh"
+      - ".github/workflows/triage.yml"
+
+permissions:
+  contents: read
+  actions: read # read the failed run's logs
+  issues: write
+
+env:
+  # PR drill target: the recap test that failed on 2026-10-27 with an invalid token (401).
+  # Logs are kept for 90 days; point this at a newer failed run after that.
+  DRILL_RUN_ID: "40556185143"
+
+jobs:
+  triage:
+    if: >-
+      github.event_name != 'workflow_run'
+      || github.event.workflow_run.conclusion == 'failure'
+    runs-on: ubuntu-latest
+    env:
+      RUN_ID: ${{ inputs.run_id || github.event.workflow_run.id || '' }}
+      DRY_RUN: ${{ github.event_name == 'pull_request' }}
+      AGENT_MODEL: claude-opus-5-5
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 20 # recent commits go into the failure report
+          persist-credentials: false
+      - uses: astral-sh/setup-uv@v6
+        with:
+          enable-cache: true
+      - name: Install dependencies
+        run: uv sync --locked
+      - name: Collect failure context
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: >-
+          uv run nbaf triage-prepare --run-id "${RUN_ID:-$DRILL_RUN_ID}"
+          --workdir "$RUNNER_TEMP/triage"
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Triage agent (Claude Code, headless)
+        continue-on-error: ${{ github.event_name != 'pull_request' }} # real failures still get an issue
+        timeout-minutes: 10
+        working-directory: ${{ runner.temp }}/triage
+        env:
+          CLAUDE_CODE_OAUTH_TOKEN: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+          AGENT_TOOLS: "Read Grep Glob Write"
+          AGENT_OUTPUT: diagnosis.md
+        run: bash "$GITHUB_WORKSPACE/scripts/run_agent.sh"
+      - name: File the triage issue
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          if [ "$DRY_RUN" = "true" ]; then
+            uv run nbaf triage-file --workdir "$RUNNER_TEMP/triage" --dry-run --require-agent
+          else
+            uv run nbaf triage-file --workdir "$RUNNER_TEMP/triage"
+          fi

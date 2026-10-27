@@ -8,7 +8,7 @@ on:
     paths:
       - "prompts/**"
       - "src/nbaforecast/recap.py"
-      - "scripts/run_recap_agent.sh"
+      - "scripts/run_agent.sh"
       - ".github/workflows/recap-test.yml"
       - ".github/workflows/daily.yml"
   workflow_dispatch:
@@ -51,7 +51,7 @@ jobs:
         working-directory: ${{ runner.temp }}/recap
         env:
           CLAUDE_CODE_OAUTH_TOKEN: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
-        run: bash "$GITHUB_WORKSPACE/scripts/run_recap_agent.sh"
+        run: bash "$GITHUB_WORKSPACE/scripts/run_agent.sh"
       - name: Fact-check the draft (nothing is committed)
         run: >-
           uv run nbaf recap-publish --data-dir "$RUNNER_TEMP/data-copy"
