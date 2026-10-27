@@ -1,0 +1,5 @@
+absence_gap,games,realistic_log_loss,lineup_log_loss
+bottom half,3888,0.61225,0.61190
+50-80%,2333,0.60879,0.60657
+80-95%,1166,0.62964,0.60899
+top 5%,389,0.68014,0.61111

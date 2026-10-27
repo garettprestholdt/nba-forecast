@@ -1,0 +1,61 @@
+model,bin_low,bin_high,n,mean_forecast,observed_rate
+"Elo, adaptive home court (live model)",0.00000,0.10000,12,0.08484,0.08333
+"Elo, adaptive home court (live model)",0.10000,0.20000,183,0.16460,0.15301
+"Elo, adaptive home court (live model)",0.20000,0.30000,554,0.25585,0.27798
+"Elo, adaptive home court (live model)",0.30000,0.40000,934,0.35274,0.36510
+"Elo, adaptive home court (live model)",0.40000,0.50000,1270,0.45120,0.45669
+"Elo, adaptive home court (live model)",0.50000,0.60000,1661,0.55129,0.56653
+"Elo, adaptive home court (live model)",0.60000,0.70000,1488,0.64886,0.64516
+"Elo, adaptive home court (live model)",0.70000,0.80000,1047,0.74642,0.74212
+"Elo, adaptive home court (live model)",0.80000,0.90000,573,0.83984,0.83421
+"Elo, adaptive home court (live model)",0.90000,1.00000,54,0.92018,0.88889
+Elo + back-to-back,0.00000,0.10000,14,0.08202,0.14286
+Elo + back-to-back,0.10000,0.20000,190,0.16446,0.14737
+Elo + back-to-back,0.20000,0.30000,534,0.25542,0.26217
+Elo + back-to-back,0.30000,0.40000,943,0.35168,0.37328
+Elo + back-to-back,0.40000,0.50000,1265,0.45208,0.45534
+Elo + back-to-back,0.50000,0.60000,1652,0.55182,0.55932
+Elo + back-to-back,0.60000,0.70000,1465,0.64943,0.64846
+Elo + back-to-back,0.70000,0.80000,1078,0.74618,0.74583
+Elo + back-to-back,0.80000,0.90000,568,0.83933,0.82923
+Elo + back-to-back,0.90000,1.00000,67,0.91916,0.91045
+Team stack (Elo + rest + form),0.00000,0.10000,16,0.07968,0.06250
+Team stack (Elo + rest + form),0.10000,0.20000,219,0.16283,0.18265
+Team stack (Elo + rest + form),0.20000,0.30000,566,0.25641,0.25795
+Team stack (Elo + rest + form),0.30000,0.40000,944,0.35153,0.37924
+Team stack (Elo + rest + form),0.40000,0.50000,1202,0.45111,0.44842
+Team stack (Elo + rest + form),0.50000,0.60000,1595,0.54972,0.56803
+Team stack (Elo + rest + form),0.60000,0.70000,1453,0.64909,0.63730
+Team stack (Elo + rest + form),0.70000,0.80000,1084,0.74615,0.75646
+Team stack (Elo + rest + form),0.80000,0.90000,607,0.83956,0.80890
+Team stack (Elo + rest + form),0.90000,1.00000,90,0.91844,0.90000
+"Hybrid, realistic",0.00000,0.10000,45,0.08081,0.08889
+"Hybrid, realistic",0.10000,0.20000,337,0.15859,0.16320
+"Hybrid, realistic",0.20000,0.30000,662,0.25065,0.28248
+"Hybrid, realistic",0.30000,0.40000,897,0.35369,0.38239
+"Hybrid, realistic",0.40000,0.50000,1153,0.45141,0.47355
+"Hybrid, realistic",0.50000,0.60000,1342,0.55048,0.56930
+"Hybrid, realistic",0.60000,0.70000,1349,0.64852,0.64715
+"Hybrid, realistic",0.70000,0.80000,1077,0.74762,0.72795
+"Hybrid, realistic",0.80000,0.90000,740,0.84588,0.80811
+"Hybrid, realistic",0.90000,1.00000,174,0.92263,0.88506
+"Hybrid, knows the lineup",0.00000,0.10000,49,0.07926,0.04082
+"Hybrid, knows the lineup",0.10000,0.20000,389,0.15559,0.16452
+"Hybrid, knows the lineup",0.20000,0.30000,655,0.25234,0.27634
+"Hybrid, knows the lineup",0.30000,0.40000,871,0.35210,0.38002
+"Hybrid, knows the lineup",0.40000,0.50000,1169,0.45122,0.46536
+"Hybrid, knows the lineup",0.50000,0.60000,1250,0.55070,0.57760
+"Hybrid, knows the lineup",0.60000,0.70000,1302,0.64888,0.64516
+"Hybrid, knows the lineup",0.70000,0.80000,1106,0.74841,0.72423
+"Hybrid, knows the lineup",0.80000,0.90000,801,0.84707,0.81398
+"Hybrid, knows the lineup",0.90000,1.00000,184,0.92338,0.92935
+"Players only, knows the lineup",0.00000,0.10000,51,0.08097,0.07843
+"Players only, knows the lineup",0.10000,0.20000,384,0.15527,0.15625
+"Players only, knows the lineup",0.20000,0.30000,674,0.25401,0.28783
+"Players only, knows the lineup",0.30000,0.40000,894,0.35231,0.36913
+"Players only, knows the lineup",0.40000,0.50000,1156,0.45203,0.48356
+"Players only, knows the lineup",0.50000,0.60000,1252,0.55041,0.58387
+"Players only, knows the lineup",0.60000,0.70000,1209,0.64863,0.63772
+"Players only, knows the lineup",0.70000,0.80000,1164,0.74807,0.71993
+"Players only, knows the lineup",0.80000,0.90000,813,0.84438,0.80566
+"Players only, knows the lineup",0.90000,1.00000,179,0.92211,0.92737

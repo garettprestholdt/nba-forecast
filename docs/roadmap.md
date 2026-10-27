@@ -67,9 +67,12 @@ scorecard covers as much of it as possible. Everything after that is improvement
       (758k player rows, 28,430 games; stats missing at ESPN for ~13% of 2012-18 games)
 - [x] Rebuild the 2012-18 box scores ESPN left blank from play-by-play, validated against games
       that have both: [1,777 of 2,062 rebuilt; counting stats 98.9–99.99% exact](findings/pbp-box-rebuild.md)
-- [ ] Hybrid model: team history (Elo, efficiency, four factors) + player layer (player values ×
-      projected minutes, missing value, roster continuity), stacked with a regularized
-      regression; walk-forward evaluation, including "knows the lineup" vs. realistic versions
+- [x] Hybrid model: team history (Elo, efficiency, four factors) + player layer (player values ×
+      projected minutes, roster continuity), stacked with a regularized regression; walk-forward:
+      [players add +0.0060 log-loss over Elo + back-to-back; knowing the lineup adds +0.0074 more](findings/hybrid-model.md)
+- [ ] Run the realistic hybrid live in shadow mode (player state on the `data` branch, updated
+      from each night's box scores)
+- [ ] Feed pre-game availability (the injury agent's calls) into the lineup version
 - [ ] Test whether players have real individual home/away effects (hierarchical shrinkage)
 - [ ] Champion vs. challenger: shadow predictions, promote only on backtest + live wins
 

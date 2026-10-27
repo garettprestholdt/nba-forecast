@@ -1,0 +1,163 @@
+{
+  "generated_at": "2026-10-27T23:28:12+00:00",
+  "chosen": {
+    "regression": {
+      "link": "logistic",
+      "l2": 10,
+      "intercept": false
+    },
+    "players": {
+      "decay": 0.995,
+      "carryover": 0.7,
+      "prior_minutes": 1200.0,
+      "replacement": 0.2,
+      "pm_prior_minutes": 1500.0,
+      "minutes_decay": 0.5,
+      "new_player_minutes": 10.0
+    },
+    "form_decay": 0.95
+  },
+  "holdout": [
+    {
+      "model": "Elo, adaptive home court (live model)",
+      "train_log_loss": 0.5990374522320758,
+      "n": 7776,
+      "log_loss": 0.625426472122768,
+      "brier": 0.2180283243411662,
+      "accuracy": 0.6498199588477366,
+      "mean_forecast": 0.5489950363546319,
+      "home_win_rate": 0.5540123456790124,
+      "reliability": 0.00012512924520698766
+    },
+    {
+      "model": "Elo + back-to-back",
+      "train_log_loss": 0.5974700994555333,
+      "n": 7776,
+      "log_loss": 0.6231919661247541,
+      "brier": 0.2170419971839536,
+      "accuracy": 0.6504629629629629,
+      "mean_forecast": 0.550158276713165,
+      "home_win_rate": 0.5540123456790124,
+      "reliability": 9.54804169279941e-05
+    },
+    {
+      "model": "Team stack (Elo + rest + form)",
+      "train_log_loss": 0.5976802640731553,
+      "n": 7776,
+      "log_loss": 0.6227495899857708,
+      "brier": 0.2168111099275498,
+      "accuracy": 0.6541923868312757,
+      "mean_forecast": 0.5500490843410668,
+      "home_win_rate": 0.5540123456790124,
+      "reliability": 0.0002930042471607857
+    },
+    {
+      "model": "Hybrid, realistic",
+      "train_log_loss": 0.5925450842749687,
+      "n": 7776,
+      "log_loss": 0.6172150980510244,
+      "brier": 0.21421679500494265,
+      "accuracy": 0.6599794238683128,
+      "mean_forecast": 0.5486137452703017,
+      "home_win_rate": 0.5540123456790124,
+      "reliability": 0.0005376059328381328
+    },
+    {
+      "model": "Hybrid, knows the lineup",
+      "train_log_loss": 0.5900995014775733,
+      "n": 7776,
+      "log_loss": 0.6098267046063194,
+      "brier": 0.21118475733776165,
+      "accuracy": 0.6683384773662552,
+      "mean_forecast": 0.549539616661495,
+      "home_win_rate": 0.5540123456790124,
+      "reliability": 0.000494514126967409
+    },
+    {
+      "model": "Players only, knows the lineup",
+      "train_log_loss": 0.5998285862246933,
+      "n": 7776,
+      "log_loss": 0.6122087200033914,
+      "brier": 0.2122307428917003,
+      "accuracy": 0.6652520576131687,
+      "mean_forecast": 0.5488756551400704,
+      "home_win_rate": 0.5540123456790124,
+      "reliability": 0.0007543046842160366
+    }
+  ],
+  "paired_log_loss_differences": {
+    "Elo + back-to-back minus hybrid (realistic)": {
+      "games": 7776,
+      "mean_difference": 0.005976868073734705,
+      "ci95": [
+        0.0028538302988837375,
+        0.009099905848585672
+      ]
+    },
+    "Team stack minus hybrid (realistic)": {
+      "games": 7776,
+      "mean_difference": 0.0055344919347515556,
+      "ci95": [
+        0.0025657096716678526,
+        0.008503274197835258
+      ]
+    },
+    "Hybrid (realistic) minus hybrid (knows the lineup)": {
+      "games": 7776,
+      "mean_difference": 0.007388393444700843,
+      "ci95": [
+        0.005073915104341029,
+        0.009702871785060657
+      ]
+    }
+  },
+  "coefficients_2025_26_fit": {
+    "Team stack (Elo + rest + form)": {
+      "elo_strength": 0.6302,
+      "elo_home": 0.0969,
+      "home_b2b": -0.0876,
+      "away_b2b": 0.1157,
+      "net_rating": 0.0224,
+      "efg_diff": 0.1656,
+      "tov_diff": 0.0837,
+      "oreb_diff": 0.0822,
+      "ft_diff": 0.026
+    },
+    "Hybrid, realistic": {
+      "elo_strength": 0.3269,
+      "elo_home": 0.0979,
+      "home_b2b": -0.0859,
+      "away_b2b": 0.1149,
+      "net_rating": -0.0058,
+      "efg_diff": 0.1505,
+      "tov_diff": 0.0848,
+      "oreb_diff": 0.1036,
+      "ft_diff": -0.007,
+      "production_real": 0.297,
+      "impact_real": 0.1161,
+      "elo_x_turnover": 0.0592
+    },
+    "Hybrid, knows the lineup": {
+      "elo_strength": 0.2865,
+      "elo_home": 0.0977,
+      "home_b2b": -0.0814,
+      "away_b2b": 0.1075,
+      "net_rating": -0.0284,
+      "efg_diff": 0.1614,
+      "tov_diff": 0.09,
+      "oreb_diff": 0.1123,
+      "ft_diff": -0.0089,
+      "production_lineup": 0.3768,
+      "impact_lineup": 0.1333,
+      "elo_x_turnover": 0.0523
+    },
+    "Players only, knows the lineup": {
+      "elo_home": 0.0952,
+      "home_b2b": -0.0749,
+      "away_b2b": 0.1008,
+      "production_lineup": 0.451,
+      "impact_lineup": 0.4912
+    }
+  },
+  "trials": 29
+}
