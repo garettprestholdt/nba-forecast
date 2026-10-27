@@ -177,6 +177,37 @@ def allowed_numbers(facts: dict) -> set[str]:
     return set(NUMBER.findall(json.dumps(facts)))
 
 
+def _strings(node) -> list[str]:
+    if isinstance(node, dict):
+        return [s for v in node.values() for s in _strings(v)]
+    if isinstance(node, list):
+        return [s for v in node for s in _strings(v)]
+    return [str(node)]
+
+
+def typed_numbers(facts: dict) -> dict[str, set[str]]:
+    """Numbers in the facts by kind, so a real number used in the wrong place is still caught."""
+    values = _strings(facts)
+    counts = {
+        str(v)
+        for section in ("last_night_summary", "tonight_summary")
+        for v in facts.get(section, {}).values()
+    }
+    season = facts.get("season_to_date", {})
+    counts |= {str(season.get("games_scored", "")), str(season.get("games_with_market", ""))}
+    return {
+        "percent": {v[:-1] for v in values if re.fullmatch(r"\d+%", v)},
+        "decimal": {v for v in values if re.fullmatch(r"\d+\.\d+", v)},
+        "count": counts - {""},
+    }
+
+
+# "87%", "0.612", "4 games", "3 of 4": each kind must match a number of the same kind.
+PERCENT_IN_TEXT = re.compile(r"(\d+(?:\.\d+)?)\s*(?:%|percent)")
+COUNT_IN_TEXT = re.compile(r"\b(\d+)\s+(?:games?|winners?|picks?|upsets?|matchups?)\b", re.I)
+OF_IN_TEXT = re.compile(r"\b(\d+)\s+(?:of|out of)\s+(\d+)\b", re.I)
+
+
 def facts_teams(facts: dict) -> set[str]:
     text = json.dumps(facts)
     return {name for name in franchise_names() if name in text}
@@ -191,6 +222,17 @@ def check_recap(text: str, facts: dict) -> list[str]:
     allowed = allowed_numbers(facts)
     for token in sorted(set(NUMBER.findall(text)) - allowed):
         problems.append(f"number {token!r} is not in the facts")
+    kinds = typed_numbers(facts)
+    for token in sorted(set(PERCENT_IN_TEXT.findall(text)) - kinds["percent"]):
+        problems.append(f"percentage '{token}%' is not a percentage in the facts")
+    decimals = {t for t in NUMBER.findall(text) if "." in t}
+    for token in sorted(decimals - kinds["decimal"] - {f"{p}" for p in kinds["percent"]}):
+        problems.append(f"decimal {token!r} is not a decimal in the facts")
+    counted = set(COUNT_IN_TEXT.findall(text)) | {
+        n for pair in OF_IN_TEXT.findall(text) for n in pair
+    }
+    for token in sorted(counted - kinds["count"]):
+        problems.append(f"count {token!r} doesn't match any count in the facts")
     mentioned = facts_teams(facts)
     for name in franchise_names():
         if name not in mentioned and re.search(rf"\b{re.escape(nickname(name))}\b", text):
@@ -240,13 +282,16 @@ def render_prompt(facts_file: str, draft_file: str) -> str:
     return PROMPT_TEMPLATE.read_text().format(facts_file=facts_file, draft_file=draft_file)
 
 
-def prepare(store: live.Store, state: EloState, day: date, workdir: Path) -> Path | None:
+def prepare(
+    store: live.Store, state: EloState, day: date, workdir: Path, force: bool = False
+) -> Path | None:
     """Write the facts (data branch + agent workdir) and the agent prompt.
 
     Returns the prompt path, or None when there's nothing to recap or today's recap exists.
+    `force` ignores an existing recap; only the recap test uses it, on a throwaway copy.
     """
     facts_path, recap_path = recap_paths(store, day)
-    if recap_path.exists():
+    if recap_path.exists() and not force:
         return None
     facts = build_facts(store, state, day)
     if facts is None:

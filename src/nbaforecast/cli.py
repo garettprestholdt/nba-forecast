@@ -186,7 +186,9 @@ def _recap_prepare(args: argparse.Namespace) -> int:
     from nbaforecast import live, recap
 
     store = live.Store(Path(args.data_dir))
-    prompt = recap.prepare(store, store.load_state(), _recap_date(args), Path(args.workdir))
+    prompt = recap.prepare(
+        store, store.load_state(), _recap_date(args), Path(args.workdir), force=args.force
+    )
     print(f"Recap prompt: {prompt}" if prompt else "Nothing to recap (or already published).")
     _github_output(ready="true" if prompt else "false")
     return 0
@@ -202,11 +204,17 @@ def _recap_publish(args: argparse.Namespace) -> int:
     draft = draft_path.read_text() if draft_path.exists() else None
     outcome = recap.publish(live.Store(Path(args.data_dir)), _recap_date(args), draft, args.model)
     print(json.dumps(outcome, indent=2))
+    _, body = recap.read_published(Path(outcome["path"]))
+    print(f"--- published recap ({outcome['source']}) ---\n{body}")
     if step_summary := os.environ.get("GITHUB_STEP_SUMMARY"):
         with open(step_summary, "a") as f:
             f.write(f"### Recap\n- published: **{outcome['source']}**\n")
             for problem in outcome["problems"]:
                 f.write(f"- fact-check: {problem}\n")
+            f.write("\n" + "\n".join(f"> {line}" for line in body.splitlines()) + "\n")
+    if args.require_agent and outcome["source"] != "agent":
+        print("The agent's draft wasn't published (see problems above).")
+        return 1
     return 0
 
 
@@ -260,6 +268,14 @@ def main(argv: list[str] | None = None) -> int:
         rp.add_argument("--workdir", required=True, help="isolated folder the agent works in")
         rp.add_argument("--date", help="recap date (default: today, US Eastern)")
         rp.add_argument("--model", default="", help="model the agent ran with (for the record)")
+        rp.add_argument(
+            "--force", action="store_true", help="recap test only: ignore an existing recap"
+        )
+        rp.add_argument(
+            "--require-agent",
+            action="store_true",
+            help="recap test only: fail if the template is used",
+        )
         rp.set_defaults(func=func)
 
     site = sub.add_parser("site", help="build the static site from the data branch")
