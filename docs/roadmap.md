@@ -46,7 +46,10 @@ scorecard covers as much of it as possible. Everything after that is improvement
       only if every number and team matches the facts, otherwise a plain template goes out.
       (Auto-publishing replaced the original "recap as a PR" idea: no daily clicks, and agent
       commits never touch `main` or the contributors list.)
-- [ ] Failure-triage agent (reads failed run logs, opens a fix PR)
+- [x] Failure-triage agent: when the daily run or site deploy fails, Claude Code diagnoses it
+      from the logs and a read-only copy of the code; our code files a GitHub issue (or comments
+      on the open one). You hand the issue to Claude Code locally for the fix PR, so no bot
+      commits and CI runs normally. PRs touching triage run a dry-run drill on a real failure.
 - [ ] Injury-report extraction (official PDF → structured data, validated against box scores)
 - [ ] Monthly source-scout agent (evaluates candidate APIs from
       [public-apis](https://github.com/public-apis/public-apis) and proposes an adapter)

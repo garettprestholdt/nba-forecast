@@ -59,6 +59,9 @@ See `docs/roadmap.md` for the phased plan.
   The check is lexical, not semantic: every number must exist in the facts, and percentages,
   decimals, and counts ("N games", "N of M") must match numbers of the same kind. It can't
   prove a sentence is true, so keep the prompt asking for copied, not computed, numbers.
+- Triage: `triage.yml` runs on a failed Daily predictions / Publish site run. Agent script:
+  `scripts/run_agent.sh` (shared; `AGENT_TOOLS`, `AGENT_MODEL`, `AGENT_OUTPUT`). Triage issues
+  carry the `triage` label; fix them on a normal branch + PR.
 - Changing the prompt, `recap.py`, or the agent script triggers `recap-test.yml` on the PR:
   the real agent runs on a throwaway copy of the data branch and the check must pass.
 - This is a forecasting and calibration study, not betting advice. Keep README/site wording neutral.
