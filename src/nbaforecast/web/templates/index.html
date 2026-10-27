@@ -8,6 +8,26 @@
   edited after the fact. The betting market's consensus is shown for comparison.
 </p>
 
+{% if recap %}
+<section class="card recap" aria-labelledby="recap-h">
+  <h2 id="recap-h">Morning recap · {{ recap.date | nice_date }}</h2>
+  {% for block in recap.blocks %}
+    {% if block.ul %}<ul>{% for item in block.ul %}<li>{{ item }}</li>{% endfor %}</ul>
+    {% else %}<p>{{ block.p }}</p>{% endif %}
+  {% endfor %}
+  <p class="note">
+    {% if recap.source == "agent" %}
+      Written by an AI agent (Claude Code) from this morning's data, then fact-checked: every number
+      and team must match the <a href="{{ repo_url }}/blob/data/{{ recap.facts_file }}">published facts</a>
+      or a plain template is published instead.
+    {% else %}
+      Today's recap is the plain template, generated directly from the
+      <a href="{{ repo_url }}/blob/data/{{ recap.facts_file }}">published facts</a>.
+    {% endif %}
+  </p>
+</section>
+{% endif %}
+
 <section class="card" aria-labelledby="slate-h">
   <h2 id="slate-h">Games</h2>
   <p class="sub">

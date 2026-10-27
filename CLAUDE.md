@@ -18,6 +18,9 @@ See `docs/roadmap.md` for the phased plan.
 - Daily job (what GitHub Actions runs): `uv run nbaf daily --data-dir <data-branch checkout>`,
   then `uv run nbaf verify --data-dir <same>`
 - First live state (local, once): `uv run nbaf bootstrap --out <empty dir>`
+- Recap (what the daily workflow runs): `uv run nbaf recap-prepare --data-dir <data> --workdir <tmp>`,
+  then Claude Code writes `<tmp>/recap_draft.md` (prompt: `prompts/recap.md`), then
+  `uv run nbaf recap-publish --data-dir <data> --workdir <tmp>`
 - Site: `uv run nbaf site --data-dir <data-branch checkout> --out _site` (GitHub Actions
   deploys it to Pages after every daily run and every merge to main)
 - Charts: Vega-Lite specs in `web/__init__.py` use color tokens (`@series-1`) that
@@ -50,4 +53,7 @@ See `docs/roadmap.md` for the phased plan.
   without touching models.
 - **No leakage.** A feature for a game may only use data timestamped before that game's tip-off.
 - Keep dependencies minimal; add one only when a phase needs it.
+- **Agents never commit.** An agent writes a draft into an isolated folder; our own code checks
+  it and commits as `github-actions[bot]` to the `data` branch. Recaps must pass
+  `recap.check_recap` (numbers and teams grounded in the facts file, no betting language).
 - This is a forecasting and calibration study, not betting advice. Keep README/site wording neutral.

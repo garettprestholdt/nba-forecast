@@ -6,7 +6,7 @@ edited after the fact.
 
 **Live site: [garettprestholdt.github.io/nba-forecast](https://garettprestholdt.github.io/nba-forecast/)**
 
-> **Status:** Phase 4. Predictions publish every morning to the
+> **Status:** Phase 5 (agents). Predictions publish every morning to the
 > [`data` branch](https://github.com/garettprestholdt/nba-forecast/tree/data) and the site
 > rebuilds after each run. See the [roadmap](docs/roadmap.md).
 
@@ -21,7 +21,9 @@ advantage has shrunk enough to miscalibrate a fixed-bonus model:
 2. **Model:** update team ratings (Elo baseline, Bayesian challenger later).
 3. **Predict:** append today's win probabilities with a `predicted_at` timestamp.
 4. **Score:** log-loss, Brier score, and calibration vs. the market and simple baselines.
-5. **Publish:** a static site on GitHub Pages (agent-written daily recaps come in Phase 5).
+5. **Publish:** a static site on GitHub Pages.
+6. **Recap:** an AI agent (Claude Code, headless) writes a morning recap from a facts file; a
+   fact-checker publishes it only if every number and team checks out.
 
 ## Data
 Raw and historical data stays local (outside the repo, set by `NBAF_DATA_DIR`) and is never

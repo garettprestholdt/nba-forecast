@@ -167,6 +167,49 @@ def _verify(args: argparse.Namespace) -> int:
     return 1 if problems else 0
 
 
+def _recap_date(args: argparse.Namespace):
+    from datetime import date
+
+    return date.fromisoformat(args.date) if args.date else _today_eastern()
+
+
+def _github_output(**values: str) -> None:
+    if path := os.environ.get("GITHUB_OUTPUT"):
+        with open(path, "a") as f:
+            for key, value in values.items():
+                f.write(f"{key}={value}\n")
+
+
+def _recap_prepare(args: argparse.Namespace) -> int:
+    from pathlib import Path
+
+    from nbaforecast import live, recap
+
+    store = live.Store(Path(args.data_dir))
+    prompt = recap.prepare(store, store.load_state(), _recap_date(args), Path(args.workdir))
+    print(f"Recap prompt: {prompt}" if prompt else "Nothing to recap (or already published).")
+    _github_output(ready="true" if prompt else "false")
+    return 0
+
+
+def _recap_publish(args: argparse.Namespace) -> int:
+    import json
+    from pathlib import Path
+
+    from nbaforecast import live, recap
+
+    draft_path = Path(args.workdir) / "recap_draft.md"
+    draft = draft_path.read_text() if draft_path.exists() else None
+    outcome = recap.publish(live.Store(Path(args.data_dir)), _recap_date(args), draft, args.model)
+    print(json.dumps(outcome, indent=2))
+    if step_summary := os.environ.get("GITHUB_STEP_SUMMARY"):
+        with open(step_summary, "a") as f:
+            f.write(f"### Recap\n- published: **{outcome['source']}**\n")
+            for problem in outcome["problems"]:
+                f.write(f"- fact-check: {problem}\n")
+    return 0
+
+
 def _site(args: argparse.Namespace) -> int:
     from pathlib import Path
 
@@ -207,6 +250,17 @@ def main(argv: list[str] | None = None) -> int:
     ver = sub.add_parser("verify", help="check the data branch before committing")
     ver.add_argument("--data-dir", required=True, help="checkout of the data branch")
     ver.set_defaults(func=_verify)
+
+    for name, func, helptext in [
+        ("recap-prepare", _recap_prepare, "write recap facts and the agent's prompt"),
+        ("recap-publish", _recap_publish, "fact-check the agent's draft and publish the recap"),
+    ]:
+        rp = sub.add_parser(name, help=helptext)
+        rp.add_argument("--data-dir", required=True, help="checkout of the data branch")
+        rp.add_argument("--workdir", required=True, help="isolated folder the agent works in")
+        rp.add_argument("--date", help="recap date (default: today, US Eastern)")
+        rp.add_argument("--model", default="", help="model the agent ran with (for the record)")
+        rp.set_defaults(func=func)
 
     site = sub.add_parser("site", help="build the static site from the data branch")
     site.add_argument("--data-dir", required=True, help="checkout of the data branch")
