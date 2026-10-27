@@ -1,0 +1,347 @@
+{
+ "header": {
+  "id": "401909868"
+ },
+ "boxscore": {
+  "players": [
+   {
+    "team": {
+     "id": "27",
+     "displayName": "Washington Wizards"
+    },
+    "statistics": [
+     {
+      "names": [
+       "MIN",
+       "PTS"
+      ],
+      "athletes": [
+       {
+        "athlete": {
+         "id": "6583",
+         "displayName": "Anthony Davis"
+        },
+        "didNotPlay": false,
+        "reason": "COACH'S DECISION",
+        "stats": [
+         "36",
+         "29"
+        ]
+       },
+       {
+        "athlete": {
+         "id": "5174563",
+         "displayName": "Kyshawn George"
+        },
+        "didNotPlay": false,
+        "reason": "COACH'S DECISION",
+        "stats": [
+         "29",
+         "20"
+        ]
+       },
+       {
+        "athlete": {
+         "id": "5160992",
+         "displayName": "Alex Sarr"
+        },
+        "didNotPlay": false,
+        "reason": "COACH'S DECISION",
+        "stats": [
+         "26",
+         "12"
+        ]
+       },
+       {
+        "athlete": {
+         "id": "4277905",
+         "displayName": "Trae Young"
+        },
+        "didNotPlay": false,
+        "reason": "COACH'S DECISION",
+        "stats": [
+         "38",
+         "22"
+        ]
+       },
+       {
+        "athlete": {
+         "id": "5104155",
+         "displayName": "Bilal Coulibaly"
+        },
+        "didNotPlay": false,
+        "reason": "COACH'S DECISION",
+        "stats": [
+         "29",
+         "3"
+        ]
+       },
+       {
+        "athlete": {
+         "id": "6609",
+         "displayName": "Khris Middleton"
+        },
+        "didNotPlay": false,
+        "reason": "COACH'S DECISION",
+        "stats": [
+         "13",
+         "0"
+        ]
+       },
+       {
+        "athlete": {
+         "id": "4432907",
+         "displayName": "Justin Champagnie"
+        },
+        "didNotPlay": false,
+        "reason": "COACH'S DECISION",
+        "stats": [
+         "4",
+         "2"
+        ]
+       },
+       {
+        "athlete": {
+         "id": "4278129",
+         "displayName": "Deandre Ayton"
+        },
+        "didNotPlay": false,
+        "reason": "COACH'S DECISION",
+        "stats": [
+         "12",
+         "0"
+        ]
+       },
+       {
+        "athlete": {
+         "id": "4845374",
+         "displayName": "Bub Carrington"
+        },
+        "didNotPlay": false,
+        "reason": "COACH'S DECISION",
+        "stats": [
+         "28",
+         "6"
+        ]
+       },
+       {
+        "athlete": {
+         "id": "5144126",
+         "displayName": "Will Riley"
+        },
+        "didNotPlay": false,
+        "reason": "COACH'S DECISION",
+        "stats": [
+         "4",
+         "2"
+        ]
+       },
+       {
+        "athlete": {
+         "id": "5238230",
+         "displayName": "Tre Johnson"
+        },
+        "didNotPlay": false,
+        "reason": "COACH'S DECISION",
+        "stats": [
+         "23",
+         "7"
+        ]
+       },
+       {
+        "athlete": {
+         "id": "2581184",
+         "displayName": "Anthony Gill"
+        },
+        "didNotPlay": true,
+        "reason": "COACH'S DECISION",
+        "stats": []
+       },
+       {
+        "athlete": {
+         "id": "5105841",
+         "displayName": "Felix Okpara"
+        },
+        "didNotPlay": true,
+        "reason": "COACH'S DECISION",
+        "stats": []
+       },
+       {
+        "athlete": {
+         "id": "4432819",
+         "displayName": "Tre Mann"
+        },
+        "didNotPlay": true,
+        "reason": "COACH'S DECISION",
+        "stats": []
+       }
+      ]
+     }
+    ]
+   },
+   {
+    "team": {
+     "id": "30",
+     "displayName": "Charlotte Hornets"
+    },
+    "statistics": [
+     {
+      "names": [
+       "MIN",
+       "PTS"
+      ],
+      "athletes": [
+       {
+        "athlete": {
+         "id": "4433249",
+         "displayName": "Moussa Diabate"
+        },
+        "didNotPlay": false,
+        "reason": "COACH'S DECISION",
+        "stats": [
+         "35",
+         "11"
+        ]
+       },
+       {
+        "athlete": {
+         "id": "4433287",
+         "displayName": "Brandon Miller"
+        },
+        "didNotPlay": false,
+        "reason": "COACH'S DECISION",
+        "stats": [
+         "36",
+         "39"
+        ]
+       },
+       {
+        "athlete": {
+         "id": "4396971",
+         "displayName": "Naz Reid"
+        },
+        "didNotPlay": false,
+        "reason": "COACH'S DECISION",
+        "stats": [
+         "29",
+         "18"
+        ]
+       },
+       {
+        "athlete": {
+         "id": "3032979",
+         "displayName": "Dennis Schroder"
+        },
+        "didNotPlay": false,
+        "reason": "COACH'S DECISION",
+        "stats": [
+         "36",
+         "8"
+        ]
+       },
+       {
+        "athlete": {
+         "id": "4602025",
+         "displayName": "Sion James"
+        },
+        "didNotPlay": false,
+        "reason": "COACH'S DECISION",
+        "stats": [
+         "29",
+         "5"
+        ]
+       },
+       {
+        "athlete": {
+         "id": "2583632",
+         "displayName": "Royce O'Neale"
+        },
+        "didNotPlay": false,
+        "reason": "COACH'S DECISION",
+        "stats": [
+         "7",
+         "0"
+        ]
+       },
+       {
+        "athlete": {
+         "id": "5211176",
+         "displayName": "Tidjane Salaun"
+        },
+        "didNotPlay": false,
+        "reason": "COACH'S DECISION",
+        "stats": [
+         "16",
+         "5"
+        ]
+       },
+       {
+        "athlete": {
+         "id": "4576060",
+         "displayName": "Ryan Kalkbrenner"
+        },
+        "didNotPlay": false,
+        "reason": "COACH'S DECISION",
+        "stats": [
+         "13",
+         "6"
+        ]
+       },
+       {
+        "athlete": {
+         "id": "3135045",
+         "displayName": "Grayson Allen"
+        },
+        "didNotPlay": false,
+        "reason": "COACH'S DECISION",
+        "stats": [
+         "28",
+         "15"
+        ]
+       },
+       {
+        "athlete": {
+         "id": "5060701",
+         "displayName": "Christian Anderson"
+        },
+        "didNotPlay": false,
+        "reason": "COACH'S DECISION",
+        "stats": [
+         "11",
+         "3"
+        ]
+       },
+       {
+        "athlete": {
+         "id": "5281370",
+         "displayName": "Hannes Steinbach"
+        },
+        "didNotPlay": true,
+        "reason": "COACH'S DECISION",
+        "stats": []
+       },
+       {
+        "athlete": {
+         "id": "4701225",
+         "displayName": "PJ Hall"
+        },
+        "didNotPlay": true,
+        "reason": "COACH'S DECISION",
+        "stats": []
+       },
+       {
+        "athlete": {
+         "id": "5239590",
+         "displayName": "Liam McNeeley"
+        },
+        "didNotPlay": true,
+        "reason": "COACH'S DECISION",
+        "stats": []
+       }
+      ]
+     }
+    ]
+   }
+  ]
+ }
+}

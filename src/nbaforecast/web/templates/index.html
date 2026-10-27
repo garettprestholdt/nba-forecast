@@ -70,6 +70,52 @@
   {% endif %}
 </section>
 
+{% set iw = injury_watch %}
+{% if iw %}
+<section class="card" aria-labelledby="injury-h">
+  <h2 id="injury-h">Injury watch</h2>
+  <p class="sub">
+    Players listed Day-To-Day whose team plays: the chance they play, from a simple keyword rule
+    and from an AI agent that reads ESPN's injury note (and must quote the sentence it relied on).
+    Box scores settle it the next morning.
+  </p>
+  {% if iw.calls %}
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr><th>Player</th><th class="wide-only">Game</th><th class="num">Keyword rule</th><th class="num">Agent</th><th class="wide-only">Agent's evidence</th><th>Result</th></tr>
+      </thead>
+      <tbody>
+        {% for c in iw.calls %}
+        <tr>
+          <td class="game"><span class="team">{{ c.player }}</span><br><span class="muted">{{ c.team }}</span></td>
+          <td class="wide-only">vs {{ c.opponent }}</td>
+          <td class="num">{{ c.baseline_p | pct }}</td>
+          <td class="num">{% if c.agent_p is not none %}{{ c.agent_p | pct }}{% if c.minutes_restriction %}<br><span class="muted">limited</span>{% endif %}{% else %}–{% endif %}</td>
+          <td class="game wide-only">{% if c.quote %}“{{ c.quote }}”{% else %}<span class="muted">{{ c.note }}</span>{% endif %}</td>
+          <td>
+            {% if c.played is none %}<span class="muted">Not played yet</span>
+            {% elif c.played %}Played ({{ c.minutes }} min)
+            {% else %}Did not play{% endif %}
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+  {% endif %}
+  {% set h2h = iw.scorecard.head_to_head if iw.scorecard else none %}
+  <p class="sub" style="margin-top: 10px">
+    {% if h2h and h2h.calls %}
+      Season so far, on the same {{ h2h.calls }} calls: agent Brier {{ h2h.agent.brier | num }} vs.
+      keyword rule {{ h2h.keyword_rule.brier | num }} (lower is better).
+    {% else %}
+      Scores appear once the first calls have box scores.
+    {% endif %}
+  </p>
+</section>
+{% endif %}
+
 <h2>Season scorecard</h2>
 <p class="sub">Every logged prediction is scored once its game is final. Log-loss rewards confident correct forecasts and punishes confident misses; lower is better.</p>
 {% set sc = scorecard %}

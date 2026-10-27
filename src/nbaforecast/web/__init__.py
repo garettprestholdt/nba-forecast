@@ -17,7 +17,7 @@ from typing import Any
 
 from jinja2 import Environment, FileSystemLoader, select_autoescape
 
-from nbaforecast import config, metrics, recap
+from nbaforecast import availability, config, metrics, recap
 from nbaforecast.ingest.espn import EASTERN
 from nbaforecast.live import Store
 from nbaforecast.models.elo import win_probability
@@ -437,6 +437,36 @@ def _live_calibration(games: list[Game]) -> list[dict]:
     ]
 
 
+def _injury_watch(store: Store, season: str, day: str | None) -> dict[str, Any] | None:
+    """The latest slate's injury calls (keyword rule vs. agent) and the season's head-to-head."""
+    log_path, results_path = availability.paths(store, season)
+    if not log_path.exists() or day is None:
+        return None
+    outcomes = {(r["game_id"], r["player_id"]): r for r in store.read(results_path)}
+    calls = []
+    for r in store.read(log_path):
+        if r["game_date"] != day:
+            continue
+        o = outcomes.get((r["game_id"], r["player_id"]))
+        calls.append(
+            {
+                "player": r["player"],
+                "team": r["team"],
+                "opponent": r["opponent"],
+                "note": r["note"],
+                "baseline_p": float(r["baseline_p"]),
+                "agent_p": float(r["agent_p"]) if r["agent_p"] else None,
+                "quote": r["agent_quote"],
+                "minutes_restriction": r["minutes_restriction"] == "True",
+                "played": None if o is None else o["played"] == "True",
+                "minutes": int(o["minutes"]) if o else None,
+            }
+        )
+    card_path = store.root / "scorecard" / f"{season}-availability.json"
+    card = json.loads(card_path.read_text()) if card_path.exists() else None
+    return {"date": day, "calls": calls, "scorecard": card} if calls or card else None
+
+
 def _latest_recap(store: Store) -> dict[str, Any] | None:
     """The newest published recap as blocks: {"p": text} paragraphs and {"ul": [items]} lists."""
     files = sorted((store.root / "recaps").glob("*.md"))
@@ -559,6 +589,7 @@ def build_context(data_dir: Path, published_dir: Path | None = None) -> dict[str
         "backtest_calibration": backtest_calibration,
         "games_scored": sum(1 for g in games if g.final),
         "recap": _latest_recap(store),
+        "injury_watch": _injury_watch(store, season, latest_date),
     }
 
 

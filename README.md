@@ -24,6 +24,8 @@ advantage has shrunk enough to miscalibrate a fixed-bonus model:
 5. **Publish:** a static site on GitHub Pages.
 6. **Recap:** an AI agent (Claude Code, headless) writes a morning recap from a facts file; a
    fact-checker publishes it only if every number and team checks out.
+7. **Injury calls:** an agent reads ESPN injury notes and estimates whether each Day-To-Day
+   player plays tonight; it's scored against box scores alongside a keyword-rule baseline.
 
 ## Data
 Raw and historical data stays local (outside the repo, set by `NBAF_DATA_DIR`) and is never

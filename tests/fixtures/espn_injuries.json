@@ -1,0 +1,203 @@
+{
+ "injuries": [
+  {
+   "id": "2",
+   "displayName": "Boston Celtics",
+   "injuries": [
+    {
+     "id": "536319",
+     "longComment": "White is a little banged up from Monday's game against the Bulls in which he turned the ball over six times in 18 minutes. However, the veteran guard intends to play through the issue for the second leg of this back-to-back set.",
+     "shortComment": "White (right hip) is probable for Tuesday's game against the Nets.",
+     "status": "Day-To-Day",
+     "date": "2026-10-27T16:58Z",
+     "type": {
+      "id": "6",
+      "name": "INJURY_STATUS_DAYTODAY",
+      "description": "day-to-day",
+      "abbreviation": "DD"
+     },
+     "details": {
+      "fantasyStatus": {
+       "description": "GTD",
+       "abbreviation": "GTD"
+      },
+      "type": "Hip",
+      "location": "Torso",
+      "side": "Right",
+      "returnDate": "2026-10-27"
+     },
+     "athlete": {
+      "id": "3078576",
+      "displayName": "Derrick White",
+      "position": {
+       "abbreviation": "G"
+      }
+     }
+    },
+    {
+     "id": "535118",
+     "longComment": "Carter missed Boston's final three preseason games with the illness and is now expected to miss time to begin the regular season. He can be considered week-to-week until Boston provides an update on his progress. The 2024 first-rounder signed a two-way pact with the Celtics on Saturday and will provide backcourt depth for the club.",
+     "shortComment": "Carter has been diagnosed with mononucleosis and is without a timetable for a return, Gary Washburn of The Boston Globe reports.",
+     "status": "Out",
+     "date": "2026-10-18T14:49Z",
+     "type": {
+      "id": "4",
+      "name": "INJURY_STATUS_OUT",
+      "description": "out",
+      "abbreviation": "O"
+     },
+     "details": {
+      "fantasyStatus": {
+       "description": "OUT",
+       "abbreviation": "OUT"
+      },
+      "type": "Illness",
+      "location": "Other",
+      "returnDate": "2026-11-08"
+     },
+     "athlete": {
+      "id": "4433188",
+      "displayName": "Devin Carter",
+      "position": {
+       "abbreviation": "G"
+      }
+     }
+    }
+   ]
+  },
+  {
+   "id": "4",
+   "displayName": "Chicago Bulls",
+   "injuries": [
+    {
+     "id": "-59988",
+     "longComment": "Williams is in line for a second straight absence due to right groin/adductor soreness. He's yet to appear in a game this season for Chicago even when healthy.",
+     "shortComment": "Williams (groin) has been ruled out for Monday's game against the Celtics.",
+     "status": "Day-To-Day",
+     "date": "2026-10-27T03:54Z",
+     "type": {
+      "id": "6",
+      "name": "INJURY_STATUS_DAYTODAY",
+      "description": "day-to-day",
+      "abbreviation": "DD"
+     },
+     "details": {
+      "fantasyStatus": {
+       "description": "GTD",
+       "abbreviation": "GTD"
+      },
+      "type": "Groin",
+      "location": "Groin",
+      "detail": "Soreness",
+      "side": "Right",
+      "returnDate": "2026-10-28"
+     },
+     "athlete": {
+      "id": "4431687",
+      "displayName": "Patrick Williams",
+      "position": {
+       "abbreviation": "F"
+      }
+     }
+    },
+    {
+     "id": "536201",
+     "longComment": "The Bulls reported one week ago that the big man would be re-evaluated in two weeks, so he appears to be right on track with his recovery from a hamstring injury. He'll presumably need to take part in 5-on-5 drills before getting the green light to return to game action.",
+     "shortComment": "Claxton (hamstring) participated in individual drills Monday morning and hopes to join the team for practice next week, Joe Cowley of the Chicago Sun-Times reports.",
+     "status": "Out",
+     "date": "2026-10-26T22:20Z",
+     "type": {
+      "id": "4",
+      "name": "INJURY_STATUS_OUT",
+      "description": "out",
+      "abbreviation": "O"
+     },
+     "details": {
+      "fantasyStatus": {
+       "description": "OUT",
+       "abbreviation": "OUT"
+      },
+      "type": "Hamstring",
+      "location": "Leg",
+      "side": "Not Specified",
+      "returnDate": "2026-11-04"
+     },
+     "athlete": {
+      "id": "4278067",
+      "displayName": "Nic Claxton",
+      "position": {
+       "abbreviation": "C"
+      }
+     }
+    }
+   ]
+  },
+  {
+   "id": "1",
+   "displayName": "Atlanta Hawks",
+   "injuries": [
+    {
+     "id": "-58751",
+     "longComment": "Gueye will be re-evaluated by medical staff in 3-to-4 months, which means he'll miss all of training camp and preseason and likely the start of the 2026-27 regular season. It's a brutal blow for the fourth-year big man, given that the Hawks used the No. 23 overall pick of the 2026 NBA Draft to select St. John's product Zuby Ejiofor. Gueye's absence means Ejiofor will have more opportunities in the preseason, and the rookie could establish a key role off the bench behind Onyeka Okongwu and projected backup center Jock Landale (ankle).",
+     "shortComment": "Gueye underwent surgery Tuesday to repair a fractured left foot that he suffered during a workout last week, Brad Rowland of the Locked On Podcast Network reports.",
+     "status": "Out",
+     "date": "2026-10-19T19:38Z",
+     "type": {
+      "id": "4",
+      "name": "INJURY_STATUS_OUT",
+      "description": "out",
+      "abbreviation": "O"
+     },
+     "details": {
+      "fantasyStatus": {
+       "description": "OUT",
+       "abbreviation": "OUT"
+      },
+      "type": "Foot",
+      "location": "Leg",
+      "detail": "Fracture",
+      "side": "Left",
+      "returnDate": "2026-11-20"
+     },
+     "athlete": {
+      "id": "4712863",
+      "displayName": "Mouhamed Gueye",
+      "position": {
+       "abbreviation": "F"
+      }
+     }
+    },
+    {
+     "id": "-57577",
+     "longComment": "Veesaar suffered the injury during a workout on Sept. 15, and an MRI confirmed the diagnosis. The No. 52 overall pick in the 2026 NBA Draft, Veesaar was expected to spend a lot of time with Atlanta's G League affiliate this season.",
+     "shortComment": "Veesaar was diagnosed with a torn right ACL and is expected to miss the 2026-27 season, the Hawks announced Monday.",
+     "status": "Out",
+     "date": "2026-09-21T19:50Z",
+     "type": {
+      "id": "4",
+      "name": "INJURY_STATUS_OUT",
+      "description": "out",
+      "abbreviation": "O"
+     },
+     "details": {
+      "fantasyStatus": {
+       "description": "OFS",
+       "abbreviation": "OFS"
+      },
+      "type": "Knee",
+      "location": "Leg",
+      "side": "Right",
+      "returnDate": "2027-07-01"
+     },
+     "athlete": {
+      "id": "5105571",
+      "displayName": "Henri Veesaar",
+      "position": {
+       "abbreviation": "C"
+      }
+     }
+    }
+   ]
+  }
+ ]
+}

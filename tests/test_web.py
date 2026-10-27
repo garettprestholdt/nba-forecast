@@ -180,3 +180,44 @@ def test_recap_text_is_escaped(data_dir, tmp_path_factory):
     out = tmp_path_factory.mktemp("site-escape")
     web.build(data_dir, out, published_dir=config.PUBLISHED_DIR)
     assert "<script>x</script>" not in (out / "index.html").read_text()
+
+
+def test_injury_watch_card(data_dir, tmp_path_factory):
+    from nbaforecast import availability
+
+    store = live.Store(data_dir)
+    log, results = availability.paths(store, "2026-27")
+    store.append(
+        log,
+        availability.FIELDS,
+        [
+            {
+                "game_date": "2026-10-27", "game_id": "g1",
+                "tipoff_utc": "2026-10-27T23:30:00+00:00",
+                "player_id": "p1", "player": "Derrick White", "team_id": "2", "team": "Home 2",
+                "opponent": "Away 17", "status": "Day-To-Day", "note": "White is probable.",
+                "note_updated": "", "baseline_p": 0.9, "agent_p": 0.93,
+                "agent_quote": "White is probable", "minutes_restriction": False,
+                "predicted_at": "2026-10-27T17:00:00+00:00",
+            }
+        ],
+    )  # fmt: skip
+    store.append(
+        results,
+        availability.RESULT_FIELDS,
+        [
+            {
+                "game_id": "g1",
+                "player_id": "p1",
+                "played": True,
+                "minutes": 31,
+                "reason": "",
+                "resolved_at": "",
+            }
+        ],
+    )
+    out = tmp_path_factory.mktemp("site-injury")
+    web.build(data_dir, out, published_dir=config.PUBLISHED_DIR)
+    html = (out / "index.html").read_text()
+    assert "Injury watch" in html and "Derrick White" in html
+    assert "93%" in html and "Played (31 min)" in html and "“White is probable”" in html
