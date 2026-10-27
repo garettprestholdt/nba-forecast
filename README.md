@@ -4,7 +4,13 @@ Daily NBA win probabilities, published before tip-off and scored in public again
 market. Every prediction is committed to git with a timestamp, so the track record can't be
 edited after the fact.
 
-> **Status:** Phase 1 (historical data). See the [roadmap](docs/roadmap.md).
+> **Status:** Phase 2 (Elo + backtest). See the [roadmap](docs/roadmap.md).
+
+## Results so far
+On 7,776 held-out games (2020-21 to 2025-26), Elo predicts the winner **65.0%** of the time
+with log-loss **0.625**, against 0.693 for a coin flip. The backtest also found that home-court
+advantage has shrunk enough to miscalibrate a fixed-bonus model:
+[write-up](docs/findings/elo-backtest.md).
 
 ## How it works
 1. **Ingest:** last night's results, today's schedule, and market odds (GitHub Actions, daily).

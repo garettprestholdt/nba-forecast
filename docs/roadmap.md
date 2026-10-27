@@ -19,9 +19,12 @@ scorecard covers as much of it as possible. Everything after that is improvement
 - [x] CI runs every dbt model and test on a small fixture of real games
 
 ## Phase 2: Elo baseline + honest backtest
-- [ ] Elo with home-court advantage, margin-of-victory multiplier, between-season regression
-- [ ] Walk-forward backtest: tune on 2004–2018, report held-out results on 2021–2026
-- [ ] Log-loss, Brier score (reliability/resolution), accuracy, calibration curve vs. baselines
+- [x] Elo with home-court advantage, margin-of-victory multiplier, between-season regression
+      (plus an adaptive home-court option)
+- [x] Walk-forward backtest: tune on 2005-06 to 2018-19, report held-out 2020-21 to 2025-26
+- [x] Log-loss, Brier score (reliability/resolution), accuracy, calibration vs. baselines
+- [x] Finding: [home-court advantage drifted](findings/elo-backtest.md); the adaptive model
+      fixes the calibration error and will be the live model
 
 ## Phase 3: Daily pipeline (MVP)
 - [ ] Daily GitHub Actions run: results + schedule (ESPN), odds (The Odds API)

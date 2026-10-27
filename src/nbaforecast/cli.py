@@ -34,6 +34,24 @@ def _dbt(args: argparse.Namespace) -> int:
     return 0 if result.success else 1
 
 
+def _backtest(args: argparse.Namespace) -> int:
+    from nbaforecast import backtest, warehouse
+
+    games = warehouse.load_games()
+    print(f"Backtesting {len(backtest.DEFAULT_GRID)} Elo configurations on {len(games):,} games")
+    report = backtest.run(games)
+    out_dir = config.PUBLISHED_DIR / "backtest"
+    backtest.write(report, out_dir)
+    # Full per-game predictions stay local (raw-sized data never goes in git).
+    local = config.local_data_dir() / "backtest"
+    local.mkdir(parents=True, exist_ok=True)
+    report.predictions.to_parquet(local / "elo_predictions.parquet", index=False)
+    print(f"Chosen: {report.champion.label()}")
+    print(report.holdout.to_string(index=False, float_format=lambda v: f"{v:.4f}"))
+    print(f"Wrote {out_dir} and {local / 'elo_predictions.parquet'}")
+    return 0
+
+
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(prog="nbaf", description=__doc__)
     parser.add_argument("--version", action="version", version=f"nbaf {__version__}")
@@ -48,6 +66,9 @@ def main(argv: list[str] | None = None) -> int:
     dbt = sub.add_parser("dbt", help="run dbt against the local data directory")
     dbt.add_argument("dbt_args", nargs=argparse.REMAINDER, help="e.g. build, test, docs generate")
     dbt.set_defaults(func=_dbt)
+
+    bt = sub.add_parser("backtest", help="tune Elo on 2005-2019, score it on 2020-2026")
+    bt.set_defaults(func=_backtest)
 
     args = parser.parse_args(argv)
     if args.command is None:

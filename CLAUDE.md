@@ -14,6 +14,7 @@ See `docs/roadmap.md` for the phased plan.
 - CLI: `uv run nbaf --help`
 - Backfill history (local only): `uv run nbaf backfill` (finished seasons already on disk are skipped)
 - dbt: `uv run nbaf dbt build` (sets `NBAF_DATA_DIR` and the project/profile paths for you)
+- Backtest: `uv run nbaf backtest` (~4 min; writes `data/published/backtest/`)
 - dbt on the CI fixture: copy `tests/fixtures/nbaf_data` somewhere temporary, point
   `NBAF_DATA_DIR` at it, and add `--vars '{check_season_counts: false}'`
 
@@ -29,7 +30,9 @@ See `docs/roadmap.md` for the phased plan.
 
 ## Rules
 - **Never push to `main`.** Work on a branch and open a PR; CI must pass before merge.
-- **No `Co-Authored-By` trailers** in commit messages.
+- **No Claude/Anthropic `Co-Authored-By` trailers, and no commits authored by `claude[bot]`.**
+  The maintainer doesn't want AI tools in the GitHub contributors list. A commit-msg hook and a
+  CI step (`python -m nbaforecast.attribution`) enforce this.
 - **Predictions are append-only.** Never edit or delete rows in `data/published/predictions/`. A prediction
   is only valid if its `predicted_at` is before the game's tip-off.
 - **No network calls in tests.** Parsers are tested against saved JSON fixtures in `tests/fixtures/`.

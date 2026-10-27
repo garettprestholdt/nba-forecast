@@ -1,0 +1,88 @@
+{
+  "generated_at": "2026-10-25T03:43:47+00:00",
+  "data_range": [
+    "2004-11-02",
+    "2026-10-24"
+  ],
+  "train_seasons": [
+    "2005-06",
+    "2018-19"
+  ],
+  "holdout_seasons": [
+    "2020-21",
+    "2025-26"
+  ],
+  "candidates_tried": 140,
+  "champion": {
+    "k": 20.0,
+    "home_advantage": 80.0,
+    "hca_window": null,
+    "carryover": 0.7,
+    "mov": true,
+    "mean": 1500.0
+  },
+  "holdout": [
+    {
+      "model": "Elo (chosen)",
+      "params": "k=20 hca=80 carry=0.7 mov=True",
+      "n": 7776,
+      "log_loss": 0.6303117435272434,
+      "brier": 0.21999925391782787,
+      "accuracy": 0.6466049382716049,
+      "mean_forecast": 0.6000366499402824,
+      "home_win_rate": 0.5540123456790124,
+      "reliability": 0.0022489887651118865
+    },
+    {
+      "model": "Elo, best fixed home court",
+      "params": "k=20 hca=80 carry=0.7 mov=True",
+      "n": 7776,
+      "log_loss": 0.6303117435272434,
+      "brier": 0.21999925391782787,
+      "accuracy": 0.6466049382716049,
+      "mean_forecast": 0.6000366499402824,
+      "home_win_rate": 0.5540123456790124,
+      "reliability": 0.0022489887651118865
+    },
+    {
+      "model": "Elo, best adaptive home court",
+      "params": "k=20 hca=adaptive2460 carry=0.7 mov=True",
+      "n": 7776,
+      "log_loss": 0.625426472122768,
+      "brier": 0.2180283243411662,
+      "accuracy": 0.6498199588477366,
+      "mean_forecast": 0.5489950363546319,
+      "home_win_rate": 0.5540123456790124,
+      "reliability": 0.00012512924520698766
+    },
+    {
+      "model": "Previous season's home win rate",
+      "params": "",
+      "n": 7776,
+      "log_loss": 0.6877939405009915,
+      "brier": 0.2473245721655774,
+      "accuracy": 0.5540123456790124,
+      "mean_forecast": 0.5535406310741314,
+      "home_win_rate": 0.5540123456790124,
+      "reliability": 2.225146684579767e-07
+    },
+    {
+      "model": "Coin flip",
+      "params": "",
+      "n": 7776,
+      "log_loss": 0.6931471805600367,
+      "brier": 0.25,
+      "accuracy": 0.5,
+      "mean_forecast": 0.5,
+      "home_win_rate": 0.5540123456790124,
+      "reliability": 0.0029173334857491256
+    }
+  ],
+  "holdout_brier_decomposition": {
+    "brier": 0.21999925391782787,
+    "reliability": 0.0022489887651118865,
+    "resolution": 0.028139341681362753,
+    "uncertainty": 0.24708266651425087,
+    "within_bin": -0.0011930596801721371
+  }
+}
