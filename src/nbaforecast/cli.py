@@ -33,6 +33,28 @@ def _boxscores(args: argparse.Namespace) -> int:
     return 0
 
 
+def _pbp(args: argparse.Namespace) -> int:
+    import requests
+
+    from nbaforecast.ingest import playbyplay
+    from nbaforecast.ingest.injuries import fetch_summary
+
+    data_dir = config.local_data_dir()
+    if not args.rebuild_only:
+        games = playbyplay.select_games(data_dir, args.per_season)
+        blank = int(games["blank"].sum())
+        print(f"Caching plays for {blank:,} blank games + {len(games) - blank:,} to validate on")
+        session = requests.Session()
+        fetched, missing = playbyplay.fetch_plays(
+            data_dir, games, lambda gid: fetch_summary(gid, session), pause=args.pause
+        )
+        print(f"Fetched {fetched:,} games ({missing} without plays)")
+    written = playbyplay.rebuild(data_dir)
+    for season, rows in written.items():
+        print(f"{season}: {rows:,} rebuilt player rows")
+    return 0
+
+
 def _dbt(args: argparse.Namespace) -> int:
     """Run dbt with this repo's project and profile, pointed at the local data directory."""
     from dbt.cli.main import dbtRunner
@@ -379,6 +401,12 @@ def main(argv: list[str] | None = None) -> int:
     bs.add_argument("--limit", type=int, default=None, help="pilot: at most N new games/season")
     bs.add_argument("--pause", type=float, default=0.2, help="seconds between requests")
     bs.set_defaults(func=_boxscores)
+
+    pb = sub.add_parser("pbp", help="rebuild blank box scores from play-by-play (run locally)")
+    pb.add_argument("--per-season", type=int, default=150, help="validation games per season")
+    pb.add_argument("--pause", type=float, default=0.2, help="seconds between requests")
+    pb.add_argument("--rebuild-only", action="store_true", help="skip fetching; rebuild the cache")
+    pb.set_defaults(func=_pbp)
 
     dbt = sub.add_parser("dbt", help="run dbt against the local data directory")
     dbt.add_argument("dbt_args", nargs=argparse.REMAINDER, help="e.g. build, test, docs generate")
