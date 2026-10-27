@@ -1,0 +1,59 @@
+name: Recap agent test
+
+# Runs the real recap agent on a throwaway copy of the data branch and fact-checks the draft.
+# Nothing is committed. Runs on PRs that change the agent's prompt, code, or workflow, so a
+# prompt change is evaluated before it reaches the daily job.
+on:
+  pull_request:
+    paths:
+      - "prompts/**"
+      - "src/nbaforecast/recap.py"
+      - "scripts/run_recap_agent.sh"
+      - ".github/workflows/recap-test.yml"
+      - ".github/workflows/daily.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  recap-test:
+    runs-on: ubuntu-latest
+    env:
+      RECAP_MODEL: claude-sonnet-5-5
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Check out data branch (read-only)
+        uses: actions/checkout@v4
+        with:
+          ref: data
+          path: data-branch
+          persist-credentials: false
+      - uses: astral-sh/setup-uv@v6
+        with:
+          enable-cache: true
+      - name: Install dependencies
+        run: uv sync --locked
+      - name: Prepare facts on a throwaway copy
+        run: |
+          echo "RECAP_DATE=$(TZ=America/New_York date +%F)" >> "$GITHUB_ENV"
+          cp -R data-branch "$RUNNER_TEMP/data-copy"
+          uv run nbaf recap-prepare --data-dir "$RUNNER_TEMP/data-copy" \
+            --workdir "$RUNNER_TEMP/recap" --date "$(TZ=America/New_York date +%F)" --force
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Recap agent (Claude Code, headless)
+        timeout-minutes: 8
+        working-directory: ${{ runner.temp }}/recap
+        env:
+          CLAUDE_CODE_OAUTH_TOKEN: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+        run: bash "$GITHUB_WORKSPACE/scripts/run_recap_agent.sh"
+      - name: Fact-check the draft (nothing is committed)
+        run: >-
+          uv run nbaf recap-publish --data-dir "$RUNNER_TEMP/data-copy"
+          --workdir "$RUNNER_TEMP/recap" --date "$RECAP_DATE" --model "$RECAP_MODEL"
+          --require-agent

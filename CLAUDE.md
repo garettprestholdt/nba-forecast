@@ -56,4 +56,9 @@ See `docs/roadmap.md` for the phased plan.
 - **Agents never commit.** An agent writes a draft into an isolated folder; our own code checks
   it and commits as `github-actions[bot]` to the `data` branch. Recaps must pass
   `recap.check_recap` (numbers and teams grounded in the facts file, no betting language).
+  The check is lexical, not semantic: every number must exist in the facts, and percentages,
+  decimals, and counts ("N games", "N of M") must match numbers of the same kind. It can't
+  prove a sentence is true, so keep the prompt asking for copied, not computed, numbers.
+- Changing the prompt, `recap.py`, or the agent script triggers `recap-test.yml` on the PR:
+  the real agent runs on a throwaway copy of the data branch and the check must pass.
 - This is a forecasting and calibration study, not betting advice. Keep README/site wording neutral.

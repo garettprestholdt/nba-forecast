@@ -176,6 +176,10 @@ def test_grounded_draft_passes(facts):
         (lambda t: t + " The Knicks look like a lock tonight.", "betting language: 'lock'"),
         (lambda t: "Short recap.", "length"),
         (lambda t: t + " More at https://example.com", "links or HTML"),
+        # Real numbers in the wrong place: 3 appears in the facts, but not as a count.
+        (lambda t: t.replace("picked 1 of 2 winners", "picked 1 of 3 winners"), "count '3'"),
+        (lambda t: t + " Tonight has 8 games.", "count '8'"),
+        (lambda t: t.replace("despite a 30% Elo chance", "despite a 31% Elo chance"), "31%"),
     ],
 )
 def test_ungrounded_drafts_fail(facts, change, expected):
@@ -226,3 +230,9 @@ def test_prepare_skips_when_recap_already_published(store, tmp_path):
     recap.prepare(store, store.load_state(), TODAY, tmp_path / "a")
     recap.publish(store, TODAY, None, model="x")
     assert recap.prepare(store, store.load_state(), TODAY, tmp_path / "b") is None
+
+
+def test_prepare_force_reuses_a_published_day(store, tmp_path):
+    recap.prepare(store, store.load_state(), TODAY, tmp_path / "a")
+    recap.publish(store, TODAY, None, model="x")
+    assert recap.prepare(store, store.load_state(), TODAY, tmp_path / "b", force=True) is not None
