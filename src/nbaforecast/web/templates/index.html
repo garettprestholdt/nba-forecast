@@ -1,0 +1,114 @@
+{% extends "base.html" %}
+{% block title %}NBA Forecast: daily win probabilities, scored in public{% endblock %}
+{% block content %}
+<h1>Predictions for {{ latest_date | nice_date }}</h1>
+<p class="lede">
+  Win probabilities from an Elo rating model, published every morning before tip-off and
+  committed to an <a href="{{ repo_url }}/tree/data">append-only log</a>, so the record can't be
+  edited after the fact. The betting market's consensus is shown for comparison.
+</p>
+
+<section class="card" aria-labelledby="slate-h">
+  <h2 id="slate-h">Games</h2>
+  <p class="sub">
+    <span class="key s1"></span>Elo and <span class="key s2"></span>market are each the home team's win probability.
+    Home court is currently worth {{ "%.0f" | format(home_court) }} Elo points: a {{ home_court_p | pct }}
+    chance for the home side between two equal teams.
+  </p>
+  {% if slate %}
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Game</th><th>Tip-off</th><th class="wide-only">Elo pick</th>
+          <th class="num">Elo: home</th><th class="num">Market: home</th><th class="num">Elo − market</th><th>Result</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for g in slate %}
+        <tr>
+          <td class="game"><span class="team">{{ g.away }}</span><span class="at">@</span><span class="team">{{ g.home }}</span></td>
+          <td>{{ g.tip }}</td>
+          <td class="wide-only">{{ g.pick }} ({{ g.pick_prob | pct }})</td>
+          <td class="num">
+            <div class="prob"><span>{{ g.p_home | pct }}</span><span class="track" aria-hidden="true"><span class="fill" style="width: {{ (g.p_home * 100) | round(1) }}%"></span></span></div>
+          </td>
+          <td class="num">{{ g.market_p_home | pct }}</td>
+          <td class="num">{% if g.gap is not none %}{{ "%+.0f" | format(g.gap * 100) }} pts{% else %}–{% endif %}</td>
+          <td>
+            {% if g.final %}
+              <span class="status {{ 'good' if g.correct else 'bad' }}"><span class="icon">{{ '✓' if g.correct else '✗' }}</span>{{ g.away_score }}–{{ g.home_score }}</span>
+            {% else %}<span class="muted">Not played yet</span>{% endif %}
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+  {% else %}
+  <p class="empty">No games predicted yet this season.</p>
+  {% endif %}
+</section>
+
+<h2>Season scorecard</h2>
+<p class="sub">Every logged prediction is scored once its game is final. Log-loss rewards confident correct forecasts and punishes confident misses; lower is better.</p>
+{% set sc = scorecard %}
+<div class="tiles">
+  <div class="tile">
+    <div class="label">Games scored</div>
+    <div class="value">{{ games_scored }}</div>
+    <div class="note">{{ sc.games_predicted if sc else 0 }} predicted so far</div>
+  </div>
+  <div class="tile">
+    <div class="label">Elo log-loss</div>
+    <div class="value">{{ (sc.elo.log_loss if sc and sc.elo else none) | num }}</div>
+    <div class="note">Coin flip: 0.693 · backtest: {{ live_backtest.log_loss | num }}</div>
+  </div>
+  <div class="tile">
+    <div class="label">Elo vs. market, same games</div>
+    {% set h2h = sc.head_to_head_with_market if sc else none %}
+    <div class="value">{{ (h2h.elo.log_loss if h2h and h2h.elo else none) | num }} vs {{ (h2h.market.log_loss if h2h and h2h.market else none) | num }}</div>
+    <div class="note">Log-loss over {{ h2h.games if h2h else 0 }} games with odds</div>
+  </div>
+  <div class="tile">
+    <div class="label">Picks correct</div>
+    <div class="value">{{ (sc.elo.accuracy if sc and sc.elo else none) | pct }}</div>
+    <div class="note">Backtest: {{ live_backtest.accuracy | pct }}</div>
+  </div>
+</div>
+
+<div class="grid-2">
+  <section class="card" aria-labelledby="mkt-h">
+    <h2 id="mkt-h">Elo vs. the market</h2>
+    <p class="sub">Each dot is one game's home win probability. On the diagonal, the two agree.</p>
+    {% if charts.elo_vs_market %}
+    <div class="chart" data-chart="spec-market" role="img" aria-label="Scatter plot of Elo versus market home win probability for each predicted game"></div>
+    {% else %}<p class="empty">Appears once games have market odds.</p>{% endif %}
+  </section>
+
+  <section class="card" aria-labelledby="recent-h">
+    <h2 id="recent-h">Recent results</h2>
+    <p class="sub">The latest scored predictions.</p>
+    {% if recent %}
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Date</th><th>Game</th><th>Elo pick</th><th>Result</th></tr></thead>
+        <tbody>
+          {% for g in recent[:12] %}
+          <tr>
+            <td>{{ g.game_date | nice_date }}</td>
+            <td class="game">{{ g.away }} {{ g.away_score }}<span class="at">@</span>{{ g.home }} {{ g.home_score }}</td>
+            <td>{{ g.pick }} ({{ g.pick_prob | pct }})</td>
+            <td><span class="status {{ 'good' if g.correct else 'bad' }}"><span class="icon">{{ '✓' if g.correct else '✗' }}</span>{{ 'Correct' if g.correct else 'Missed' }}</span></td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+    {% else %}<p class="empty">Results appear the morning after the first predicted games.</p>{% endif %}
+  </section>
+</div>
+{% endblock %}
+{% block specs %}
+{% if charts.elo_vs_market %}<script type="application/json" id="spec-market">{{ charts.elo_vs_market | tojson }}</script>{% endif %}
+{% endblock %}

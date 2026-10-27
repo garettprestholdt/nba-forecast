@@ -1,0 +1,97 @@
+{% extends "base.html" %}
+{% block title %}Model &amp; backtest · NBA Forecast{% endblock %}
+{% block content %}
+<h1>Model &amp; backtest</h1>
+<p class="lede">
+  How the forecasts are made, how they were tested before going live, and what the test found.
+</p>
+
+<section class="card prose" aria-labelledby="how-h">
+  <h2 id="how-h">How it works</h2>
+  <ul>
+    <li><strong>Elo ratings</strong>, following FiveThirtyEight's NBA design: K = {{ model_params.k | int }},
+      a margin-of-victory multiplier that discounts blowouts by heavy favorites, and
+      {{ "%.0f" | format(model_params.carryover * 100) }}% of each rating carried into the next season.</li>
+    <li><strong>Adaptive home court:</strong> the home bonus is learned from the last
+      {{ "{:,}".format(model_params.hca_window) }} non-neutral games instead of fixed. It's
+      {{ "%.0f" | format(home_court) }} Elo points today. Neutral-site games get none.</li>
+    <li><strong>No look-ahead:</strong> every game on a date is predicted from the ratings at the
+      start of that day, the same way the daily job publishes each morning.</li>
+    <li><strong>Every morning</strong> GitHub Actions adds last night's results from ESPN, updates
+      the ratings, predicts the day's games, and attaches the betting market's consensus
+      (median de-vigged moneyline across sportsbooks). A check rejects the commit unless every
+      prediction is new and was made before tip-off.</li>
+  </ul>
+</section>
+
+<section class="card" aria-labelledby="bt-h">
+  <h2 id="bt-h">Backtest: {{ backtest.holdout_seasons[0] }} to {{ backtest.holdout_seasons[1] }}, held out</h2>
+  <p class="sub">
+    {{ backtest.candidates_tried }} settings were tuned on {{ backtest.train_seasons[0] }}–{{ backtest.train_seasons[1] }}
+    and scored once on later seasons the tuning never saw.
+  </p>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr><th>Model</th><th class="num">Games</th><th class="num">Log-loss</th><th class="num">Brier</th><th class="num">Accuracy</th><th class="num">Avg. forecast</th><th class="num">Home won</th></tr>
+      </thead>
+      <tbody>
+        {% for row in backtest.holdout if row.model != "Elo, best fixed home court" %}
+        <tr>
+          <td>{{ row.model }}</td>
+          <td class="num">{{ "{:,}".format(row.n) }}</td>
+          <td class="num">{{ row.log_loss | num(4) }}</td>
+          <td class="num">{{ row.brier | num(4) }}</td>
+          <td class="num">{{ row.accuracy | pct }}</td>
+          <td class="num">{{ row.mean_forecast | pct }}</td>
+          <td class="num">{{ row.home_win_rate | pct }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+  <p class="sub" style="margin-top: 12px">
+    <strong>What the test found:</strong> home-court advantage shrank, from 60.5% home wins in 2004-05
+    to 54.4% in 2024-25. The fixed home bonus chosen on the early seasons kept forecasting about 60%,
+    so it was miscalibrated on recent seasons. Learning the bonus from recent games cut the
+    calibration error 17-fold. <a href="{{ repo_url }}/blob/main/docs/findings/elo-backtest.md">Full write-up</a>.
+  </p>
+</section>
+
+<div class="stack">
+  <section class="card" aria-labelledby="season-h">
+    <h2 id="season-h">Log-loss by season</h2>
+    <p class="sub">Shaded seasons are the held-out test; 2019-20 (bubble) is skipped. Through 2018-19 the two
+      variants are within 0.002 of each other every season; in the held-out seasons the adaptive
+      one is better in five of six (2022-23 is a near-tie).</p>
+    <div class="chart" data-chart="spec-by-season" role="img" aria-label="Line chart of log-loss by season for Elo and the previous season's home win rate"></div>
+  </section>
+
+  <section class="card" aria-labelledby="cal-h">
+    <h2 id="cal-h">Calibration</h2>
+    <p class="sub">
+      Held-out forecasts grouped by probability. On the diagonal, games forecast at 70% are won 70%
+      of the time. The fixed home bonus sits below it in every bin: it overrated home teams.
+      {% if not live_calibration_ready %}This season's live forecasts join the chart after {{ live_calibration_min }} scored games.{% endif %}
+    </p>
+    <div class="chart" data-chart="spec-calibration" role="img" aria-label="Calibration plot: forecast probability versus observed home win rate"></div>
+    <details>
+      <summary>Calibration table</summary>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Model</th><th>Forecast bin</th><th class="num">Games</th><th class="num">Avg. forecast</th><th class="num">Home won</th></tr></thead>
+          <tbody>
+            {% for row in backtest_calibration %}
+            <tr><td>{{ row.series }}</td><td>{{ row.bin }}</td><td class="num">{{ "{:,}".format(row.n) }}</td><td class="num">{{ row.mean_forecast | pct }}</td><td class="num">{{ row.observed_rate | pct }}</td></tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </details>
+  </section>
+</div>
+{% endblock %}
+{% block specs %}
+<script type="application/json" id="spec-by-season">{{ charts.by_season | tojson }}</script>
+<script type="application/json" id="spec-calibration">{{ charts.calibration | tojson }}</script>
+{% endblock %}

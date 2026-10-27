@@ -167,6 +167,16 @@ def _verify(args: argparse.Namespace) -> int:
     return 1 if problems else 0
 
 
+def _site(args: argparse.Namespace) -> int:
+    from pathlib import Path
+
+    from nbaforecast import web
+
+    written = web.build(Path(args.data_dir), Path(args.out))
+    print(f"Built {len(written)} pages into {args.out}")
+    return 0
+
+
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(prog="nbaf", description=__doc__)
     parser.add_argument("--version", action="version", version=f"nbaf {__version__}")
@@ -197,6 +207,11 @@ def main(argv: list[str] | None = None) -> int:
     ver = sub.add_parser("verify", help="check the data branch before committing")
     ver.add_argument("--data-dir", required=True, help="checkout of the data branch")
     ver.set_defaults(func=_verify)
+
+    site = sub.add_parser("site", help="build the static site from the data branch")
+    site.add_argument("--data-dir", required=True, help="checkout of the data branch")
+    site.add_argument("--out", required=True, help="output directory")
+    site.set_defaults(func=_site)
 
     args = parser.parse_args(argv)
     if args.command is None:
