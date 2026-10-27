@@ -18,6 +18,11 @@ See `docs/roadmap.md` for the phased plan.
 - Daily job (what GitHub Actions runs): `uv run nbaf daily --data-dir <data-branch checkout>`,
   then `uv run nbaf verify --data-dir <same>`
 - First live state (local, once): `uv run nbaf bootstrap --out <empty dir>`
+- Site: `uv run nbaf site --data-dir <data-branch checkout> --out _site` (GitHub Actions
+  deploys it to Pages after every daily run and every merge to main)
+- Charts: Vega-Lite specs in `web/__init__.py` use color tokens (`@series-1`) that
+  `static/charts.js` resolves from CSS custom properties. Field names must not contain
+  `' . [ ]` (Vega path syntax); `tests/test_web.py` enforces this.
 - dbt on the CI fixture: copy `tests/fixtures/nbaf_data` somewhere temporary, point
   `NBAF_DATA_DIR` at it, and add `--vars '{check_season_counts: false}'`
 

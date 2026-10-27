@@ -4,9 +4,11 @@ Daily NBA win probabilities, published before tip-off and scored in public again
 market. Every prediction is committed to git with a timestamp, so the track record can't be
 edited after the fact.
 
-> **Status:** Phase 3. Predictions are published every morning to the
-> [`data` branch](https://github.com/garettprestholdt/nba-forecast/tree/data). See the
-> [roadmap](docs/roadmap.md).
+**Live site: [garettprestholdt.github.io/nba-forecast](https://garettprestholdt.github.io/nba-forecast/)**
+
+> **Status:** Phase 4. Predictions publish every morning to the
+> [`data` branch](https://github.com/garettprestholdt/nba-forecast/tree/data) and the site
+> rebuilds after each run. See the [roadmap](docs/roadmap.md).
 
 ## Results so far
 On 7,776 held-out games (2020-21 to 2025-26), Elo predicts the winner **65.0%** of the time
@@ -19,7 +21,7 @@ advantage has shrunk enough to miscalibrate a fixed-bonus model:
 2. **Model:** update team ratings (Elo baseline, Bayesian challenger later).
 3. **Predict:** append today's win probabilities with a `predicted_at` timestamp.
 4. **Score:** log-loss, Brier score, and calibration vs. the market and simple baselines.
-5. **Publish:** a static dashboard on GitHub Pages, plus agent-written daily recaps (as PRs).
+5. **Publish:** a static site on GitHub Pages (agent-written daily recaps come in Phase 5).
 
 ## Data
 Raw and historical data stays local (outside the repo, set by `NBAF_DATA_DIR`) and is never
@@ -29,7 +31,7 @@ pushed. Small outputs live in git:
 - `data/published/` on `main`: backtest summaries
 
 ## Stack
-Python · uv · DuckDB + Parquet · dbt · pytest · ruff · GitHub Actions · Evidence.dev · Claude
+Python · uv · DuckDB + Parquet · dbt · pytest · ruff · GitHub Actions · GitHub Pages · Jinja2 · Vega-Lite
 
 ## Development
 ```bash

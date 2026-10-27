@@ -111,44 +111,48 @@ def run(games: pd.DataFrame, candidates: list[EloParams] | None = None) -> Repor
     if adaptive.any():
         variants["Elo, best adaptive home court"] = _params_from_row(tuning[adaptive].iloc[0])
 
-    holdout_rows, champion_preds = [], None
+    # Every Elo variant plus the baselines, as (model name, predictions, probability column).
+    scored_models, champion_preds = [], None
     for name, params in variants.items():
-        preds, _ = elo.run(games, params)
+        preds = add_baselines(elo.run(games, params)[0])
         if params == champion:
-            champion_preds = add_baselines(preds)
-        held = preds[preds["season"].isin(HOLDOUT_SEASONS)]
-        holdout_rows.append({"model": name, "params": params.label(), **score(held)})
-
-    held = champion_preds[champion_preds["season"].isin(HOLDOUT_SEASONS)]
+            champion_preds = preds
+        scored_models.append((name, params.label(), preds, "p_home"))
     for name, col in [
         ("Previous season's home win rate", "p_home_rate"),
         ("Coin flip", "p_coin_flip"),
     ]:
-        holdout_rows.append({"model": name, "params": "", **score(held, col)})
+        scored_models.append((name, "", champion_preds, col))
 
-    scored = champion_preds[champion_preds["season"] != "2004-05"]
-    by_season = pd.DataFrame(
-        [
-            {
-                "season": season,
-                "split": "train"
+    holdout_rows, by_season_rows, calibration_rows = [], [], []
+    for name, label, preds, col in scored_models:
+        held = preds[preds["season"].isin(HOLDOUT_SEASONS)]
+        holdout_rows.append({"model": name, "params": label, **score(held, col)})
+        for season, group in preds[preds["season"] != "2004-05"].groupby("season"):
+            split = (
+                "train"
                 if season in TRAIN_SEASONS
                 else "holdout"
                 if season in HOLDOUT_SEASONS
-                else "not scored",
-                **score(group),
-                "home_rate_log_loss": score(group, "p_home_rate")["log_loss"],
-            }
-            for season, group in scored.groupby("season")
-        ]
-    )
+                else "not scored"
+            )
+            by_season_rows.append(
+                {"season": season, "split": split, "model": name, **score(group, col)}
+            )
+        if col == "p_home":
+            calibration_rows += [
+                {"model": name, **row}
+                for row in metrics.calibration_table(held[col].tolist(), held["home_win"].tolist())
+            ]
+
+    held = champion_preds[champion_preds["season"].isin(HOLDOUT_SEASONS)]
     probs, outcomes = held["p_home"].tolist(), held["home_win"].tolist()
     return Report(
         champion=champion,
         tuning=tuning,
         holdout=pd.DataFrame(holdout_rows),
-        by_season=by_season,
-        calibration=pd.DataFrame(metrics.calibration_table(probs, outcomes)),
+        by_season=pd.DataFrame(by_season_rows),
+        calibration=pd.DataFrame(calibration_rows),
         decomposition=metrics.brier_decomposition(probs, outcomes),
         predictions=champion_preds,
         data_range=(str(games["game_date"].min()), str(games["game_date"].max())),
@@ -203,11 +207,11 @@ log-loss); scored once on the held-out {HOLDOUT_SEASONS[0]}–{HOLDOUT_SEASONS[-
 Brier decomposition (held out): reliability {d["reliability"]:.4f} (lower is better),
 resolution {d["resolution"]:.4f} (higher is better), uncertainty {d["uncertainty"]:.4f}.
 
-## Calibration (held out)
+## Calibration (held out, each Elo variant)
 
 {_fmt(report.calibration)}
 
-## By season (chosen parameters)
+## By season (every model)
 
 {_fmt(report.by_season)}
 """

@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}NBA Forecast{% endblock %}</title>
+  <meta name="description" content="Daily NBA win probabilities from an Elo model, published before tip-off and scored in public against the betting market.">
+  <link rel="stylesheet" href="assets/style.css?v={{ asset_version }}">
+  <script defer src="https://cdn.jsdelivr.net/npm/vega@5.30.0/build/vega.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/vega-lite@5.21.0/build/vega-lite.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/vega-embed@6.26.0/build/vega-embed.min.js"></script>
+  <script defer src="assets/charts.js?v={{ asset_version }}"></script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap">
+      <a class="brand" href="index.html">NBA Forecast</a>
+      <nav aria-label="Pages">
+        <a href="index.html"{% if page == "index.html" %} aria-current="page"{% endif %}>Today</a>
+        <a href="ratings.html"{% if page == "ratings.html" %} aria-current="page"{% endif %}>Ratings</a>
+        <a href="model.html"{% if page == "model.html" %} aria-current="page"{% endif %}>Model &amp; backtest</a>
+        <a href="{{ repo_url }}">Code</a>
+      </nav>
+    </div>
+  </header>
+  <main class="wrap">
+    {% block content %}{% endblock %}
+  </main>
+  <footer class="wrap">
+    Built {{ built_at }} · ratings through {{ ratings_through | nice_date }} ·
+    data: ESPN scoreboard, The Odds API ·
+    <a href="{{ repo_url }}/tree/data">prediction log</a> ·
+    <a href="{{ repo_url }}">source</a><br>
+    A forecasting and calibration study, not betting advice.
+  </footer>
+  {% block specs %}{% endblock %}
+</body>
+</html>

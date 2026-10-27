@@ -67,7 +67,10 @@ def test_run_report_structure_and_beats_baselines():
     assert models.loc["Elo (chosen)", "log_loss"] < models.loc["Coin flip", "log_loss"]
     assert set(report.by_season["split"]) == {"train", "holdout"}
     assert "2004-05" not in set(report.by_season["season"])  # burn-in is never scored
-    assert report.calibration["n"].sum() == models.loc["Elo (chosen)", "n"]
+    chosen_cal = report.calibration[report.calibration["model"] == "Elo (chosen)"]
+    assert chosen_cal["n"].sum() == models.loc["Elo (chosen)", "n"]
+    # Every model is scored per season, so the site can compare them.
+    assert {"Elo (chosen)", "Coin flip"} <= set(report.by_season["model"])
 
 
 def test_previous_season_home_rate_baseline():
