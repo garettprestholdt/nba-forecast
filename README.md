@@ -3,6 +3,7 @@
 [![CI](https://github.com/garettprestholdt/nba-forecast/actions/workflows/ci.yml/badge.svg)](https://github.com/garettprestholdt/nba-forecast/actions/workflows/ci.yml)
 [![Daily predictions](https://github.com/garettprestholdt/nba-forecast/actions/workflows/daily.yml/badge.svg)](https://github.com/garettprestholdt/nba-forecast/actions/workflows/daily.yml)
 [![Site](https://github.com/garettprestholdt/nba-forecast/actions/workflows/pages.yml/badge.svg)](https://garettprestholdt.github.io/nba-forecast/)
+[![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
 **Daily NBA win probabilities, published before tip-off and scored in public.** Every forecast
 is committed to git with a timestamp before the game starts, so the track record can't be
@@ -98,5 +99,8 @@ Raw data stays on the maintainer's machine; only small outputs are committed. Te
 logos are trademarks of the NBA and its teams.
 
 Python · uv · DuckDB · dbt · pandas · NumPy · Jinja2 · Vega-Lite · GitHub Actions · GitHub Pages · Claude Code
+
+## License
+Code is [MIT](LICENSE). The data belongs to its sources (above); this repo doesn't relicense it.
 
 *A forecasting and calibration study, not betting advice.*
