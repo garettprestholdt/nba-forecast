@@ -2,7 +2,8 @@
 
 *Challenger backtest, 2018-19 to 2025-26, scored on the held-out 2020-21 to 2025-26 seasons
 (7,776 games). Full tables: [data/published/impact_challenger](../../data/published/impact_challenger/).
-Code: `impact_backtest.py`, `models/rapm_walk.py`. Status: **awaiting feature selection.***
+Code: `impact_backtest.py`, `models/rapm_walk.py`, `shadow_v2.py`. Status: **chosen 2026-10-28;
+in shadow as `hybrid-lineup-v2`** ([promotion bar](../promotion-bar-hybrid-v2.md)).*
 
 ## Setup
 - **Leak-free RAPM.** Every 14 days through each season, RAPM (offense and defense, plain and
@@ -92,6 +93,25 @@ ESPN lists Edwards as Out. His live RAPM is about +2.8 offense, −0.9 defense: 
 whole-roster-plus-missing-value model's coefficient (−0.25 per SD, SD ≈ 2.2), that's about
 −0.29 on the log-odds: a 73% Minnesota win becomes about 67%. Elo and v1 don't move at all.
 
-## Decisions needed
-See the PR / conversation: which features to keep, how to resolve each collinear pair, the
-ridge strength, and the pre-registered live bar.
+## Feature selection (decided with the maintainer, 2026-10-28)
+| Question | Decision | Why |
+|---|---|---|
+| Player features | Tonight's lineup: RAPM offense, RAPM defense, Game Score production, **plus missing value** | Production and RAPM each carry signal the other misses; missing value keeps a stable negative weight (−0.10 to −0.17) even next to lineup features |
+| `elo_strength` vs. `elo_x_turnover` (r = 0.94) | **Center the interaction** on the average turnover (0.3645) | Same information; VIF 32 → 17 and 1.0, and `elo_strength` now positive in all 7 refits |
+| Form features | **Keep all five** | `net_rating` / `efg_diff` stay collinear (VIF 65 / 41) and trade weight across refits; accepted, since prediction isn't hurt |
+| Ridge | l2 = 10 (unchanged) | The sweep is flat; 100 helped only the everything-in model |
+| How to judge it | **A new pre-registered live bar**, shadowed next to v1 | The holdout has been seen for 10 candidates now |
+
+Chosen model, walk-forward on the same holdout (optimistic, see above): log-loss **0.6074**,
++0.0097 vs. the current challenger (95% CI +0.0059 to +0.0135), +0.0180 vs. Elo.
+
+Fit on 2018-19 to 2025-26 (`data/published/hybrid_v2/model.json`), coefficients per SD:
+production +0.33, RAPM defense +0.19, RAPM offense +0.13, missing value −0.12, net rating
++0.27, Elo strength +0.08, home court +0.07, away back-to-back +0.09, home back-to-back −0.06,
+centered Elo x turnover +0.07.
+
+## Live: Edwards, measured
+On 2026-10-28 (Warriors at Timberwolves; ESPN: Edwards and DiVincenzo out for Minnesota; Butler,
+Porziņģis and Moody out for Golden State), v2 gives Minnesota **66.1%**. With Edwards marked
+available and nothing else changed, **72.5%**. Elo says 72.9% either way; the betting market,
+which knows the injuries, had Minnesota at 58%.

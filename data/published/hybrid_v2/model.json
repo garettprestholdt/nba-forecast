@@ -1,0 +1,110 @@
+{
+ "name": "hybrid-lineup-v2",
+ "features": [
+  "elo_strength",
+  "elo_home",
+  "home_b2b",
+  "away_b2b",
+  "net_rating",
+  "efg_diff",
+  "tov_diff",
+  "oreb_diff",
+  "ft_diff",
+  "rapm_o_lineup",
+  "rapm_d_lineup",
+  "production_lineup",
+  "absent_rapm",
+  "elo_x_turnover_c"
+ ],
+ "regression": {
+  "link": "logistic",
+  "l2": 10,
+  "intercept": false
+ },
+ "mean": [
+  0.0,
+  0.0,
+  0.0,
+  0.0,
+  0.0,
+  0.0,
+  0.0,
+  0.0,
+  0.0,
+  0.0,
+  0.0,
+  0.0,
+  0.0,
+  0.0
+ ],
+ "sd": [
+  0.8146533189,
+  0.0753395711,
+  0.3513606884,
+  0.3835691389,
+  6.1872343278,
+  0.0338961707,
+  0.0179273329,
+  0.0388672444,
+  0.033187893,
+  3.9757798077,
+  3.6052855364,
+  8.3831811236,
+  2.2315849934,
+  0.111991904
+ ],
+ "coef": [
+  0.08105161,
+  0.0724760678,
+  -0.0638500739,
+  0.090837482,
+  0.2679020594,
+  0.0327962156,
+  0.0511388237,
+  0.0298363652,
+  -0.0033473849,
+  0.1337519488,
+  0.1892564988,
+  0.3321283487,
+  -0.1199800648,
+  0.072902407
+ ],
+ "sigma": 1.0,
+ "players": {
+  "decay": 0.995,
+  "carryover": 0.7,
+  "prior_minutes": 1200.0,
+  "replacement": 0.2,
+  "pm_prior_minutes": 1500.0,
+  "minutes_decay": 0.5,
+  "new_player_minutes": 10.0
+ },
+ "form_decay": 0.95,
+ "turnover_center": 0.3645,
+ "unknown_rating": [
+  -1.0,
+  -0.5
+ ],
+ "fit_seasons": [
+  "2018-19",
+  "2025-26"
+ ],
+ "fit_through": "2026-06-13",
+ "created_at": "2026-10-28T15:46:02+00:00",
+ "coefficients": {
+  "elo_strength": 0.0811,
+  "elo_home": 0.0725,
+  "home_b2b": -0.0639,
+  "away_b2b": 0.0908,
+  "net_rating": 0.2679,
+  "efg_diff": 0.0328,
+  "tov_diff": 0.0511,
+  "oreb_diff": 0.0298,
+  "ft_diff": -0.0033,
+  "rapm_o_lineup": 0.1338,
+  "rapm_d_lineup": 0.1893,
+  "production_lineup": 0.3321,
+  "absent_rapm": -0.12,
+  "elo_x_turnover_c": 0.0729
+ }
+}

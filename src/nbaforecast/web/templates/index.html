@@ -107,6 +107,7 @@
         <div class="m-models">
           <span><span class="k">Forecast (Elo):</span> <b>{{ m.favorite.abbr }} {{ [m.p_home, 1 - m.p_home] | max | pct }}</b></span>
           {% if m.p_hybrid is not none %}<span><span class="k">Team + player model:</span> <b>{{ m.favorite.abbr }} {{ (m.p_hybrid if m.favorite is sameas m.home else 1 - m.p_hybrid) | pct }}</b></span>{% endif %}
+          {% if m.p_v2 is not none %}<span title="{% if m.missing %}Counted as out tonight: {{ m.missing }}{% else %}Nobody in either rotation listed out{% endif %}"><span class="k">With injuries (v2):</span> <b>{{ m.favorite.abbr }} {{ (m.p_v2 if m.favorite is sameas m.home else 1 - m.p_v2) | pct }}</b></span>{% endif %}
           {% if m.p_market is not none %}<span><span class="k">Betting market:</span> <b>{{ m.favorite.abbr }} {{ (m.p_market if m.favorite is sameas m.home else 1 - m.p_market) | pct }}</b></span>{% endif %}
           <button type="button" class="boxbtn" data-box="{{ m.game_id }}"{% if not m.final %} hidden{% endif %}>Box score</button>
           <a class="m-more" href="game-{{ m.game_id }}.html">Matchup: stats, arena, shot charts →</a>

@@ -40,6 +40,9 @@ PLAYER_DIFF_COLUMNS = [
     "rapm_o_real", "rapm_d_real", "rapm_o_lineup", "rapm_d_lineup", "absent_rapm",
     "absent_minutes",
 ]  # fmt: skip
+# Average roster turnover (1 - continuity) in the hybrid v2 training games (2018-19 to
+# 2024-25); centering the Elo x turnover interaction on it removes its overlap with Elo.
+TURNOVER_CENTER = 0.3645
 FIRST_TRAIN_SEASON = "2005-06"  # 2004-05 only warms up the ratings
 ELO_TO_LOGIT = math.log(10) / 400
 
@@ -189,7 +192,10 @@ def build_features(
     for c in FORM_COLUMNS + player_cols:
         base[c] = (base[f"{c}_home"] - base[f"{c}_away"]).fillna(0.0)
     turnover = 1 - (base["continuity_home"].fillna(0) + base["continuity_away"].fillna(0)) / 2
+    base["turnover"] = turnover
     base["elo_x_turnover"] = base["elo_strength"] * turnover
+    # Centered version: same information, without the r = 0.94 overlap with elo_strength.
+    base["elo_x_turnover_c"] = base["elo_strength"] * (turnover - TURNOVER_CENTER)
     return base.sort_values(["game_date", "game_id"]).reset_index(drop=True)
 
 
