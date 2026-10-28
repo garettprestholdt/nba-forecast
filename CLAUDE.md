@@ -1,146 +1,50 @@
 # CLAUDE.md
 
-Guidance for Claude (and other agents) working in this repo.
+Daily NBA win probabilities: ingest results and odds → update ratings → publish probabilities
+before tip-off → score them publicly. Read the map before opening code:
+**[docs/architecture.md](docs/architecture.md)** (layout, layers, data flow, component notes,
+how to add a source / model / step / page). Commands to rebuild everything:
+**[docs/reproduce.md](docs/reproduce.md)**. Model decisions: `docs/findings/`.
 
-## What this is
-A daily NBA forecasting pipeline: ingest results/schedule/odds → update team ratings → publish
-win probabilities before tip-off → score them publicly against the betting market.
-See `docs/roadmap.md` for the phased plan.
+## Where things are
+`src/nbaforecast/`: `ingest/` (all network access) · `models/` (pure math) · `pipeline/`
+(daily jobs; `pipeline/live.Store` owns the data-branch layout) · `agents/` (Claude agent jobs)
+· `research/` (local backtests) · `games/` (Cold Case) · `web/` (static site, one module per
+page type) · `cli/` (`nbaf`, one module per area). `tests/test_architecture.py` enforces that
+imports only point down these layers.
 
 ## Commands
-- Install: `uv sync`
-- Lint + format: `uv run ruff check . && uv run ruff format .`
-- Tests: `uv run pytest`
-- CLI: `uv run nbaf --help`
-- Backfill history (local only): `uv run nbaf backfill` (finished seasons already on disk are skipped)
-- Player box scores (local only, ~3 hours for every season): `uv run nbaf boxscores`; for the current
-  season it fetches only games not already on disk. Plus-minus is null where ESPN didn't record it
-  (before 2008-09). About 13% of 2012-18 team box scores have the roster but no stats at ESPN.
-- Rebuild those from play-by-play (local only, ~15 min): `uv run nbaf pbp` caches plays for the
-  blank games plus 150 validation games per season, then rebuilds; `--rebuild-only` re-runs the
-  builder on the cache. A rebuilt team box is used (`stats_source = 'pbp'`) only if its points
-  match the final score and lineups stayed consistent; otherwise `stats_missing`.
-  `assert_pbp_rebuild_accurate` checks the rebuild against real box scores
-  (docs/findings/pbp-box-rebuild.md).
-- ESPN source errors found by the box-score tests go in `seeds/known_data_issues.csv`; duplicate
-  or missing player ids go in `seeds/player_id_aliases.csv`.
-- dbt: `uv run nbaf dbt build` (sets `NBAF_DATA_DIR` and the project/profile paths for you)
-- Backtest: `uv run nbaf backtest` (~4 min; writes `data/published/backtest/`)
-- Hybrid backtest: `uv run nbaf hybrid` (~12 min; writes `data/published/hybrid/`). Team history
-  (Elo, rest, box-score form) + player layer (`models/players.py`), stacked walk-forward
-  (`models/hybrid.py`). Player features must stay pre-game: "knows the lineup" may use who was
-  *available* (played or healthy scratch), never who got minutes or how many.
-- Hybrid in shadow mode (daily workflow, after `nbaf daily`): `uv run nbaf shadow --data-dir <data>`
-  ingests last night's box scores (same transforms as dbt; `shadow.clean_box`/`form_values`)
-  and logs predictions to `shadow/hybrid/<season>.csv` (append-only; `verify` checks it).
-  Coefficients: `data/published/hybrid/model.json` from `uv run nbaf hybrid-fit` (a model change
-  is a PR). First state (local, once): `uv run nbaf shadow-bootstrap --data-dir <data>`.
-- Daily job (what GitHub Actions runs): `uv run nbaf daily --data-dir <data-branch checkout>`,
-  then `uv run nbaf verify --data-dir <same>`
-- First live state (local, once): `uv run nbaf bootstrap --out <empty dir>`
-- Recap (what the daily workflow runs): `uv run nbaf recap-prepare --data-dir <data> --workdir <tmp>`,
-  then Claude Code writes `<tmp>/recap_draft.md` (prompt: `prompts/recap.md`), then
-  `uv run nbaf recap-publish --data-dir <data> --workdir <tmp>`
-- Site: `uv run nbaf site --data-dir <data-branch checkout> --out _site` (GitHub Actions
-  deploys it to Pages after every daily run and every merge to main)
-- Site pages: Tonight (`index.html`: matchup cards with player scores), Standings & odds
-  (`standings.html`), The model (`model.html`); `ratings.html` redirects. Fan-facing data is built
-  in `web/fan.py` from data-branch files written by the daily job: `projections/<season>.json` and
-  `schedule/<season>.csv` (`nbaf project`, 10,000 simulated seasons), `players/directory.json`
-  (`nbaf rosters`), and the hybrid's `state/hybrid_state.json` (player scores).
-- More site data on the data branch: `boxscores/<season>.csv` (append-only player box scores,
-  `nbaf box-sync` daily; catches up any missed game) and `players/careers.json` (season lines
-  through the last completed season, `nbaf careers`, local, once per summer). Stat lines (TS%,
-  eFG%, usage, per-36, Game Score) are computed only in `boxlog.season_line`.
-- Shot zones and lineup stints: `nbaf box-sync` also appends `shots/<season>.csv` (FGA/FGM per
-  game, player and zone) and `stints/<season>.csv` (points and possessions per set of ten players)
-  from the same ESPN summary (`court.py`; no extra requests). Nine zones; everything inside 14 ft
-  is one zone because the rim/paint split tracks each arena's scorekeeper, not the teams. A past
-  season (local, ~10 min): `uv run nbaf court-backfill --data-dir <data> --season 2025-26`.
-- Player impact: `nbaf impact` (daily) fits RAPM on this season's and last season's stints
-  (`impact.py`, ridge, plain and box-score-prior fits) into `players/impact.json`; the site shows
-  `impact.blend`. Defensive role tags (`pages.defense_tags`) need size, box rates *and* a
-  defense rating that agrees. Third-party metrics (DARKO, EPM, LEBRON) are not used: their terms
-  don't clearly allow republishing (EPM's forbid it).
-- Hybrid v2 (`shadow_v2.py`, daily `nbaf shadow-v2` after the injury calls): the hybrid with
-  RAPM and who's missing (`docs/findings/impact-challenger.md`), tonight's lineup from the ESPN
-  injury report (Out = 0, Day-To-Day = the injury watch's chance). Logs to
-  `shadow/hybrid-v2/<season>.csv`; its own pre-registered bar (`docs/promotion-bar-hybrid-v2.md`,
-  `shadow_v2.PROMOTION`). No prediction if `players/impact.json` or the directory is missing or
-  stale. Model file: `uv run nbaf hybrid-v2-fit` (local, ~3 min). Research harness:
-  `uv run nbaf impact-backtest` (leak-free RAPM refit every 14 days, `models/rapm_walk.py`;
-  needs the 2017-18 on play-by-play cache).
-- Team pages also show the full schedule (`pages._schedule`).
-- Game pages: `game-<game_id>.html` for each game on the slate (venue from
-  `schedule/venues.json`, `nbaf venues` daily; team stats; shot charts in `static/court.js`).
-  Rosters (`players/directory.json`) carry date of birth, height and weight for the pop-up bio.
-- Team pages explain ratings by replaying this season from the published season-start ratings
-  (`data/published/elo/season_start_<season>.json`, `nbaf season-start`, local, once per season);
-  `seasonelo.check` confirms the replay lands on the live ratings.
-- Pages: Tonight, Standings & odds, Prediction history, The model, Play (Cold Case), one
-  `team-<abbr>.html` per team, and a player pop-up (`static/app.js`) that loads
-  `players/<id>.json`. Every time shown on the site is Central.
-- Cold Case (`coldcase.py`, `static/coldcase.js`): a daily whodunit built from a real scoring run.
-  The bank of 365 cases is generated locally once (`uv run nbaf coldcase-bank`, ~1 min with the
-  2024-26 play-by-play cached; heights cached in `raw/espn_athletes.json`) into
-  `data/published/coldcase/`. Case #1 is `coldcase.START`; the build publishes cases only through
-  tomorrow's (`pages.coldcase`), never ahead. Every clue must be checkable on the page (suspect
-  files or a named witness); facts the redacted scene can't show aren't clues.
-- Live games (`static/live.js`): the visitor's browser polls ESPN's scoreboard every 45 s for scores,
-  quarter and clock, and loads a game's box score, play-by-play and ESPN's in-game win probability
-  on request. Display only: never written to the data branch or used by our models, and ESPN's
-  win probability is always labeled as ESPN's.
-- Logos and headshots load from ESPN's image resizer at view time (never stored in the repo);
-  `fan.USE_ESPN_IMAGES = False` falls back to monograms and initials. Team colors go through
-  `fan.display_color`/`matchup_colors` (contrast against each theme's card, similar pairs
-  separated); `tests/test_fan.py` checks all 30 teams in both themes.
-- Charts: Vega-Lite specs in `web/__init__.py` use color tokens (`@series-1`) that
-  `static/charts.js` resolves from CSS custom properties. Field names must not contain
-  `' . [ ]` (Vega path syntax); `tests/test_web.py` enforces this.
+- `make check` (lint + tests, what CI runs) · `make help` lists every stage
+- Single steps: `uv run nbaf <command> --help`; the daily job's steps are in `cli/daily.py`
+- Local site: `make site` (checks out `origin/data` into `.data-branch/`, builds `_site/`)
 - dbt on the CI fixture: copy `tests/fixtures/nbaf_data` somewhere temporary, point
-  `NBAF_DATA_DIR` at it, and add `--vars '{check_season_counts: false}'`
-
-## Data sources
-- **ESPN scoreboard JSON** (`ingest/espn.py`) for both the backfill and daily results.
-  stats.nba.com and cdn.nba.com reject non-browser clients; don't try to get around that.
+  `NBAF_DATA_DIR` at it, add `--vars '{check_season_counts: false}'`
+- Agent shells may lack `uv`/`gh` on PATH: `export PATH="/opt/homebrew/bin:$PATH"`
 
 ## Data layout
-- **Raw and large data never goes in git.** It lives in `config.local_data_dir()`
-  (default `~/Desktop/nbaforecast`, override with `NBAF_DATA_DIR`).
-- **Only small published outputs are committed.** On `main`: `data/published/` (backtest
-  summaries). The daily predictions, results, scorecard, and Elo state live on the separate
-  `data` branch, written only by the daily workflow. Pre-commit rejects any file over 500 KB.
-- **Never rewrite the `data` branch.** It's the public, timestamped prediction log.
+- **Raw and large data never goes in git**: `config.local_data_dir()` (`NBAF_DATA_DIR`,
+  default `~/Desktop/nbaforecast`). Pre-commit rejects files over 500 KB.
+- `data/published/` on `main`: reviewed outputs (backtests, model files, Cold Case bank).
+- The `data` branch: the public log, written only by the daily workflow. **Never rewrite it.**
 
 ## Rules
-- **Never push to `main`.** Work on a branch and open a PR; CI must pass before merge.
-- **No Claude/Anthropic `Co-Authored-By` trailers, and no commits authored by `claude[bot]`.**
-  The maintainer doesn't want AI tools in the GitHub contributors list. A commit-msg hook and a
-  CI step (`python -m nbaforecast.attribution`) enforce this.
-- **Predictions are append-only.** Never edit or delete rows in the `data` branch's `predictions/`. A prediction
-  is only valid if its `predicted_at` is before the game's tip-off.
-- **No network calls in tests.** Parsers are tested against saved JSON fixtures in `tests/fixtures/`.
-- **Every data source sits behind the `ingest/` interface**, so a source can be swapped or added
-  without touching models.
-- **No leakage.** A feature for a game may only use data timestamped before that game's tip-off.
-- Keep dependencies minimal; add one only when a phase needs it.
-- **Agents never commit.** An agent writes a draft into an isolated folder; our own code checks
-  it and commits as `github-actions[bot]` to the `data` branch. Recaps must pass
-  `recap.check_recap` (numbers and teams grounded in the facts file, no betting language).
-  The check is lexical, not semantic: every number must exist in the facts, and percentages,
-  decimals, and counts ("N games", "N of M") must match numbers of the same kind. It can't
-  prove a sentence is true, so keep the prompt asking for copied, not computed, numbers.
-- Injury calls (daily workflow): `nbaf availability-prepare` scores yesterday's calls against
-  box scores and writes today's candidates to `<workdir>/agent/`; the agent writes
-  `availability.json` there; `nbaf availability-publish` validates and appends to the
-  append-only `availability/<season>.csv`. The keyword rule's answers stay outside `agent/`.
-- Triage: `triage.yml` runs on a failed Daily predictions / Publish site run. Agent script:
-  `scripts/run_agent.sh` (shared; `AGENT_TOOLS`, `AGENT_MODEL`, `AGENT_OUTPUT`). Triage issues
-  carry the `triage` label; fix them on a normal branch + PR.
-- Changing the prompt, `recap.py`, or the agent script triggers `recap-test.yml` on the PR:
-  the real agent runs on a throwaway copy of the data branch and the check must pass.
-- **The hybrid's promotion bar is pre-registered** (`docs/promotion-bar-hybrid.md`,
-  `shadow.PROMOTION`). Never change the rule, window, or thresholds after seeing live results;
-  only append to its decision record. A model change that alters predictions is a new version
-  with its own window.
-- This is a forecasting and calibration study, not betting advice. Keep README/site wording neutral.
+- **Never push to `main`.** Branch → PR → green CI → the maintainer merges.
+- **No Claude/Anthropic `Co-Authored-By` trailers, no `claude[bot]` commits.** A commit-msg hook
+  and CI (`python -m nbaforecast.attribution`) enforce it.
+- **Append-only predictions**, each made before tip-off; `nbaf verify` gates every commit.
+- **No leakage.** A feature for a game uses only data from before its tip-off. Player features
+  may use who was *available* (played or healthy scratch), never who got minutes.
+- **No network calls in tests.** Parsers are tested against saved JSON in `tests/fixtures/`.
+- **Every data source goes through `ingest/`.** stats.nba.com / cdn.nba.com reject non-browser
+  clients; don't try to get around that. ESPN JSON is the source.
+- **Agents never commit.** They draft into an isolated folder; our code checks the draft and the
+  workflow commits as `github-actions[bot]`. Recaps must pass `recap.check_recap` (lexical: every
+  number must exist in the facts, of the same kind; it can't prove a sentence true).
+- **Promotion bars are pre-registered** (`docs/promotion-bar-*.md`). Never change a rule, window
+  or threshold after seeing live results; only append to its decision record. A change that
+  alters predictions is a new model version with its own window.
+- Changing a prompt, `agents/recap.py`, `agents/availability.py`, `agents/triage.py` or
+  `scripts/run_agent.sh` triggers that agent's dry-run workflow on the PR; it must pass.
+- Third-party metrics (DARKO, EPM, LEBRON) aren't republished: their terms don't clearly allow it.
+- Keep dependencies minimal. Times on the site are Central. Wording stays neutral: a
+  forecasting and calibration study, not betting advice.

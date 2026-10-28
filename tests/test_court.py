@@ -5,9 +5,10 @@ from pathlib import Path
 import numpy as np
 import pytest
 
-from nbaforecast import court, impact, live
 from nbaforecast.ingest import venues
-from nbaforecast.web import pages
+from nbaforecast.models import impact
+from nbaforecast.pipeline import court, live
+from nbaforecast.web import players
 
 FIXTURES = Path(__file__).parent / "fixtures"
 SUMMARY = json.loads((FIXTURES / "espn_summary_plays_401909868.json").read_text())  # WSH @ CHA
@@ -107,10 +108,10 @@ def test_rapm_finds_the_planted_players():
 
 def test_defense_tags_need_the_impact_rating_to_agree():
     # a 6'8" star with plenty of steals but an average defensive rating: no "stopper" tag
-    assert pages.defense_tags(80, blk36=0.6, stl36=1.6, d=-0.4) == []
-    assert pages.defense_tags(80, blk36=0.6, stl36=1.6, d=1.5) == ["Wing stopper"]
-    assert pages.defense_tags(85, blk36=3.0, stl36=1.0, d=5.0) == ["Rim protector"]
-    assert pages.defense_tags(None, 3.0, 2.0, 3.0) == []
+    assert players.defense_tags(80, blk36=0.6, stl36=1.6, d=-0.4) == []
+    assert players.defense_tags(80, blk36=0.6, stl36=1.6, d=1.5) == ["Wing stopper"]
+    assert players.defense_tags(85, blk36=3.0, stl36=1.0, d=5.0) == ["Rim protector"]
+    assert players.defense_tags(None, 3.0, 2.0, 3.0) == []
 
 
 def test_venues_parse_and_merge(tmp_path):

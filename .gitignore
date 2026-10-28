@@ -14,10 +14,9 @@ dbt/dbt_packages/
 dbt/logs/
 dbt/.user.yml
 
-# Site (Evidence)
-site/node_modules/
-site/.evidence/
-site/build/
+# Local site build (`make site`) and its data-branch checkout
+_site/
+.data-branch/
 
 # Data: raw/large data lives outside the repo (see src/nbaforecast/config.py).
 # Only small published outputs under data/published/ are committed.

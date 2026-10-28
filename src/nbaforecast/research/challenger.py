@@ -17,10 +17,11 @@ from pathlib import Path
 
 import pandas as pd
 
-from nbaforecast import backtest, metrics
-from nbaforecast.live import LIVE_PARAMS
+from nbaforecast import metrics
 from nbaforecast.models import elo, kalman
 from nbaforecast.models.kalman import KalmanParams
+from nbaforecast.pipeline.live import LIVE_PARAMS
+from nbaforecast.research import backtest
 
 STAGE_1 = {
     "sigma": [11.0, 12.0, 13.0],

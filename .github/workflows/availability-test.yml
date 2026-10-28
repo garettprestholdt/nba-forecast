@@ -7,7 +7,7 @@ on:
   pull_request:
     paths:
       - "prompts/availability.md"
-      - "src/nbaforecast/availability.py"
+      - "src/nbaforecast/agents/availability.py"
       - "src/nbaforecast/ingest/injuries.py"
       - "scripts/run_agent.sh"
       - ".github/workflows/availability-test.yml"

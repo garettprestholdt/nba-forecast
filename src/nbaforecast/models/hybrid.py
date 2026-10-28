@@ -34,7 +34,7 @@ PLAYER_FEATURES = {
     "lineup": ["production_lineup", "impact_lineup", "elo_x_turnover"],
 }
 # Home-minus-away differences built from the player walk; the RAPM ones exist only when the
-# walk is given leak-free ratings (`models/rapm_walk.py`).
+# walk is given leak-free ratings (`research/rapm_walk.py`).
 PLAYER_DIFF_COLUMNS = [
     "production_real", "impact_real", "production_lineup", "impact_lineup",
     "rapm_o_real", "rapm_d_real", "rapm_o_lineup", "rapm_d_lineup", "absent_rapm",

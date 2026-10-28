@@ -22,12 +22,13 @@ from pathlib import Path
 
 import pandas as pd
 
-from nbaforecast import backtest, metrics
-from nbaforecast.challenger import paired_log_loss_difference
-from nbaforecast.live import LIVE_PARAMS
+from nbaforecast import metrics
 from nbaforecast.models import elo, hybrid, players
 from nbaforecast.models.hybrid import FitParams
 from nbaforecast.models.players import PlayerParams
+from nbaforecast.pipeline.live import LIVE_PARAMS
+from nbaforecast.research import backtest
+from nbaforecast.research.challenger import paired_log_loss_difference
 
 TRAIN = [s for s in backtest.TRAIN_SEASONS if s >= "2007-08"]
 HOLDOUT = backtest.HOLDOUT_SEASONS

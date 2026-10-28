@@ -3,8 +3,9 @@ from datetime import UTC, date, datetime
 
 import pytest
 
-from nbaforecast import live, recap
+from nbaforecast.agents import recap
 from nbaforecast.models.elo import EloState
+from nbaforecast.pipeline import live
 
 TODAY = date(2026, 10, 28)
 

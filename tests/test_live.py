@@ -5,10 +5,10 @@ from datetime import UTC, date, datetime, timedelta
 import pandas as pd
 import pytest
 
-from nbaforecast import live
 from nbaforecast.ingest import odds
 from nbaforecast.models import elo
 from nbaforecast.models.elo import EloState
+from nbaforecast.pipeline import live
 
 PARAMS = live.LIVE_PARAMS.__class__(k=20, hca_window=6, carryover=0.7)
 TEAMS = [str(i) for i in range(1, 11)]  # real ESPN franchise IDs

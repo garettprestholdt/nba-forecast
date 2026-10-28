@@ -12,10 +12,10 @@ from pathlib import Path
 from typing import Any
 from zoneinfo import ZoneInfo
 
-from nbaforecast import projections, shadow, shadow_v2
 from nbaforecast.ingest import rosters
 from nbaforecast.ingest.espn import EASTERN
-from nbaforecast.live import Store
+from nbaforecast.pipeline import projections, shadow, shadow_v2
+from nbaforecast.pipeline.live import Store
 
 USE_ESPN_IMAGES = True
 CENTRAL = ZoneInfo("America/Chicago")  # times shown on the site

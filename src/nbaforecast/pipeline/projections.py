@@ -26,9 +26,10 @@ from pathlib import Path
 import numpy as np
 import requests
 
-from nbaforecast import config, live
+from nbaforecast import config
 from nbaforecast.ingest.espn import USER_AGENT
 from nbaforecast.models.elo import EloState
+from nbaforecast.pipeline import live
 
 log = logging.getLogger(__name__)
 

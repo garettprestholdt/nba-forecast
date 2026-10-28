@@ -30,12 +30,13 @@ import numpy as np
 import pandas as pd
 import requests
 
-from nbaforecast import config, live, metrics
+from nbaforecast import config, metrics
 from nbaforecast.ingest.boxscores import parse_boxscore
 from nbaforecast.models import hybrid, players
 from nbaforecast.models.elo import EloState
 from nbaforecast.models.hybrid import FORM_COLUMNS, Fit, FitParams, FormState
 from nbaforecast.models.players import PlayerParams, PlayerState
+from nbaforecast.pipeline import live
 
 log = logging.getLogger(__name__)
 

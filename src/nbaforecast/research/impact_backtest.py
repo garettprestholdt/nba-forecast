@@ -19,11 +19,12 @@ from pathlib import Path
 import numpy as np
 import pandas as pd
 
-from nbaforecast import backtest, config
-from nbaforecast.challenger import paired_log_loss_difference
-from nbaforecast.live import LIVE_PARAMS
-from nbaforecast.models import hybrid, players, rapm_walk
+from nbaforecast import config
+from nbaforecast.models import hybrid, impact, players
 from nbaforecast.models.hybrid import FitParams
+from nbaforecast.pipeline.live import LIVE_PARAMS
+from nbaforecast.research import backtest, rapm_walk
+from nbaforecast.research.challenger import paired_log_loss_difference
 
 OUT_DIR = config.PUBLISHED_DIR / "impact_challenger"
 STINT_SEASONS = backtest.seasons(2017, 2025)  # 2017-18 .. 2025-26
@@ -62,7 +63,7 @@ def build(games, team_games, player_games, box_rows, data_dir: Path) -> pd.DataF
     stints = rapm_walk.load_stints(data_dir, STINT_SEASONS, games)
     seasons = [s for s in STINT_SEASONS if s >= FIRST_RAPM_SEASON]
     ratings = rapm_walk.walk_ratings(stints, box_rows, games, seasons)
-    pf = players.walk(player_games, best["players"], ratings=ratings, unknown=rapm_walk.UNKNOWN)
+    pf = players.walk(player_games, best["players"], ratings=ratings, unknown=impact.UNKNOWN)
     feats = hybrid.build_features(games, team_games, pf, LIVE_PARAMS, best["form_decay"])
     feats.attrs["stint_games"] = int(stints["game_id"].nunique())
     return feats

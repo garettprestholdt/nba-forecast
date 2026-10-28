@@ -3,7 +3,7 @@
 
 Each player: name, position, jersey number, team, ESPN's current injury status ("Out",
 "Day-To-Day", or blank), date of birth, height (inches) and weight (pounds). Headshots aren't
-stored: ESPN serves them at a URL built from the player id (see web.headshot_url).
+stored: ESPN serves them at a URL built from the player id (see web.fan.headshot_url).
 """
 
 import json

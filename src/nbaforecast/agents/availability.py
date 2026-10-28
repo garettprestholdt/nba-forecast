@@ -18,9 +18,10 @@ from datetime import date, datetime
 from pathlib import Path
 from typing import Any
 
-from nbaforecast import config, live, metrics
+from nbaforecast import config, metrics
 from nbaforecast.ingest import injuries
 from nbaforecast.ingest.espn import EASTERN
+from nbaforecast.pipeline import live
 
 PROMPT_TEMPLATE = config.REPO_ROOT / "prompts" / "availability.md"
 MIN_QUOTE_CHARS = 10
@@ -79,10 +80,7 @@ def _norm(text: str) -> str:
 
 
 def paths(store: live.Store, season: str) -> tuple[Path, Path]:
-    return (
-        store.root / "availability" / f"{season}.csv",
-        store.root / "availability" / f"{season}-results.csv",
-    )
+    return store.availability_path(season), store.availability_results_path(season)
 
 
 def todays_games(store: live.Store, day: date, now: datetime) -> dict[str, dict[str, Any]]:

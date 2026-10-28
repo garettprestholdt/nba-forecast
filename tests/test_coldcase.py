@@ -5,8 +5,9 @@ from collections import Counter
 from datetime import date, timedelta
 from pathlib import Path
 
-from nbaforecast import coldcase, config
-from nbaforecast.web import pages
+from nbaforecast import config
+from nbaforecast.games import coldcase
+from nbaforecast.web import play
 
 FIXTURES = Path(__file__).parent / "fixtures"
 SLIM = json.loads(gzip.decompress((FIXTURES / "espn_plays_401810673.json.gz").read_bytes()))
@@ -94,12 +95,12 @@ def test_the_published_bank_is_sound():
 
 def test_only_open_cases_are_published(tmp_path):
     today = coldcase.START + timedelta(days=2)  # case #3
-    out = pages.coldcase(config.PUBLISHED_DIR, tmp_path, today)
+    out = play.coldcase(config.PUBLISHED_DIR, tmp_path, today)
     assert out["today"] == 3 and len(out["cases"]) == 4  # through tomorrow's
     names = sorted(p.name for p in (tmp_path / "coldcase").iterdir())
     assert names == ["case-001.json", "case-002.json", "case-003.json", "case-004.json"]
-    assert pages.coldcase(config.PUBLISHED_DIR, None, coldcase.START - timedelta(days=5)) is None
-    early = pages.coldcase(config.PUBLISHED_DIR, None, coldcase.START - timedelta(days=1))
+    assert play.coldcase(config.PUBLISHED_DIR, None, coldcase.START - timedelta(days=5)) is None
+    early = play.coldcase(config.PUBLISHED_DIR, None, coldcase.START - timedelta(days=1))
     assert early["today"] == 1 and len(early["cases"]) == 1  # #1 goes up the night before
 
 

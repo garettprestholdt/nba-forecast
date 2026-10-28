@@ -3,11 +3,12 @@ from datetime import date
 
 import pytest
 
-from nbaforecast import live, projections, shadow
 from nbaforecast.ingest import rosters
 from nbaforecast.models.hybrid import FormState
 from nbaforecast.models.players import PlayerParams, PlayerState
-from nbaforecast.web import _odds, fan
+from nbaforecast.pipeline import live, projections, shadow
+from nbaforecast.web import fan
+from nbaforecast.web.filters import _odds
 
 TEAMS = projections.franchises()
 

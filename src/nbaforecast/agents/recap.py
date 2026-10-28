@@ -15,8 +15,9 @@ from datetime import date, datetime, timedelta
 from pathlib import Path
 from typing import Any
 
-from nbaforecast import config, live
+from nbaforecast import config
 from nbaforecast.models.elo import EloState, win_probability
+from nbaforecast.pipeline import live
 
 UPSET_THRESHOLD = 0.35  # the winner's pre-game Elo chance was below this
 MIN_WORDS, MAX_WORDS = 60, 260

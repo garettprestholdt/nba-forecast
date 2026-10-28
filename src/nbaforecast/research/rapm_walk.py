@@ -7,7 +7,7 @@ prior built from the same games, so a game's features never see that game or any
 
 Stints come from the local play-by-play cache (`ingest/playbyplay.py`, the same slim summaries
 `nbaf pbp` keeps) through `court.parse_stints`, and are cached as one parquet file per season
-under `<data_dir>/raw/stints/`.
+under `<data_dir>/raw/stints/`. Backtest-only: the live model reads the daily `players/impact.json`.
 """
 
 import gzip
@@ -20,13 +20,13 @@ from pathlib import Path
 
 import pandas as pd
 
-from nbaforecast import court, impact
 from nbaforecast.ingest import playbyplay
+from nbaforecast.models import impact
+from nbaforecast.pipeline import court
 
 log = logging.getLogger(__name__)
 
 REFIT_DAYS = 14
-UNKNOWN = (-1.0, -0.5)  # (offense, defense) for a player with no stints yet: a bit below average
 
 
 def stints_path(data_dir: Path, season: str) -> Path:

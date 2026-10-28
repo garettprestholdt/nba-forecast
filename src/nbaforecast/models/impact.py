@@ -28,6 +28,7 @@ LAMBDA = 3000.0  # ridge penalty, in possessions
 PRIOR_MIN_POSS = 3000  # players whose plain rating trains the box-score prior
 PRIOR_CAP = 2.5  # small-minute box rates can be extreme
 PRIOR_WEIGHT = 0.6  # the site's defense: 60% prior-informed fit, 40% plain
+UNKNOWN = (-1.0, -0.5)  # (offense, defense) of a player with no stints yet: a bit below average
 BOX_FEATURES = ("blk", "stl", "reb")
 
 

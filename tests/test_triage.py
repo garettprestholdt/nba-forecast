@@ -2,7 +2,7 @@ import json
 
 import pytest
 
-from nbaforecast import triage
+from nbaforecast.agents import triage
 
 SUMMARY = {
     "name": "Daily predictions",
@@ -78,7 +78,9 @@ def test_prepare_builds_isolated_folder(tmp_path):
     report = (tmp_path / "failure.md").read_text()
     assert "KeyError: 'season'" in report and "233ea09" in report
     source = tmp_path / "repo"
-    assert (source / "CLAUDE.md").exists() and (source / "src" / "nbaforecast" / "live.py").exists()
+    assert (source / "CLAUDE.md").exists() and (
+        source / "src" / "nbaforecast" / "pipeline" / "live.py"
+    ).exists()
     assert not (source / ".git").exists() and not (source / ".venv").exists()
 
 

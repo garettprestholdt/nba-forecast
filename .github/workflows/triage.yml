@@ -18,7 +18,7 @@ on:
   pull_request:
     paths:
       - "prompts/triage.md"
-      - "src/nbaforecast/triage.py"
+      - "src/nbaforecast/agents/triage.py"
       - "scripts/run_agent.sh"
       - ".github/workflows/triage.yml"
 

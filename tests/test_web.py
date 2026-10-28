@@ -4,8 +4,10 @@ from datetime import date
 
 import pytest
 
-from nbaforecast import config, live, web
+from nbaforecast import config, web
 from nbaforecast.models.elo import EloState
+from nbaforecast.pipeline import live
+from nbaforecast.web import charts
 
 FRANCHISES = [str(i) for i in range(1, 31)]
 
@@ -157,7 +159,7 @@ def test_model_page_is_plain_and_simple(site):
         for row in layer.get("data", {}).get("values", [])
         if "series" in row
     }
-    assert series == {web.ADAPTIVE}  # one model on the honesty chart; live joins after 100 games
+    assert series == {charts.ADAPTIVE}  # one model on the honesty chart; live joins after 100 games
     for approach in ("Coin flip", "Always back the home team", "Our model (published)",
                      "Team + player model"):  # fmt: skip
         assert approach in html
@@ -214,7 +216,7 @@ def test_recap_text_is_escaped(data_dir, tmp_path_factory):
 
 
 def test_injury_watch_card(data_dir, tmp_path_factory):
-    from nbaforecast import availability
+    from nbaforecast.agents import availability
 
     store = live.Store(data_dir)
     log, results = availability.paths(store, "2026-27")
@@ -296,8 +298,9 @@ def test_live_scores_are_wired_and_display_only(site):
 def test_game_pages_and_player_profiles(data_dir, tmp_path_factory):
     from datetime import UTC, datetime
 
-    from nbaforecast import court, impact
     from nbaforecast.ingest import rosters, venues
+    from nbaforecast.models import impact
+    from nbaforecast.pipeline import court
 
     rosters.write_directory(data_dir, {
         "p1": {"name": "Big Wing", "short": "B. Wing", "position": "F", "jersey": "7",

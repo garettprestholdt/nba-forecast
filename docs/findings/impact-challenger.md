@@ -2,7 +2,7 @@
 
 *Challenger backtest, 2018-19 to 2025-26, scored on the held-out 2020-21 to 2025-26 seasons
 (7,776 games). Full tables: [data/published/impact_challenger](../../data/published/impact_challenger/).
-Code: `impact_backtest.py`, `models/rapm_walk.py`, `shadow_v2.py`. Status: **chosen 2026-10-28;
+Code: `research/impact_backtest.py`, `research/rapm_walk.py`, `pipeline/shadow_v2.py`. Status: **chosen 2026-10-28;
 in shadow as `hybrid-lineup-v2`** ([promotion bar](../promotion-bar-hybrid-v2.md)).*
 
 ## Setup

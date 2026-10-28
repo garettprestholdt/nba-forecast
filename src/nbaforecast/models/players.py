@@ -25,6 +25,8 @@ from typing import Any
 
 import pandas as pd
 
+from nbaforecast.models import impact
+
 GAME_MINUTES = 240
 
 
@@ -228,11 +230,12 @@ def walk(
     params: PlayerParams | None = None,
     state: PlayerState | None = None,
     ratings: Any = None,
-    unknown: tuple[float, float] = (-1.0, -0.5),
+    unknown: tuple[float, float] = impact.UNKNOWN,
 ) -> pd.DataFrame:
     """Pre-game team strengths for every team in every game: one row per (game_id, team_id).
     Pass `state` to keep the ratings it ends with (the live shadow job starts from them).
-    Pass `ratings` (`rapm_walk.Ratings`, fit only on earlier games) to add RAPM features."""
+    Pass `ratings` (`research.rapm_walk.Ratings`, fit only on earlier games) to add RAPM
+    features."""
     state = state or PlayerState(params or PlayerParams())
     out = []
     ordered = player_games.sort_values(["game_date", "tipoff_utc", "game_id", "team_id"])

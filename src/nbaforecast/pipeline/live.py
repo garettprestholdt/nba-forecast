@@ -104,6 +104,13 @@ class Store:
     def scorecard_path(self, season: str) -> Path:
         return self.root / "scorecard" / f"{season}.json"
 
+    def availability_path(self, season: str) -> Path:
+        """Injury calls (agent and keyword rule), append-only."""
+        return self.root / "availability" / f"{season}.csv"
+
+    def availability_results_path(self, season: str) -> Path:
+        return self.root / "availability" / f"{season}-results.csv"
+
     def load_state(self) -> EloState:
         if not self.state_path.exists():
             raise FileNotFoundError(f"{self.state_path} not found: run `nbaf bootstrap` first")

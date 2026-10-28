@@ -15,9 +15,10 @@ from typing import Any
 
 import pandas as pd
 
-from nbaforecast import config, live
+from nbaforecast import config
 from nbaforecast.models import elo
 from nbaforecast.models.elo import EloState
+from nbaforecast.pipeline import live
 
 
 def start_path(season: str, published: Path | None = None) -> Path:

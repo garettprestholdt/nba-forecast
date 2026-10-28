@@ -25,9 +25,9 @@ from typing import Any
 
 import requests
 
-from nbaforecast import live
 from nbaforecast.ingest import playbyplay as pbp
 from nbaforecast.ingest.boxscores import parse_boxscore
+from nbaforecast.pipeline import live
 
 log = logging.getLogger(__name__)
 
