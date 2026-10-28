@@ -1,0 +1,81 @@
+{
+  "fit_seasons": [
+    "2005-06",
+    "2025-26"
+  ],
+  "fit_through": "2026-06-13",
+  "created_at": "2026-10-27T23:55:38+00:00",
+  "name": "hybrid-realistic-v1",
+  "features": [
+    "elo_strength",
+    "elo_home",
+    "home_b2b",
+    "away_b2b",
+    "net_rating",
+    "efg_diff",
+    "tov_diff",
+    "oreb_diff",
+    "ft_diff",
+    "production_real",
+    "impact_real",
+    "elo_x_turnover"
+  ],
+  "regression": {
+    "link": "logistic",
+    "l2": 10,
+    "intercept": false
+  },
+  "mean": [
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "sd": [
+    0.8358070454,
+    0.102827466,
+    0.3491010583,
+    0.4341794918,
+    6.0617854379,
+    0.0350550017,
+    0.0173723345,
+    0.0390265621,
+    0.0382362868,
+    7.6668287155,
+    2.5558743501,
+    0.3254822224
+  ],
+  "coef": [
+    0.2969957385,
+    0.1041246277,
+    -0.0859450109,
+    0.1102025589,
+    0.0353536105,
+    0.1322994519,
+    0.0794893314,
+    0.098011667,
+    -0.0041571423,
+    0.2942187976,
+    0.1095393972,
+    0.0781772691
+  ],
+  "sigma": 1.0,
+  "players": {
+    "decay": 0.995,
+    "carryover": 0.7,
+    "prior_minutes": 1200.0,
+    "replacement": 0.2,
+    "pm_prior_minutes": 1500.0,
+    "minutes_decay": 0.5,
+    "new_player_minutes": 10.0
+  },
+  "form_decay": 0.95
+}

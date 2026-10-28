@@ -221,3 +221,28 @@ def test_injury_watch_card(data_dir, tmp_path_factory):
     html = (out / "index.html").read_text()
     assert "Injury watch" in html and "Derrick White" in html
     assert "93%" in html and "Played (31 min)" in html and "“White is probable”" in html
+
+
+def test_shadow_card_only_when_the_challenger_has_a_scorecard(data_dir, tmp_path_factory):
+    out = tmp_path_factory.mktemp("site_no_shadow")
+    web.build(data_dir, out, published_dir=config.PUBLISHED_DIR)
+    assert "shadow mode" not in (out / "index.html").read_text()
+
+    card = {
+        "season": "2026-27", "model": "hybrid-realistic-v1", "updated_at": "",
+        "games_predicted": 12, "games_scored": 9,
+        "hybrid": {"log_loss": 0.61234, "brier": 0.21, "accuracy": 0.66667},
+        "elo": {"log_loss": 0.64321, "brier": 0.22, "accuracy": 0.55556},
+        "head_to_head_with_market": {"games": 0, "hybrid": None, "elo": None, "market": None},
+        "promotion_check": {"status": "in progress", "games": 9, "mean_difference": 0.031,
+                            "ci95": [-0.02, 0.082]},
+    }  # fmt: skip
+    path = data_dir / "scorecard" / "2026-27-hybrid.json"
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(json.dumps(card))
+    out = tmp_path_factory.mktemp("site_shadow")
+    web.build(data_dir, out, published_dir=config.PUBLISHED_DIR)
+    html = (out / "index.html").read_text()
+    assert "shadow mode" in html and "0.612" in html and "0.643" in html
+    assert "promotion-bar-hybrid.md" in html and "in progress" in html
+    path.unlink()

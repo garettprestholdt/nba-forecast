@@ -467,6 +467,20 @@ def _injury_watch(store: Store, season: str, day: str | None) -> dict[str, Any] 
     return {"date": day, "calls": calls, "scorecard": card} if calls or card else None
 
 
+def _shadow(store: Store, season: str, published: Path) -> dict[str, Any] | None:
+    """The hybrid challenger's live scorecard (shadow mode) and its backtest, if present."""
+    card_path = store.root / "scorecard" / f"{season}-hybrid.json"
+    summary_path = published / "hybrid" / "summary.json"
+    if not card_path.exists() or not summary_path.exists():
+        return None
+    holdout = {r["model"]: r for r in json.loads(summary_path.read_text())["holdout"]}
+    return {
+        "card": json.loads(card_path.read_text()),
+        "backtest_hybrid": holdout.get("Hybrid, realistic"),
+        "backtest_elo": holdout.get("Elo + back-to-back"),
+    }
+
+
 def _latest_recap(store: Store) -> dict[str, Any] | None:
     """The newest published recap as blocks: {"p": text} paragraphs and {"ul": [items]} lists."""
     files = sorted((store.root / "recaps").glob("*.md"))
@@ -564,6 +578,7 @@ def build_context(data_dir: Path, published_dir: Path | None = None) -> dict[str
 
     hca = state.home_court()
     return {
+        "shadow": _shadow(store, season, published),
         "repo_url": REPO_URL,
         "season": season,
         "built_at": datetime.now(UTC).astimezone(EASTERN).strftime("%b %-d, %Y %-I:%M %p ET"),

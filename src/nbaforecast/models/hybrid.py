@@ -45,29 +45,78 @@ def feature_set(name: str) -> list[str]:
     return TEAM_FEATURES + PLAYER_FEATURES[name]
 
 
+class FormState:
+    """Each team's box-score form: exponentially weighted averages of FORM_COLUMNS over its
+    earlier games, shrunk toward 0 (league average) by `prior` games' worth of weight, and
+    partly reset between seasons. Used by the backtest and the live shadow job alike."""
+
+    def __init__(self, decay: float = 0.95, carryover: float = 0.5, prior: float = 3.0):
+        self.decay, self.carryover, self.prior = decay, carryover, prior
+        self.num: dict[str, np.ndarray] = defaultdict(lambda: np.zeros(len(FORM_COLUMNS)))
+        self.den: dict[str, float] = defaultdict(float)
+        self.season: str | None = None
+
+    def start_season(self, season: str) -> None:
+        if season != self.season:
+            for team in self.num:
+                self.num[team] = self.num[team] * self.carryover
+                self.den[team] *= self.carryover
+            self.season = season
+
+    def value(self, team: str) -> np.ndarray:
+        return self.num[team] / (self.den[team] + self.prior)
+
+    def update(self, team: str, values) -> None:
+        self.num[team] = self.num[team] * self.decay + np.asarray(values, dtype=float)
+        self.den[team] = self.den[team] * self.decay + 1
+
+    def to_dict(self) -> dict:
+        return {
+            "params": {"decay": self.decay, "carryover": self.carryover, "prior": self.prior},
+            "season": self.season,
+            "teams": {
+                team: {"num": [round(float(v), 8) for v in self.num[team]],
+                       "den": round(self.den[team], 8)}
+                for team in sorted(self.num)
+            },
+        }  # fmt: skip
+
+    @classmethod
+    def from_dict(cls, data: dict) -> "FormState":
+        state = cls(**data["params"])
+        state.season = data["season"]
+        for team, t in data["teams"].items():
+            state.num[team] = np.array(t["num"], dtype=float)
+            state.den[team] = float(t["den"])
+        return state
+
+
 def team_form(
-    team_games: pd.DataFrame, decay: float = 0.95, carryover: float = 0.5, prior: float = 3.0
+    games: pd.DataFrame,
+    team_games: pd.DataFrame,
+    decay: float = 0.95,
+    carryover: float = 0.5,
+    prior: float = 3.0,
+    state: FormState | None = None,
 ) -> pd.DataFrame:
-    """Each team's pre-game box-score form: exponentially weighted averages of FORM_COLUMNS
-    over its earlier games, shrunk toward 0 (league average) by `prior` games' worth of weight.
-    One row per (game_id, team_id); games without box-score stats don't update form."""
-    num: dict[str, np.ndarray] = defaultdict(lambda: np.zeros(len(FORM_COLUMNS)))
-    den: dict[str, float] = defaultdict(float)
-    season = None
+    """Pre-game form for both teams in every game (one row per game_id, team_id). Only games
+    with box-score stats (`team_games`) update it; every game still gets its teams' current form.
+    Pass `state` to keep the form it ends with."""
+    state = state or FormState(decay, carryover, prior)
+    updates = {date: day for date, day in team_games.groupby("game_date")}
     rows = []
-    ordered = team_games.sort_values(["game_date", "game_id", "team_id"])
-    for (day_season, _), day in ordered.groupby(["season", "game_date"], sort=False):
-        if day_season != season:
-            for team in num:
-                num[team] *= carryover
-                den[team] *= carryover
-            season = day_season
-        values = day[FORM_COLUMNS].to_numpy(dtype=float)
-        for game_id, team in day[["game_id", "team_id"]].itertuples(index=False, name=None):
-            rows.append((game_id, team, *(num[team] / (den[team] + prior))))
-        for team, vals in zip(day["team_id"], values, strict=True):
-            num[team] = num[team] * decay + vals
-            den[team] = den[team] * decay + 1
+    ordered = games.sort_values(["tipoff_utc", "game_id"])
+    for (game_date, season), day in ordered.groupby(["game_date", "season"], sort=False):
+        state.start_season(season)
+        for g in day.itertuples(index=False):
+            for team in (g.home_team_id, g.away_team_id):
+                rows.append((g.game_id, team, *state.value(team)))
+        if game_date in updates:
+            done = updates[game_date]
+            for team, vals in zip(
+                done["team_id"], done[FORM_COLUMNS].to_numpy(dtype=float), strict=True
+            ):
+                state.update(team, vals)
     return pd.DataFrame(rows, columns=["game_id", "team_id", *FORM_COLUMNS])
 
 
@@ -115,7 +164,7 @@ def build_features(
     scores = games.set_index("game_id")
     base["margin"] = base["game_id"].map(scores["home_score"] - scores["away_score"])
 
-    form = team_form(team_games, decay=form_decay)
+    form = team_form(games, team_games, decay=form_decay)
     sides = {"home": "home_team_id", "away": "away_team_id"}
     for side, key in sides.items():
         base = base.merge(

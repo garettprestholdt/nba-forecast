@@ -30,6 +30,11 @@ See `docs/roadmap.md` for the phased plan.
   (Elo, rest, box-score form) + player layer (`models/players.py`), stacked walk-forward
   (`models/hybrid.py`). Player features must stay pre-game: "knows the lineup" may use who was
   *available* (played or healthy scratch), never who got minutes or how many.
+- Hybrid in shadow mode (daily workflow, after `nbaf daily`): `uv run nbaf shadow --data-dir <data>`
+  ingests last night's box scores (same transforms as dbt; `shadow.clean_box`/`form_values`)
+  and logs predictions to `shadow/hybrid/<season>.csv` (append-only; `verify` checks it).
+  Coefficients: `data/published/hybrid/model.json` from `uv run nbaf hybrid-fit` (a model change
+  is a PR). First state (local, once): `uv run nbaf shadow-bootstrap --data-dir <data>`.
 - Daily job (what GitHub Actions runs): `uv run nbaf daily --data-dir <data-branch checkout>`,
   then `uv run nbaf verify --data-dir <same>`
 - First live state (local, once): `uv run nbaf bootstrap --out <empty dir>`
@@ -83,4 +88,8 @@ See `docs/roadmap.md` for the phased plan.
   carry the `triage` label; fix them on a normal branch + PR.
 - Changing the prompt, `recap.py`, or the agent script triggers `recap-test.yml` on the PR:
   the real agent runs on a throwaway copy of the data branch and the check must pass.
+- **The hybrid's promotion bar is pre-registered** (`docs/promotion-bar-hybrid.md`,
+  `shadow.PROMOTION`). Never change the rule, window, or thresholds after seeing live results;
+  only append to its decision record. A model change that alters predictions is a new version
+  with its own window.
 - This is a forecasting and calibration study, not betting advice. Keep README/site wording neutral.

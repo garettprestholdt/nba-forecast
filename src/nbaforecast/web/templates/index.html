@@ -143,6 +143,37 @@
   </div>
 </div>
 
+{% if shadow %}
+{% set hc = shadow.card %}
+<section class="card" aria-labelledby="shadow-h">
+  <h2 id="shadow-h">Challenger in shadow mode: team + player model</h2>
+  <p class="sub">A second model also uses who is on each roster (player production, plus-minus, availability). Its predictions are logged before tip-off next to Elo's, but it isn't the published forecast until it beats Elo live. In the backtest (2020–26) it scored {{ shadow.backtest_hybrid.log_loss | num }} vs. Elo's {{ shadow.backtest_elo.log_loss | num }}.</p>
+  <div class="tiles">
+    <div class="tile">
+      <div class="label">Games scored</div>
+      <div class="value">{{ hc.games_scored }}</div>
+      <div class="note">{{ hc.games_predicted }} predicted so far</div>
+    </div>
+    <div class="tile">
+      <div class="label">Log-loss, same games</div>
+      <div class="value">{{ (hc.hybrid.log_loss if hc.hybrid else none) | num }} vs {{ (hc.elo.log_loss if hc.elo else none) | num }}</div>
+      <div class="note">Challenger vs. Elo; lower is better</div>
+    </div>
+    <div class="tile">
+      <div class="label">Picks correct</div>
+      <div class="value">{{ (hc.hybrid.accuracy if hc.hybrid else none) | pct }}</div>
+      <div class="note">Elo: {{ (hc.elo.accuracy if hc.elo else none) | pct }}</div>
+    </div>
+  </div>
+  {% set pc = hc.promotion_check %}
+  {% if pc %}
+  <p class="sub" style="margin-top: 10px">
+    Promotion is decided by a <a href="{{ repo_url }}/blob/main/docs/promotion-bar-hybrid.md">rule written down before the first live prediction</a>, at the end of the regular season: {{ pc.status }}{% if pc.ci95 %} (so far: {{ pc.games }} games, edge {{ pc.mean_difference | num }}, 95% CI {{ pc.ci95[0] | num }} to {{ pc.ci95[1] | num }}){% endif %}.
+  </p>
+  {% endif %}
+</section>
+{% endif %}
+
 <div class="grid-2">
   <section class="card" aria-labelledby="mkt-h">
     <h2 id="mkt-h">Elo vs. the market</h2>

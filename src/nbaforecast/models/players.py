@@ -44,7 +44,8 @@ class PlayerParams:
 
 class _Player:
     __slots__ = ("gs", "gs_min", "pm", "pm_min", "avail_num", "avail_den", "role_num",
-                 "role_den", "team", "season_team", "last_season_team")  # fmt: skip
+                 "role_den", "team", "season_team", "last_season_team", "last_season")  # fmt: skip
+    NUMBERS = ("gs", "gs_min", "pm", "pm_min", "avail_num", "avail_den", "role_num", "role_den")
 
     def __init__(self) -> None:
         self.gs = self.gs_min = self.pm = self.pm_min = 0.0
@@ -52,6 +53,7 @@ class _Player:
         self.team: str | None = None
         self.season_team: dict[str, float] = defaultdict(float)  # minutes by team, this season
         self.last_season_team: str | None = None
+        self.last_season: str | None = None  # last season they were listed in a box score
 
 
 class PlayerState:
@@ -125,6 +127,7 @@ class PlayerState:
             pid = r.player_id
             listed.add(pid)
             p = self.players[pid]
+            p.last_season = self.season
             if p.team != team:
                 if p.team is not None:
                     self.rosters[p.team].discard(pid)
@@ -148,10 +151,55 @@ class PlayerState:
             p.avail_num = p.avail_num * md + minutes.get(pid, 0)
             p.avail_den = p.avail_den * md + 1
 
+    # --- persistence (the live shadow job keeps this on the data branch) ------------------
+    def to_dict(self, keep_seasons: int = 2) -> dict:
+        """JSON-ready state. Players not listed in a box score in the last `keep_seasons`
+        seasons are dropped: their availability has decayed to ~0, so they no longer move any
+        team's strength, and keeping every player since 2004 would bloat the file."""
+        seasons = sorted({p.last_season for p in self.players.values() if p.last_season})
+        recent = set(seasons[-keep_seasons:])
+        players = {}
+        for pid, p in sorted(self.players.items()):
+            if p.last_season not in recent:
+                continue
+            players[pid] = {
+                **{k: round(getattr(p, k), 6) for k in _Player.NUMBERS},
+                "team": p.team,
+                "season_team": {t: round(m, 1) for t, m in sorted(p.season_team.items())},
+                "last_season_team": p.last_season_team,
+                "last_season": p.last_season,
+            }
+        return {
+            "params": asdict(self.params),
+            "season": self.season,
+            "players": players,
+        }
 
-def walk(player_games: pd.DataFrame, params: PlayerParams | None = None) -> pd.DataFrame:
-    """Pre-game team strengths for every team in every game: one row per (game_id, team_id)."""
-    state = PlayerState(params or PlayerParams())
+    @classmethod
+    def from_dict(cls, data: dict) -> "PlayerState":
+        state = cls(PlayerParams(**data["params"]))
+        state.season = data["season"]
+        for pid, d in data["players"].items():
+            p = state.players[pid]
+            for k in _Player.NUMBERS:
+                setattr(p, k, float(d[k]))
+            p.team, p.last_season_team, p.last_season = (
+                d["team"], d["last_season_team"], d["last_season"]
+            )  # fmt: skip
+            p.season_team = defaultdict(float, d["season_team"])
+            if p.team is not None:
+                state.rosters[p.team].add(pid)
+        return state
+
+
+def walk(
+    player_games: pd.DataFrame,
+    params: PlayerParams | None = None,
+    state: PlayerState | None = None,
+) -> pd.DataFrame:
+    """Pre-game team strengths for every team in every game: one row per (game_id, team_id).
+    Pass `state` to keep the ratings it ends with (the live shadow job starts from them)."""
+    state = state or PlayerState(params or PlayerParams())
     out = []
     ordered = player_games.sort_values(["game_date", "tipoff_utc", "game_id", "team_id"])
     for _, day in ordered.groupby("game_date", sort=True):

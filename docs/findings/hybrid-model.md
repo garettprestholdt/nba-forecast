@@ -13,7 +13,8 @@ needs game-day lineup information?
 - the live Elo, split into team strength and Elo's adaptive home-court estimate;
 - back-to-back flags;
 - exponentially weighted box-score form: net rating and the four factors (shooting, turnovers,
-  offensive rebounding, free throws), home minus away.
+  offensive rebounding, free throws), home minus away. Every game gets its teams' current form;
+  only games with box-score stats update it.
 
 **Player layer** (`models/players.py`), walked date by date so every feature is pre-game:
 - **production**: Game Score per minute, shrunk toward a replacement-level player;
@@ -45,12 +46,12 @@ player memory and shrinkage, projected minutes, team form. 30 settings in all
 | Elo, live model | 0.6254 | 0.2180 | 65.0% |
 | Elo + back-to-back | 0.6232 | 0.2170 | 65.1% |
 | Team stack (Elo + rest + box-score form) | 0.6227 | 0.2168 | 65.4% |
-| **Hybrid, realistic** | **0.6172** | **0.2142** | **66.0%** |
-| Hybrid, knows the lineup | 0.6098 | 0.2112 | 66.8% |
+| **Hybrid, realistic** | **0.6171** | **0.2142** | **66.0%** |
+| Hybrid, knows the lineup | 0.6097 | 0.2111 | 66.8% |
 | Players only, knows the lineup | 0.6122 | 0.2122 | 66.5% |
 
 Paired, game-by-game log-loss differences (95% intervals):
-- **Elo + back-to-back − hybrid (realistic): +0.0060 (+0.0029 to +0.0091).** Players help with no
+- **Elo + back-to-back − hybrid (realistic): +0.0061 (+0.0030 to +0.0092).** Players help with no
   game-day information at all.
 - Team stack − hybrid (realistic): +0.0055 (+0.0026 to +0.0085). Box-score form adds little on
   top of Elo; the gain is from the players.
@@ -58,17 +59,17 @@ Paired, game-by-game log-loss differences (95% intervals):
   available is worth more than everything else combined.
 
 By season, the realistic hybrid beats Elo + back-to-back in 5 of 6 held-out seasons. 2021-22, a
-season of COVID absences, is a tie (0.6309 vs. 0.6304). Knowing the lineup wins all 6.
+season of COVID absences, is a tie (0.6308 vs. 0.6304). Knowing the lineup wins all 6.
 
 ### Where knowing the lineup helps
 Held-out games bucketed by how far the available players' strength falls from the usual roster's:
 
 | Missing talent | Games | Realistic | Knows the lineup |
 |---|---|---|---|
-| Bottom half | 3,888 | 0.6122 | 0.6119 |
-| 50th–80th percentile | 2,333 | 0.6088 | 0.6066 |
+| Bottom half | 3,888 | 0.6121 | 0.6118 |
+| 50th–80th percentile | 2,333 | 0.6087 | 0.6065 |
 | 80th–95th | 1,166 | 0.6296 | 0.6090 |
-| Top 5% | 389 | 0.6801 | 0.6111 |
+| Top 5% | 389 | 0.6799 | 0.6110 |
 
 In half the games, lineup information changes nothing. In the 5% with the biggest absences, the
 realistic model is barely better than a coin flip (0.680 vs. 0.693). Knowing the lineup brings
@@ -79,9 +80,9 @@ Standardized coefficients, from the fit used for 2025-26:
 
 | Feature | Coefficient |
 |---|---|
-| Elo strength | 0.33 |
+| Elo strength | 0.32 |
 | Player production | 0.30 |
-| Shooting edge (eFG) | 0.15 |
+| Shooting edge (eFG) | 0.14 |
 | Player impact (plus-minus) | 0.12 |
 | Offensive rebounding | 0.10 |
 | Home court (Elo's adaptive estimate) | 0.10 |
@@ -92,6 +93,24 @@ Standardized coefficients, from the fit used for 2025-26:
 Net rating and free-throw rate add nothing beyond these. Tuning preferred a long memory for player
 quality (each game keeps 99.5% of its weight per later game) and a short one for availability
 (about the last two team games): talent is stable, and who's healthy changes fast.
+
+## Live shadow mode
+Since the 2026-27 season, the realistic hybrid runs every morning after Elo (`nbaf shadow`). It
+logs its own predictions before tip-off to `shadow/hybrid/` on the `data` branch, but the
+published forecast is still Elo's. The live job has to compute exactly what the backtest did, so
+two checks ran before it went live:
+- **Same transforms:** the live Python versions of the dbt models (Game Score, blank box scores,
+  duplicate ids, team efficiency and four factors) were run on every raw box score of 2005-06,
+  2018-19 and 2025-26 and compared with the warehouse. Every player row, Game Score and
+  played-flag matched; form values matched up to rounding in the 4th decimal. (In 2012-18 the
+  warehouse also has play-by-play rebuilds; live box scores are complete, so the live job
+  doesn't rebuild and just skips a blank one.)
+- **Same state:** one state bootstrapped through 2026-10-24 and advanced two days through the
+  live path, with real ESPN fetches. A second was bootstrapped straight through 2026-10-26. All
+  30 teams' features were identical.
+
+The coefficients for live use (`data/published/hybrid/model.json`) are refit on every completed
+season (2005-06 to 2025-26) with the settings chosen above.
 
 ## Caveats
 - **Calibration:** close, but slightly overconfident at the extremes. Forecasts of 80–90% won 81%
