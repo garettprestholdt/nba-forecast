@@ -74,3 +74,22 @@ def load_team_games(data_dir: Path | None = None) -> pd.DataFrame:
     )
     df["game_date"] = pd.to_datetime(df["game_date"]).dt.date
     return df
+
+
+def load_box_rows(first_season: str, data_dir: Path | None = None) -> pd.DataFrame:
+    """Full regular-season box-score rows (fct_player_games) from `first_season` on, with the
+    team's abbreviation, for career stat lines."""
+    df = _query(
+        f"""
+        select p.game_id, p.season, p.game_date, p.team_id, f.abbr as team_abbr, p.opponent_id,
+               p.is_home, p.player_id, p.player, p.position, p.is_starter as starter,
+               p.did_not_play, p.dnp_reason, p.stats_missing, p.minutes, p.pts, p.fgm, p.fga,
+               p.fg3m, p.fg3a, p.ftm, p.fta, p.oreb, p.dreb, p.reb, p.ast, p.stl, p.blk, p.tov,
+               p.pf, p.plus_minus, p.game_score::double as game_score
+        from fct_player_games as p
+        inner join franchises as f on p.team_id = f.franchise_id::varchar
+        where p.season >= '{first_season}' and p.season_type = 'regular_season'
+        """,
+        data_dir,
+    )
+    return df.astype({"game_date": str}).where(df.notna(), None)

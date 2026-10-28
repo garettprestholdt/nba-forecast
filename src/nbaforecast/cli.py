@@ -316,6 +316,49 @@ def _rosters(args: argparse.Namespace) -> int:
     return 0
 
 
+def _box_sync(args: argparse.Namespace) -> int:
+    from pathlib import Path
+
+    import requests
+
+    from nbaforecast import boxlog, live
+    from nbaforecast.ingest.injuries import fetch_summary
+
+    store = live.Store(Path(args.data_dir))
+    state = store.load_state()
+    session = requests.Session()
+    out = boxlog.sync(store, state.season, lambda g: fetch_summary(g, session), state.last_date)
+    print(f"Box scores for {state.season}: {out['games_added']} games added, "
+          f"{out['missing']} not available yet")  # fmt: skip
+    return 0
+
+
+def _careers(args: argparse.Namespace) -> int:
+    import json
+    from datetime import UTC, datetime
+    from pathlib import Path
+
+    from nbaforecast import boxlog, warehouse
+    from nbaforecast.ingest import rosters
+
+    root = Path(args.data_dir)
+    rows = warehouse.load_box_rows(args.first_season)
+    rows = rows[rows["season"] <= args.last_season]
+    keep = set(rows.loc[rows["season"] >= args.active_since, "player_id"])
+    keep |= set(rosters.load_directory(root))
+    careers = boxlog.build_careers(rows, keep)
+    out = boxlog.careers_path(root)
+    out.parent.mkdir(parents=True, exist_ok=True)
+    payload = {
+        "through_season": args.last_season,
+        "built_at": datetime.now(UTC).isoformat(timespec="seconds"),
+        "players": careers,
+    }
+    out.write_text(json.dumps(payload, separators=(",", ":"), sort_keys=True) + "\n")
+    print(f"Wrote {out}: {len(careers)} players, {out.stat().st_size // 1024} KB")
+    return 0
+
+
 def _verify(args: argparse.Namespace) -> int:
     import subprocess
     from pathlib import Path
@@ -588,6 +631,17 @@ def main(argv: list[str] | None = None) -> int:
     ro = sub.add_parser("rosters", help="refresh the player directory (names, injury status)")
     ro.add_argument("--data-dir", required=True, help="checkout of the data branch")
     ro.set_defaults(func=_rosters)
+
+    bx = sub.add_parser("box-sync", help="add this season's new box scores to the data branch")
+    bx.add_argument("--data-dir", required=True, help="checkout of the data branch")
+    bx.set_defaults(func=_box_sync)
+
+    ca = sub.add_parser("careers", help="season-by-season player stats from the warehouse (local)")
+    ca.add_argument("--data-dir", required=True, help="checkout of the data branch")
+    ca.add_argument("--first-season", default="2004-05")
+    ca.add_argument("--last-season", default="2025-26", help="last completed season")
+    ca.add_argument("--active-since", default="2023-24", help="keep players active since")
+    ca.set_defaults(func=_careers)
 
     ver = sub.add_parser("verify", help="check the data branch before committing")
     ver.add_argument("--data-dir", required=True, help="checkout of the data branch")

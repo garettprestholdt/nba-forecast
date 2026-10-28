@@ -14,17 +14,19 @@ from dataclasses import dataclass
 from datetime import UTC, datetime
 from pathlib import Path
 from typing import Any
+from zoneinfo import ZoneInfo
 
 from jinja2 import Environment, FileSystemLoader, select_autoescape
 
 from nbaforecast import availability, config, metrics, projections, recap
-from nbaforecast.ingest.espn import EASTERN
+from nbaforecast.ingest.espn import EASTERN  # noqa: F401  (slate dates stay US Eastern)
 from nbaforecast.live import Store
 from nbaforecast.models.elo import win_probability
 from nbaforecast.web import fan
 
 HERE = Path(__file__).parent
 REPO_URL = "https://github.com/garettprestholdt/nba-forecast"
+CENTRAL = ZoneInfo("America/Chicago")  # every time shown on the site is Central
 LIVE_CALIBRATION_MIN_GAMES = 100  # fewer than this and live calibration bins are mostly noise
 
 
@@ -68,8 +70,8 @@ def _win_pos(wins: float) -> float:
 
 
 def _tip_et(tipoff_utc: str) -> str:
-    t = datetime.fromisoformat(tipoff_utc).astimezone(EASTERN)
-    return t.strftime("%-I:%M %p ET")
+    t = datetime.fromisoformat(tipoff_utc).astimezone(CENTRAL)
+    return t.strftime("%-I:%M %p CT")
 
 
 def _franchises() -> dict[str, dict[str, str]]:
@@ -629,7 +631,7 @@ def build_context(data_dir: Path, published_dir: Path | None = None) -> dict[str
         "shadow": _shadow(store, season, published),
         "repo_url": REPO_URL,
         "season": season,
-        "built_at": datetime.now(UTC).astimezone(EASTERN).strftime("%b %-d, %Y %-I:%M %p ET"),
+        "built_at": datetime.now(UTC).astimezone(CENTRAL).strftime("%b %-d, %Y %-I:%M %p CT"),
         "ratings_through": state.last_date.isoformat() if state.last_date else None,
         "latest_date": latest_date,
         "slate": slate,
