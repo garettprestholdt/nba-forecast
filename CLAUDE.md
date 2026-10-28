@@ -43,6 +43,15 @@ See `docs/roadmap.md` for the phased plan.
   `uv run nbaf recap-publish --data-dir <data> --workdir <tmp>`
 - Site: `uv run nbaf site --data-dir <data-branch checkout> --out _site` (GitHub Actions
   deploys it to Pages after every daily run and every merge to main)
+- Site pages: Tonight (`index.html`: matchup cards with player scores), Standings & odds
+  (`standings.html`), The model (`model.html`); `ratings.html` redirects. Fan-facing data is built
+  in `web/fan.py` from data-branch files written by the daily job: `projections/<season>.json` and
+  `schedule/<season>.csv` (`nbaf project`, 10,000 simulated seasons), `players/directory.json`
+  (`nbaf rosters`), and the hybrid's `state/hybrid_state.json` (player scores).
+- Logos and headshots load from ESPN's image resizer at view time (never stored in the repo);
+  `fan.USE_ESPN_IMAGES = False` falls back to monograms and initials. Team colors go through
+  `fan.display_color`/`matchup_colors` (contrast against each theme's card, similar pairs
+  separated); `tests/test_fan.py` checks all 30 teams in both themes.
 - Charts: Vega-Lite specs in `web/__init__.py` use color tokens (`@series-1`) that
   `static/charts.js` resolves from CSS custom properties. Field names must not contain
   `' . [ ]` (Vega path syntax); `tests/test_web.py` enforces this.

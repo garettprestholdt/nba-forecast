@@ -1,0 +1,25 @@
+{# Team logo: ESPN's light/dark variants, or a monogram in team colors when images are off. #}
+{% macro logo(team, cls="logo", on_dark=false) -%}
+  {%- if team.logo -%}
+    {%- if on_dark -%}
+      <img class="{{ cls }}" src="{{ team.logo_dark }}" alt="" width="96" height="96" loading="lazy" onerror="this.onerror=null;this.src='{{ team.logo }}'">
+    {%- else -%}
+      <picture><source srcset="{{ team.logo_dark }}" media="(prefers-color-scheme: dark)"><img class="{{ cls }}" src="{{ team.logo }}" alt="" width="96" height="96" loading="lazy" onerror="this.onerror=null;this.previousElementSibling&&this.previousElementSibling.remove();this.src='{{ team.logo }}'"></picture>
+    {%- endif -%}
+  {%- else -%}
+    <span class="mono {{ cls }}" style="--team: {{ team.color }}; --team-ink: {{ team.ink }}" aria-hidden="true">{{ team.abbr }}</span>
+  {%- endif -%}
+{%- endmacro %}
+
+{# One player in a matchup card: headshot (initials underneath, shown if the photo fails), name,
+   position and usual minutes, and their projected Game Score with a bar. #}
+{% macro player(p, side, out=false) -%}
+<li class="pl {{ side }}{% if out %} out{% endif %}">
+  <span class="avatar" aria-hidden="true"><span class="ini">{{ p.initials }}</span>{% if p.headshot %}<img src="{{ p.headshot }}" alt="" loading="lazy" onerror="this.remove()">{% endif %}</span>
+  <span>
+    <span class="nm" title="{{ p.name }}">{{ p.short }}{% if out %}<span class="tag out">Out</span>{% elif p.status == "Day-To-Day" %}<span class="tag gtd" title="Day-to-day: a game-time decision">GTD</span>{% endif %}</span>
+    <span class="sub">{{ p.position or "–" }} · {{ "%.0f" | format(p.minutes) }} min{% if out %} usually{% endif %}</span>
+  </span>
+  <span class="sc" title="Projected Game Score{% if out %} if they played{% endif %}"><b>{{ "%.1f" | format(p.score) }}</b><span class="track"><span class="fill" style="width: {{ (p.bar * 100) | round(1) }}%"></span></span></span>
+</li>
+{%- endmacro %}

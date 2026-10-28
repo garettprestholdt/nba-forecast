@@ -33,7 +33,7 @@
   }
 
   function config(t) {
-    const font = 'system-ui, -apple-system, "Segoe UI", sans-serif';
+    const font = 'Inter, system-ui, -apple-system, "Segoe UI", sans-serif';
     return {
       background: null,
       font,

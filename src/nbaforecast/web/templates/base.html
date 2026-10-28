@@ -4,34 +4,43 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>{% block title %}NBA Forecast{% endblock %}</title>
-  <meta name="description" content="Daily NBA win probabilities from an Elo model, published before tip-off and scored in public against the betting market.">
+  <meta name="description" content="Daily NBA win probabilities, projected standings and playoff odds from a public, self-scoring model. Every forecast is logged before tip-off.">
+  <meta name="theme-color" content="#111214">
+  <link rel="icon" href="assets/mark.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..100,600..900&family=Inter:wght@400;500;600;700&display=swap">
   <link rel="stylesheet" href="assets/style.css?v={{ asset_version }}">
-  <script defer src="https://cdn.jsdelivr.net/npm/vega@5.30.0/build/vega.min.js"></script>
-  <script defer src="https://cdn.jsdelivr.net/npm/vega-lite@5.21.0/build/vega-lite.min.js"></script>
-  <script defer src="https://cdn.jsdelivr.net/npm/vega-embed@6.26.0/build/vega-embed.min.js"></script>
-  <script defer src="assets/charts.js?v={{ asset_version }}"></script>
+  {% block head %}{% endblock %}
 </head>
 <body>
+  <a class="sr-only" href="#main">Skip to content</a>
   <header class="site-header">
     <div class="wrap">
-      <a class="brand" href="index.html">NBA Forecast</a>
-      <nav aria-label="Pages">
-        <a href="index.html"{% if page == "index.html" %} aria-current="page"{% endif %}>Today</a>
-        <a href="ratings.html"{% if page == "ratings.html" %} aria-current="page"{% endif %}>Ratings</a>
-        <a href="model.html"{% if page == "model.html" %} aria-current="page"{% endif %}>Model &amp; backtest</a>
+      <a class="brand" href="index.html" aria-label="NBA Forecast home">
+        <svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="14" fill="var(--brand)"/><path d="M2 16h28M16 2v28M6.1 6.1c5.3 5.3 5.3 14.5 0 19.8M25.9 6.1c-5.3 5.3-5.3 14.5 0 19.8" stroke="#111214" stroke-width="1.8" fill="none"/></svg>
+        <span class="word">NBA <b>Forecast</b></span>
+      </a>
+      <nav class="site-nav" aria-label="Pages">
+        <a href="index.html"{% if page == "index.html" %} aria-current="page"{% endif %}>Tonight</a>
+        <a href="standings.html"{% if page == "standings.html" %} aria-current="page"{% endif %}><span class="long">Standings &amp; odds</span><span class="short">Standings</span></a>
+        <a href="model.html"{% if page == "model.html" %} aria-current="page"{% endif %}><span class="long">The model</span><span class="short">Model</span></a>
         <a href="{{ repo_url }}">Code</a>
       </nav>
     </div>
   </header>
-  <main class="wrap">
-    {% block content %}{% endblock %}
+  {% block hero %}{% endblock %}
+  <main id="main">
+    <div class="wrap">
+      {% block content %}{% endblock %}
+    </div>
   </main>
-  <footer class="wrap">
-    Built {{ built_at }} · ratings through {{ ratings_through | nice_date }} ·
-    data: ESPN scoreboard, The Odds API ·
-    <a href="{{ repo_url }}/tree/data">prediction log</a> ·
-    <a href="{{ repo_url }}">source</a><br>
-    A forecasting and calibration study, not betting advice.
+  <footer>
+    <div class="wrap">
+      <div>Built {{ built_at }} · ratings through {{ ratings_through | nice_date }} ·
+        <a href="{{ repo_url }}/tree/data">prediction log</a> · <a href="{{ repo_url }}">source</a></div>
+      <div class="fine">Data: ESPN, The Odds API. {% if espn_images %}Team logos and player photos are loaded from ESPN; team names and logos are trademarks of the NBA and its teams. {% endif %}A forecasting and calibration study, not betting advice.</div>
+    </div>
   </footer>
   {% block specs %}{% endblock %}
 </body>

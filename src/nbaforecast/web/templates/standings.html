@@ -1,0 +1,118 @@
+{% extends "base.html" %}
+{% from "_macros.html" import logo %}
+{% block title %}Standings &amp; odds · NBA Forecast{% endblock %}
+
+{% set st = standings %}
+{% block hero %}
+<section class="hero" aria-labelledby="hero-h">
+  <div class="wrap">
+    <p class="kicker">{{ season }} season{% if st %} · {{ "{:,}".format(st.simulations) }} simulations{% endif %}</p>
+    <h1 id="hero-h" class="display">The race</h1>
+    <p class="dek">
+      Every team's projected record and playoff odds, from playing out the rest of the season
+      {% if st %}{{ "{:,}".format(st.simulations) }}{% endif %} times with today's ratings, play-in and
+      playoffs included. Updated every morning.
+    </p>
+    {% if st %}
+    <h2 class="kicker" style="margin-top: 26px">Title odds</h2>
+    <div class="contenders" style="margin-top: 8px">
+      {% for c in st.contenders %}
+      <div class="contender" style="--team: {{ c.team.color_d }}">
+        {{ logo(c.team, on_dark=true) }}
+        <span class="pct">{{ c.title | odds }}</span>
+        <span class="ab">{{ c.team.abbr }}</span>
+      </div>
+      {% endfor %}
+    </div>
+    {% endif %}
+  </div>
+</section>
+{% endblock %}
+
+{% block content %}
+{% if st %}
+<div class="section-head">
+  <h2>Projected standings</h2>
+  <span class="aside">Ordered by projected wins</span>
+</div>
+<p class="lede">
+  The bar shows the middle 80% of simulated win totals; the dot is the average. Top six make the
+  playoffs; seven through ten go to the play-in.
+</p>
+<div class="conferences">
+  {% for conf, rows in st.conferences.items() %}
+  <section class="panel" aria-labelledby="conf-{{ conf }}">
+    <h3 id="conf-{{ conf }}">{{ conf }}ern Conference</h3>
+    <div class="table-wrap">
+      <table class="board">
+        <thead>
+          <tr>
+            <th class="r">#</th><th>Team</th><th class="r wide-only">W-L</th><th class="r">Proj.</th>
+            <th class="wide-only"><span class="sr-only">Range of wins</span>{{ win_axis[0] }}–{{ win_axis[1] }} wins</th>
+            <th class="r">Playoffs</th><th class="r">Title</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for r in rows %}
+          {% if loop.index == 7 %}<tr class="cutlabel"><td colspan="7">Play-in</td></tr>{% endif %}
+          {% if loop.index == 11 %}<tr class="cutlabel"><td colspan="7">Lottery</td></tr>{% endif %}
+          <tr class="{{ 'cut' if loop.index in (7, 11) }}" style="--team-l: {{ r.team.color_l }}; --team-d: {{ r.team.color_d }}">
+            <td class="seed">{{ loop.index }}</td>
+            <td><span class="tm">{{ logo(r.team, cls="") }}<span>{{ r.team.short }}</span></span></td>
+            <td class="r wide-only">{{ r.team.record }}</td>
+            <td class="r"><strong>{{ r.proj_record }}</strong></td>
+            <td class="wide-only">
+              <div class="range" title="{{ r.team.short }}: {{ '%.0f' | format(r.wins_p10) }}–{{ '%.0f' | format(r.wins_p90) }} wins in 80% of simulations, {{ '%.1f' | format(r.proj_wins) }} on average">
+                <span class="axis"></span>
+                <span class="mid" style="left: {{ win_pos(41) }}%"></span>
+                <span class="band" style="left: {{ win_pos(r.wins_p10) }}%; width: {{ win_pos(r.wins_p90) - win_pos(r.wins_p10) }}%"></span>
+                <span class="dot" style="left: {{ win_pos(r.proj_wins) }}%"></span>
+              </div>
+            </td>
+            <td class="r">{{ r.playoffs | odds }}</td>
+            <td class="r">{{ r.title | odds }}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </section>
+  {% endfor %}
+</div>
+
+<p class="note" style="margin-top: 16px">
+  Ratings come from the published Elo model (25.2 Elo points ≈ 1 point of margin, measured on
+  2010–26 games). Simulations update ratings after every simulated game. Ties in the standings
+  are broken at random, not by the NBA's tiebreakers. Games not yet scheduled (December NBA Cup
+  fill-ins) are played against an average opponent. Updated {{ st.updated_at[:10] | nice_date }}.
+</p>
+{% else %}
+<p class="empty">Projected standings appear after the next morning run.</p>
+{% endif %}
+
+<div class="section-head" style="margin-top: 40px" id="power">
+  <h2>Power ratings</h2>
+  <span class="aside">Points per game vs. an average team, neutral floor</span>
+</div>
+<p class="lede">
+  How many points better or worse than an average team each side is right now. Two teams' ratings
+  give the expected margin between them (add about {{ "%.1f" | format(home_court_points) }} for home court).
+</p>
+<section class="panel">
+  <ol class="power">
+    {% for t in power %}
+    <li>
+      <span class="rk">{{ loop.index }}</span>
+      {{ logo(t, cls="") }}
+      <span class="nm">{{ t.name }}</span>
+      <span class="div" aria-hidden="true">
+        {% set w = ((t.rating | abs) / rating_span * 50) | round(1) %}
+        <span class="{{ 'pos' if t.rating >= 0 else 'neg' }}" style="width: {{ [w, 50] | min }}%"></span>
+      </span>
+      <span class="v">{{ t.rating | signed }}</span>
+    </li>
+    {% endfor %}
+  </ol>
+</section>
+
+{% endblock %}

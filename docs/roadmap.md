@@ -81,8 +81,11 @@ scorecard covers as much of it as possible. Everything after that is improvement
 - [ ] Champion vs. challenger: shadow predictions, promote only on backtest + live wins
 
 ## Phase 6.5: Fan-friendly site
-- [ ] Ratings in points vs. an average team, projected records, playoff and title odds from
-      season simulations; a cleaner, higher-quality GitHub Pages design
+- [x] Ratings in points vs. an average team (25.2 Elo points = 1 point of margin, fit on 2010-26)
+- [x] Projected records, playoff, play-in and title odds from 10,000 simulated seasons, daily
+- [x] Redesigned site: matchup cards with team logos, win-probability bars in team colors, and
+      each team's key players with headshots and projected Game Scores; a standings "race board";
+      phone layout; light and dark themes
 
 ## Phase 7: Write-up
 - [ ] README with architecture diagram, live link, headline results, reproduction steps
