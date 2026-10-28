@@ -1061,7 +1061,7 @@
    "name": "Jose Alvarado",
    "position": "G",
    "short": "J. Alvarado",
-   "status": "Out",
+   "status": "Day-To-Day",
    "team_id": "18"
   },
   "4277905": {
@@ -1357,7 +1357,7 @@
    "name": "Isaiah Joe",
    "position": "G",
    "short": "I. Joe",
-   "status": "Out",
+   "status": "Day-To-Day",
    "team_id": "8"
   },
   "4395712": {
@@ -2288,6 +2288,14 @@
    "status": "",
    "team_id": "13"
   },
+  "4592699": {
+   "jersey": "25",
+   "name": "Enrique Freeman",
+   "position": "F",
+   "short": "E. Freeman",
+   "status": "",
+   "team_id": "16"
+  },
   "4592714": {
    "jersey": "61",
    "name": "Pat Spencer",
@@ -2461,7 +2469,7 @@
    "name": "Scoot Henderson",
    "position": "G",
    "short": "S. Henderson",
-   "status": "Day-To-Day",
+   "status": "",
    "team_id": "22"
   },
   "4683688": {
@@ -3837,7 +3845,7 @@
    "name": "Egor Demin",
    "position": "G",
    "short": "E. Demin",
-   "status": "",
+   "status": "Day-To-Day",
    "team_id": "17"
   },
   "5175647": {
@@ -4145,5 +4153,5 @@
    "team_id": "27"
   }
  },
- "updated_at": "2026-10-28T00:40:10+00:00"
+ "updated_at": "2026-10-28T06:00:53+00:00"
 }
