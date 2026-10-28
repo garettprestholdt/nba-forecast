@@ -198,3 +198,98 @@ def test_player_state_prunes_long_gone_players():
         state.record("T", [row])
     kept = state.to_dict(keep_seasons=2)["players"]
     assert set(kept) == {"recent", "now"}
+
+
+def window(tmp_path, n=400, *, published=0.6, hybrid=0.6, shadow_share=1.0, playoffs=True,
+           season="2026-27", seed=1, truth=lambda i: 0.6):  # fmt: skip
+    """A season where the home team wins 60% of the time; each model forecasts a fixed
+    probability, so the better model is the one closer to 0.6."""
+    rng = np.random.default_rng(seed)
+    store = live.Store(tmp_path)
+    blank = dict.fromkeys(live.PREDICTION_FIELDS, "")
+    results, preds, shadows = [], [], []
+    for i in range(n):
+        day = f"2026-11-{1 + i % 28:02d}"
+        base = {"game_id": f"{season}-{i}", "season": season, "season_type": "regular_season",
+                "game_date": day, "tipoff_utc": f"{day}T23:30:00+00:00"}  # fmt: skip
+        home_won = rng.random() < truth(i)
+        results.append({**dict.fromkeys(live.RESULT_FIELDS, ""), **base,
+                        "home_score": 110 if home_won else 100,
+                        "away_score": 100 if home_won else 110})  # fmt: skip
+        preds.append({**blank, **base, "p_home": published})
+        if i < shadow_share * n:
+            p = hybrid(i) if callable(hybrid) else hybrid
+            shadows.append({**dict.fromkeys(shadow.SHADOW_FIELDS, ""), **base, "p_home": p})
+    if playoffs:
+        results.append({**dict.fromkeys(live.RESULT_FIELDS, ""), "game_id": "po1",
+                        "season": season, "season_type": "playoffs", "game_date": "2027-04-20",
+                        "home_score": 100, "away_score": 90})  # fmt: skip
+    store.append(store.results_path(season), live.RESULT_FIELDS, results)
+    store.append(store.predictions_path(season), live.PREDICTION_FIELDS, preds)
+    live.Store.append(shadow.log_path(tmp_path, season), shadow.SHADOW_FIELDS, shadows)
+    return store
+
+
+def test_promotion_waits_for_the_end_of_the_regular_season(tmp_path):
+    store = window(tmp_path, published=0.5, hybrid=0.6, playoffs=False)
+    check = shadow.promotion_check(store, ["2026-27"])
+    assert check["status"] == "in progress" and check["games"] == 400
+    assert check["mean_difference"] > 0  # interim numbers are visible, but no decision
+
+
+def test_promotes_a_clearly_better_hybrid(tmp_path):
+    check = shadow.promotion_check(window(tmp_path, published=0.5, hybrid=0.6), ["2026-27"])
+    assert check["status"] == "promote" and all(check["conditions"].values())
+
+
+def test_retires_a_clearly_worse_hybrid(tmp_path):
+    check = shadow.promotion_check(window(tmp_path, published=0.6, hybrid=0.45), ["2026-27"])
+    assert check["status"] == "retire" and check["ci95"][1] < 0
+
+
+def test_inconclusive_first_window_extends_then_stops(tmp_path):
+    # Even on average but noisy game to game: too few games to call it either way.
+    store = window(tmp_path, n=60, published=0.6, hybrid=lambda i: 0.5 if i % 2 else 0.7)
+    assert shadow.promotion_check(store, ["2026-27"])["status"] == "extend"
+    pooled = ["2026-27", "2027-28"]
+    window(tmp_path, n=60, published=0.6, hybrid=lambda i: 0.5 if i % 2 else 0.7,
+           season="2027-28", playoffs=False)  # fmt: skip
+    assert shadow.promotion_check(store, pooled)["status"] == "in progress"
+    assert shadow.promotion_check(store, pooled)["games"] == 120  # both seasons count
+    live.Store.append(store.results_path("2027-28"), live.RESULT_FIELDS, [
+        {**dict.fromkeys(live.RESULT_FIELDS, ""), "game_id": "po2", "season": "2027-28",
+         "season_type": "playoffs", "home_score": 100, "away_score": 90}
+    ])  # fmt: skip
+    assert shadow.promotion_check(store, pooled)["status"] == "not promoted"
+
+
+def test_low_coverage_blocks_promotion(tmp_path):
+    store = window(tmp_path, published=0.5, hybrid=0.6, shadow_share=0.8)
+    check = shadow.promotion_check(store, ["2026-27"])
+    assert check["coverage"] == pytest.approx(0.8) and not check["conditions"]["coverage"]
+    assert check["status"] == "extend"
+
+
+def test_better_but_miscalibrated_hybrid_is_not_promoted(tmp_path):
+    # Two kinds of games: home teams truly win 80% or 40%. The published model says 60% for
+    # both; the hybrid tells them apart but overstates it (90% / 30%). It wins on log-loss but
+    # misses its own forecasts by 10 points, so only the calibration guardrail fails.
+    kind_a = lambda i: i % 2 == 0  # noqa: E731
+    store = window(tmp_path, n=4000, published=0.6,
+                   hybrid=lambda i: 0.9 if kind_a(i) else 0.3,
+                   truth=lambda i: 0.8 if kind_a(i) else 0.4)  # fmt: skip
+    check = shadow.promotion_check(store, ["2026-27"])
+    assert check["conditions"] == {"better_on_average": True, "not_meaningfully_worse": True,
+                                   "coverage": True, "calibration": False}  # fmt: skip
+    assert check["status"] == "extend"
+
+
+def test_promotion_check_pools_the_right_seasons():
+    assert shadow._promotion_seasons("2026-27") == ["2026-27"]
+    assert shadow._promotion_seasons("2027-28") == ["2026-27", "2027-28"]
+    assert shadow._promotion_seasons("2028-29") is None
+
+
+def test_not_started_without_shadow_predictions(tmp_path):
+    store = window(tmp_path, shadow_share=0)
+    assert shadow.promotion_check(store, ["2026-27"])["status"] == "not started"

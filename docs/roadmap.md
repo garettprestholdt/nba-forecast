@@ -72,7 +72,10 @@ scorecard covers as much of it as possible. Everything after that is improvement
       [players add +0.0061 log-loss over Elo + back-to-back; knowing the lineup adds +0.0074 more](findings/hybrid-model.md)
 - [x] Run the realistic hybrid live in shadow mode (player state on the `data` branch, updated
       from each night's box scores; predictions logged next to Elo's)
-- [ ] Promote the hybrid if it beats Elo live (decide the bar and window before looking)
+- [x] Pre-register the promotion bar before any live result: [log-loss, paired by game, over the
+      2026-27 regular season; promote if ahead and the 95% CI's low end is above −0.005](promotion-bar-hybrid.md)
+- [ ] Promotion decision, the morning after the 2026-27 regular season ends (computed in
+      `scorecard/2026-27-hybrid.json`)
 - [ ] Feed pre-game availability (the injury agent's calls) into the lineup version
 - [ ] Test whether players have real individual home/away effects (hierarchical shrinkage)
 - [ ] Champion vs. challenger: shadow predictions, promote only on backtest + live wins

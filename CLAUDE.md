@@ -88,4 +88,8 @@ See `docs/roadmap.md` for the phased plan.
   carry the `triage` label; fix them on a normal branch + PR.
 - Changing the prompt, `recap.py`, or the agent script triggers `recap-test.yml` on the PR:
   the real agent runs on a throwaway copy of the data branch and the check must pass.
+- **The hybrid's promotion bar is pre-registered** (`docs/promotion-bar-hybrid.md`,
+  `shadow.PROMOTION`). Never change the rule, window, or thresholds after seeing live results;
+  only append to its decision record. A model change that alters predictions is a new version
+  with its own window.
 - This is a forecasting and calibration study, not betting advice. Keep README/site wording neutral.

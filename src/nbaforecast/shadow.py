@@ -17,6 +17,7 @@ import copy
 import csv
 import json
 import logging
+import math
 from collections import defaultdict
 from collections.abc import Callable
 from dataclasses import asdict
@@ -386,6 +387,93 @@ def _score(probs: list[float], outcomes: list[int]) -> dict[str, float] | None:
     }
 
 
+# Pre-registered on 2026-10-27, before any live shadow prediction: docs/promotion-bar-hybrid.md.
+# Don't change these to fit results; a different bar needs a new model version and window.
+PROMOTION = {
+    "margin": 0.005,  # promote only if the 95% CI's lower end is above -margin
+    "coverage": 0.90,  # share of the published model's regular-season games the hybrid predicted
+    "reliability_gap": 0.003,  # hybrid reliability may exceed the published model's by this much
+    "window": ["2026-27"],  # regular season only
+    "extension": ["2026-27", "2027-28"],  # pooled, if the first window is inconclusive
+}
+
+
+def _log_loss_one(p: float, y: int) -> float:
+    p = min(max(p, metrics.EPS), 1 - metrics.EPS)
+    return -math.log(p if y == 1 else 1 - p)
+
+
+def promotion_check(store: live.Store, seasons: list[str]) -> dict:
+    """The pre-registered promotion rule, evaluated on the regular seasons in `seasons`.
+    Status stays "in progress" until the last season's regular season is over (its first
+    play-in or playoff result has been ingested)."""
+    pairs, published_games = [], 0
+    over = False
+    for season in seasons:
+        results = {r["game_id"]: r for r in store.read(store.results_path(season))}
+        over = any(r["season_type"] in ("playin", "playoffs") for r in results.values())
+        shadow_rows = {r["game_id"]: r for r in store.read(log_path(store.root, season))
+                       if r["season_type"] == "regular_season"}  # fmt: skip
+        if not shadow_rows:
+            continue
+        start = min(r["game_date"] for r in shadow_rows.values())
+        for e in store.read(store.predictions_path(season)):
+            r = results.get(e["game_id"])
+            if e["season_type"] != "regular_season" or e["game_date"] < start or r is None:
+                continue
+            published_games += 1
+            s = shadow_rows.get(e["game_id"])
+            if s is not None:
+                y = int(int(r["home_score"]) > int(r["away_score"]))
+                pairs.append((float(e["p_home"]), float(s["p_home"]), y))
+    check: dict[str, Any] = {"seasons": seasons, "rule": "docs/promotion-bar-hybrid.md",
+                             "games": len(pairs), "status": "not started"}  # fmt: skip
+    if len(pairs) < 2:
+        return check
+    diffs = [_log_loss_one(pub, y) - _log_loss_one(hyb, y) for pub, hyb, y in pairs]
+    n = len(diffs)
+    mean = sum(diffs) / n
+    sd = math.sqrt(sum((d - mean) ** 2 for d in diffs) / (n - 1))
+    lo, hi = mean - 1.96 * sd / math.sqrt(n), mean + 1.96 * sd / math.sqrt(n)
+    y = [x[2] for x in pairs]
+    rel_pub = metrics.brier_decomposition([x[0] for x in pairs], y)["reliability"]
+    rel_hyb = metrics.brier_decomposition([x[1] for x in pairs], y)["reliability"]
+    coverage = n / published_games if published_games else 0.0
+    passes = {
+        "better_on_average": mean > 0,
+        "not_meaningfully_worse": lo > -PROMOTION["margin"],
+        "coverage": coverage >= PROMOTION["coverage"],
+        "calibration": rel_hyb - rel_pub <= PROMOTION["reliability_gap"],
+    }
+    if not over:
+        status = "in progress"
+    elif all(passes.values()):
+        status = "promote"
+    elif hi < 0:
+        status = "retire"
+    elif seasons == PROMOTION["window"]:
+        status = "extend"
+    else:
+        status = "not promoted"
+    return {
+        **check,
+        "status": status,
+        "regular_season_over": over,
+        "mean_difference": round(mean, 5),  # published minus hybrid; positive = hybrid better
+        "ci95": [round(lo, 5), round(hi, 5)],
+        "coverage": round(coverage, 4),
+        "reliability": {"hybrid": round(rel_hyb, 5), "published": round(rel_pub, 5)},
+        "conditions": passes,
+    }
+
+
+def _promotion_seasons(season: str) -> list[str] | None:
+    for key in ("window", "extension"):
+        if PROMOTION[key][-1] == season:
+            return PROMOTION[key]
+    return None
+
+
 def scorecard(store: live.Store, season: str, now: datetime) -> dict:
     """Hybrid vs. Elo on every game both predicted and that has a result; vs. the market on
     the games that also had a line."""
@@ -414,6 +502,9 @@ def scorecard(store: live.Store, season: str, now: datetime) -> dict:
             "elo": _score([x[1] for x in market], [x[3] for x in market]),
             "market": _score([float(x[2]) for x in market], [x[3] for x in market]),
         },
+        "promotion_check": (
+            promotion_check(store, window) if (window := _promotion_seasons(season)) else None
+        ),
     }
 
 

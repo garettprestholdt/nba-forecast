@@ -234,6 +234,8 @@ def test_shadow_card_only_when_the_challenger_has_a_scorecard(data_dir, tmp_path
         "hybrid": {"log_loss": 0.61234, "brier": 0.21, "accuracy": 0.66667},
         "elo": {"log_loss": 0.64321, "brier": 0.22, "accuracy": 0.55556},
         "head_to_head_with_market": {"games": 0, "hybrid": None, "elo": None, "market": None},
+        "promotion_check": {"status": "in progress", "games": 9, "mean_difference": 0.031,
+                            "ci95": [-0.02, 0.082]},
     }  # fmt: skip
     path = data_dir / "scorecard" / "2026-27-hybrid.json"
     path.parent.mkdir(parents=True, exist_ok=True)
@@ -242,4 +244,5 @@ def test_shadow_card_only_when_the_challenger_has_a_scorecard(data_dir, tmp_path
     web.build(data_dir, out, published_dir=config.PUBLISHED_DIR)
     html = (out / "index.html").read_text()
     assert "shadow mode" in html and "0.612" in html and "0.643" in html
+    assert "promotion-bar-hybrid.md" in html and "in progress" in html
     path.unlink()

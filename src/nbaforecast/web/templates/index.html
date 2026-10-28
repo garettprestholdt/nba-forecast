@@ -165,6 +165,12 @@
       <div class="note">Elo: {{ (hc.elo.accuracy if hc.elo else none) | pct }}</div>
     </div>
   </div>
+  {% set pc = hc.promotion_check %}
+  {% if pc %}
+  <p class="sub" style="margin-top: 10px">
+    Promotion is decided by a <a href="{{ repo_url }}/blob/main/docs/promotion-bar-hybrid.md">rule written down before the first live prediction</a>, at the end of the regular season: {{ pc.status }}{% if pc.ci95 %} (so far: {{ pc.games }} games, edge {{ pc.mean_difference | num }}, 95% CI {{ pc.ci95[0] | num }} to {{ pc.ci95[1] | num }}){% endif %}.
+  </p>
+  {% endif %}
 </section>
 {% endif %}
 
