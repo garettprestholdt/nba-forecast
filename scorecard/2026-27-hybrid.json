@@ -1,0 +1,23 @@
+{
+  "season": "2026-27",
+  "model": "hybrid-realistic-v1",
+  "updated_at": "2026-10-28T00:40:03+00:00",
+  "games_predicted": 1,
+  "games_scored": 0,
+  "hybrid": null,
+  "elo": null,
+  "head_to_head_with_market": {
+    "games": 0,
+    "hybrid": null,
+    "elo": null,
+    "market": null
+  },
+  "promotion_check": {
+    "seasons": [
+      "2026-27"
+    ],
+    "rule": "docs/promotion-bar-hybrid.md",
+    "games": 0,
+    "status": "not started"
+  }
+}

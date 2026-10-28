@@ -1,0 +1,4149 @@
+{
+ "players": {
+  "1966": {
+   "jersey": "23",
+   "name": "LeBron James",
+   "position": "F",
+   "short": "L. James",
+   "status": "",
+   "team_id": "20"
+  },
+  "2490149": {
+   "jersey": "3",
+   "name": "CJ McCollum",
+   "position": "G",
+   "short": "C. McCollum",
+   "status": "",
+   "team_id": "1"
+  },
+  "2528210": {
+   "jersey": "10",
+   "name": "Tim Hardaway Jr.",
+   "position": "G",
+   "short": "T. Hardaway Jr.",
+   "status": "",
+   "team_id": "14"
+  },
+  "2528426": {
+   "jersey": "00",
+   "name": "Jordan Clarkson",
+   "position": "G",
+   "short": "J. Clarkson",
+   "status": "",
+   "team_id": "18"
+  },
+  "2530530": {
+   "jersey": "9",
+   "name": "T.J. McConnell",
+   "position": "G",
+   "short": "T.J. McConnell",
+   "status": "Out",
+   "team_id": "11"
+  },
+  "2578185": {
+   "jersey": "8",
+   "name": "Dorian Finney-Smith",
+   "position": "F",
+   "short": "D. Finney-Smith",
+   "status": "",
+   "team_id": "1"
+  },
+  "2580365": {
+   "jersey": "22",
+   "name": "Larry Nance Jr.",
+   "position": "F",
+   "short": "L. Nance Jr.",
+   "status": "",
+   "team_id": "11"
+  },
+  "2581018": {
+   "jersey": "1",
+   "name": "Kentavious Caldwell-Pope",
+   "position": "G",
+   "short": "K. Caldwell-Pope",
+   "status": "",
+   "team_id": "20"
+  },
+  "2581184": {
+   "jersey": "16",
+   "name": "Anthony Gill",
+   "position": "F",
+   "short": "A. Gill",
+   "status": "",
+   "team_id": "27"
+  },
+  "2583632": {
+   "jersey": "00",
+   "name": "Royce O'Neale",
+   "position": "F",
+   "short": "R. O'Neale",
+   "status": "",
+   "team_id": "30"
+  },
+  "2595516": {
+   "jersey": "24",
+   "name": "Norman Powell",
+   "position": "G",
+   "short": "N. Powell",
+   "status": "",
+   "team_id": "4"
+  },
+  "2596112": {
+   "jersey": "31",
+   "name": "Javonte Green",
+   "position": "G",
+   "short": "J. Green",
+   "status": "",
+   "team_id": "8"
+  },
+  "2990962": {
+   "jersey": "12",
+   "name": "Taurean Prince",
+   "position": "F",
+   "short": "T. Prince",
+   "status": "",
+   "team_id": "8"
+  },
+  "2990969": {
+   "jersey": "32",
+   "name": "Georges Niang",
+   "position": "F",
+   "short": "G. Niang",
+   "status": "",
+   "team_id": "9"
+  },
+  "2990984": {
+   "jersey": "7",
+   "name": "Buddy Hield",
+   "position": "G",
+   "short": "B. Hield",
+   "status": "",
+   "team_id": "4"
+  },
+  "2990992": {
+   "jersey": "36",
+   "name": "Marcus Smart",
+   "position": "G",
+   "short": "M. Smart",
+   "status": "Day-To-Day",
+   "team_id": "10"
+  },
+  "2991043": {
+   "jersey": "12",
+   "name": "Caris LeVert",
+   "position": "G",
+   "short": "C. LeVert",
+   "status": "",
+   "team_id": "15"
+  },
+  "2991070": {
+   "jersey": "3",
+   "name": "Jerami Grant",
+   "position": "F",
+   "short": "J. Grant",
+   "status": "",
+   "team_id": "29"
+  },
+  "2991139": {
+   "jersey": "8",
+   "name": "Kris Dunn",
+   "position": "G",
+   "short": "K. Dunn",
+   "status": "",
+   "team_id": "12"
+  },
+  "2991230": {
+   "jersey": "5",
+   "name": "Fred VanVleet",
+   "position": "G",
+   "short": "F. VanVleet",
+   "status": "",
+   "team_id": "10"
+  },
+  "2991235": {
+   "jersey": "12",
+   "name": "Steven Adams",
+   "position": "C",
+   "short": "S. Adams",
+   "status": "Out",
+   "team_id": "10"
+  },
+  "2991350": {
+   "jersey": "9",
+   "name": "Alex Caruso",
+   "position": "G",
+   "short": "A. Caruso",
+   "status": "Out",
+   "team_id": "25"
+  },
+  "2993874": {
+   "jersey": "12",
+   "name": "Kyle Anderson",
+   "position": "F",
+   "short": "K. Anderson",
+   "status": "",
+   "team_id": "28"
+  },
+  "2995706": {
+   "jersey": "33",
+   "name": "Mario Hezonja",
+   "position": "F",
+   "short": "M. Hezonja",
+   "status": "",
+   "team_id": "5"
+  },
+  "3032976": {
+   "jersey": "27",
+   "name": "Rudy Gobert",
+   "position": "C",
+   "short": "R. Gobert",
+   "status": "",
+   "team_id": "16"
+  },
+  "3032977": {
+   "jersey": "7",
+   "name": "Giannis Antetokounmpo",
+   "position": "F",
+   "short": "G. Antetokounmpo",
+   "status": "",
+   "team_id": "14"
+  },
+  "3032979": {
+   "jersey": "17",
+   "name": "Dennis Schroder",
+   "position": "G",
+   "short": "D. Schroder",
+   "status": "",
+   "team_id": "30"
+  },
+  "3037789": {
+   "jersey": "31",
+   "name": "Bogdan Bogdanovic",
+   "position": "G",
+   "short": "B. Bogdanovic",
+   "status": "",
+   "team_id": "10"
+  },
+  "3059318": {
+   "jersey": "21",
+   "name": "Joel Embiid",
+   "position": "C",
+   "short": "J. Embiid",
+   "status": "",
+   "team_id": "20"
+  },
+  "3059319": {
+   "jersey": "22",
+   "name": "Andrew Wiggins",
+   "position": "F",
+   "short": "A. Wiggins",
+   "status": "",
+   "team_id": "14"
+  },
+  "3062679": {
+   "jersey": "3",
+   "name": "Josh Hart",
+   "position": "G",
+   "short": "J. Hart",
+   "status": "",
+   "team_id": "18"
+  },
+  "3064290": {
+   "jersey": "32",
+   "name": "Aaron Gordon",
+   "position": "F",
+   "short": "A. Gordon",
+   "status": "",
+   "team_id": "7"
+  },
+  "3064440": {
+   "jersey": "8",
+   "name": "Zach LaVine",
+   "position": "G",
+   "short": "Z. LaVine",
+   "status": "",
+   "team_id": "23"
+  },
+  "3064482": {
+   "jersey": "95",
+   "name": "Bobby Portis",
+   "position": "F",
+   "short": "B. Portis",
+   "status": "",
+   "team_id": "14"
+  },
+  "3064514": {
+   "jersey": "30",
+   "name": "Julius Randle",
+   "position": "F",
+   "short": "J. Randle",
+   "status": "",
+   "team_id": "17"
+  },
+  "3064560": {
+   "jersey": "7",
+   "name": "Luke Kornet",
+   "position": "C",
+   "short": "L. Kornet",
+   "status": "",
+   "team_id": "24"
+  },
+  "3078576": {
+   "jersey": "9",
+   "name": "Derrick White",
+   "position": "G",
+   "short": "D. White",
+   "status": "",
+   "team_id": "2"
+  },
+  "3102529": {
+   "jersey": "30",
+   "name": "Clint Capela",
+   "position": "C",
+   "short": "C. Capela",
+   "status": "",
+   "team_id": "10"
+  },
+  "3102530": {
+   "jersey": "30",
+   "name": "Jusuf Nurkic",
+   "position": "C",
+   "short": "J. Nurkic",
+   "status": "Out",
+   "team_id": "26"
+  },
+  "3102531": {
+   "jersey": "7",
+   "name": "Kristaps Porzingis",
+   "position": "C",
+   "short": "K. Porzingis",
+   "status": "Out",
+   "team_id": "9"
+  },
+  "3112335": {
+   "jersey": "15",
+   "name": "Nikola Jokic",
+   "position": "C",
+   "short": "N. Jokic",
+   "status": "",
+   "team_id": "7"
+  },
+  "3133602": {
+   "jersey": "10",
+   "name": "Svi Mykhailiuk",
+   "position": "G",
+   "short": "S. Mykhailiuk",
+   "status": "",
+   "team_id": "26"
+  },
+  "3133603": {
+   "jersey": "10",
+   "name": "Kelly Oubre Jr.",
+   "position": "G",
+   "short": "K. Oubre Jr.",
+   "status": "",
+   "team_id": "11"
+  },
+  "3133626": {
+   "jersey": "34",
+   "name": "Kenrich Williams",
+   "position": "G",
+   "short": "K. Williams",
+   "status": "",
+   "team_id": "25"
+  },
+  "3133628": {
+   "jersey": "3",
+   "name": "Myles Turner",
+   "position": "C",
+   "short": "M. Turner",
+   "status": "",
+   "team_id": "15"
+  },
+  "3133635": {
+   "jersey": "2",
+   "name": "Jevon Carter",
+   "position": "G",
+   "short": "J. Carter",
+   "status": "",
+   "team_id": "19"
+  },
+  "3134903": {
+   "jersey": "0",
+   "name": "Gary Payton II",
+   "position": "G",
+   "short": "G. Payton II",
+   "status": "",
+   "team_id": "9"
+  },
+  "3134907": {
+   "jersey": "18",
+   "name": "Kyle Kuzma",
+   "position": "F",
+   "short": "K. Kuzma",
+   "status": "",
+   "team_id": "15"
+  },
+  "3134908": {
+   "jersey": "19",
+   "name": "Jakob Poeltl",
+   "position": "C",
+   "short": "J. Poeltl",
+   "status": "",
+   "team_id": "28"
+  },
+  "3134916": {
+   "jersey": "0",
+   "name": "Jordan McLaughlin",
+   "position": "G",
+   "short": "J. McLaughlin",
+   "status": "",
+   "team_id": "24"
+  },
+  "3135045": {
+   "jersey": "8",
+   "name": "Grayson Allen",
+   "position": "G",
+   "short": "G. Allen",
+   "status": "",
+   "team_id": "30"
+  },
+  "3135046": {
+   "jersey": "5",
+   "name": "Tyus Jones",
+   "position": "G",
+   "short": "T. Jones",
+   "status": "",
+   "team_id": "7"
+  },
+  "3136193": {
+   "jersey": "15",
+   "name": "Devin Booker",
+   "position": "G",
+   "short": "D. Booker",
+   "status": "",
+   "team_id": "21"
+  },
+  "3136195": {
+   "jersey": "32",
+   "name": "Karl-Anthony Towns",
+   "position": "C",
+   "short": "K. Towns",
+   "status": "",
+   "team_id": "18"
+  },
+  "3136196": {
+   "jersey": "41",
+   "name": "Trey Lyles",
+   "position": "F",
+   "short": "T. Lyles",
+   "status": "",
+   "team_id": "16"
+  },
+  "3136777": {
+   "jersey": "8",
+   "name": "Jae'Sean Tate",
+   "position": "F",
+   "short": "J. Tate",
+   "status": "",
+   "team_id": "10"
+  },
+  "3138160": {
+   "jersey": "16",
+   "name": "Caleb Martin",
+   "position": "F",
+   "short": "C. Martin",
+   "status": "Out",
+   "team_id": "6"
+  },
+  "3138196": {
+   "jersey": "23",
+   "name": "Cameron Johnson",
+   "position": "F",
+   "short": "C. Johnson",
+   "status": "Day-To-Day",
+   "team_id": "7"
+  },
+  "3146557": {
+   "jersey": "31",
+   "name": "Jock Landale",
+   "position": "C",
+   "short": "J. Landale",
+   "status": "",
+   "team_id": "1"
+  },
+  "3147657": {
+   "jersey": "25",
+   "name": "Mikal Bridges",
+   "position": "G",
+   "short": "M. Bridges",
+   "status": "",
+   "team_id": "18"
+  },
+  "3149673": {
+   "jersey": "43",
+   "name": "Pascal Siakam",
+   "position": "F",
+   "short": "P. Siakam",
+   "status": "",
+   "team_id": "11"
+  },
+  "3150844": {
+   "jersey": "13",
+   "name": "Moritz Wagner",
+   "position": "C",
+   "short": "M. Wagner",
+   "status": "",
+   "team_id": "17"
+  },
+  "3155526": {
+   "jersey": "3",
+   "name": "Dillon Brooks",
+   "position": "F",
+   "short": "D. Brooks",
+   "status": "",
+   "team_id": "21"
+  },
+  "3155535": {
+   "jersey": "55",
+   "name": "Kevon Looney",
+   "position": "F",
+   "short": "K. Looney",
+   "status": "",
+   "team_id": "13"
+  },
+  "3155942": {
+   "jersey": "11",
+   "name": "Domantas Sabonis",
+   "position": "F",
+   "short": "D. Sabonis",
+   "status": "",
+   "team_id": "23"
+  },
+  "3157465": {
+   "jersey": "55",
+   "name": "Duncan Robinson",
+   "position": "F",
+   "short": "D. Robinson",
+   "status": "",
+   "team_id": "8"
+  },
+  "3195": {
+   "jersey": "45",
+   "name": "Mike Conley",
+   "position": "G",
+   "short": "M. Conley",
+   "status": "",
+   "team_id": "2"
+  },
+  "3202": {
+   "jersey": "7",
+   "name": "Kevin Durant",
+   "position": "F",
+   "short": "K. Durant",
+   "status": "",
+   "team_id": "10"
+  },
+  "3213": {
+   "jersey": "20",
+   "name": "Al Horford",
+   "position": "C",
+   "short": "A. Horford",
+   "status": "",
+   "team_id": "9"
+  },
+  "3442": {
+   "jersey": "6",
+   "name": "DeAndre Jordan",
+   "position": "C",
+   "short": "D. Jordan",
+   "status": "",
+   "team_id": "3"
+  },
+  "3448": {
+   "jersey": "11",
+   "name": "Brook Lopez",
+   "position": "C",
+   "short": "B. Lopez",
+   "status": "",
+   "team_id": "12"
+  },
+  "3899664": {
+   "jersey": "0",
+   "name": "Simone Fontecchio",
+   "position": "F",
+   "short": "S. Fontecchio",
+   "status": "Day-To-Day",
+   "team_id": "14"
+  },
+  "3904625": {
+   "jersey": "99",
+   "name": "Tacko Fall",
+   "position": "C",
+   "short": "T. Fall",
+   "status": "Out",
+   "team_id": "20"
+  },
+  "3907387": {
+   "jersey": "25",
+   "name": "Ben Simmons",
+   "position": "G",
+   "short": "B. Simmons",
+   "status": "Out",
+   "team_id": "23"
+  },
+  "3907497": {
+   "jersey": "5",
+   "name": "Dejounte Murray",
+   "position": "G",
+   "short": "D. Murray",
+   "status": "",
+   "team_id": "3"
+  },
+  "3907498": {
+   "jersey": "4",
+   "name": "Matisse Thybulle",
+   "position": "G",
+   "short": "M. Thybulle",
+   "status": "",
+   "team_id": "13"
+  },
+  "3907823": {
+   "jersey": "14",
+   "name": "Terance Mann",
+   "position": "G",
+   "short": "T. Mann",
+   "status": "",
+   "team_id": "17"
+  },
+  "3908809": {
+   "jersey": "45",
+   "name": "Donovan Mitchell",
+   "position": "G",
+   "short": "D. Mitchell",
+   "status": "",
+   "team_id": "5"
+  },
+  "3908845": {
+   "jersey": "20",
+   "name": "John Collins",
+   "position": "F",
+   "short": "J. Collins",
+   "status": "",
+   "team_id": "8"
+  },
+  "3912848": {
+   "jersey": "45",
+   "name": "Dean Wade",
+   "position": "F",
+   "short": "D. Wade",
+   "status": "",
+   "team_id": "20"
+  },
+  "3913174": {
+   "jersey": "8",
+   "name": "Luke Kennard",
+   "position": "G",
+   "short": "L. Kennard",
+   "status": "",
+   "team_id": "21"
+  },
+  "3913176": {
+   "jersey": "7",
+   "name": "Brandon Ingram",
+   "position": "F",
+   "short": "B. Ingram",
+   "status": "Out",
+   "team_id": "12"
+  },
+  "3914044": {
+   "jersey": "44",
+   "name": "Landry Shamet",
+   "position": "G",
+   "short": "L. Shamet",
+   "status": "",
+   "team_id": "18"
+  },
+  "3917376": {
+   "jersey": "7",
+   "name": "Jaylen Brown",
+   "position": "G",
+   "short": "J. Brown",
+   "status": "",
+   "team_id": "20"
+  },
+  "3934672": {
+   "jersey": "11",
+   "name": "Jalen Brunson",
+   "position": "G",
+   "short": "J. Brunson",
+   "status": "",
+   "team_id": "18"
+  },
+  "3934673": {
+   "jersey": "0",
+   "name": "Donte DiVincenzo",
+   "position": "G",
+   "short": "D. DiVincenzo",
+   "status": "Out",
+   "team_id": "16"
+  },
+  "3934719": {
+   "jersey": "8",
+   "name": "OG Anunoby",
+   "position": "F",
+   "short": "O. Anunoby",
+   "status": "",
+   "team_id": "18"
+  },
+  "3934723": {
+   "jersey": "3",
+   "name": "Thomas Bryant",
+   "position": "C",
+   "short": "T. Bryant",
+   "status": "",
+   "team_id": "5"
+  },
+  "3936099": {
+   "jersey": "5",
+   "name": "Derrick Jones Jr.",
+   "position": "F",
+   "short": "D. Jones Jr.",
+   "status": "",
+   "team_id": "12"
+  },
+  "3936299": {
+   "jersey": "27",
+   "name": "Jamal Murray",
+   "position": "G",
+   "short": "J. Murray",
+   "status": "",
+   "team_id": "7"
+  },
+  "3945274": {
+   "jersey": "77",
+   "name": "Luka Doncic",
+   "position": "G",
+   "short": "L. Doncic",
+   "status": "",
+   "team_id": "13"
+  },
+  "3975": {
+   "jersey": "30",
+   "name": "Stephen Curry",
+   "position": "G",
+   "short": "S. Curry",
+   "status": "",
+   "team_id": "9"
+  },
+  "3978": {
+   "jersey": "10",
+   "name": "DeMar DeRozan",
+   "position": "G",
+   "short": "D. DeRozan",
+   "status": "",
+   "team_id": "7"
+  },
+  "3992": {
+   "jersey": "1",
+   "name": "James Harden",
+   "position": "G",
+   "short": "J. Harden",
+   "status": "",
+   "team_id": "5"
+  },
+  "3995": {
+   "jersey": "5",
+   "name": "Jrue Holiday",
+   "position": "G",
+   "short": "J. Holiday",
+   "status": "",
+   "team_id": "22"
+  },
+  "4017837": {
+   "jersey": "40",
+   "name": "Ivica Zubac",
+   "position": "C",
+   "short": "I. Zubac",
+   "status": "Out",
+   "team_id": "11"
+  },
+  "4065648": {
+   "jersey": "0",
+   "name": "Jayson Tatum",
+   "position": "F",
+   "short": "J. Tatum",
+   "status": "",
+   "team_id": "2"
+  },
+  "4065654": {
+   "jersey": "1",
+   "name": "Jonathan Isaac",
+   "position": "F",
+   "short": "J. Isaac",
+   "status": "Out",
+   "team_id": "19"
+  },
+  "4065663": {
+   "jersey": "21",
+   "name": "Josh Okogie",
+   "position": "G",
+   "short": "J. Okogie",
+   "status": "",
+   "team_id": "26"
+  },
+  "4065673": {
+   "jersey": "13",
+   "name": "Tony Bradley",
+   "position": "C",
+   "short": "T. Bradley",
+   "status": "",
+   "team_id": "26"
+  },
+  "4065731": {
+   "jersey": "32",
+   "name": "Jay Huff",
+   "position": "C",
+   "short": "J. Huff",
+   "status": "",
+   "team_id": "11"
+  },
+  "4065732": {
+   "jersey": "15",
+   "name": "De'Andre Hunter",
+   "position": "F",
+   "short": "D. Hunter",
+   "status": "",
+   "team_id": "23"
+  },
+  "4065733": {
+   "jersey": "2",
+   "name": "Ty Jerome",
+   "position": "G",
+   "short": "T. Jerome",
+   "status": "",
+   "team_id": "29"
+  },
+  "4065778": {
+   "jersey": "31",
+   "name": "Max Strus",
+   "position": "G",
+   "short": "M. Strus",
+   "status": "Out",
+   "team_id": "12"
+  },
+  "4065804": {
+   "jersey": "30",
+   "name": "Sam Hauser",
+   "position": "F",
+   "short": "S. Hauser",
+   "status": "",
+   "team_id": "2"
+  },
+  "4065813": {
+   "jersey": "11",
+   "name": "Alpha Diallo",
+   "position": "F",
+   "short": "A. Diallo",
+   "status": "Out",
+   "team_id": "7"
+  },
+  "4066211": {
+   "jersey": "35",
+   "name": "Robert Williams III",
+   "position": "C",
+   "short": "R. Williams III",
+   "status": "",
+   "team_id": "22"
+  },
+  "4066218": {
+   "jersey": "2",
+   "name": "Grant Williams",
+   "position": "F",
+   "short": "G. Williams",
+   "status": "Out",
+   "team_id": "30"
+  },
+  "4066259": {
+   "jersey": "4",
+   "name": "De'Aaron Fox",
+   "position": "G",
+   "short": "D. Fox",
+   "status": "",
+   "team_id": "24"
+  },
+  "4066261": {
+   "jersey": "13",
+   "name": "Bam Adebayo",
+   "position": "C",
+   "short": "B. Adebayo",
+   "status": "",
+   "team_id": "14"
+  },
+  "4066262": {
+   "jersey": "0",
+   "name": "Malik Monk",
+   "position": "G",
+   "short": "M. Monk",
+   "status": "",
+   "team_id": "23"
+  },
+  "4066268": {
+   "jersey": "26",
+   "name": "Duop Reath",
+   "position": "C",
+   "short": "D. Reath",
+   "status": "",
+   "team_id": "21"
+  },
+  "4066320": {
+   "jersey": "3",
+   "name": "Desmond Bane",
+   "position": "G",
+   "short": "D. Bane",
+   "status": "",
+   "team_id": "19"
+  },
+  "4066328": {
+   "jersey": "31",
+   "name": "Jarrett Allen",
+   "position": "C",
+   "short": "J. Allen",
+   "status": "",
+   "team_id": "5"
+  },
+  "4066336": {
+   "jersey": "23",
+   "name": "Lauri Markkanen",
+   "position": "F",
+   "short": "L. Markkanen",
+   "status": "Day-To-Day",
+   "team_id": "26"
+  },
+  "4066354": {
+   "jersey": "11",
+   "name": "Payton Pritchard",
+   "position": "G",
+   "short": "P. Pritchard",
+   "status": "",
+   "team_id": "2"
+  },
+  "4066372": {
+   "jersey": "27",
+   "name": "Kevin Huerter",
+   "position": "G",
+   "short": "K. Huerter",
+   "status": "",
+   "team_id": "8"
+  },
+  "4066383": {
+   "jersey": "22",
+   "name": "Miles Bridges",
+   "position": "F",
+   "short": "M. Bridges",
+   "status": "",
+   "team_id": "21"
+  },
+  "4066399": {
+   "jersey": "9",
+   "name": "Micah Potter",
+   "position": "C",
+   "short": "M. Potter",
+   "status": "",
+   "team_id": "22"
+  },
+  "4066436": {
+   "jersey": "8",
+   "name": "De'Anthony Melton",
+   "position": "G",
+   "short": "D. Melton",
+   "status": "",
+   "team_id": "9"
+  },
+  "4066457": {
+   "jersey": "15",
+   "name": "Austin Reaves",
+   "position": "G",
+   "short": "A. Reaves",
+   "status": "",
+   "team_id": "13"
+  },
+  "4066648": {
+   "jersey": "28",
+   "name": "Rui Hachimura",
+   "position": "F",
+   "short": "R. Hachimura",
+   "status": "Out",
+   "team_id": "12"
+  },
+  "4066650": {
+   "jersey": "12",
+   "name": "Zach Collins",
+   "position": "F",
+   "short": "Z. Collins",
+   "status": "",
+   "team_id": "4"
+  },
+  "4066757": {
+   "jersey": "5",
+   "name": "Sam Merrill",
+   "position": "G",
+   "short": "S. Merrill",
+   "status": "",
+   "team_id": "5"
+  },
+  "4066993": {
+   "jersey": "12",
+   "name": "Dru Smith",
+   "position": "G",
+   "short": "D. Smith",
+   "status": "",
+   "team_id": "14"
+  },
+  "4222252": {
+   "jersey": "55",
+   "name": "Isaiah Hartenstein",
+   "position": "C",
+   "short": "I. Hartenstein",
+   "status": "",
+   "team_id": "25"
+  },
+  "4251": {
+   "jersey": "13",
+   "name": "Paul George",
+   "position": "F",
+   "short": "P. George",
+   "status": "",
+   "team_id": "2"
+  },
+  "4277811": {
+   "jersey": "10",
+   "name": "Collin Sexton",
+   "position": "G",
+   "short": "C. Sexton",
+   "status": "",
+   "team_id": "13"
+  },
+  "4277813": {
+   "jersey": "2",
+   "name": "Herbert Jones",
+   "position": "F",
+   "short": "H. Jones",
+   "status": "",
+   "team_id": "3"
+  },
+  "4277843": {
+   "jersey": "5",
+   "name": "Gary Trent Jr.",
+   "position": "G",
+   "short": "G. Trent Jr.",
+   "status": "",
+   "team_id": "15"
+  },
+  "4277847": {
+   "jersey": "34",
+   "name": "Wendell Carter Jr.",
+   "position": "C",
+   "short": "W. Carter Jr.",
+   "status": "",
+   "team_id": "19"
+  },
+  "4277848": {
+   "jersey": "3",
+   "name": "Marvin Bagley III",
+   "position": "F",
+   "short": "M. Bagley III",
+   "status": "",
+   "team_id": "7"
+  },
+  "4277869": {
+   "jersey": "5",
+   "name": "Jose Alvarado",
+   "position": "G",
+   "short": "J. Alvarado",
+   "status": "Out",
+   "team_id": "18"
+  },
+  "4277905": {
+   "jersey": "3",
+   "name": "Trae Young",
+   "position": "G",
+   "short": "T. Young",
+   "status": "",
+   "team_id": "27"
+  },
+  "4277919": {
+   "jersey": "44",
+   "name": "Mo Bamba",
+   "position": "C",
+   "short": "M. Bamba",
+   "status": "",
+   "team_id": "26"
+  },
+  "4277922": {
+   "jersey": "00",
+   "name": "Jericho Sims",
+   "position": "C",
+   "short": "J. Sims",
+   "status": "",
+   "team_id": "15"
+  },
+  "4277951": {
+   "jersey": "52",
+   "name": "Luka Garza",
+   "position": "C",
+   "short": "L. Garza",
+   "status": "",
+   "team_id": "2"
+  },
+  "4277956": {
+   "jersey": "3",
+   "name": "Jordan Poole",
+   "position": "G",
+   "short": "J. Poole",
+   "status": "Day-To-Day",
+   "team_id": "3"
+  },
+  "4277961": {
+   "jersey": "20",
+   "name": "Jaren Jackson Jr.",
+   "position": "F",
+   "short": "J. Jackson Jr.",
+   "status": "Out",
+   "team_id": "26"
+  },
+  "4278039": {
+   "jersey": "7",
+   "name": "Nickeil Alexander-Walker",
+   "position": "G",
+   "short": "N. Alexander-Walker",
+   "status": "",
+   "team_id": "1"
+  },
+  "4278049": {
+   "jersey": "21",
+   "name": "Daniel Gafford",
+   "position": "F",
+   "short": "D. Gafford",
+   "status": "",
+   "team_id": "6"
+  },
+  "4278053": {
+   "jersey": "2",
+   "name": "Davion Mitchell",
+   "position": "G",
+   "short": "D. Mitchell",
+   "status": "",
+   "team_id": "14"
+  },
+  "4278067": {
+   "jersey": "9",
+   "name": "Nic Claxton",
+   "position": "C",
+   "short": "N. Claxton",
+   "status": "Out",
+   "team_id": "4"
+  },
+  "4278073": {
+   "jersey": "2",
+   "name": "Shai Gilgeous-Alexander",
+   "position": "G",
+   "short": "S. Gilgeous-Alexander",
+   "status": "",
+   "team_id": "25"
+  },
+  "4278076": {
+   "jersey": "8",
+   "name": "Nick Richards",
+   "position": "C",
+   "short": "N. Richards",
+   "status": "",
+   "team_id": "14"
+  },
+  "4278077": {
+   "jersey": "2",
+   "name": "Jarred Vanderbilt",
+   "position": "F",
+   "short": "J. Vanderbilt",
+   "status": "",
+   "team_id": "13"
+  },
+  "4278078": {
+   "jersey": "25",
+   "name": "P.J. Washington",
+   "position": "F",
+   "short": "P.J. Washington",
+   "status": "",
+   "team_id": "6"
+  },
+  "4278104": {
+   "jersey": "17",
+   "name": "Michael Porter Jr.",
+   "position": "F",
+   "short": "M. Porter Jr.",
+   "status": "",
+   "team_id": "17"
+  },
+  "4278129": {
+   "jersey": "8",
+   "name": "Deandre Ayton",
+   "position": "C",
+   "short": "D. Ayton",
+   "status": "",
+   "team_id": "27"
+  },
+  "4278355": {
+   "jersey": "1",
+   "name": "Obi Toppin",
+   "position": "F",
+   "short": "O. Toppin",
+   "status": "Day-To-Day",
+   "team_id": "11"
+  },
+  "4278402": {
+   "jersey": "23",
+   "name": "Jordan Goodwin",
+   "position": "G",
+   "short": "J. Goodwin",
+   "status": "",
+   "team_id": "21"
+  },
+  "4278562": {
+   "jersey": "7",
+   "name": "Paul Reed",
+   "position": "F",
+   "short": "P. Reed",
+   "status": "",
+   "team_id": "8"
+  },
+  "4278572": {
+   "jersey": "8",
+   "name": "Jamal Cain",
+   "position": "F",
+   "short": "J. Cain",
+   "status": "",
+   "team_id": "19"
+  },
+  "4278580": {
+   "jersey": "54",
+   "name": "Sandro Mamukelashvili",
+   "position": "F",
+   "short": "S. Mamukelashvili",
+   "status": "",
+   "team_id": "13"
+  },
+  "4278585": {
+   "jersey": "12",
+   "name": "Collin Gillespie",
+   "position": "G",
+   "short": "C. Gillespie",
+   "status": "",
+   "team_id": "21"
+  },
+  "4278594": {
+   "jersey": "3",
+   "name": "Naji Marshall",
+   "position": "F",
+   "short": "N. Marshall",
+   "status": "Day-To-Day",
+   "team_id": "6"
+  },
+  "4279318": {
+   "jersey": "29",
+   "name": "Daeqwon Plowden",
+   "position": "G",
+   "short": "D. Plowden",
+   "status": "",
+   "team_id": "23"
+  },
+  "4279888": {
+   "jersey": "1",
+   "name": "Ja Morant",
+   "position": "G",
+   "short": "J. Morant",
+   "status": "",
+   "team_id": "22"
+  },
+  "4280151": {
+   "jersey": "24",
+   "name": "Corey Kispert",
+   "position": "F",
+   "short": "C. Kispert",
+   "status": "",
+   "team_id": "1"
+  },
+  "4280245": {
+   "jersey": "17",
+   "name": "Jamaree Bouyea",
+   "position": "G",
+   "short": "J. Bouyea",
+   "status": "",
+   "team_id": "21"
+  },
+  "4348700": {
+   "jersey": "35",
+   "name": "Goga Bitadze",
+   "position": "C",
+   "short": "G. Bitadze",
+   "status": "",
+   "team_id": "19"
+  },
+  "4351851": {
+   "jersey": "5",
+   "name": "Anfernee Simons",
+   "position": "G",
+   "short": "A. Simons",
+   "status": "",
+   "team_id": "20"
+  },
+  "4351852": {
+   "jersey": "4",
+   "name": "Mitchell Robinson",
+   "position": "C",
+   "short": "M. Robinson",
+   "status": "",
+   "team_id": "2"
+  },
+  "4395625": {
+   "jersey": "9",
+   "name": "RJ Barrett",
+   "position": "F",
+   "short": "R. Barrett",
+   "status": "",
+   "team_id": "28"
+  },
+  "4395626": {
+   "jersey": "30",
+   "name": "Tre Jones",
+   "position": "G",
+   "short": "T. Jones",
+   "status": "",
+   "team_id": "4"
+  },
+  "4395628": {
+   "jersey": "1",
+   "name": "Zion Williamson",
+   "position": "F",
+   "short": "Z. Williamson",
+   "status": "",
+   "team_id": "3"
+  },
+  "4395630": {
+   "jersey": "24",
+   "name": "Devin Vassell",
+   "position": "G",
+   "short": "D. Vassell",
+   "status": "",
+   "team_id": "24"
+  },
+  "4395650": {
+   "jersey": "19",
+   "name": "Leaky Black",
+   "position": "F",
+   "short": "L. Black",
+   "status": "",
+   "team_id": "23"
+  },
+  "4395651": {
+   "jersey": "3",
+   "name": "Coby White",
+   "position": "G",
+   "short": "C. White",
+   "status": "Out",
+   "team_id": "30"
+  },
+  "4395702": {
+   "jersey": "17",
+   "name": "Isaiah Joe",
+   "position": "G",
+   "short": "I. Joe",
+   "status": "Out",
+   "team_id": "8"
+  },
+  "4395712": {
+   "jersey": "2",
+   "name": "Andrew Nembhard",
+   "position": "G",
+   "short": "A. Nembhard",
+   "status": "Day-To-Day",
+   "team_id": "11"
+  },
+  "4395723": {
+   "jersey": "3",
+   "name": "Keldon Johnson",
+   "position": "F",
+   "short": "K. Johnson",
+   "status": "",
+   "team_id": "24"
+  },
+  "4395724": {
+   "jersey": "5",
+   "name": "Immanuel Quickley",
+   "position": "G",
+   "short": "I. Quickley",
+   "status": "",
+   "team_id": "28"
+  },
+  "4395725": {
+   "jersey": "11",
+   "name": "Tyler Herro",
+   "position": "G",
+   "short": "T. Herro",
+   "status": "",
+   "team_id": "15"
+  },
+  "4396818": {
+   "jersey": "22",
+   "name": "Jordan Miller",
+   "position": "G",
+   "short": "J. Miller",
+   "status": "Out",
+   "team_id": "12"
+  },
+  "4396907": {
+   "jersey": "10",
+   "name": "Darius Garland",
+   "position": "G",
+   "short": "D. Garland",
+   "status": "",
+   "team_id": "12"
+  },
+  "4396909": {
+   "jersey": "23",
+   "name": "Aaron Nesmith",
+   "position": "G",
+   "short": "A. Nesmith",
+   "status": "Day-To-Day",
+   "team_id": "11"
+  },
+  "4396963": {
+   "jersey": "25",
+   "name": "Blake Hinson",
+   "position": "F",
+   "short": "B. Hinson",
+   "status": "Out",
+   "team_id": "26"
+  },
+  "4396971": {
+   "jersey": "0",
+   "name": "Naz Reid",
+   "position": "C",
+   "short": "N. Reid",
+   "status": "",
+   "team_id": "30"
+  },
+  "4396993": {
+   "jersey": "0",
+   "name": "Tyrese Haliburton",
+   "position": "G",
+   "short": "T. Haliburton",
+   "status": "Day-To-Day",
+   "team_id": "11"
+  },
+  "4397002": {
+   "jersey": "13",
+   "name": "Ayo Dosunmu",
+   "position": "G",
+   "short": "A. Dosunmu",
+   "status": "",
+   "team_id": "16"
+  },
+  "4397014": {
+   "jersey": "5",
+   "name": "Quentin Grimes",
+   "position": "G",
+   "short": "Q. Grimes",
+   "status": "",
+   "team_id": "13"
+  },
+  "4397020": {
+   "jersey": "0",
+   "name": "Luguentz Dort",
+   "position": "G",
+   "short": "L. Dort",
+   "status": "",
+   "team_id": "1"
+  },
+  "4397040": {
+   "jersey": "12",
+   "name": "Brandon Williams",
+   "position": "G",
+   "short": "B. Williams",
+   "status": "",
+   "team_id": "9"
+  },
+  "4397077": {
+   "jersey": "11",
+   "name": "Jaxson Hayes",
+   "position": "C",
+   "short": "J. Hayes",
+   "status": "Day-To-Day",
+   "team_id": "26"
+  },
+  "4397114": {
+   "jersey": "30",
+   "name": "Cormac Ryan",
+   "position": "G",
+   "short": "C. Ryan",
+   "status": "",
+   "team_id": "15"
+  },
+  "4397136": {
+   "jersey": "41",
+   "name": "Saddiq Bey",
+   "position": "G",
+   "short": "S. Bey",
+   "status": "",
+   "team_id": "3"
+  },
+  "4397183": {
+   "jersey": "2",
+   "name": "Aaron Wiggins",
+   "position": "G",
+   "short": "A. Wiggins",
+   "status": "Day-To-Day",
+   "team_id": "1"
+  },
+  "4397189": {
+   "jersey": "25",
+   "name": "Jalen Smith",
+   "position": "F",
+   "short": "J. Smith",
+   "status": "",
+   "team_id": "4"
+  },
+  "4397204": {
+   "jersey": "14",
+   "name": "Colin Castleton",
+   "position": "C",
+   "short": "C. Castleton",
+   "status": "",
+   "team_id": "19"
+  },
+  "4397233": {
+   "jersey": "35",
+   "name": "Pete Nance",
+   "position": "F",
+   "short": "P. Nance",
+   "status": "",
+   "team_id": "15"
+  },
+  "4397251": {
+   "jersey": "8",
+   "name": "Ron Harper Jr.",
+   "position": "G",
+   "short": "R. Harper Jr.",
+   "status": "",
+   "team_id": "2"
+  },
+  "4397424": {
+   "jersey": "88",
+   "name": "Neemias Queta",
+   "position": "C",
+   "short": "N. Queta",
+   "status": "",
+   "team_id": "2"
+  },
+  "4397449": {
+   "jersey": "94",
+   "name": "Elijah Harkless",
+   "position": "G",
+   "short": "E. Harkless",
+   "status": "",
+   "team_id": "8"
+  },
+  "4397475": {
+   "jersey": "20",
+   "name": "AJ Green",
+   "position": "G",
+   "short": "A. Green",
+   "status": "",
+   "team_id": "15"
+  },
+  "4397688": {
+   "jersey": "25",
+   "name": "Trey Murphy III",
+   "position": "F",
+   "short": "T. Murphy III",
+   "status": "",
+   "team_id": "3"
+  },
+  "4397784": {
+   "jersey": "18",
+   "name": "Malachi Smith",
+   "position": "G",
+   "short": "M. Smith",
+   "status": "",
+   "team_id": "28"
+  },
+  "4397882": {
+   "jersey": "35",
+   "name": "Tolu Smith",
+   "position": "F",
+   "short": "T. Smith",
+   "status": "",
+   "team_id": "8"
+  },
+  "4397886": {
+   "jersey": "28",
+   "name": "Charles Bassey",
+   "position": "C",
+   "short": "C. Bassey",
+   "status": "",
+   "team_id": "9"
+  },
+  "4398207": {
+   "jersey": "18",
+   "name": "Jalen Slawson",
+   "position": "F",
+   "short": "J. Slawson",
+   "status": "",
+   "team_id": "11"
+  },
+  "4398390": {
+   "jersey": "21",
+   "name": "Jalen Pickett",
+   "position": "G",
+   "short": "J. Pickett",
+   "status": "",
+   "team_id": "12"
+  },
+  "4431671": {
+   "jersey": "3",
+   "name": "Jaden McDaniels",
+   "position": "F",
+   "short": "J. McDaniels",
+   "status": "",
+   "team_id": "16"
+  },
+  "4431675": {
+   "jersey": "9",
+   "name": "Trendon Watford",
+   "position": "F",
+   "short": "T. Watford",
+   "status": "",
+   "team_id": "3"
+  },
+  "4431678": {
+   "jersey": "0",
+   "name": "Tyrese Maxey",
+   "position": "G",
+   "short": "T. Maxey",
+   "status": "",
+   "team_id": "20"
+  },
+  "4431679": {
+   "jersey": "9",
+   "name": "Precious Achiuwa",
+   "position": "F",
+   "short": "P. Achiuwa",
+   "status": "",
+   "team_id": "23"
+  },
+  "4431680": {
+   "jersey": "17",
+   "name": "Onyeka Okongwu",
+   "position": "F",
+   "short": "O. Okongwu",
+   "status": "",
+   "team_id": "1"
+  },
+  "4431684": {
+   "jersey": "32",
+   "name": "Trayce Jackson-Davis",
+   "position": "F",
+   "short": "T. Jackson-Davis",
+   "status": "",
+   "team_id": "28"
+  },
+  "4431687": {
+   "jersey": "44",
+   "name": "Patrick Williams",
+   "position": "F",
+   "short": "P. Williams",
+   "status": "Day-To-Day",
+   "team_id": "4"
+  },
+  "4431690": {
+   "jersey": "22",
+   "name": "Zeke Nnaji",
+   "position": "F",
+   "short": "Z. Nnaji",
+   "status": "",
+   "team_id": "7"
+  },
+  "4431695": {
+   "jersey": "",
+   "name": "Drew Timme",
+   "position": "F",
+   "short": "D. Timme",
+   "status": "",
+   "team_id": "21"
+  },
+  "4431714": {
+   "jersey": "22",
+   "name": "Jalen Wilson",
+   "position": "F",
+   "short": "J. Wilson",
+   "status": "",
+   "team_id": "1"
+  },
+  "4431734": {
+   "jersey": "21",
+   "name": "Tristan Enaruna",
+   "position": "F",
+   "short": "T. Enaruna",
+   "status": "",
+   "team_id": "5"
+  },
+  "4431736": {
+   "jersey": "33",
+   "name": "Toumani Camara",
+   "position": "F",
+   "short": "T. Camara",
+   "status": "",
+   "team_id": "22"
+  },
+  "4431752": {
+   "jersey": "24",
+   "name": "Kobe Brown",
+   "position": "G",
+   "short": "K. Brown",
+   "status": "",
+   "team_id": "11"
+  },
+  "4431767": {
+   "jersey": "0",
+   "name": "Christian Braun",
+   "position": "G",
+   "short": "C. Braun",
+   "status": "",
+   "team_id": "7"
+  },
+  "4431772": {
+   "jersey": "15",
+   "name": "Myron Gardner",
+   "position": "F",
+   "short": "M. Gardner",
+   "status": "",
+   "team_id": "14"
+  },
+  "4431785": {
+   "jersey": "1",
+   "name": "Scotty Pippen Jr.",
+   "position": "G",
+   "short": "S. Pippen Jr.",
+   "status": "",
+   "team_id": "29"
+  },
+  "4431786": {
+   "jersey": "16",
+   "name": "Keshad Johnson",
+   "position": "F",
+   "short": "K. Johnson",
+   "status": "",
+   "team_id": "14"
+  },
+  "4431823": {
+   "jersey": "2",
+   "name": "Miles McBride",
+   "position": "G",
+   "short": "M. McBride",
+   "status": "",
+   "team_id": "18"
+  },
+  "4431893": {
+   "jersey": "77",
+   "name": "Jamison Battle",
+   "position": "F",
+   "short": "J. Battle",
+   "status": "",
+   "team_id": "28"
+  },
+  "4431941": {
+   "jersey": "10",
+   "name": "RayJ Dennis",
+   "position": "G",
+   "short": "R. Dennis",
+   "status": "",
+   "team_id": "1"
+  },
+  "4432107": {
+   "jersey": "8",
+   "name": "Marcus Sasser",
+   "position": "G",
+   "short": "M. Sasser",
+   "status": "",
+   "team_id": "6"
+  },
+  "4432158": {
+   "jersey": "4",
+   "name": "Evan Mobley",
+   "position": "C",
+   "short": "E. Mobley",
+   "status": "",
+   "team_id": "5"
+  },
+  "4432165": {
+   "jersey": "4",
+   "name": "Jalen Suggs",
+   "position": "G",
+   "short": "J. Suggs",
+   "status": "Out",
+   "team_id": "19"
+  },
+  "4432166": {
+   "jersey": "2",
+   "name": "Cade Cunningham",
+   "position": "G",
+   "short": "C. Cunningham",
+   "status": "",
+   "team_id": "8"
+  },
+  "4432170": {
+   "jersey": "23",
+   "name": "Isaiah Jackson",
+   "position": "F",
+   "short": "I. Jackson",
+   "status": "",
+   "team_id": "12"
+  },
+  "4432171": {
+   "jersey": "4",
+   "name": "Moses Moody",
+   "position": "G",
+   "short": "M. Moody",
+   "status": "Out",
+   "team_id": "9"
+  },
+  "4432181": {
+   "jersey": "1",
+   "name": "Julian Strawther",
+   "position": "G",
+   "short": "J. Strawther",
+   "status": "Out",
+   "team_id": "7"
+  },
+  "4432185": {
+   "jersey": "",
+   "name": "Micah Peavy",
+   "position": "G",
+   "short": "M. Peavy",
+   "status": "",
+   "team_id": "25"
+  },
+  "4432187": {
+   "jersey": "26",
+   "name": "Reece Beekman",
+   "position": "G",
+   "short": "R. Beekman",
+   "status": "",
+   "team_id": "27"
+  },
+  "4432194": {
+   "jersey": "20",
+   "name": "Day'Ron Sharpe",
+   "position": "C",
+   "short": "D. Sharpe",
+   "status": "",
+   "team_id": "17"
+  },
+  "4432241": {
+   "jersey": "23",
+   "name": "Jamal Shead",
+   "position": "G",
+   "short": "J. Shead",
+   "status": "",
+   "team_id": "28"
+  },
+  "4432247": {
+   "jersey": "7",
+   "name": "Jaylen Clark",
+   "position": "G",
+   "short": "J. Clark",
+   "status": "",
+   "team_id": "16"
+  },
+  "4432446": {
+   "jersey": "33",
+   "name": "Jabari Walker",
+   "position": "F",
+   "short": "J. Walker",
+   "status": "Out",
+   "team_id": "20"
+  },
+  "4432573": {
+   "jersey": "5",
+   "name": "Paolo Banchero",
+   "position": "F",
+   "short": "P. Banchero",
+   "status": "Out",
+   "team_id": "19"
+  },
+  "4432582": {
+   "jersey": "0",
+   "name": "Max Christie",
+   "position": "G",
+   "short": "M. Christie",
+   "status": "",
+   "team_id": "6"
+  },
+  "4432586": {
+   "jersey": "",
+   "name": "Nate Bittle",
+   "position": "C",
+   "short": "N. Bittle",
+   "status": "Out",
+   "team_id": "28"
+  },
+  "4432639": {
+   "jersey": "10",
+   "name": "Jabari Smith Jr.",
+   "position": "F",
+   "short": "J. Smith Jr.",
+   "status": "",
+   "team_id": "10"
+  },
+  "4432737": {
+   "jersey": "8",
+   "name": "Jaden Bradley",
+   "position": "G",
+   "short": "J. Bradley",
+   "status": "",
+   "team_id": "28"
+  },
+  "4432808": {
+   "jersey": "35",
+   "name": "James Wiseman",
+   "position": "C",
+   "short": "J. Wiseman",
+   "status": "",
+   "team_id": "18"
+  },
+  "4432810": {
+   "jersey": "28",
+   "name": "Isaiah Stewart",
+   "position": "C",
+   "short": "I. Stewart",
+   "status": "",
+   "team_id": "29"
+  },
+  "4432811": {
+   "jersey": "5",
+   "name": "Josh Green",
+   "position": "G",
+   "short": "J. Green",
+   "status": "",
+   "team_id": "26"
+  },
+  "4432816": {
+   "jersey": "1",
+   "name": "LaMelo Ball",
+   "position": "G",
+   "short": "L. Ball",
+   "status": "",
+   "team_id": "16"
+  },
+  "4432819": {
+   "jersey": "1",
+   "name": "Tre Mann",
+   "position": "G",
+   "short": "T. Mann",
+   "status": "",
+   "team_id": "27"
+  },
+  "4432822": {
+   "jersey": "35",
+   "name": "Isaac Okoro",
+   "position": "F",
+   "short": "I. Okoro",
+   "status": "",
+   "team_id": "4"
+  },
+  "4432823": {
+   "jersey": "6",
+   "name": "Jaylin Williams",
+   "position": "F",
+   "short": "J. Williams",
+   "status": "",
+   "team_id": "25"
+  },
+  "4432827": {
+   "jersey": "9",
+   "name": "Oscar Tshiebwe",
+   "position": "C",
+   "short": "O. Tshiebwe",
+   "status": "",
+   "team_id": "10"
+  },
+  "4432847": {
+   "jersey": "4",
+   "name": "Terrence Shannon Jr.",
+   "position": "G",
+   "short": "T. Shannon Jr.",
+   "status": "",
+   "team_id": "16"
+  },
+  "4432848": {
+   "jersey": "24",
+   "name": "Jaime Jaquez Jr.",
+   "position": "F",
+   "short": "J. Jaquez Jr.",
+   "status": "",
+   "team_id": "15"
+  },
+  "4432907": {
+   "jersey": "9",
+   "name": "Justin Champagnie",
+   "position": "F",
+   "short": "J. Champagnie",
+   "status": "Out",
+   "team_id": "27"
+  },
+  "4433076": {
+   "jersey": "26",
+   "name": "Ben Sheppard",
+   "position": "G",
+   "short": "B. Sheppard",
+   "status": "Out",
+   "team_id": "11"
+  },
+  "4433083": {
+   "jersey": "24",
+   "name": "Cam Spencer",
+   "position": "G",
+   "short": "C. Spencer",
+   "status": "",
+   "team_id": "29"
+  },
+  "4433134": {
+   "jersey": "4",
+   "name": "Scottie Barnes",
+   "position": "F",
+   "short": "S. Barnes",
+   "status": "",
+   "team_id": "28"
+  },
+  "4433136": {
+   "jersey": "14",
+   "name": "Walker Kessler",
+   "position": "C",
+   "short": "W. Kessler",
+   "status": "",
+   "team_id": "13"
+  },
+  "4433137": {
+   "jersey": "11",
+   "name": "Ziaire Williams",
+   "position": "F",
+   "short": "Z. Williams",
+   "status": "",
+   "team_id": "13"
+  },
+  "4433144": {
+   "jersey": "8",
+   "name": "Caleb Love",
+   "position": "G",
+   "short": "C. Love",
+   "status": "",
+   "team_id": "20"
+  },
+  "4433149": {
+   "jersey": "18",
+   "name": "LJ Cryer",
+   "position": "G",
+   "short": "L. Cryer",
+   "status": "",
+   "team_id": "9"
+  },
+  "4433174": {
+   "jersey": "32",
+   "name": "Dylan Cardwell",
+   "position": "C",
+   "short": "D. Cardwell",
+   "status": "Out",
+   "team_id": "23"
+  },
+  "4433188": {
+   "jersey": "99",
+   "name": "Devin Carter",
+   "position": "G",
+   "short": "D. Carter",
+   "status": "Out",
+   "team_id": "2"
+  },
+  "4433192": {
+   "jersey": "17",
+   "name": "Tari Eason",
+   "position": "F",
+   "short": "T. Eason",
+   "status": "",
+   "team_id": "10"
+  },
+  "4433225": {
+   "jersey": "13",
+   "name": "Tyler Kolek",
+   "position": "G",
+   "short": "T. Kolek",
+   "status": "",
+   "team_id": "18"
+  },
+  "4433247": {
+   "jersey": "24",
+   "name": "Jonathan Kuminga",
+   "position": "F",
+   "short": "J. Kuminga",
+   "status": "",
+   "team_id": "16"
+  },
+  "4433249": {
+   "jersey": "14",
+   "name": "Moussa Diabate",
+   "position": "F",
+   "short": "M. Diabate",
+   "status": "",
+   "team_id": "30"
+  },
+  "4433255": {
+   "jersey": "7",
+   "name": "Chet Holmgren",
+   "position": "C",
+   "short": "C. Holmgren",
+   "status": "Out",
+   "team_id": "25"
+  },
+  "4433268": {
+   "jersey": "15",
+   "name": "Trey Alexander",
+   "position": "G",
+   "short": "T. Alexander",
+   "status": "Out",
+   "team_id": "26"
+  },
+  "4433287": {
+   "jersey": "24",
+   "name": "Brandon Miller",
+   "position": "F",
+   "short": "B. Miller",
+   "status": "",
+   "team_id": "30"
+  },
+  "4433599": {
+   "jersey": "47",
+   "name": "Arthur Kaluma",
+   "position": "F",
+   "short": "A. Kaluma",
+   "status": "",
+   "team_id": "13"
+  },
+  "4433607": {
+   "jersey": "14",
+   "name": "DaRon Holmes II",
+   "position": "F",
+   "short": "D. Holmes II",
+   "status": "",
+   "team_id": "7"
+  },
+  "4433618": {
+   "jersey": "00",
+   "name": "Harrison Ingram",
+   "position": "F",
+   "short": "H. Ingram",
+   "status": "",
+   "team_id": "26"
+  },
+  "4433621": {
+   "jersey": "0",
+   "name": "Jalen Duren",
+   "position": "C",
+   "short": "J. Duren",
+   "status": "Out",
+   "team_id": "8"
+  },
+  "4433627": {
+   "jersey": "3",
+   "name": "Keyonte George",
+   "position": "G",
+   "short": "K. George",
+   "status": "",
+   "team_id": "26"
+  },
+  "4433629": {
+   "jersey": "9",
+   "name": "Ryan Nembhard",
+   "position": "G",
+   "short": "R. Nembhard",
+   "status": "",
+   "team_id": "7"
+  },
+  "4437244": {
+   "jersey": "4",
+   "name": "Jalen Green",
+   "position": "G",
+   "short": "J. Green",
+   "status": "",
+   "team_id": "21"
+  },
+  "4565698": {
+   "jersey": "13",
+   "name": "Bryce Hopkins",
+   "position": "F",
+   "short": "B. Hopkins",
+   "status": "",
+   "team_id": "7"
+  },
+  "4566434": {
+   "jersey": "22",
+   "name": "Franz Wagner",
+   "position": "F",
+   "short": "F. Wagner",
+   "status": "",
+   "team_id": "19"
+  },
+  "4576060": {
+   "jersey": "11",
+   "name": "Ryan Kalkbrenner",
+   "position": "C",
+   "short": "R. Kalkbrenner",
+   "status": "",
+   "team_id": "30"
+  },
+  "4576086": {
+   "jersey": "11",
+   "name": "Bryce McGowens",
+   "position": "G",
+   "short": "B. McGowens",
+   "status": "",
+   "team_id": "3"
+  },
+  "4576087": {
+   "jersey": "8",
+   "name": "Peyton Watson",
+   "position": "G",
+   "short": "P. Watson",
+   "status": "",
+   "team_id": "5"
+  },
+  "4578893": {
+   "jersey": "27",
+   "name": "Vit Krejci",
+   "position": "G",
+   "short": "V. Krejci",
+   "status": "",
+   "team_id": "22"
+  },
+  "4585618": {
+   "jersey": "00",
+   "name": "Keshon Gilbert",
+   "position": "G",
+   "short": "K. Gilbert",
+   "status": "",
+   "team_id": "1"
+  },
+  "4591725": {
+   "jersey": "13",
+   "name": "Ryan Rollins",
+   "position": "G",
+   "short": "R. Rollins",
+   "status": "",
+   "team_id": "15"
+  },
+  "4592427": {
+   "jersey": "21",
+   "name": "Spencer Jones",
+   "position": "F",
+   "short": "S. Jones",
+   "status": "Out",
+   "team_id": "7"
+  },
+  "4592435": {
+   "jersey": "10",
+   "name": "Branden Carlson",
+   "position": "C",
+   "short": "B. Carlson",
+   "status": "",
+   "team_id": "22"
+  },
+  "4592479": {
+   "jersey": "30",
+   "name": "Julian Champagnie",
+   "position": "F",
+   "short": "J. Champagnie",
+   "status": "",
+   "team_id": "24"
+  },
+  "4592492": {
+   "jersey": "8",
+   "name": "Bones Hyland",
+   "position": "G",
+   "short": "B. Hyland",
+   "status": "",
+   "team_id": "16"
+  },
+  "4592691": {
+   "jersey": "12",
+   "name": "Jake LaRavia",
+   "position": "F",
+   "short": "J. LaRavia",
+   "status": "",
+   "team_id": "13"
+  },
+  "4592714": {
+   "jersey": "61",
+   "name": "Pat Spencer",
+   "position": "G",
+   "short": "P. Spencer",
+   "status": "",
+   "team_id": "21"
+  },
+  "4592829": {
+   "jersey": "29",
+   "name": "Quenton Jackson",
+   "position": "G",
+   "short": "Q. Jackson",
+   "status": "",
+   "team_id": "11"
+  },
+  "4592857": {
+   "jersey": "27",
+   "name": "Isaiah Crawford",
+   "position": "F",
+   "short": "I. Crawford",
+   "status": "",
+   "team_id": "10"
+  },
+  "4592979": {
+   "jersey": "15",
+   "name": "Zyon Pullin",
+   "position": "G",
+   "short": "Z. Pullin",
+   "status": "",
+   "team_id": "16"
+  },
+  "4593016": {
+   "jersey": "41",
+   "name": "Quinten Post",
+   "position": "C",
+   "short": "Q. Post",
+   "status": "",
+   "team_id": "29"
+  },
+  "4593034": {
+   "jersey": "30",
+   "name": "Alex Morales",
+   "position": "G",
+   "short": "A. Morales",
+   "status": "",
+   "team_id": "19"
+  },
+  "4593043": {
+   "jersey": "2",
+   "name": "John Tonje",
+   "position": "F",
+   "short": "J. Tonje",
+   "status": "",
+   "team_id": "22"
+  },
+  "4593125": {
+   "jersey": "34",
+   "name": "Santi Aldama",
+   "position": "F",
+   "short": "S. Aldama",
+   "status": "Out",
+   "team_id": "6"
+  },
+  "4593803": {
+   "jersey": "8",
+   "name": "Jalen Williams",
+   "position": "G",
+   "short": "J. Williams",
+   "status": "Out",
+   "team_id": "25"
+  },
+  "4593841": {
+   "jersey": "55",
+   "name": "Baylor Scheierman",
+   "position": "G",
+   "short": "B. Scheierman",
+   "status": "",
+   "team_id": "2"
+  },
+  "4594268": {
+   "jersey": "5",
+   "name": "Anthony Edwards",
+   "position": "G",
+   "short": "A. Edwards",
+   "status": "Out",
+   "team_id": "16"
+  },
+  "4594326": {
+   "jersey": "17",
+   "name": "Kris Murray",
+   "position": "F",
+   "short": "K. Murray",
+   "status": "",
+   "team_id": "29"
+  },
+  "4594327": {
+   "jersey": "13",
+   "name": "Keegan Murray",
+   "position": "F",
+   "short": "K. Murray",
+   "status": "Out",
+   "team_id": "23"
+  },
+  "4595400": {
+   "jersey": "18",
+   "name": "Olivier-Maxence Prosper",
+   "position": "F",
+   "short": "O. Prosper",
+   "status": "",
+   "team_id": "29"
+  },
+  "4600663": {
+   "jersey": "14",
+   "name": "Zach Edey",
+   "position": "C",
+   "short": "Z. Edey",
+   "status": "",
+   "team_id": "29"
+  },
+  "4601023": {
+   "jersey": "11",
+   "name": "Oso Ighodaro",
+   "position": "F",
+   "short": "O. Ighodaro",
+   "status": "Day-To-Day",
+   "team_id": "21"
+  },
+  "4601025": {
+   "jersey": "9",
+   "name": "Pelle Larsson",
+   "position": "G",
+   "short": "P. Larsson",
+   "status": "Day-To-Day",
+   "team_id": "14"
+  },
+  "4602025": {
+   "jersey": "4",
+   "name": "Sion James",
+   "position": "G",
+   "short": "S. James",
+   "status": "",
+   "team_id": "30"
+  },
+  "4606840": {
+   "jersey": "5",
+   "name": "Jamir Watkins",
+   "position": "G",
+   "short": "J. Watkins",
+   "status": "Out",
+   "team_id": "27"
+  },
+  "4683021": {
+   "jersey": "8",
+   "name": "Deni Avdija",
+   "position": "F",
+   "short": "D. Avdija",
+   "status": "",
+   "team_id": "22"
+  },
+  "4683634": {
+   "jersey": "24",
+   "name": "Bennedict Mathurin",
+   "position": "G",
+   "short": "B. Mathurin",
+   "status": "",
+   "team_id": "3"
+  },
+  "4683678": {
+   "jersey": "00",
+   "name": "Scoot Henderson",
+   "position": "G",
+   "short": "S. Henderson",
+   "status": "Day-To-Day",
+   "team_id": "22"
+  },
+  "4683688": {
+   "jersey": "2",
+   "name": "Dereck Lively II",
+   "position": "C",
+   "short": "D. Lively II",
+   "status": "Out",
+   "team_id": "6"
+  },
+  "4683689": {
+   "jersey": "27",
+   "name": "Jordan Walsh",
+   "position": "G",
+   "short": "J. Walsh",
+   "status": "",
+   "team_id": "2"
+  },
+  "4683692": {
+   "jersey": "22",
+   "name": "Cason Wallace",
+   "position": "G",
+   "short": "C. Wallace",
+   "status": "Out",
+   "team_id": "25"
+  },
+  "4683730": {
+   "jersey": "14",
+   "name": "Jaden Akins",
+   "position": "G",
+   "short": "J. Akins",
+   "status": "",
+   "team_id": "18"
+  },
+  "4683742": {
+   "jersey": "13",
+   "name": "Julian Reese",
+   "position": "F",
+   "short": "J. Reese",
+   "status": "",
+   "team_id": "3"
+  },
+  "4683747": {
+   "jersey": "20",
+   "name": "Jaylon Tyson",
+   "position": "G",
+   "short": "J. Tyson",
+   "status": "",
+   "team_id": "5"
+  },
+  "4683750": {
+   "jersey": "15",
+   "name": "Jordan Hawkins",
+   "position": "G",
+   "short": "J. Hawkins",
+   "status": "",
+   "team_id": "4"
+  },
+  "4683766": {
+   "jersey": "8",
+   "name": "Isaiah Collier",
+   "position": "G",
+   "short": "I. Collier",
+   "status": "",
+   "team_id": "26"
+  },
+  "4683771": {
+   "jersey": "5",
+   "name": "Ronald Holland II",
+   "position": "F",
+   "short": "R. Holland II",
+   "status": "",
+   "team_id": "8"
+  },
+  "4683774": {
+   "jersey": "9",
+   "name": "Bronny James",
+   "position": "G",
+   "short": "B. James",
+   "status": "",
+   "team_id": "13"
+  },
+  "4683778": {
+   "jersey": "3",
+   "name": "Jared McCain",
+   "position": "G",
+   "short": "J. McCain",
+   "status": "",
+   "team_id": "25"
+  },
+  "4683860": {
+   "jersey": "25",
+   "name": "Quadir Copeland",
+   "position": "G",
+   "short": "Q. Copeland",
+   "status": "",
+   "team_id": "10"
+  },
+  "4683934": {
+   "jersey": "21",
+   "name": "Jahmai Mashack",
+   "position": "G",
+   "short": "J. Mashack",
+   "status": "",
+   "team_id": "29"
+  },
+  "4684208": {
+   "jersey": "23",
+   "name": "Brooks Barnhizer",
+   "position": "F",
+   "short": "B. Barnhizer",
+   "status": "",
+   "team_id": "25"
+  },
+  "4684269": {
+   "jersey": "18",
+   "name": "Kylan Boswell",
+   "position": "G",
+   "short": "K. Boswell",
+   "status": "Out",
+   "team_id": "30"
+  },
+  "4684272": {
+   "jersey": "14",
+   "name": "Ja'Kobe Walter",
+   "position": "G",
+   "short": "J. Walter",
+   "status": "",
+   "team_id": "28"
+  },
+  "4684740": {
+   "jersey": "1",
+   "name": "Amen Thompson",
+   "position": "G",
+   "short": "A. Thompson",
+   "status": "",
+   "team_id": "10"
+  },
+  "4684742": {
+   "jersey": "9",
+   "name": "Ausar Thompson",
+   "position": "G",
+   "short": "A. Thompson",
+   "status": "",
+   "team_id": "8"
+  },
+  "4684793": {
+   "jersey": "2",
+   "name": "Kyle Filipowski",
+   "position": "F",
+   "short": "K. Filipowski",
+   "status": "",
+   "team_id": "26"
+  },
+  "4684806": {
+   "jersey": "22",
+   "name": "Taylor Hendricks",
+   "position": "F",
+   "short": "T. Hendricks",
+   "status": "",
+   "team_id": "29"
+  },
+  "4687718": {
+   "jersey": "00",
+   "name": "Josh Minott",
+   "position": "F",
+   "short": "J. Minott",
+   "status": "",
+   "team_id": "17"
+  },
+  "4697268": {
+   "jersey": "19",
+   "name": "Kam Jones",
+   "position": "G",
+   "short": "K. Jones",
+   "status": "",
+   "team_id": "15"
+  },
+  "4698719": {
+   "jersey": "7",
+   "name": "Trevon Brazile",
+   "position": "F",
+   "short": "T. Brazile",
+   "status": "",
+   "team_id": "7"
+  },
+  "4700818": {
+   "jersey": "50",
+   "name": "Vladislav Goldin",
+   "position": "C",
+   "short": "V. Goldin",
+   "status": "",
+   "team_id": "14"
+  },
+  "4700852": {
+   "jersey": "8",
+   "name": "Chaz Lanier",
+   "position": "G",
+   "short": "C. Lanier",
+   "status": "",
+   "team_id": "8"
+  },
+  "4701208": {
+   "jersey": "30",
+   "name": "Moussa Cisse",
+   "position": "C",
+   "short": "M. Cisse",
+   "status": "",
+   "team_id": "6"
+  },
+  "4701225": {
+   "jersey": "16",
+   "name": "PJ Hall",
+   "position": "C",
+   "short": "P. Hall",
+   "status": "",
+   "team_id": "30"
+  },
+  "4701230": {
+   "jersey": "1",
+   "name": "Jalen Johnson",
+   "position": "F",
+   "short": "J. Johnson",
+   "status": "",
+   "team_id": "1"
+  },
+  "4701232": {
+   "jersey": "25",
+   "name": "Mark Williams",
+   "position": "C",
+   "short": "M. Williams",
+   "status": "Out",
+   "team_id": "21"
+  },
+  "4701233": {
+   "jersey": "9",
+   "name": "Craig Porter Jr.",
+   "position": "G",
+   "short": "C. Porter Jr.",
+   "status": "",
+   "team_id": "5"
+  },
+  "4702177": {
+   "jersey": "1",
+   "name": "Keon Ellis",
+   "position": "G",
+   "short": "K. Ellis",
+   "status": "",
+   "team_id": "17"
+  },
+  "4702352": {
+   "jersey": "4",
+   "name": "Kobe Sanders",
+   "position": "G",
+   "short": "K. Sanders",
+   "status": "",
+   "team_id": "12"
+  },
+  "4702382": {
+   "jersey": "23",
+   "name": "Tristan da Silva",
+   "position": "F",
+   "short": "T. da Silva",
+   "status": "",
+   "team_id": "19"
+  },
+  "4702384": {
+   "jersey": "10",
+   "name": "Nique Clifford",
+   "position": "G",
+   "short": "N. Clifford",
+   "status": "",
+   "team_id": "23"
+  },
+  "4702656": {
+   "jersey": "55",
+   "name": "Alijah Martin",
+   "position": "G",
+   "short": "A. Martin",
+   "status": "",
+   "team_id": "28"
+  },
+  "4702670": {
+   "jersey": "16",
+   "name": "Grant Nelson",
+   "position": "F",
+   "short": "G. Nelson",
+   "status": "",
+   "team_id": "17"
+  },
+  "4702745": {
+   "jersey": "77",
+   "name": "Amari Williams",
+   "position": "F",
+   "short": "A. Williams",
+   "status": "",
+   "team_id": "2"
+  },
+  "4702972": {
+   "jersey": "30",
+   "name": "Chris Manon",
+   "position": "G",
+   "short": "C. Manon",
+   "status": "",
+   "team_id": "13"
+  },
+  "4703115": {
+   "jersey": "10",
+   "name": "Jaron Pierre Jr.",
+   "position": "G",
+   "short": "J. Pierre Jr.",
+   "status": "",
+   "team_id": "3"
+  },
+  "4703396": {
+   "jersey": "",
+   "name": "Graham Ike",
+   "position": "F",
+   "short": "G. Ike",
+   "status": "",
+   "team_id": "9"
+  },
+  "4703889": {
+   "jersey": "29",
+   "name": "Jayson Kent",
+   "position": "G",
+   "short": "J. Kent",
+   "status": "",
+   "team_id": "22"
+  },
+  "4706557": {
+   "jersey": "11",
+   "name": "Chris Youngblood",
+   "position": "G",
+   "short": "C. Youngblood",
+   "status": "Out",
+   "team_id": "22"
+  },
+  "4709131": {
+   "jersey": "3",
+   "name": "Sean Pedulla",
+   "position": "G",
+   "short": "S. Pedulla",
+   "status": "",
+   "team_id": "23"
+  },
+  "4709138": {
+   "jersey": "2",
+   "name": "Brandin Podziemski",
+   "position": "G",
+   "short": "B. Podziemski",
+   "status": "",
+   "team_id": "9"
+  },
+  "4711272": {
+   "jersey": "15",
+   "name": "Reed Sheppard",
+   "position": "G",
+   "short": "R. Sheppard",
+   "status": "",
+   "team_id": "10"
+  },
+  "4711294": {
+   "jersey": "14",
+   "name": "Matas Buzelis",
+   "position": "F",
+   "short": "M. Buzelis",
+   "status": "",
+   "team_id": "4"
+  },
+  "4711297": {
+   "jersey": "11",
+   "name": "Justin Edwards",
+   "position": "F",
+   "short": "J. Edwards",
+   "status": "",
+   "team_id": "20"
+  },
+  "4712849": {
+   "jersey": "0",
+   "name": "Anthony Black",
+   "position": "G",
+   "short": "A. Black",
+   "status": "",
+   "team_id": "19"
+  },
+  "4712862": {
+   "jersey": "8",
+   "name": "Malik Dia",
+   "position": "F",
+   "short": "M. Dia",
+   "status": "",
+   "team_id": "3"
+  },
+  "4712863": {
+   "jersey": "18",
+   "name": "Mouhamed Gueye",
+   "position": "F",
+   "short": "M. Gueye",
+   "status": "Out",
+   "team_id": "1"
+  },
+  "4712896": {
+   "jersey": "21",
+   "name": "Noah Clowney",
+   "position": "F",
+   "short": "N. Clowney",
+   "status": "",
+   "team_id": "17"
+  },
+  "4713010": {
+   "jersey": "25",
+   "name": "David Jones Garcia",
+   "position": "F",
+   "short": "D. Jones Garcia",
+   "status": "",
+   "team_id": "24"
+  },
+  "4781746": {
+   "jersey": "10",
+   "name": "Javon Small",
+   "position": "G",
+   "short": "J. Small",
+   "status": "",
+   "team_id": "29"
+  },
+  "4837356": {
+   "jersey": "24",
+   "name": "Tre Donaldson",
+   "position": "G",
+   "short": "T. Donaldson",
+   "status": "",
+   "team_id": "14"
+  },
+  "4838721": {
+   "jersey": "55",
+   "name": "Tyler Nickel",
+   "position": "F",
+   "short": "T. Nickel",
+   "status": "",
+   "team_id": "18"
+  },
+  "4845363": {
+   "jersey": "24",
+   "name": "Cam Christie",
+   "position": "G",
+   "short": "C. Christie",
+   "status": "",
+   "team_id": "12"
+  },
+  "4845367": {
+   "jersey": "5",
+   "name": "Stephon Castle",
+   "position": "G",
+   "short": "S. Castle",
+   "status": "",
+   "team_id": "24"
+  },
+  "4845374": {
+   "jersey": "7",
+   "name": "Bub Carrington",
+   "position": "G",
+   "short": "B. Carrington",
+   "status": "",
+   "team_id": "27"
+  },
+  "4848625": {
+   "jersey": "5",
+   "name": "Dailyn Swain",
+   "position": "G",
+   "short": "D. Swain",
+   "status": "",
+   "team_id": "4"
+  },
+  "4868423": {
+   "jersey": "7",
+   "name": "Jaden Hardy",
+   "position": "G",
+   "short": "J. Hardy",
+   "status": "",
+   "team_id": "13"
+  },
+  "4869342": {
+   "jersey": "5",
+   "name": "Dyson Daniels",
+   "position": "G",
+   "short": "D. Daniels",
+   "status": "",
+   "team_id": "1"
+  },
+  "4869780": {
+   "jersey": "22",
+   "name": "Derik Queen",
+   "position": "C",
+   "short": "D. Queen",
+   "status": "",
+   "team_id": "3"
+  },
+  "4870562": {
+   "jersey": "25",
+   "name": "Dominick Barlow",
+   "position": "F",
+   "short": "D. Barlow",
+   "status": "Out",
+   "team_id": "20"
+  },
+  "4870564": {
+   "jersey": "9",
+   "name": "Joshua Jefferson",
+   "position": "F",
+   "short": "J. Jefferson",
+   "status": "",
+   "team_id": "17"
+  },
+  "4871141": {
+   "jersey": "55",
+   "name": "Ariel Hukporti",
+   "position": "C",
+   "short": "A. Hukporti",
+   "status": "Out",
+   "team_id": "20"
+  },
+  "4871144": {
+   "jersey": "28",
+   "name": "Alperen Sengun",
+   "position": "C",
+   "short": "A. Sengun",
+   "status": "Out",
+   "team_id": "10"
+  },
+  "4871145": {
+   "jersey": "3",
+   "name": "Josh Giddey",
+   "position": "G",
+   "short": "J. Giddey",
+   "status": "",
+   "team_id": "4"
+  },
+  "4873090": {
+   "jersey": "00",
+   "name": "Labaron Philon Jr.",
+   "position": "G",
+   "short": "L. Philon Jr.",
+   "status": "",
+   "team_id": "20"
+  },
+  "4873138": {
+   "jersey": "19",
+   "name": "Ace Bailey",
+   "position": "G",
+   "short": "A. Bailey",
+   "status": "",
+   "team_id": "26"
+  },
+  "4873153": {
+   "jersey": "14",
+   "name": "Morez Johnson Jr.",
+   "position": "F",
+   "short": "M. Johnson Jr.",
+   "status": "",
+   "team_id": "6"
+  },
+  "4873201": {
+   "jersey": "14",
+   "name": "Asa Newell",
+   "position": "F",
+   "short": "A. Newell",
+   "status": "",
+   "team_id": "1"
+  },
+  "4888725": {
+   "jersey": "0",
+   "name": "Ryan Dunn",
+   "position": "F",
+   "short": "R. Dunn",
+   "status": "",
+   "team_id": "21"
+  },
+  "4895758": {
+   "jersey": "9",
+   "name": "Cody Williams",
+   "position": "F",
+   "short": "C. Williams",
+   "status": "",
+   "team_id": "16"
+  },
+  "4896372": {
+   "jersey": "1",
+   "name": "Walter Clayton Jr.",
+   "position": "G",
+   "short": "W. Clayton Jr.",
+   "status": "",
+   "team_id": "6"
+  },
+  "4897262": {
+   "jersey": "3",
+   "name": "Will Richard",
+   "position": "G",
+   "short": "W. Richard",
+   "status": "",
+   "team_id": "9"
+  },
+  "4897449": {
+   "jersey": "33",
+   "name": "Malevy Leons",
+   "position": "F",
+   "short": "M. Leons",
+   "status": "",
+   "team_id": "9"
+  },
+  "4897943": {
+   "jersey": "99",
+   "name": "Dalton Knecht",
+   "position": "F",
+   "short": "D. Knecht",
+   "status": "",
+   "team_id": "18"
+  },
+  "4898010": {
+   "jersey": "22",
+   "name": "Jaylin Sellers",
+   "position": "G",
+   "short": "J. Sellers",
+   "status": "",
+   "team_id": "4"
+  },
+  "4898371": {
+   "jersey": "42",
+   "name": "Maxime Raynaud",
+   "position": "C",
+   "short": "M. Raynaud",
+   "status": "Out",
+   "team_id": "23"
+  },
+  "4900671": {
+   "jersey": "25",
+   "name": "Ajay Mitchell",
+   "position": "G",
+   "short": "A. Mitchell",
+   "status": "Day-To-Day",
+   "team_id": "25"
+  },
+  "4903027": {
+   "jersey": "23",
+   "name": "Cedric Coward",
+   "position": "F",
+   "short": "C. Coward",
+   "status": "",
+   "team_id": "29"
+  },
+  "4914336": {
+   "jersey": "17",
+   "name": "Shaedon Sharpe",
+   "position": "G",
+   "short": "S. Sharpe",
+   "status": "Out",
+   "team_id": "22"
+  },
+  "4917149": {
+   "jersey": "33",
+   "name": "Alex Karaban",
+   "position": "F",
+   "short": "A. Karaban",
+   "status": "",
+   "team_id": "23"
+  },
+  "4997526": {
+   "jersey": "21",
+   "name": "Ousmane Dieng",
+   "position": "F",
+   "short": "O. Dieng",
+   "status": "",
+   "team_id": "15"
+  },
+  "4997528": {
+   "jersey": "5",
+   "name": "Nikola Jovic",
+   "position": "F",
+   "short": "N. Jovic",
+   "status": "",
+   "team_id": "14"
+  },
+  "4997536": {
+   "jersey": "15",
+   "name": "Gui Santos",
+   "position": "F",
+   "short": "G. Santos",
+   "status": "",
+   "team_id": "9"
+  },
+  "4997537": {
+   "jersey": "00",
+   "name": "Tristan Vukcevic",
+   "position": "F",
+   "short": "T. Vukcevic",
+   "status": "Out",
+   "team_id": "27"
+  },
+  "4997538": {
+   "jersey": "17",
+   "name": "Karlo Matkovic",
+   "position": "F",
+   "short": "K. Matkovic",
+   "status": "",
+   "team_id": "3"
+  },
+  "5023693": {
+   "jersey": "24",
+   "name": "Tyrese Proctor",
+   "position": "G",
+   "short": "T. Proctor",
+   "status": "",
+   "team_id": "5"
+  },
+  "5037871": {
+   "jersey": "2",
+   "name": "Dylan Harper",
+   "position": "G",
+   "short": "D. Harper",
+   "status": "",
+   "team_id": "24"
+  },
+  "5037873": {
+   "jersey": "4",
+   "name": "Drake Powell",
+   "position": "G",
+   "short": "D. Powell",
+   "status": "",
+   "team_id": "17"
+  },
+  "5037878": {
+   "jersey": "34",
+   "name": "Ugonna Onyenso",
+   "position": "C",
+   "short": "U. Onyenso",
+   "status": "",
+   "team_id": "8"
+  },
+  "5041935": {
+   "jersey": "27",
+   "name": "Cameron Boozer",
+   "position": "F",
+   "short": "C. Boozer",
+   "status": "",
+   "team_id": "29"
+  },
+  "5041939": {
+   "jersey": "32",
+   "name": "Cooper Flagg",
+   "position": "F",
+   "short": "C. Flagg",
+   "status": "",
+   "team_id": "6"
+  },
+  "5041951": {
+   "jersey": "15",
+   "name": "Meleek Thomas",
+   "position": "G",
+   "short": "M. Thomas",
+   "status": "",
+   "team_id": "5"
+  },
+  "5041953": {
+   "jersey": "18",
+   "name": "Koa Peat",
+   "position": "F",
+   "short": "K. Peat",
+   "status": "",
+   "team_id": "21"
+  },
+  "5041955": {
+   "jersey": "22",
+   "name": "Darryn Peterson",
+   "position": "G",
+   "short": "D. Peterson",
+   "status": "",
+   "team_id": "26"
+  },
+  "5044385": {
+   "jersey": "11",
+   "name": "Leonard Miller",
+   "position": "F",
+   "short": "L. Miller",
+   "status": "",
+   "team_id": "4"
+  },
+  "5060631": {
+   "jersey": "1",
+   "name": "Adou Thiero",
+   "position": "F",
+   "short": "A. Thiero",
+   "status": "Out",
+   "team_id": "13"
+  },
+  "5060701": {
+   "jersey": "5",
+   "name": "Christian Anderson",
+   "position": "G",
+   "short": "C. Anderson",
+   "status": "",
+   "team_id": "30"
+  },
+  "5061568": {
+   "jersey": "11",
+   "name": "Carter Bryant",
+   "position": "F",
+   "short": "C. Bryant",
+   "status": "",
+   "team_id": "24"
+  },
+  "5061575": {
+   "jersey": "7",
+   "name": "Kon Knueppel",
+   "position": "G",
+   "short": "K. Knueppel",
+   "status": "Out",
+   "team_id": "30"
+  },
+  "5061585": {
+   "jersey": "33",
+   "name": "Isaiah Evans",
+   "position": "F",
+   "short": "I. Evans",
+   "status": "",
+   "team_id": "16"
+  },
+  "5061589": {
+   "jersey": "21",
+   "name": "Yves Missi",
+   "position": "C",
+   "short": "Y. Missi",
+   "status": "Out",
+   "team_id": "3"
+  },
+  "5061603": {
+   "jersey": "12",
+   "name": "Thomas Sorber",
+   "position": "C",
+   "short": "T. Sorber",
+   "status": "Out",
+   "team_id": "25"
+  },
+  "5075626": {
+   "jersey": "18",
+   "name": "Baba Miller",
+   "position": "F",
+   "short": "B. Miller",
+   "status": "",
+   "team_id": "12"
+  },
+  "5081727": {
+   "jersey": "91",
+   "name": "Sidy Cissoko",
+   "position": "G",
+   "short": "S. Cissoko",
+   "status": "",
+   "team_id": "22"
+  },
+  "5082206": {
+   "jersey": "0",
+   "name": "Brayden Burries",
+   "position": "G",
+   "short": "B. Burries",
+   "status": "",
+   "team_id": "15"
+  },
+  "5093267": {
+   "jersey": "30",
+   "name": "Collin Murray-Boyles",
+   "position": "F",
+   "short": "C. Murray-Boyles",
+   "status": "",
+   "team_id": "28"
+  },
+  "5095151": {
+   "jersey": "8",
+   "name": "Caleb Wilson",
+   "position": "F",
+   "short": "C. Wilson",
+   "status": "",
+   "team_id": "4"
+  },
+  "5099752": {
+   "jersey": "12",
+   "name": "Rayan Rupert",
+   "position": "G",
+   "short": "R. Rupert",
+   "status": "",
+   "team_id": "20"
+  },
+  "5101761": {
+   "jersey": "0",
+   "name": "Mikel Brown Jr.",
+   "position": "G",
+   "short": "M. Brown Jr.",
+   "status": "",
+   "team_id": "17"
+  },
+  "5101845": {
+   "jersey": "22",
+   "name": "Jayden Quaintance",
+   "position": "F",
+   "short": "J. Quaintance",
+   "status": "Out",
+   "team_id": "24"
+  },
+  "5104155": {
+   "jersey": "0",
+   "name": "Bilal Coulibaly",
+   "position": "G",
+   "short": "B. Coulibaly",
+   "status": "",
+   "team_id": "27"
+  },
+  "5104157": {
+   "jersey": "1",
+   "name": "Victor Wembanyama",
+   "position": "F",
+   "short": "V. Wembanyama",
+   "status": "",
+   "team_id": "24"
+  },
+  "5105337": {
+   "jersey": "15",
+   "name": "Maliq Brown",
+   "position": "F",
+   "short": "M. Brown",
+   "status": "",
+   "team_id": "24"
+  },
+  "5105550": {
+   "jersey": "45",
+   "name": "GG Jackson",
+   "position": "F",
+   "short": "G. Jackson",
+   "status": "",
+   "team_id": "29"
+  },
+  "5105553": {
+   "jersey": "3",
+   "name": "Julian Phillips",
+   "position": "F",
+   "short": "J. Phillips",
+   "status": "",
+   "team_id": "10"
+  },
+  "5105555": {
+   "jersey": "19",
+   "name": "Tobe Awaka",
+   "position": "F",
+   "short": "T. Awaka",
+   "status": "Day-To-Day",
+   "team_id": "4"
+  },
+  "5105565": {
+   "jersey": "23",
+   "name": "Donovan Clingan",
+   "position": "C",
+   "short": "D. Clingan",
+   "status": "",
+   "team_id": "22"
+  },
+  "5105571": {
+   "jersey": "13",
+   "name": "Henri Veesaar",
+   "position": "C",
+   "short": "H. Veesaar",
+   "status": "Out",
+   "team_id": "1"
+  },
+  "5105592": {
+   "jersey": "00",
+   "name": "Cam Whitmore",
+   "position": "F",
+   "short": "C. Whitmore",
+   "status": "",
+   "team_id": "7"
+  },
+  "5105623": {
+   "jersey": "9",
+   "name": "Kel'el Ware",
+   "position": "C",
+   "short": "K. Ware",
+   "status": "",
+   "team_id": "15"
+  },
+  "5105626": {
+   "jersey": "34",
+   "name": "Tyler Bilodeau",
+   "position": "F",
+   "short": "T. Bilodeau",
+   "status": "Out",
+   "team_id": "17"
+  },
+  "5105637": {
+   "jersey": "30",
+   "name": "Adem Bona",
+   "position": "C",
+   "short": "A. Bona",
+   "status": "",
+   "team_id": "20"
+  },
+  "5105800": {
+   "jersey": "21",
+   "name": "Josh Dix",
+   "position": "G",
+   "short": "J. Dix",
+   "status": "",
+   "team_id": "25"
+  },
+  "5105806": {
+   "jersey": "9",
+   "name": "Jett Howard",
+   "position": "G",
+   "short": "J. Howard",
+   "status": "",
+   "team_id": "6"
+  },
+  "5105809": {
+   "jersey": "10",
+   "name": "Tarris Reed Jr.",
+   "position": "C",
+   "short": "T. Reed Jr.",
+   "status": "",
+   "team_id": "24"
+  },
+  "5105817": {
+   "jersey": "20",
+   "name": "Carson Cooper",
+   "position": "C",
+   "short": "C. Cooper",
+   "status": "",
+   "team_id": "29"
+  },
+  "5105832": {
+   "jersey": "12",
+   "name": "Nick Martinelli",
+   "position": "F",
+   "short": "N. Martinelli",
+   "status": "",
+   "team_id": "12"
+  },
+  "5105837": {
+   "jersey": "2",
+   "name": "Bruce Thornton",
+   "position": "G",
+   "short": "B. Thornton",
+   "status": "",
+   "team_id": "10"
+  },
+  "5105839": {
+   "jersey": "28",
+   "name": "Brice Sensabaugh",
+   "position": "F",
+   "short": "B. Sensabaugh",
+   "status": "",
+   "team_id": "26"
+  },
+  "5105841": {
+   "jersey": "34",
+   "name": "Felix Okpara",
+   "position": "F",
+   "short": "F. Okpara",
+   "status": "",
+   "team_id": "27"
+  },
+  "5105854": {
+   "jersey": "3",
+   "name": "Braden Smith",
+   "position": "G",
+   "short": "B. Smith",
+   "status": "",
+   "team_id": "11"
+  },
+  "5105977": {
+   "jersey": "20",
+   "name": "Rasheer Fleming",
+   "position": "F",
+   "short": "R. Fleming",
+   "status": "",
+   "team_id": "21"
+  },
+  "5106040": {
+   "jersey": "33",
+   "name": "Tobi Lawal",
+   "position": "F",
+   "short": "T. Lawal",
+   "status": "",
+   "team_id": "6"
+  },
+  "5106058": {
+   "jersey": "34",
+   "name": "Emanuel Sharp",
+   "position": "G",
+   "short": "E. Sharp",
+   "status": "",
+   "team_id": "23"
+  },
+  "5106060": {
+   "jersey": "5",
+   "name": "Jarace Walker",
+   "position": "F",
+   "short": "J. Walker",
+   "status": "",
+   "team_id": "11"
+  },
+  "5106258": {
+   "jersey": "9",
+   "name": "Gradey Dick",
+   "position": "G",
+   "short": "G. Dick",
+   "status": "",
+   "team_id": "12"
+  },
+  "5106262": {
+   "jersey": "20",
+   "name": "Zuby Ejiofor",
+   "position": "F",
+   "short": "Z. Ejiofor",
+   "status": "",
+   "team_id": "1"
+  },
+  "5106270": {
+   "jersey": "13",
+   "name": "Otega Oweh",
+   "position": "G",
+   "short": "O. Oweh",
+   "status": "Out",
+   "team_id": "25"
+  },
+  "5106283": {
+   "jersey": "20",
+   "name": "Dillon Mitchell",
+   "position": "F",
+   "short": "D. Mitchell",
+   "status": "",
+   "team_id": "2"
+  },
+  "5107157": {
+   "jersey": "4",
+   "name": "Ryan Conwell",
+   "position": "G",
+   "short": "R. Conwell",
+   "status": "",
+   "team_id": "14"
+  },
+  "5107173": {
+   "jersey": "2",
+   "name": "Danny Wolf",
+   "position": "F",
+   "short": "D. Wolf",
+   "status": "",
+   "team_id": "17"
+  },
+  "5107199": {
+   "jersey": "24",
+   "name": "Daniss Jenkins",
+   "position": "G",
+   "short": "D. Jenkins",
+   "status": "",
+   "team_id": "8"
+  },
+  "5107251": {
+   "jersey": "25",
+   "name": "Izaiyah Nelson",
+   "position": "F",
+   "short": "I. Nelson",
+   "status": "Out",
+   "team_id": "19"
+  },
+  "5107818": {
+   "jersey": "13",
+   "name": "Isaac Jones",
+   "position": "C",
+   "short": "I. Jones",
+   "status": "",
+   "team_id": "8"
+  },
+  "5107897": {
+   "jersey": "22",
+   "name": "Jonathan Mogbo",
+   "position": "F",
+   "short": "J. Mogbo",
+   "status": "",
+   "team_id": "23"
+  },
+  "5107968": {
+   "jersey": "17",
+   "name": "Ja'Kobi Gillespie",
+   "position": "G",
+   "short": "J. Gillespie",
+   "status": "",
+   "team_id": "24"
+  },
+  "5108024": {
+   "jersey": "14",
+   "name": "Yanic Konan Niederhauser",
+   "position": "C",
+   "short": "Y. Niederhauser",
+   "status": "Out",
+   "team_id": "12"
+  },
+  "5112087": {
+   "jersey": "0",
+   "name": "Jaylen Wells",
+   "position": "F",
+   "short": "J. Wells",
+   "status": "",
+   "team_id": "29"
+  },
+  "5113969": {
+   "jersey": "43",
+   "name": "Cameron Carr",
+   "position": "G",
+   "short": "C. Carr",
+   "status": "Out",
+   "team_id": "13"
+  },
+  "5114350": {
+   "jersey": "31",
+   "name": "AK Okereke",
+   "position": "F",
+   "short": "A. Okereke",
+   "status": "",
+   "team_id": "13"
+  },
+  "5124612": {
+   "jersey": "77",
+   "name": "VJ Edgecombe",
+   "position": "G",
+   "short": "V. Edgecombe",
+   "status": "",
+   "team_id": "20"
+  },
+  "5142620": {
+   "jersey": "5",
+   "name": "Darius Acuff Jr.",
+   "position": "G",
+   "short": "D. Acuff Jr.",
+   "status": "",
+   "team_id": "23"
+  },
+  "5142621": {
+   "jersey": "12",
+   "name": "Chris Cenac Jr.",
+   "position": "F",
+   "short": "C. Cenac Jr.",
+   "status": "",
+   "team_id": "2"
+  },
+  "5142718": {
+   "jersey": "4",
+   "name": "AJ Dybantsa",
+   "position": "F",
+   "short": "A. Dybantsa",
+   "status": "Out",
+   "team_id": "27"
+  },
+  "5144091": {
+   "jersey": "0",
+   "name": "Jeremiah Fears",
+   "position": "G",
+   "short": "J. Fears",
+   "status": "",
+   "team_id": "3"
+  },
+  "5144126": {
+   "jersey": "27",
+   "name": "Will Riley",
+   "position": "G",
+   "short": "W. Riley",
+   "status": "",
+   "team_id": "27"
+  },
+  "5148538": {
+   "jersey": "13",
+   "name": "Tarik Biberovic",
+   "position": "F",
+   "short": "T. Biberovic",
+   "status": "Out",
+   "team_id": "6"
+  },
+  "5149077": {
+   "jersey": "4",
+   "name": "Kingston Flemings",
+   "position": "G",
+   "short": "K. Flemings",
+   "status": "",
+   "team_id": "1"
+  },
+  "5149115": {
+   "jersey": "22",
+   "name": "Allen Graves",
+   "position": "F",
+   "short": "A. Graves",
+   "status": "",
+   "team_id": "28"
+  },
+  "5157066": {
+   "jersey": "12",
+   "name": "Johnny Furphy",
+   "position": "G",
+   "short": "J. Furphy",
+   "status": "",
+   "team_id": "11"
+  },
+  "5157587": {
+   "jersey": "44",
+   "name": "Rocco Zikarsky",
+   "position": "C",
+   "short": "R. Zikarsky",
+   "status": "",
+   "team_id": "16"
+  },
+  "5159925": {
+   "jersey": "44",
+   "name": "Nikola Topic",
+   "position": "G",
+   "short": "N. Topic",
+   "status": "Out",
+   "team_id": "25"
+  },
+  "5160992": {
+   "jersey": "20",
+   "name": "Alex Sarr",
+   "position": "C",
+   "short": "A. Sarr",
+   "status": "",
+   "team_id": "27"
+  },
+  "5164559": {
+   "jersey": "15",
+   "name": "Nate Ament",
+   "position": "F",
+   "short": "N. Ament",
+   "status": "",
+   "team_id": "15"
+  },
+  "5170947": {
+   "jersey": "14",
+   "name": "AJ Johnson",
+   "position": "G",
+   "short": "A. Johnson",
+   "status": "",
+   "team_id": "3"
+  },
+  "5174563": {
+   "jersey": "18",
+   "name": "Kyshawn George",
+   "position": "F",
+   "short": "K. George",
+   "status": "",
+   "team_id": "27"
+  },
+  "5174655": {
+   "jersey": "31",
+   "name": "Chaney Johnson",
+   "position": "F",
+   "short": "C. Johnson",
+   "status": "",
+   "team_id": "17"
+  },
+  "5174983": {
+   "jersey": "15",
+   "name": "Aday Mara",
+   "position": "C",
+   "short": "A. Mara",
+   "status": "",
+   "team_id": "25"
+  },
+  "5175643": {
+   "jersey": "8",
+   "name": "Egor Demin",
+   "position": "G",
+   "short": "E. Demin",
+   "status": "",
+   "team_id": "17"
+  },
+  "5175647": {
+   "jersey": "28",
+   "name": "Hugo Gonzalez",
+   "position": "G",
+   "short": "H. Gonzalez",
+   "status": "",
+   "team_id": "2"
+  },
+  "5175737": {
+   "jersey": "1",
+   "name": "Yaxel Lendeborg",
+   "position": "F",
+   "short": "Y. Lendeborg",
+   "status": "Day-To-Day",
+   "team_id": "9"
+  },
+  "5177362": {
+   "jersey": "12",
+   "name": "Riley Minix",
+   "position": "F",
+   "short": "R. Minix",
+   "status": "",
+   "team_id": "5"
+  },
+  "5203685": {
+   "jersey": "10",
+   "name": "Khaman Maluach",
+   "position": "C",
+   "short": "K. Maluach",
+   "status": "",
+   "team_id": "21"
+  },
+  "5211175": {
+   "jersey": "10",
+   "name": "Zaccharie Risacher",
+   "position": "F",
+   "short": "Z. Risacher",
+   "status": "",
+   "team_id": "6"
+  },
+  "5211176": {
+   "jersey": "31",
+   "name": "Tidjane Salaun",
+   "position": "F",
+   "short": "T. Salaun",
+   "status": "",
+   "team_id": "30"
+  },
+  "5211983": {
+   "jersey": "4",
+   "name": "Pacome Dadiet",
+   "position": "F",
+   "short": "P. Dadiet",
+   "status": "",
+   "team_id": "18"
+  },
+  "5214637": {
+   "jersey": "93",
+   "name": "Noah Penda",
+   "position": "F",
+   "short": "N. Penda",
+   "status": "Out",
+   "team_id": "19"
+  },
+  "5214640": {
+   "jersey": "25",
+   "name": "Kasparas Jakucionis",
+   "position": "G",
+   "short": "K. Jakucionis",
+   "status": "",
+   "team_id": "15"
+  },
+  "5214989": {
+   "jersey": "23",
+   "name": "Bogoljub Markovic",
+   "position": "F",
+   "short": "B. Markovic",
+   "status": "",
+   "team_id": "15"
+  },
+  "5217746": {
+   "jersey": "16",
+   "name": "Yang Hansen",
+   "position": "C",
+   "short": "Y. Hansen",
+   "status": "",
+   "team_id": "22"
+  },
+  "5231919": {
+   "jersey": "35",
+   "name": "Karim Lopez",
+   "position": "F",
+   "short": "K. Lopez",
+   "status": "",
+   "team_id": "29"
+  },
+  "5238230": {
+   "jersey": "12",
+   "name": "Tre Johnson",
+   "position": "G",
+   "short": "T. Johnson",
+   "status": "",
+   "team_id": "27"
+  },
+  "5239561": {
+   "jersey": "11",
+   "name": "Jase Richardson",
+   "position": "G",
+   "short": "J. Richardson",
+   "status": "",
+   "team_id": "19"
+  },
+  "5239590": {
+   "jersey": "33",
+   "name": "Liam McNeeley",
+   "position": "G",
+   "short": "L. McNeeley",
+   "status": "",
+   "team_id": "30"
+  },
+  "5241364": {
+   "jersey": "14",
+   "name": "Bennett Stirtz",
+   "position": "G",
+   "short": "B. Stirtz",
+   "status": "",
+   "team_id": "25"
+  },
+  "5242496": {
+   "jersey": "2",
+   "name": "Noa Essengue",
+   "position": "F",
+   "short": "N. Essengue",
+   "status": "",
+   "team_id": "4"
+  },
+  "5242502": {
+   "jersey": "77",
+   "name": "Ben Saraf",
+   "position": "G",
+   "short": "B. Saraf",
+   "status": "",
+   "team_id": "17"
+  },
+  "5254165": {
+   "jersey": "1",
+   "name": "Keaton Wagler",
+   "position": "G",
+   "short": "K. Wagler",
+   "status": "",
+   "team_id": "12"
+  },
+  "5258459": {
+   "jersey": "23",
+   "name": "Ebuka Okorie",
+   "position": "G",
+   "short": "E. Okorie",
+   "status": "",
+   "team_id": "8"
+  },
+  "5279129": {
+   "jersey": "55",
+   "name": "Sergio de Larrea",
+   "position": "F",
+   "short": "S. de Larrea",
+   "status": "Out",
+   "team_id": "6"
+  },
+  "5279130": {
+   "jersey": "10",
+   "name": "Nolan Traore",
+   "position": "G",
+   "short": "N. Traore",
+   "status": "",
+   "team_id": "17"
+  },
+  "5279133": {
+   "jersey": "19",
+   "name": "Joan Beringer",
+   "position": "F",
+   "short": "J. Beringer",
+   "status": "",
+   "team_id": "16"
+  },
+  "5281370": {
+   "jersey": "22",
+   "name": "Hannes Steinbach",
+   "position": "F",
+   "short": "H. Steinbach",
+   "status": "",
+   "team_id": "30"
+  },
+  "5289900": {
+   "jersey": "51",
+   "name": "Mohamed Diawara",
+   "position": "F",
+   "short": "M. Diawara",
+   "status": "",
+   "team_id": "18"
+  },
+  "6430": {
+   "jersey": "10",
+   "name": "Jimmy Butler III",
+   "position": "F",
+   "short": "J. Butler III",
+   "status": "Out",
+   "team_id": "9"
+  },
+  "6440": {
+   "jersey": "23",
+   "name": "Tobias Harris",
+   "position": "F",
+   "short": "T. Harris",
+   "status": "Out",
+   "team_id": "24"
+  },
+  "6442": {
+   "jersey": "11",
+   "name": "Kyrie Irving",
+   "position": "G",
+   "short": "K. Irving",
+   "status": "Day-To-Day",
+   "team_id": "6"
+  },
+  "6450": {
+   "jersey": "2",
+   "name": "Kawhi Leonard",
+   "position": "F",
+   "short": "K. Leonard",
+   "status": "Out",
+   "team_id": "28"
+  },
+  "6475": {
+   "jersey": "11",
+   "name": "Klay Thompson",
+   "position": "G",
+   "short": "K. Thompson",
+   "status": "",
+   "team_id": "14"
+  },
+  "6478": {
+   "jersey": "9",
+   "name": "Nikola Vucevic",
+   "position": "C",
+   "short": "N. Vucevic",
+   "status": "",
+   "team_id": "19"
+  },
+  "6578": {
+   "jersey": "40",
+   "name": "Harrison Barnes",
+   "position": "F",
+   "short": "H. Barnes",
+   "status": "",
+   "team_id": "24"
+  },
+  "6580": {
+   "jersey": "3",
+   "name": "Bradley Beal",
+   "position": "G",
+   "short": "B. Beal",
+   "status": "Out",
+   "team_id": "12"
+  },
+  "6583": {
+   "jersey": "23",
+   "name": "Anthony Davis",
+   "position": "F",
+   "short": "A. Davis",
+   "status": "",
+   "team_id": "27"
+  },
+  "6585": {
+   "jersey": "0",
+   "name": "Andre Drummond",
+   "position": "C",
+   "short": "A. Drummond",
+   "status": "",
+   "team_id": "18"
+  },
+  "6589": {
+   "jersey": "23",
+   "name": "Draymond Green",
+   "position": "F",
+   "short": "D. Green",
+   "status": "",
+   "team_id": "9"
+  },
+  "6606": {
+   "jersey": "0",
+   "name": "Damian Lillard",
+   "position": "G",
+   "short": "D. Lillard",
+   "status": "",
+   "team_id": "22"
+  },
+  "6609": {
+   "jersey": "22",
+   "name": "Khris Middleton",
+   "position": "F",
+   "short": "K. Middleton",
+   "status": "",
+   "team_id": "27"
+  }
+ },
+ "updated_at": "2026-10-28T00:40:10+00:00"
+}
