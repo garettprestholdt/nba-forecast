@@ -15,7 +15,7 @@ flowchart LR
     dbt --> research[research/<br/>walk-forward backtests]
     research --> published[(data/published/<br/>on main)]
   end
-  subgraph daily["Daily GitHub Actions (14:00 UTC)"]
+  subgraph daily["Daily GitHub Actions (14:17 UTC, backups 16:17 and 18:17)"]
     pipeline[pipeline/ + agents/] --> databranch[(data branch<br/>append-only logs)]
   end
   ingest --> pipeline

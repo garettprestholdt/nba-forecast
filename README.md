@@ -51,7 +51,7 @@ What the research found, one write-up per decision:
 ## How it works
 ```mermaid
 flowchart LR
-  A[ESPN results,<br/>box scores, injuries] --> C[Daily job<br/>14:00 UTC]
+  A[ESPN results,<br/>box scores, injuries] --> C[Daily job<br/>14:17 UTC + backups]
   B[Betting odds] --> C
   C --> D[Ratings and<br/>predictions]
   D --> E[(data branch:<br/>append-only log)]
