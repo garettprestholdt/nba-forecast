@@ -45,13 +45,16 @@ def test_odds_never_claim_impossible(p, text):
 def test_roster_parsing():
     data = {"athletes": [
         {"id": 1, "displayName": "Jayson Tatum", "shortName": "J. Tatum", "jersey": "0",
-         "position": {"abbreviation": "F"}, "injuries": [{"status": "Out"}]},
+         "position": {"abbreviation": "F"}, "injuries": [{"status": "Out"}],
+         "dateOfBirth": "1998-03-03T08:00Z", "height": 80.0, "weight": 210.0},
         {"id": 2, "displayName": "Derrick White", "position": {"abbreviation": "G"}},
     ]}  # fmt: skip
     players = rosters.parse_roster(data, "2")
     assert players["1"] == {"name": "Jayson Tatum", "short": "J. Tatum", "position": "F",
-                            "jersey": "0", "team_id": "2", "status": "Out"}  # fmt: skip
+                            "jersey": "0", "team_id": "2", "status": "Out", "dob": "1998-03-03",
+                            "height_in": "80", "weight_lb": "210"}  # fmt: skip
     assert players["2"]["status"] == "" and players["2"]["short"] == "Derrick White"
+    assert players["2"]["dob"] == players["2"]["height_in"] == ""
 
 
 def test_lineups_key_players_and_absences(tmp_path):

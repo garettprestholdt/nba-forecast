@@ -109,6 +109,7 @@
           {% if m.p_hybrid is not none %}<span><span class="k">Team + player model:</span> <b>{{ m.favorite.abbr }} {{ (m.p_hybrid if m.favorite is sameas m.home else 1 - m.p_hybrid) | pct }}</b></span>{% endif %}
           {% if m.p_market is not none %}<span><span class="k">Betting market:</span> <b>{{ m.favorite.abbr }} {{ (m.p_market if m.favorite is sameas m.home else 1 - m.p_market) | pct }}</b></span>{% endif %}
           <button type="button" class="boxbtn" data-box="{{ m.game_id }}"{% if not m.final %} hidden{% endif %}>Box score</button>
+          <a class="m-more" href="game-{{ m.game_id }}.html">Matchup: stats, arena, shot charts →</a>
         </div>
         {% if m.home_lineup and m.away_lineup %}
         <div class="m-players">

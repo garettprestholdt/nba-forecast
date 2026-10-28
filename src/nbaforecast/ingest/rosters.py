@@ -1,9 +1,9 @@
 """Current NBA rosters from ESPN, for the site's player cards: one file on the data branch,
 `players/directory.json`, rewritten each morning (its git history keeps the old versions).
 
-Each player: name, position, jersey number, team, and ESPN's current injury status ("Out",
-"Day-To-Day", or blank). Headshots aren't stored: ESPN serves them at a URL built from the
-player id (see web.headshot_url).
+Each player: name, position, jersey number, team, ESPN's current injury status ("Out",
+"Day-To-Day", or blank), date of birth, height (inches) and weight (pounds). Headshots aren't
+stored: ESPN serves them at a URL built from the player id (see web.headshot_url).
 """
 
 import json
@@ -33,6 +33,9 @@ def parse_roster(data: dict[str, Any], team_id: str) -> dict[str, dict[str, str]
             "jersey": a.get("jersey", ""),
             "team_id": team_id,
             "status": injuries[0].get("status", "") if injuries else "",
+            "dob": (a.get("dateOfBirth") or "")[:10],
+            "height_in": str(int(a["height"])) if a.get("height") else "",
+            "weight_lb": str(int(a["weight"])) if a.get("weight") else "",
         }
     return players
 

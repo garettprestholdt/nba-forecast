@@ -323,15 +323,107 @@ def _box_sync(args: argparse.Namespace) -> int:
 
     import requests
 
-    from nbaforecast import boxlog, live
+    from nbaforecast import boxlog, court, live
     from nbaforecast.ingest.injuries import fetch_summary
 
     store = live.Store(Path(args.data_dir))
     state = store.load_state()
     session = requests.Session()
-    out = boxlog.sync(store, state.season, lambda g: fetch_summary(g, session), state.last_date)
+    cache: dict[str, dict] = {}
+
+    def fetch(game_id: str) -> dict:  # box scores, shots and stints share one download
+        if game_id not in cache:
+            cache[game_id] = fetch_summary(game_id, session)
+        return cache[game_id]
+
+    out = boxlog.sync(store, state.season, fetch, state.last_date)
     print(f"Box scores for {state.season}: {out['games_added']} games added, "
           f"{out['missing']} not available yet")  # fmt: skip
+    out = court.sync(store, state.season, fetch, state.last_date)
+    print(f"Shots and stints for {state.season}: {out['games_added']} games added, "
+          f"{out['missing']} without play-by-play yet")  # fmt: skip
+    return 0
+
+
+def _impact(args: argparse.Namespace) -> int:
+    from datetime import UTC, datetime
+    from pathlib import Path
+
+    from nbaforecast import boxlog, court, impact, live
+
+    root = Path(args.data_dir)
+    season = live.Store(root).load_state().season
+    seasons = [court.previous_season(season), season]
+    stints = [r for s in seasons for r in live.Store.read(court.stints_path(root, s))]
+    if not stints:
+        print("No stints yet: nothing to fit.")
+        return 0
+    # box rates for the prior: last season's career lines plus this season's box scores
+    lines = [
+        {"player_id": pid, "minutes": s["min"] * s["g"], "blk": s["blk"] * s["g"],
+         "stl": s["stl"] * s["g"], "reb": s["reb"] * s["g"]}
+        for pid, career in boxlog.load_careers(root).items()
+        for s in career
+        if s["season"] == seasons[0]
+    ]  # fmt: skip
+    lines += [r for r in live.Store.read(boxlog.path(root, season))
+              if r["stats_missing"] != "True" and r["minutes"]]  # fmt: skip
+    result = impact.fit(stints, impact.per36_rates(lines))
+    path = impact.write(root, result, seasons, datetime.now(UTC))
+    print(f"Wrote {path}: {len(result['players'])} players from {len(stints)} stint ends, "
+          f"home court {result['home_court']:+.2f} per 100")  # fmt: skip
+    return 0
+
+
+def _venues(args: argparse.Namespace) -> int:
+    from datetime import datetime
+    from pathlib import Path
+    from zoneinfo import ZoneInfo
+
+    import requests
+
+    from nbaforecast.ingest import espn, venues
+
+    session = requests.Session()
+    today = datetime.now(ZoneInfo("America/New_York")).date()
+    n = venues.run(Path(args.data_dir), today, lambda d: espn.fetch_scoreboard(d, session))
+    print(f"Venues: {n} games from {today} on")
+    return 0
+
+
+def _court_backfill(args: argparse.Namespace) -> int:
+    import time
+    from pathlib import Path
+
+    import requests
+
+    from nbaforecast import court, live, warehouse
+    from nbaforecast.ingest.injuries import fetch_summary
+
+    root = Path(args.data_dir)
+    games = warehouse.load_games()
+    games = games[(games["season"] == args.season) & (games["season_type"] == "regular_season")]
+    done = {r["game_id"] for r in live.Store.read(court.stints_path(root, args.season))}
+    session = requests.Session()
+    added = missing = 0
+    for g in games.to_dict("records"):
+        g = {**g, "game_id": str(g["game_id"]), "home_team_id": str(g["home_team_id"]),
+             "away_team_id": str(g["away_team_id"]), "game_date": str(g["game_date"])}  # fmt: skip
+        if g["game_id"] in done:
+            continue
+        try:
+            summary = fetch_summary(g["game_id"], session)
+        except requests.HTTPError:
+            missing += 1
+            continue
+        if court.write_game(root, args.season, summary, g):
+            added += 1
+        else:
+            missing += 1
+        if (added + missing) % 100 == 0:
+            print(f"  {added + missing}/{len(games)} games", flush=True)
+        time.sleep(args.pause)
+    print(f"Shots and stints for {args.season}: {added} games added, {missing} missing")
     return 0
 
 
@@ -643,9 +735,27 @@ def main(argv: list[str] | None = None) -> int:
     ro.add_argument("--data-dir", required=True, help="checkout of the data branch")
     ro.set_defaults(func=_rosters)
 
-    bx = sub.add_parser("box-sync", help="add this season's new box scores to the data branch")
+    bx = sub.add_parser(
+        "box-sync", help="add this season's new box scores, shots and stints to the data branch"
+    )
     bx.add_argument("--data-dir", required=True, help="checkout of the data branch")
     bx.set_defaults(func=_box_sync)
+
+    im = sub.add_parser("impact", help="fit player impact ratings (RAPM) from the stint logs")
+    im.add_argument("--data-dir", required=True, help="checkout of the data branch")
+    im.set_defaults(func=_impact)
+
+    ve = sub.add_parser("venues", help="where today's and the next two days' games are played")
+    ve.add_argument("--data-dir", required=True, help="checkout of the data branch")
+    ve.set_defaults(func=_venues)
+
+    cb = sub.add_parser(
+        "court-backfill", help="shots and stints for a past season (local, ~10 min per season)"
+    )
+    cb.add_argument("--data-dir", required=True, help="checkout of the data branch")
+    cb.add_argument("--season", required=True, help="e.g. 2025-26")
+    cb.add_argument("--pause", type=float, default=0.2, help="seconds between requests")
+    cb.set_defaults(func=_court_backfill)
 
     ca = sub.add_parser("careers", help="season-by-season player stats from the warehouse (local)")
     ca.add_argument("--data-dir", required=True, help="checkout of the data branch")

@@ -51,9 +51,15 @@ jobs:
       # For the site: projected standings and playoff odds (10,000 simulated seasons from
       # today's ratings), and current rosters (names, positions, injury status) for the player
       # cards. If either fails, the site keeps yesterday's version.
-      - name: Box scores (this season's game logs, for player pages)
+      - name: Box scores, shot zones and lineup stints (for player and game pages)
         continue-on-error: true
         run: uv run nbaf box-sync --data-dir data-branch
+      - name: Player impact ratings (RAPM over this season and last)
+        continue-on-error: true
+        run: uv run nbaf impact --data-dir data-branch
+      - name: Venues (today and the next two days)
+        continue-on-error: true
+        run: uv run nbaf venues --data-dir data-branch
       - name: Season projections
         continue-on-error: true
         run: uv run nbaf project --data-dir data-branch

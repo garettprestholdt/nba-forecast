@@ -783,7 +783,8 @@ def build(data_dir: Path, out_dir: Path, published_dir: Path | None = None) -> l
     written = []
     root, season = Path(data_dir), context["season"]
     team_map = context["team_map"]
-    payloads = pages.player_payloads(root, season, team_map)
+    court_data = pages.load_court(root, season)
+    payloads = pages.player_payloads(root, season, team_map, court_data, context["slate_date"])
     published = published_dir or config.PUBLISHED_DIR
     context.update(
         history=pages.history(Store(root), season, team_map),
@@ -801,6 +802,10 @@ def build(data_dir: Path, out_dir: Path, published_dir: Path | None = None) -> l
     for tp in pages.team_pages(root, season, team_map, state, payloads).values():
         path = out_dir / tp.slug
         path.write_text(env.get_template("team.html").render(page=tp.slug, tp=tp, **context))
+        written.append(path)
+    for gp in pages.game_pages(root, season, context["games"], team_map, court_data):
+        path = out_dir / gp["slug"]
+        path.write_text(env.get_template("game.html").render(page=gp["slug"], gp=gp, **context))
         written.append(path)
     pages.write_player_payloads(out_dir, payloads)
     assets = out_dir / "assets"
