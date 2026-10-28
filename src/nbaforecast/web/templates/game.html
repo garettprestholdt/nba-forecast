@@ -24,6 +24,12 @@
       <span class="away" style="width: {{ ((1 - m.p_home) * 100) | round(1) }}%"></span>
       <span class="home" style="width: {{ (m.p_home * 100) | round(1) }}%"></span>
     </div>
+    <div class="gh-models">
+      <span>Forecast (Elo): <b>{{ m.favorite.abbr }} {{ [m.p_home, 1 - m.p_home] | max | pct }}</b></span>
+      {% if m.p_v2 is not none %}<span{% if m.missing %} title="Counted as out tonight: {{ m.missing }}"{% endif %}>Player + injury model: <b>{{ m.favorite.abbr }} {{ (m.p_v2 if m.favorite is sameas m.home else 1 - m.p_v2) | pct }}</b></span>{% endif %}
+      {% if m.p_market is not none %}<span>Betting market: <b>{{ m.favorite.abbr }} {{ (m.p_market if m.favorite is sameas m.home else 1 - m.p_market) | pct }}</b></span>{% endif %}
+    </div>
+    {% if m.missing %}<p class="gh-out">Out tonight: {{ m.missing }}</p>{% endif %}
     <div class="gh-where">
       {% if v %}
       <span class="pin" aria-hidden="true">📍</span>

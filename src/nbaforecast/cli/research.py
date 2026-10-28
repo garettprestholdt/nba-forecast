@@ -123,6 +123,10 @@ def _hybrid_v2_fit(args: argparse.Namespace) -> int:
     shadow_v2.MODEL_PATH.parent.mkdir(parents=True, exist_ok=True)
     shadow_v2.MODEL_PATH.write_text(json.dumps(model, indent=1) + "\n")
     print(f"Wrote {shadow_v2.MODEL_PATH} (fit through {model['fit_through']})")
+    scores = impact_backtest.chosen_holdout(feats)
+    (shadow_v2.MODEL_PATH.parent / "backtest.json").write_text(json.dumps(scores, indent=1) + "\n")
+    for row in scores["holdout"]:
+        print(f"  held out: {row['model']:40s} log-loss {row['log_loss']:.4f}")
     for k, v in model["coefficients"].items():
         print(f"  {k:20s} {v:+.4f}")
     return 0

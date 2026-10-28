@@ -161,8 +161,10 @@ def test_model_page_is_plain_and_simple(site):
     }
     assert series == {charts.ADAPTIVE}  # one model on the honesty chart; live joins after 100 games
     for approach in ("Coin flip", "Always back the home team", "Our model (published)",
-                     "Team + player model"):  # fmt: skip
+                     "Player + injury model (challenger)",
+                     "Team + player model (earlier challenger)"):  # fmt: skip
         assert approach in html
+    assert "promotion-bar-hybrid-v2.md" in html and "promotion-bar-hybrid.md" not in html
     assert "For the curious" in html  # the technical tables are tucked away, not gone
     market = specs(html)["spec-market"]
     assert market["width"] == market["height"]  # same scale on both axes
@@ -263,7 +265,7 @@ def test_shadow_card_only_when_the_challenger_has_a_scorecard(data_dir, tmp_path
     assert "Challenger" not in (out / "index.html").read_text()
 
     card = {
-        "season": "2026-27", "model": "hybrid-realistic-v1", "updated_at": "",
+        "season": "2026-27", "model": "hybrid-lineup-v2", "updated_at": "",
         "games_predicted": 12, "games_scored": 9,
         "hybrid": {"log_loss": 0.61234, "brier": 0.21, "accuracy": 0.66667},
         "elo": {"log_loss": 0.64321, "brier": 0.22, "accuracy": 0.55556},
@@ -271,15 +273,24 @@ def test_shadow_card_only_when_the_challenger_has_a_scorecard(data_dir, tmp_path
         "promotion_check": {"status": "in progress", "games": 9, "mean_difference": 0.031,
                             "ci95": [-0.02, 0.082]},
     }  # fmt: skip
-    path = data_dir / "scorecard" / "2026-27-hybrid.json"
+    v1 = data_dir / "scorecard" / "2026-27-hybrid.json"  # v1 still logs, but isn't shown
+    v1.parent.mkdir(parents=True, exist_ok=True)
+    v1.write_text(json.dumps({**card, "model": "hybrid-realistic-v1"}))
+    out = tmp_path_factory.mktemp("site_v1_only")
+    web.build(data_dir, out, published_dir=config.PUBLISHED_DIR)
+    assert "Challenger" not in (out / "index.html").read_text()
+
+    path = data_dir / "scorecard" / "2026-27-hybrid-v2.json"
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(json.dumps(card))
     out = tmp_path_factory.mktemp("site_shadow")
     web.build(data_dir, out, published_dir=config.PUBLISHED_DIR)
     html = (out / "index.html").read_text()
-    assert "Challenger: team + player model" in html and "0.612" in html and "0.643" in html
-    assert "promotion-bar-hybrid.md" in html and "in progress" in html
+    assert "Challenger: player + injury model" in html and "0.612" in html and "0.643" in html
+    assert "promotion-bar-hybrid-v2.md" in html and "in progress" in html
+    assert "team + player" not in html.lower()  # v1 is only on the model page
     path.unlink()
+    v1.unlink()
 
 
 def test_live_scores_are_wired_and_display_only(site):

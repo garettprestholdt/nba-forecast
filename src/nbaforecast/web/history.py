@@ -3,7 +3,7 @@
 from typing import Any
 
 from nbaforecast import metrics
-from nbaforecast.pipeline import shadow
+from nbaforecast.pipeline import shadow_v2
 from nbaforecast.pipeline.live import Store
 from nbaforecast.web import fan
 
@@ -11,8 +11,9 @@ from nbaforecast.web import fan
 # --- prediction history -------------------------------------------------------------------
 def history(store: Store, season: str, team_map: dict[str, fan.Team]) -> dict[str, Any]:
     results = {r["game_id"]: r for r in store.read(store.results_path(season))}
-    hybrid = {r["game_id"]: float(r["p_home"])
-              for r in store.read(shadow.log_path(store.root, season))}  # fmt: skip
+    challenger = {
+        gid: float(r["p_home"]) for gid, r in shadow_v2.load_log(store.root, season).items()
+    }
     games = []
     for p in store.read(store.predictions_path(season)):
         r = results.get(p["game_id"])
@@ -27,7 +28,7 @@ def history(store: Store, season: str, team_map: dict[str, fan.Team]) -> dict[st
             "pick": pick, "pick_p": max(ph, 1 - ph), "correct": (ph >= 0.5) == home_won,
             "home_score": int(r["home_score"]), "away_score": int(r["away_score"]),
             "market": float(p["market_p_home"]) if p["market_p_home"] else None,
-            "hybrid": hybrid.get(p["game_id"]), "home_won": home_won,
+            "challenger": challenger.get(p["game_id"]), "home_won": home_won,
         })  # fmt: skip
     games.sort(key=lambda g: g["date"], reverse=True)
     n = len(games)

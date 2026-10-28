@@ -22,8 +22,8 @@ from data available before each tip-off. Lower log-loss is better.
 |---|---|---|---|---|
 | Coin flip | baseline | 0.6931 | 0.2500 | 50.0% |
 | Elo, adaptive home court | **published** | 0.6254 | 0.2180 | 65.0% |
-| Hybrid v1: team history + player box scores | in shadow | 0.6171 | 0.2142 | 66.0% |
-| Hybrid v2: + RAPM defense and the injury report | in shadow | 0.6074* | 0.2104 | 66.4% |
+| Hybrid v2: + RAPM defense and the injury report | **challenger** (in shadow) | 0.6074* | 0.2104 | 66.4% |
+| Hybrid v1: team history + player box scores | earlier challenger, replaced by v2 | 0.6171 | 0.2142 | 66.0% |
 
 \*v2's features were chosen after comparing ten candidates on these same seasons, so its
 held-out number is optimistic. Its pre-registered live window (the 2026-27 regular season) is

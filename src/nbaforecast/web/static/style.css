@@ -631,6 +631,9 @@ footer .fine { font-size: 12px; color: #8d8a83; }
 .gh-pct { font-size: clamp(36px, 6vw, 64px); margin-left: auto; font-variant-numeric: tabular-nums; }
 .gh-side.home .gh-pct { margin-left: 0; margin-right: auto; }
 .gh-at { font-family: var(--display); font-weight: 800; color: var(--arena-ink-2); font-size: 20px; }
+.gh-models { display: flex; flex-wrap: wrap; gap: 4px 18px; margin-top: 12px; font-size: 14px; color: var(--arena-ink-2); }
+.gh-models b { color: var(--arena-ink); font-variant-numeric: tabular-nums; }
+.gh-out { margin: 6px 0 0; font-size: 13px; color: var(--arena-ink-2); }
 .gh-where { display: flex; align-items: baseline; gap: 8px; margin-top: 14px; color: var(--arena-ink-2); font-size: 15px; }
 .gh-where strong { color: var(--arena-ink); }
 .game-grid { display: grid; grid-template-columns: minmax(0, 340px) minmax(0, 1fr); gap: 20px; align-items: start; }
