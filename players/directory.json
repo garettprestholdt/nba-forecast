@@ -788,7 +788,7 @@
    "name": "Simone Fontecchio",
    "position": "F",
    "short": "S. Fontecchio",
-   "status": "Day-To-Day",
+   "status": "Out",
    "team_id": "14",
    "weight_lb": "220"
   },
@@ -3923,7 +3923,7 @@
    "name": "Anthony Black",
    "position": "G",
    "short": "A. Black",
-   "status": "",
+   "status": "Day-To-Day",
    "team_id": "19",
    "weight_lb": "200"
   },
@@ -5710,5 +5710,5 @@
    "weight_lb": "222"
   }
  },
- "updated_at": "2026-10-28T06:45:25+00:00"
+ "updated_at": "2026-10-28T15:52:21+00:00"
 }
