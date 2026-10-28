@@ -62,6 +62,15 @@ See `docs/roadmap.md` for the phased plan.
   `impact.blend`. Defensive role tags (`pages.defense_tags`) need size, box rates *and* a
   defense rating that agrees. Third-party metrics (DARKO, EPM, LEBRON) are not used: their terms
   don't clearly allow republishing (EPM's forbid it).
+- Hybrid v2 (`shadow_v2.py`, daily `nbaf shadow-v2` after the injury calls): the hybrid with
+  RAPM and who's missing (`docs/findings/impact-challenger.md`), tonight's lineup from the ESPN
+  injury report (Out = 0, Day-To-Day = the injury watch's chance). Logs to
+  `shadow/hybrid-v2/<season>.csv`; its own pre-registered bar (`docs/promotion-bar-hybrid-v2.md`,
+  `shadow_v2.PROMOTION`). No prediction if `players/impact.json` or the directory is missing or
+  stale. Model file: `uv run nbaf hybrid-v2-fit` (local, ~3 min). Research harness:
+  `uv run nbaf impact-backtest` (leak-free RAPM refit every 14 days, `models/rapm_walk.py`;
+  needs the 2017-18 on play-by-play cache).
+- Team pages also show the full schedule (`pages._schedule`).
 - Game pages: `game-<game_id>.html` for each game on the slate (venue from
   `schedule/venues.json`, `nbaf venues` daily; team stats; shot charts in `static/court.js`).
   Rosters (`players/directory.json`) carry date of birth, height and weight for the pop-up bio.

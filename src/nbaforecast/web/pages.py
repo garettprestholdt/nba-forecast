@@ -358,6 +358,7 @@ class TeamPage:
     weaknesses: list[dict] = field(default_factory=list)
     roster: list[dict] = field(default_factory=list)
     upcoming: list[dict] = field(default_factory=list)
+    schedule: list[dict] = field(default_factory=list)  # all 82 games, played and to come
     projection: dict | None = None
     summary: str = ""
 
@@ -382,12 +383,16 @@ def team_pages(
     team_map: dict[str, fan.Team],
     live_state,
     payloads: dict[str, dict],
+    slate_ids: set[str] | None = None,
 ) -> dict[str, TeamPage]:
     timeline = seasonelo.replay(Store(root), season)
     stats = team_stats(root, season)
     rk = ranks(stats) if len(stats) == len(team_map) else {}
     proj = (fan.load_projections(root) or {}).get("teams", {})
     schedule = Store.read(projections.schedule_path(root, season))
+    results = {r["game_id"]: r for r in Store.read(Store(root).results_path(season))}
+    forecasts = {r["game_id"]: float(r["p_home"])
+                 for r in Store.read(Store(root).predictions_path(season))}  # fmt: skip
     by_rating = sorted(
         team_map.values(), key=lambda t: -(t.rating if t.rating is not None else -99)
     )
@@ -423,10 +428,48 @@ def team_pages(
                 "date": g["tipoff_utc"], "opp": team_map[opp_id], "home": home,
                 "p_win": win_probability(diff + court),
             })  # fmt: skip
+        replayed = {g["game_id"]: g["p_win"] for g in page.games}
+        page.schedule = _schedule(tid, schedule, results, forecasts, team_map, live_state, hca,
+                                  slate_ids or set(), replayed)  # fmt: skip
         page.projection = proj.get(tid)
         page.summary = _summary(page)
         pages[tid] = page
     return pages
+
+
+def _schedule(
+    tid, schedule, results, forecasts, team_map, live_state, hca, slate_ids, replayed
+) -> list:
+    """Every game on the team's schedule. Played: result and the forecast we published before
+    tip-off (or, for games before the log began, Elo's pre-game number from the season replay,
+    flagged `replayed`). To come: the chance to win from today's ratings, home court included."""
+    out = []
+    for g in schedule:
+        if tid not in (g["home_team_id"], g["away_team_id"]):
+            continue
+        home = g["home_team_id"] == tid
+        opp_id = g["away_team_id"] if home else g["home_team_id"]
+        if opp_id not in team_map:
+            continue
+        row = {"game_id": g["game_id"], "date": g["tipoff_utc"], "opp": team_map[opp_id],
+               "home": home, "neutral": g["neutral"] == "True",
+               "link": game_slug(g["game_id"]) if g["game_id"] in slate_ids else None}  # fmt: skip
+        r = results.get(g["game_id"])
+        if r and r["home_score"] not in ("", None):
+            us, them = (int(r["home_score"]), int(r["away_score"]))
+            us, them = (us, them) if home else (them, us)
+            p = forecasts.get(g["game_id"])
+            p_win = None if p is None else (p if home else 1 - p)
+            row.update(final=True, won=us > them, score=f"{us}–{them}", p_win=p_win,
+                       replayed=p_win is None and g["game_id"] in replayed)  # fmt: skip
+            if row["replayed"]:
+                row["p_win"] = replayed[g["game_id"]]
+        else:
+            diff = live_state.ratings[tid] - live_state.ratings[opp_id]
+            court = 0.0 if row["neutral"] else (hca if home else -hca)
+            row.update(final=False, p_win=win_probability(diff + court))
+        out.append(row)
+    return sorted(out, key=lambda r: (r["date"], r["game_id"]))
 
 
 def _summary(page: TeamPage) -> str:

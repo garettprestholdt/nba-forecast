@@ -132,3 +132,29 @@ def test_history_counts_and_buckets(tmp_path):
     assert {b["label"]: b["games"] for b in h["buckets"]} == {"50–60%": 1, "80%+": 1}
     boston = next(t for t in h["teams"] if t["team"].abbr == "BOS")
     assert boston["games"] == 1 and boston["accuracy"] == 1.0
+
+
+def test_team_schedule_marks_results_forecasts_and_tonight():
+    state = elo.EloState(live.LIVE_PARAMS, ratings={"2": 1600.0, "17": 1500.0}, season="2026-27",
+                         last_date=date(2026, 10, 27))  # fmt: skip
+    teams = {t: fan.Team(t, a, a, a, "East", "#000000", "#ffffff", None, None)
+             for t, a in (("2", "BOS"), ("17", "BKN"))}  # fmt: skip
+
+    def game(gid, tip, home, away, done):
+        return {"game_id": gid, "tipoff_utc": tip, "home_team_id": home, "away_team_id": away,
+                "neutral": "False", "completed": str(done)}  # fmt: skip
+
+    schedule = [game("a", "2026-10-20T23:00Z", "2", "17", True),
+                game("b", "2026-10-27T23:00Z", "17", "2", True),
+                game("c", "2026-10-29T00:00Z", "2", "17", False)]  # fmt: skip
+    results = {"a": {"home_score": "110", "away_score": "100"},
+               "b": {"home_score": "99", "away_score": "105"}}  # fmt: skip
+    rows = pages._schedule("2", schedule, results, {"b": 0.3}, teams, state, 30.0, {"c"},
+                           {"a": 0.64})  # fmt: skip
+    assert [r["game_id"] for r in rows] == ["a", "b", "c"]
+    assert rows[0]["won"] and rows[0]["score"] == "110–100" and rows[0]["replayed"]
+    assert (
+        rows[1]["won"] and rows[1]["score"] == "105–99" and rows[1]["p_win"] == pytest.approx(0.7)
+    )
+    assert not rows[1]["replayed"]
+    assert rows[2]["link"] == "game-c.html" and not rows[2]["final"] and rows[2]["p_win"] > 0.6

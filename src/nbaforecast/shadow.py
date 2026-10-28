@@ -403,16 +403,25 @@ def _log_loss_one(p: float, y: int) -> float:
     return -math.log(p if y == 1 else 1 - p)
 
 
-def promotion_check(store: live.Store, seasons: list[str]) -> dict:
+def promotion_check(
+    store: live.Store,
+    seasons: list[str],
+    log: Callable[[Path, str], Path] | None = None,
+    promotion: dict | None = None,
+    rule: str = "docs/promotion-bar-hybrid.md",
+) -> dict:
     """The pre-registered promotion rule, evaluated on the regular seasons in `seasons`.
     Status stays "in progress" until the last season's regular season is over (its first
-    play-in or playoff result has been ingested)."""
+    play-in or playoff result has been ingested). `log`, `promotion` and `rule` default to the
+    v1 hybrid's; other shadow models pass their own."""
+    log = log or log_path
+    promotion = promotion or PROMOTION
     pairs, published_games = [], 0
     over = False
     for season in seasons:
         results = {r["game_id"]: r for r in store.read(store.results_path(season))}
         over = any(r["season_type"] in ("playin", "playoffs") for r in results.values())
-        shadow_rows = {r["game_id"]: r for r in store.read(log_path(store.root, season))
+        shadow_rows = {r["game_id"]: r for r in store.read(log(store.root, season))
                        if r["season_type"] == "regular_season"}  # fmt: skip
         if not shadow_rows:
             continue
@@ -426,8 +435,8 @@ def promotion_check(store: live.Store, seasons: list[str]) -> dict:
             if s is not None:
                 y = int(int(r["home_score"]) > int(r["away_score"]))
                 pairs.append((float(e["p_home"]), float(s["p_home"]), y))
-    check: dict[str, Any] = {"seasons": seasons, "rule": "docs/promotion-bar-hybrid.md",
-                             "games": len(pairs), "status": "not started"}  # fmt: skip
+    check: dict[str, Any] = {"seasons": seasons, "rule": rule, "games": len(pairs),
+                             "status": "not started"}  # fmt: skip
     if len(pairs) < 2:
         return check
     diffs = [_log_loss_one(pub, y) - _log_loss_one(hyb, y) for pub, hyb, y in pairs]
@@ -441,9 +450,9 @@ def promotion_check(store: live.Store, seasons: list[str]) -> dict:
     coverage = n / published_games if published_games else 0.0
     passes = {
         "better_on_average": mean > 0,
-        "not_meaningfully_worse": lo > -PROMOTION["margin"],
-        "coverage": coverage >= PROMOTION["coverage"],
-        "calibration": rel_hyb - rel_pub <= PROMOTION["reliability_gap"],
+        "not_meaningfully_worse": lo > -promotion["margin"],
+        "coverage": coverage >= promotion["coverage"],
+        "calibration": rel_hyb - rel_pub <= promotion["reliability_gap"],
     }
     if not over:
         status = "in progress"
@@ -451,7 +460,7 @@ def promotion_check(store: live.Store, seasons: list[str]) -> dict:
         status = "promote"
     elif hi < 0:
         status = "retire"
-    elif seasons == PROMOTION["window"]:
+    elif seasons == promotion["window"]:
         status = "extend"
     else:
         status = "not promoted"
@@ -467,19 +476,29 @@ def promotion_check(store: live.Store, seasons: list[str]) -> dict:
     }
 
 
-def _promotion_seasons(season: str) -> list[str] | None:
+def _promotion_seasons(season: str, promotion: dict | None = None) -> list[str] | None:
+    promotion = promotion or PROMOTION
     for key in ("window", "extension"):
-        if PROMOTION[key][-1] == season:
-            return PROMOTION[key]
+        if promotion[key][-1] == season:
+            return promotion[key]
     return None
 
 
-def scorecard(store: live.Store, season: str, now: datetime) -> dict:
+def scorecard(
+    store: live.Store,
+    season: str,
+    now: datetime,
+    log: Callable[[Path, str], Path] | None = None,
+    promotion: dict | None = None,
+    rule: str = "docs/promotion-bar-hybrid.md",
+    model_name: str = MODEL_NAME,
+) -> dict:
     """Hybrid vs. Elo on every game both predicted and that has a result; vs. the market on
-    the games that also had a line."""
+    the games that also had a line. Other shadow models pass their own log, bar and name."""
+    log = log or log_path
     results = {r["game_id"]: r for r in store.read(store.results_path(season))}
     elo_rows = {r["game_id"]: r for r in store.read(store.predictions_path(season))}
-    shadow_rows = store.read(log_path(store.root, season))
+    shadow_rows = store.read(log(store.root, season))
     scored = []
     for s in shadow_rows:
         r, e = results.get(s["game_id"]), elo_rows.get(s["game_id"])
@@ -490,7 +509,7 @@ def scorecard(store: live.Store, season: str, now: datetime) -> dict:
     market = [x for x in scored if x[2] != ""]
     return {
         "season": season,
-        "model": MODEL_NAME,
+        "model": model_name,
         "updated_at": now.isoformat(timespec="seconds"),
         "games_predicted": len(shadow_rows),
         "games_scored": len(scored),
@@ -503,7 +522,9 @@ def scorecard(store: live.Store, season: str, now: datetime) -> dict:
             "market": _score([float(x[2]) for x in market], [x[3] for x in market]),
         },
         "promotion_check": (
-            promotion_check(store, window) if (window := _promotion_seasons(season)) else None
+            promotion_check(store, window, log, promotion, rule)
+            if (window := _promotion_seasons(season, promotion))
+            else None
         ),
     }
 

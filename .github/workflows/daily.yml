@@ -117,6 +117,11 @@ jobs:
         run: >-
           uv run nbaf availability-publish --data-dir data-branch
           --workdir "$RUNNER_TEMP/availability" --date "$RECAP_DATE"
+      # Hybrid v2 in shadow: RAPM + who's missing, from the injury report and the calls just
+      # logged. Its own pre-registered bar (docs/promotion-bar-hybrid-v2.md); never blocks Elo.
+      - name: Hybrid v2 shadow run (RAPM + injury report)
+        continue-on-error: true
+        run: uv run nbaf shadow-v2 --data-dir data-branch
       - name: Verify again (injury calls included)
         run: uv run nbaf verify --data-dir data-branch
 

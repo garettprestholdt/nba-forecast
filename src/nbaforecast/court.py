@@ -116,7 +116,9 @@ def parse_stints(summary: dict[str, Any], game: dict[str, Any]) -> list[dict[str
     roster = parse_boxscore(summary, game)
     if not roster:
         return []
-    slim = pbp.slim(summary)["plays"]
+    plays = summary.get("plays") or []
+    already_slim = bool(plays) and isinstance(plays[0].get("type"), str)  # the local plays cache
+    slim = plays if already_slim else pbp.slim(summary)["plays"]
     team_of = {r["player_id"]: r["team_id"] for r in roster}
     home, away = str(game["home_team_id"]), str(game["away_team_id"])
     on: dict[str, set[str]] = {home: set(), away: set()}

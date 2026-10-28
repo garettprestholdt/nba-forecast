@@ -456,6 +456,68 @@ def _coldcase_bank(args: argparse.Namespace) -> int:
     return 0
 
 
+def _impact_backtest(args: argparse.Namespace) -> int:
+    import logging
+
+    from nbaforecast import config, impact_backtest, warehouse
+
+    logging.basicConfig(level=logging.INFO, format="%(asctime)s %(message)s")
+    games = warehouse.load_games()
+    feats = impact_backtest.build(
+        games, warehouse.load_team_games(), warehouse.load_player_games(),
+        warehouse.load_box_rows("2016-17"), config.local_data_dir(),
+    )  # fmt: skip
+    result = impact_backtest.run(feats)
+    impact_backtest.write(result)
+    cols = ["model", "train_from", "features", "in_sample_log_loss", "log_loss", "brier",
+            "reliability"]  # fmt: skip
+    print(result["models"][cols].to_string(index=False))
+    print(f"Wrote {impact_backtest.OUT_DIR}")
+    return 0
+
+
+def _hybrid_v2_fit(args: argparse.Namespace) -> int:
+    import json
+    import logging
+
+    from nbaforecast import config, impact_backtest, shadow_v2, warehouse
+
+    logging.basicConfig(level=logging.WARNING)
+    feats = impact_backtest.build(
+        warehouse.load_games(), warehouse.load_team_games(), warehouse.load_player_games(),
+        warehouse.load_box_rows("2016-17"), config.local_data_dir(),
+    )  # fmt: skip
+    model = shadow_v2.fit_model(feats, impact_backtest.chosen())
+    shadow_v2.MODEL_PATH.parent.mkdir(parents=True, exist_ok=True)
+    shadow_v2.MODEL_PATH.write_text(json.dumps(model, indent=1) + "\n")
+    print(f"Wrote {shadow_v2.MODEL_PATH} (fit through {model['fit_through']})")
+    for k, v in model["coefficients"].items():
+        print(f"  {k:20s} {v:+.4f}")
+    return 0
+
+
+def _shadow_v2(args: argparse.Namespace) -> int:
+    from datetime import UTC, datetime
+    from pathlib import Path
+
+    from nbaforecast import shadow_v2
+
+    out = shadow_v2.predict(Path(args.data_dir), _today_eastern(), datetime.now(UTC), _code_sha())
+    for r in out["rows"]:
+        missing = "; ".join(x for x in (r["missing_away"], r["missing_home"]) if x)
+        print(
+            f"{r['away_team']} @ {r['home_team']}: home {float(r['p_home']):.1%} "
+            f"(Elo {float(r['elo_p_home']):.1%})" + (f" · out: {missing}" if missing else "")
+        )
+    if out.get("skipped"):
+        print(f"Hybrid v2: no predictions today ({out['skipped']})")
+    print(f"Hybrid v2: {out['predicted']} predicted, {out['already_started']} already started")
+    if step_summary := os.environ.get("GITHUB_STEP_SUMMARY"):
+        with open(step_summary, "a") as f:
+            f.write(f"### Hybrid v2 shadow\n- predicted: {out['predicted']}\n")
+    return 0
+
+
 def _venues(args: argparse.Namespace) -> int:
     from datetime import datetime
     from pathlib import Path
@@ -825,6 +887,18 @@ def main(argv: list[str] | None = None) -> int:
     im = sub.add_parser("impact", help="fit player impact ratings (RAPM) from the stint logs")
     im.add_argument("--data-dir", required=True, help="checkout of the data branch")
     im.set_defaults(func=_impact)
+
+    ib = sub.add_parser(
+        "impact-backtest", help="challenger with RAPM + availability: walk-forward and diagnostics"
+    )
+    ib.set_defaults(func=_impact_backtest)
+
+    hv = sub.add_parser("hybrid-v2-fit", help="fit hybrid v2 (RAPM + who's missing) (local)")
+    hv.set_defaults(func=_hybrid_v2_fit)
+
+    sv = sub.add_parser("shadow-v2", help="hybrid v2 shadow predictions for today's games")
+    sv.add_argument("--data-dir", required=True, help="checkout of the data branch")
+    sv.set_defaults(func=_shadow_v2)
 
     cc = sub.add_parser("coldcase-bank", help="generate the Cold Case bank (local, ~5 min)")
     cc.add_argument("--seasons", nargs="+", default=["2024-25", "2025-26"])

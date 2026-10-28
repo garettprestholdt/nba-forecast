@@ -12,7 +12,7 @@ from pathlib import Path
 from typing import Any
 from zoneinfo import ZoneInfo
 
-from nbaforecast import projections, shadow
+from nbaforecast import projections, shadow, shadow_v2
 from nbaforecast.ingest import rosters
 from nbaforecast.ingest.espn import EASTERN
 from nbaforecast.live import Store
@@ -242,6 +242,8 @@ class Matchup:
     neutral: bool
     home_score: int | None = None
     away_score: int | None = None
+    p_v2: float | None = None  # hybrid v2 (RAPM + who's missing), in shadow
+    missing: str = ""  # rotation players v2 counted as out tonight
 
     @property
     def favorite(self) -> Team:
@@ -264,6 +266,7 @@ def matchups(store: Store, season: str, day: str, team_map: dict[str, Team]) -> 
     preds = [p for p in store.read(store.predictions_path(season)) if p["game_date"] == day]
     hybrid = {r["game_id"]: float(r["p_home"])
               for r in store.read(shadow.log_path(store.root, season))}  # fmt: skip
+    v2 = shadow_v2.load_log(store.root, season)
     results = {r["game_id"]: r for r in store.read(store.results_path(season))}
     playing = {p["home_team_id"] for p in preds} | {p["away_team_id"] for p in preds}
     lines = lineups(store.root, playing)
@@ -283,6 +286,10 @@ def matchups(store: Store, season: str, day: str, team_map: dict[str, Team]) -> 
                 int(r["home_score"]) if r else None, int(r["away_score"]) if r else None,
             )
         )  # fmt: skip
+    for m in out:
+        if (row := v2.get(m.game_id)) is not None:
+            m.p_v2 = float(row["p_home"])
+            m.missing = "; ".join(x for x in (row["missing_away"], row["missing_home"]) if x)
     return sorted(out, key=lambda m: (m.tip_sort, m.game_id))
 
 

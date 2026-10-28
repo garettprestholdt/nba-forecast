@@ -193,6 +193,15 @@
     if (d.open) window.dispatchEvent(new Event("resize"));
   }));
 
+  // Team pages: show all games, only played, or only to come.
+  document.querySelectorAll("[data-sched]").forEach((b) => b.addEventListener("click", () => {
+    const v = b.dataset.sched;
+    document.querySelectorAll("[data-sched]").forEach((x) => x.setAttribute("aria-pressed", x === b));
+    document.querySelectorAll(".sched-table tbody tr").forEach((tr) => {
+      tr.hidden = v !== "all" && (tr.classList.contains("month") ? false : !tr.classList.contains(v));
+    });
+  }));
+
   // History page: filter the game log by team.
   const filter = document.getElementById("team-filter");
   if (filter) {
