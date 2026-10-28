@@ -1,41 +1,10 @@
-{% extends "base.html" %}
-{% block title %}Team ratings · NBA Forecast{% endblock %}
-{% block content %}
-<h1>Team ratings</h1>
-<p class="lede">
-  Elo ratings through {{ ratings_through | nice_date }}. The league average is 1500; a 100-point
-  edge is about a 64% chance to win on a neutral court. Ratings carry over between seasons,
-  regressed {{ "%.0f" | format((1 - model_params.carryover) * 100) }}% of the way back to average.
-</p>
-
-<section class="card" aria-labelledby="chart-h">
-  <h2 id="chart-h">Above and below average</h2>
-  <p class="sub">Elo points relative to 1500. Hover a bar for the team's win chance against an average team.</p>
-  <div class="chart" data-chart="spec-ratings" role="img" aria-label="Bar chart of each team's Elo rating relative to the league average"></div>
-</section>
-
-<section class="card" aria-labelledby="table-h">
-  <h2 id="table-h">All 30 teams</h2>
-  <div class="table-wrap">
-    <table>
-      <thead>
-        <tr><th class="num">Rank</th><th>Team</th><th class="num">Elo</th><th class="num">vs. average</th><th class="num">Win chance vs. average team</th></tr>
-      </thead>
-      <tbody>
-        {% for t in teams %}
-        <tr>
-          <td class="num">{{ loop.index }}</td>
-          <td class="team">{{ t.name }}</td>
-          <td class="num">{{ "%.0f" | format(t.elo) }}</td>
-          <td class="num">{{ "%+.0f" | format(t.vs_average) }}</td>
-          <td class="num">{{ t.p_vs_average | pct }}</td>
-        </tr>
-        {% endfor %}
-      </tbody>
-    </table>
-  </div>
-</section>
-{% endblock %}
-{% block specs %}
-<script type="application/json" id="spec-ratings">{{ charts.ratings | tojson }}</script>
-{% endblock %}
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Moved · NBA Forecast</title>
+  <meta http-equiv="refresh" content="0; url=standings.html#power">
+  <link rel="canonical" href="standings.html#power">
+</head>
+<body><p>Team ratings moved to <a href="standings.html#power">Standings &amp; odds</a>.</p></body>
+</html>

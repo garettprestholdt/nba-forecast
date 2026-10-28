@@ -17,10 +17,11 @@ from typing import Any
 
 from jinja2 import Environment, FileSystemLoader, select_autoescape
 
-from nbaforecast import availability, config, metrics, recap
+from nbaforecast import availability, config, metrics, projections, recap
 from nbaforecast.ingest.espn import EASTERN
 from nbaforecast.live import Store
 from nbaforecast.models.elo import win_probability
+from nbaforecast.web import fan
 
 HERE = Path(__file__).parent
 REPO_URL = "https://github.com/garettprestholdt/nba-forecast"
@@ -37,6 +38,33 @@ def _num(x: float | None, digits: int = 3) -> str:
 
 def _nice_date(iso: str | None) -> str:
     return "–" if not iso else datetime.fromisoformat(iso).strftime("%a, %b %-d")
+
+
+def _long_date(iso: str | None) -> str:
+    return "–" if not iso else datetime.fromisoformat(iso).strftime("%A, %B %-d")
+
+
+def _signed(x: float | None) -> str:
+    return "–" if x is None else f"{x:+.1f}"
+
+
+def _odds(p: float | None) -> str:
+    """Simulation odds: never print a flat 0% or 100% for something that can still happen."""
+    if p is None:
+        return "–"
+    if p < 0.005:  # including 0 in 10,000 simulations: unlikely, not impossible
+        return "<1%"
+    if p > 0.995 and p < 1:
+        return ">99%"
+    return f"{p:.0%}"
+
+
+WIN_AXIS = (10, 72)  # the range-of-wins track on the standings page
+
+
+def _win_pos(wins: float) -> float:
+    lo, hi = WIN_AXIS
+    return round(max(0.0, min(100.0, (wins - lo) / (hi - lo) * 100)), 2)
 
 
 def _tip_et(tipoff_utc: str) -> str:
@@ -577,7 +605,27 @@ def build_context(data_dir: Path, published_dir: Path | None = None) -> dict[str
     ]
 
     hca = state.home_court()
+    team_map = fan.teams(store.root, state.ratings, state.params.mean)
+    tonight = fan.matchups(store, season, latest_date, team_map) if latest_date else []
+    hybrid_summary = published / "hybrid" / "summary.json"
+    standings = fan.standings(store.root, team_map)
+    ratings_now = [t.rating for t in team_map.values() if t.rating is not None]
     return {
+        "espn_images": fan.USE_ESPN_IMAGES,
+        "slate_date": latest_date,
+        "games": tonight,
+        "spotlight": fan.game_of_the_night([m for m in tonight if not m.final]),
+        "ticker": fan.last_night(store, season, latest_date, team_map) if latest_date else [],
+        "standings": standings,
+        "power": sorted(
+            (t for t in team_map.values() if t.rating is not None), key=lambda t: -t.rating
+        ),
+        "win_axis": WIN_AXIS,
+        "rating_span": max([abs(r) for r in ratings_now] + [1.0]),
+        "home_court_points": hca / projections.ELO_PER_POINT,
+        "hybrid_backtest": (
+            json.loads(hybrid_summary.read_text())["holdout"] if hybrid_summary.exists() else None
+        ),
         "shadow": _shadow(store, season, published),
         "repo_url": REPO_URL,
         "season": season,
@@ -608,7 +656,12 @@ def build_context(data_dir: Path, published_dir: Path | None = None) -> dict[str
     }
 
 
-PAGES = {"index.html": "index.html", "ratings.html": "ratings.html", "model.html": "model.html"}
+PAGES = {
+    "index.html": "index.html",
+    "standings.html": "standings.html",
+    "model.html": "model.html",
+    "ratings.html": "ratings.html",  # redirect to standings.html#power
+}
 
 
 def build(data_dir: Path, out_dir: Path, published_dir: Path | None = None) -> list[Path]:
@@ -619,6 +672,10 @@ def build(data_dir: Path, out_dir: Path, published_dir: Path | None = None) -> l
     env.filters["pct"] = _pct
     env.filters["num"] = _num
     env.filters["nice_date"] = _nice_date
+    env.filters["long_date"] = _long_date
+    env.filters["signed"] = _signed
+    env.filters["odds"] = _odds
+    env.globals["win_pos"] = _win_pos
     context = build_context(data_dir, published_dir)
     # Cache-busting: asset URLs change whenever the CSS or JS changes.
     digest = hashlib.sha256()

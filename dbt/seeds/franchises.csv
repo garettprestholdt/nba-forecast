@@ -1,31 +1,31 @@
-franchise_id,abbr,name
-1,ATL,Atlanta Hawks
-2,BOS,Boston Celtics
-3,NO,New Orleans Pelicans
-4,CHI,Chicago Bulls
-5,CLE,Cleveland Cavaliers
-6,DAL,Dallas Mavericks
-7,DEN,Denver Nuggets
-8,DET,Detroit Pistons
-9,GS,Golden State Warriors
-10,HOU,Houston Rockets
-11,IND,Indiana Pacers
-12,LAC,LA Clippers
-13,LAL,Los Angeles Lakers
-14,MIA,Miami Heat
-15,MIL,Milwaukee Bucks
-16,MIN,Minnesota Timberwolves
-17,BKN,Brooklyn Nets
-18,NY,New York Knicks
-19,ORL,Orlando Magic
-20,PHI,Philadelphia 76ers
-21,PHX,Phoenix Suns
-22,POR,Portland Trail Blazers
-23,SAC,Sacramento Kings
-24,SA,San Antonio Spurs
-25,OKC,Oklahoma City Thunder
-26,UTAH,Utah Jazz
-27,WSH,Washington Wizards
-28,TOR,Toronto Raptors
-29,MEM,Memphis Grizzlies
-30,CHA,Charlotte Hornets
+franchise_id,abbr,name,short_name,conference,color,alt_color,logo
+1,ATL,Atlanta Hawks,Hawks,East,#c8102e,#fdb927,atl
+2,BOS,Boston Celtics,Celtics,East,#008348,#ffffff,bos
+3,NO,New Orleans Pelicans,Pelicans,West,#0a2240,#b4975a,no
+4,CHI,Chicago Bulls,Bulls,East,#ce1141,#000000,chi
+5,CLE,Cleveland Cavaliers,Cavaliers,East,#860038,#bc945c,cle
+6,DAL,Dallas Mavericks,Mavericks,West,#0064b1,#bbc4ca,dal
+7,DEN,Denver Nuggets,Nuggets,West,#0e2240,#fec524,den
+8,DET,Detroit Pistons,Pistons,East,#1d428a,#c8102e,det
+9,GS,Golden State Warriors,Warriors,West,#fdb927,#1d428a,gs
+10,HOU,Houston Rockets,Rockets,West,#ce0e2d,#000000,hou
+11,IND,Indiana Pacers,Pacers,East,#0c2340,#ffd520,ind
+12,LAC,LA Clippers,Clippers,West,#12173f,#c8102e,lac
+13,LAL,Los Angeles Lakers,Lakers,West,#552583,#fdb927,lal
+14,MIA,Miami Heat,Heat,East,#98002e,#000000,mia
+15,MIL,Milwaukee Bucks,Bucks,East,#00471b,#eee1c6,mil
+16,MIN,Minnesota Timberwolves,Timberwolves,West,#266092,#79bc43,min
+17,BKN,Brooklyn Nets,Nets,East,#000000,#ffffff,bkn
+18,NY,New York Knicks,Knicks,East,#1d428a,#f58426,ny
+19,ORL,Orlando Magic,Magic,East,#0150b5,#9ca0a3,orl
+20,PHI,Philadelphia 76ers,76ers,East,#1d428a,#e01234,phi
+21,PHX,Phoenix Suns,Suns,West,#29127a,#e56020,phx
+22,POR,Portland Trail Blazers,Trail Blazers,West,#e03a3e,#000000,por
+23,SAC,Sacramento Kings,Kings,West,#5a2d81,#6a7a82,sac
+24,SA,San Antonio Spurs,Spurs,West,#000000,#c4ced4,sa
+25,OKC,Oklahoma City Thunder,Thunder,West,#007ac1,#ef3b24,okc
+26,UTAH,Utah Jazz,Jazz,West,#4e008e,#79a3dc,utah
+27,WSH,Washington Wizards,Wizards,East,#e31837,#002b5c,wsh
+28,TOR,Toronto Raptors,Raptors,East,#d91244,#000000,tor
+29,MEM,Memphis Grizzlies,Grizzlies,West,#5d76a9,#12173f,mem
+30,CHA,Charlotte Hornets,Hornets,East,#008ca8,#1d1060,cha

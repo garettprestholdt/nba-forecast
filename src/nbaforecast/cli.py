@@ -127,6 +127,9 @@ No code lives here.
   predictions, logged before tip-off next to Elo's but not the published forecast
 - `scorecard/<season>-hybrid.json`: the challenger vs. Elo (and the market) on the same games
 - `state/hybrid_state.json`: player ratings and team form the challenger resumes from
+- `projections/<season>.json`, `schedule/<season>.csv`: projected records and playoff odds from
+  10,000 simulated seasons, and the schedule they were simulated from (rewritten daily)
+- `players/directory.json`: current rosters and injury status, for the site's player cards
 
 A forecasting and calibration study, not betting advice.
 """
@@ -285,6 +288,31 @@ def _shadow(args: argparse.Namespace) -> int:
                 f"- season so far: {card['games_scored']} games, hybrid {card['hybrid']}, "
                 f"Elo {card['elo']}\n"
             )
+    return 0
+
+
+def _project(args: argparse.Namespace) -> int:
+    from pathlib import Path
+
+    from nbaforecast import projections
+
+    out = projections.run(Path(args.data_dir), sims=args.sims)
+    top = sorted(out["teams"].items(), key=lambda kv: -kv[1]["title"])[:5]
+    names = projections.franchises()
+    print(f"Projected {out['season']} from {out['simulations']:,} simulations")
+    for team, v in top:
+        print(f"  {names[team]['abbr']:5} {v['proj_wins']:.1f} wins, title {v['title']:.1%}")
+    return 0
+
+
+def _rosters(args: argparse.Namespace) -> int:
+    from pathlib import Path
+
+    from nbaforecast import projections
+    from nbaforecast.ingest import rosters
+
+    count = rosters.run(Path(args.data_dir), sorted(projections.franchises()))
+    print(f"Wrote {rosters.directory_path(Path(args.data_dir))}: {count} players")
     return 0
 
 
@@ -551,6 +579,15 @@ def main(argv: list[str] | None = None) -> int:
     sh = sub.add_parser("shadow", help="hybrid shadow run: ingest box scores, predict today")
     sh.add_argument("--data-dir", required=True, help="checkout of the data branch")
     sh.set_defaults(func=_shadow)
+
+    pj = sub.add_parser("project", help="simulate the season: projected records, playoff odds")
+    pj.add_argument("--data-dir", required=True, help="checkout of the data branch")
+    pj.add_argument("--sims", type=int, default=10_000, help="number of simulated seasons")
+    pj.set_defaults(func=_project)
+
+    ro = sub.add_parser("rosters", help="refresh the player directory (names, injury status)")
+    ro.add_argument("--data-dir", required=True, help="checkout of the data branch")
+    ro.set_defaults(func=_rosters)
 
     ver = sub.add_parser("verify", help="check the data branch before committing")
     ver.add_argument("--data-dir", required=True, help="checkout of the data branch")

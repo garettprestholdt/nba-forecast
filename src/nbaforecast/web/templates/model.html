@@ -1,28 +1,59 @@
 {% extends "base.html" %}
-{% block title %}Model &amp; backtest · NBA Forecast{% endblock %}
-{% block content %}
-<h1>Model &amp; backtest</h1>
-<p class="lede">
-  How the forecasts are made, how they were tested before going live, and what the test found.
-</p>
+{% block title %}The model · NBA Forecast{% endblock %}
+{% block head %}
+<script defer src="https://cdn.jsdelivr.net/npm/vega@5.30.0/build/vega.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/vega-lite@5.21.0/build/vega-lite.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/vega-embed@6.26.0/build/vega-embed.min.js"></script>
+<script defer src="assets/charts.js?v={{ asset_version }}"></script>
+{% endblock %}
 
-<section class="card prose" aria-labelledby="how-h">
-  <h2 id="how-h">How it works</h2>
-  <ul>
-    <li><strong>Elo ratings</strong>, following FiveThirtyEight's NBA design: K = {{ model_params.k | int }},
-      a margin-of-victory multiplier that discounts blowouts by heavy favorites, and
-      {{ "%.0f" | format(model_params.carryover * 100) }}% of each rating carried into the next season.</li>
-    <li><strong>Adaptive home court:</strong> the home bonus is learned from the last
-      {{ "{:,}".format(model_params.hca_window) }} non-neutral games instead of fixed. It's
-      {{ "%.0f" | format(home_court) }} Elo points today. Neutral-site games get none.</li>
-    <li><strong>No look-ahead:</strong> every game on a date is predicted from the ratings at the
-      start of that day, the same way the daily job publishes each morning.</li>
-    <li><strong>Every morning</strong> GitHub Actions adds last night's results from ESPN, updates
-      the ratings, predicts the day's games, and attaches the betting market's consensus
-      (median de-vigged moneyline across sportsbooks). A check rejects the commit unless every
-      prediction is new and was made before tip-off.</li>
-  </ul>
+{% block hero %}
+<section class="hero" aria-labelledby="hero-h">
+  <div class="wrap">
+    <p class="kicker">How it works</p>
+    <h1 id="hero-h" class="display">The model</h1>
+    <p class="dek">How the forecasts are made, how they were tested before going live, and how they're
+      scored every morning since.</p>
+  </div>
 </section>
+{% endblock %}
+
+{% block content %}
+<div class="howto">
+  <section class="card prose" aria-labelledby="how1-h">
+    <p class="kicker">1 · Ratings</p>
+    <h2 id="how1-h">Every team gets a number</h2>
+    <p class="sub">An Elo rating, updated after every game: beat a good team by a lot and it goes up a
+      lot. A team's <strong>rating in points</strong> is how much better than an average team it is,
+      per game. Home court is learned from recent games (worth {{ "%.1f" | format(home_court_points) }}
+      points today), and ratings drift {{ "%.0f" | format((1 - model_params.carryover) * 100) }}% back
+      toward average each summer.</p>
+  </section>
+  <section class="card prose" aria-labelledby="how2-h">
+    <p class="kicker">2 · Players</p>
+    <h2 id="how2-h">A challenger that knows the roster</h2>
+    <p class="sub">A second model adds every player's production (Game Score per minute), on-court
+      plus-minus, and how much they've been playing, from every box score since 2004. In testing it
+      beat the published model; it now runs in <strong>shadow mode</strong> and takes over only if
+      it wins this season by a <a href="{{ repo_url }}/blob/main/docs/promotion-bar-hybrid.md">rule set in advance</a>.</p>
+  </section>
+  <section class="card prose" aria-labelledby="how3-h">
+    <p class="kicker">3 · Scored in public</p>
+    <h2 id="how3-h">No editing the past</h2>
+    <p class="sub">Every morning a scheduled job adds last night's results, updates the ratings, and
+      logs today's forecasts to an <a href="{{ repo_url }}/tree/data">append-only record</a>. A check
+      blocks the save unless every forecast is new and made before tip-off. Each one is scored
+      once its game is final, next to the betting market's.</p>
+  </section>
+  <section class="card prose" aria-labelledby="how4-h">
+    <p class="kicker">Glossary</p>
+    <h2 id="how4-h">Reading the numbers</h2>
+    <p class="sub"><strong>Log-loss:</strong> the main score. It rewards confident correct forecasts and
+      punishes confident misses; lower is better, a coin flip scores 0.693.
+      <strong>Calibration:</strong> do 70% forecasts win 70% of the time?
+      <strong>Game Score:</strong> John Hollinger's one-number box score, about 10 for an average game.</p>
+  </section>
+</div>
 
 <section class="card" aria-labelledby="bt-h">
   <h2 id="bt-h">Backtest: {{ backtest.holdout_seasons[0] }} to {{ backtest.holdout_seasons[1] }}, held out</h2>
@@ -31,7 +62,7 @@
     and scored once on later seasons the tuning never saw.
   </p>
   <div class="table-wrap">
-    <table>
+    <table class="data">
       <thead>
         <tr><th>Model</th><th class="num">Games</th><th class="num">Log-loss</th><th class="num">Brier</th><th class="num">Accuracy</th><th class="num">Avg. forecast</th><th class="num">Home won</th></tr>
       </thead>
@@ -78,7 +109,7 @@
     <details>
       <summary>Calibration table</summary>
       <div class="table-wrap">
-        <table>
+        <table class="data">
           <thead><tr><th>Model</th><th>Forecast bin</th><th class="num">Games</th><th class="num">Avg. forecast</th><th class="num">Home won</th></tr></thead>
           <tbody>
             {% for row in backtest_calibration %}
@@ -89,9 +120,36 @@
       </div>
     </details>
   </section>
+  {% if hybrid_backtest %}
+  <section class="card" aria-labelledby="hy-h">
+    <h2 id="hy-h">Backtest: the team + player challenger</h2>
+    <p class="sub">The same held-out seasons ({{ "{:,}".format(hybrid_backtest[0].n) }} games), every season predicted by a model
+      trained only on earlier ones. "Knows the lineup" also uses who's available on game day; it's
+      the version the injury reports could unlock. <a href="{{ repo_url }}/blob/main/docs/findings/hybrid-model.md">Full write-up</a>.</p>
+    <div class="table-wrap">
+      <table class="data">
+        <thead><tr><th>Model</th><th class="num">Log-loss</th><th class="num">Brier</th><th class="num">Accuracy</th></tr></thead>
+        <tbody>
+          {% for row in hybrid_backtest %}
+          <tr><td>{{ row.model }}</td><td class="num">{{ row.log_loss | num(4) }}</td><td class="num">{{ row.brier | num(4) }}</td><td class="num">{{ row.accuracy | pct }}</td></tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </section>
+  {% endif %}
+
+  <section class="card" aria-labelledby="mkt-h">
+    <h2 id="mkt-h">This season: the model vs. the market</h2>
+    <p class="sub">Each dot is one game's home win probability. On the diagonal, the two agree.</p>
+    {% if charts.elo_vs_market %}
+    <div class="chart" data-chart="spec-market" role="img" aria-label="Scatter plot of model versus market home win probability for each predicted game"></div>
+    {% else %}<p class="empty">Appears once games have market odds.</p>{% endif %}
+  </section>
 </div>
 {% endblock %}
 {% block specs %}
 <script type="application/json" id="spec-by-season">{{ charts.by_season | tojson }}</script>
 <script type="application/json" id="spec-calibration">{{ charts.calibration | tojson }}</script>
+{% if charts.elo_vs_market %}<script type="application/json" id="spec-market">{{ charts.elo_vs_market | tojson }}</script>{% endif %}
 {% endblock %}

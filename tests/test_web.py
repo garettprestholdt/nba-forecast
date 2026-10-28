@@ -106,10 +106,13 @@ def site(data_dir, tmp_path_factory):
 def test_builds_every_page_and_assets(site):
     for name in [
         "index.html",
-        "ratings.html",
+        "standings.html",
         "model.html",
+        "ratings.html",
         "assets/style.css",
         "assets/charts.js",
+        "assets/court.svg",
+        "assets/mark.svg",
         ".nojekyll",
     ]:
         assert (site / name).exists(), name
@@ -117,21 +120,28 @@ def test_builds_every_page_and_assets(site):
 
 def test_today_page_shows_slate_result_and_market(site):
     html = (site / "index.html").read_text()
-    assert "Predictions for Tue, Oct 27" in html
-    assert "Away 17" in html and "Home 2" in html
+    assert "Tuesday, October 27" in html and "2 games" in html
+    assert "Celtics" in html and "Nets" in html  # franchise 2 hosts franchise 17
     assert "7:30 PM ET" in html
-    assert "+4 pts" in html  # 86.7% Elo vs 82.3% market
-    assert "101–110" in html  # final score shown with a correct pick
+    assert "Betting market:</span> <b>BOS 82%" in html  # the market's view of the favorite
+    assert '<div class="pct score">110</div>' in html  # final score replaces the percentage
+    assert 'aria-label="Brooklyn Nets 13%, Boston Celtics 87%"' in html  # the split bar
 
 
-def test_ratings_page_lists_all_teams_sorted(site):
-    html = (site / "ratings.html").read_text()
-    assert html.count('<td class="team">') == 30
-    assert html.index("Atlanta Hawks") < html.index("Charlotte Hornets")  # ID 1 rated highest
+def test_standings_page_power_ratings_without_projections(site):
+    html = (site / "standings.html").read_text()
+    assert "Projected standings appear after the next morning run" in html
+    power = html[html.index('<ol class="power">') :]
+    assert power.count("<li>") == 30
+    assert power.index("Atlanta Hawks") < power.index("Charlotte Hornets")  # ID 1 rated highest
+
+
+def test_old_ratings_page_redirects(site):
+    assert "url=standings.html#power" in (site / "ratings.html").read_text()
 
 
 def test_chart_specs_are_valid_json_with_safe_field_names(site):
-    for page in ["index.html", "ratings.html", "model.html"]:
+    for page in ["index.html", "standings.html", "model.html"]:
         for spec_id, spec in specs((site / page).read_text()).items():
             for field in fields(spec):
                 # Vega reads ' . [ ] in a field name as path syntax.
@@ -152,7 +162,7 @@ def test_model_page_compares_both_elo_variants(site):
 
 
 def test_colors_are_tokens_not_hex(site):
-    for page in ["index.html", "ratings.html", "model.html"]:
+    for page in ["index.html", "standings.html", "model.html"]:
         for spec in specs((site / page).read_text()).values():
             assert not re.search(r"#[0-9a-fA-F]{6}", json.dumps(spec)), page
 
@@ -220,13 +230,14 @@ def test_injury_watch_card(data_dir, tmp_path_factory):
     web.build(data_dir, out, published_dir=config.PUBLISHED_DIR)
     html = (out / "index.html").read_text()
     assert "Injury watch" in html and "Derrick White" in html
-    assert "93%" in html and "Played (31 min)" in html and "“White is probable”" in html
+    assert "Agent 93%" in html and "Played (31 min)" in html
+    assert "<q>White is probable</q>" in html
 
 
 def test_shadow_card_only_when_the_challenger_has_a_scorecard(data_dir, tmp_path_factory):
     out = tmp_path_factory.mktemp("site_no_shadow")
     web.build(data_dir, out, published_dir=config.PUBLISHED_DIR)
-    assert "shadow mode" not in (out / "index.html").read_text()
+    assert "Challenger" not in (out / "index.html").read_text()
 
     card = {
         "season": "2026-27", "model": "hybrid-realistic-v1", "updated_at": "",
@@ -243,6 +254,6 @@ def test_shadow_card_only_when_the_challenger_has_a_scorecard(data_dir, tmp_path
     out = tmp_path_factory.mktemp("site_shadow")
     web.build(data_dir, out, published_dir=config.PUBLISHED_DIR)
     html = (out / "index.html").read_text()
-    assert "shadow mode" in html and "0.612" in html and "0.643" in html
+    assert "Challenger: team + player model" in html and "0.612" in html and "0.643" in html
     assert "promotion-bar-hybrid.md" in html and "in progress" in html
     path.unlink()
