@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% from "_macros.html" import logo, player %}
+{% from "_macros.html" import logo, player, team_href %}
 {% block title %}Tonight · NBA Forecast{% endblock %}
 
 {% block hero %}
@@ -19,7 +19,7 @@
     {% set s = spotlight %}
     {% if s %}
     <div class="spotlight" style="--home: {{ s.colors.home_d }}; --away: {{ s.colors.away_d }}">
-      <p class="kicker">Game of the night · {{ s.tip }} ET</p>
+      <p class="kicker">Game of the night · {{ s.tip }} CT</p>
       <div class="row">
         <div class="team">
           {{ logo(s.away, on_dark=true) }}
@@ -70,7 +70,7 @@
   <div>
     <div class="section-head">
       <h2>The slate</h2>
-      <span class="aside">Times ET · each team's chance to win</span>
+      <span class="aside">Times CT · each team's chance to win</span>
     </div>
     {% if games %}
     <div class="games">
@@ -81,7 +81,7 @@
           <span class="home" style="width: {{ (m.p_home * 100) | round(1) }}%"></span>
         </div>
         <div class="m-top">
-          <time>{{ m.tip }} ET</time>
+          <time>{{ m.tip }} CT</time>
           <span>
             {% if m.neutral %}<span class="badge final">Neutral site</span>{% endif %}
             {% if spotlight and m.game_id == spotlight.game_id %}<span class="badge spot">Game of the night</span>{% endif %}
@@ -91,10 +91,10 @@
         <div class="m-teams">
           {% for side, team, p, score in [("away", m.away, 1 - m.p_home, m.away_score), ("home", m.home, m.p_home, m.home_score)] %}
           <div class="m-side {{ side }}">
-            {{ logo(team) }}
+            <a href="{{ team_href(team) }}" class="logo-link" aria-label="{{ team.name }}: team page">{{ logo(team) }}</a>
             <div class="who">
               <div class="city">{{ team.city }}</div>
-              <div class="nick">{{ team.short }}</div>
+              <div class="nick"><a href="{{ team_href(team) }}">{{ team.short }}</a></div>
               <div class="meta">{{ team.record }}{% if team.rating is not none %} · <span title="Points per game better or worse than an average team">{{ team.rating | signed }} rating</span>{% endif %}</div>
             </div>
             {% if m.final %}<div class="pct score">{{ score }}</div>
@@ -112,7 +112,7 @@
         <div class="m-players">
           {% for team, lineup, side in [(m.away, m.away_lineup, "away"), (m.home, m.home_lineup, "home")] %}
           <div class="roster">
-            <h4>{{ team.abbr }} key players · projected Game Score</h4>
+            <h4>{{ team.abbr }} key players · projected Game Score <span class="hint">tap a player</span></h4>
             <ul>
               {% for p in lineup.key %}{{ player(p, side) }}{% endfor %}
             </ul>
@@ -190,14 +190,14 @@
     {% if iw and iw.calls %}
     <section class="panel" aria-labelledby="injury-h">
       <h3 id="injury-h">Injury watch</h3>
-      <p class="small">Day-to-day players: the chance they play, from a keyword rule and from an AI agent that must quote ESPN's note.</p>
+      <p class="small">Players listed day-to-day whose team plays tonight, and their chance of playing. It comes from an AI read of ESPN's injury note (which must quote the sentence it used), or from a simple keyword rule when there's no AI read.</p>
       <ul class="calls">
         {% for c in iw.calls %}
+        {% set chance = c.agent_p if c.agent_p is not none else c.baseline_p %}
         <li>
           <span class="who">{{ c.player }}</span> <span class="muted">· {{ c.team }}</span>
           <span class="ps">
-            <span>Rule {{ c.baseline_p | pct }}</span>
-            <span>Agent {% if c.agent_p is not none %}{{ c.agent_p | pct }}{% else %}–{% endif %}</span>
+            <span><strong>{{ chance | pct }}</strong> chance of playing</span>
             <span>{% if c.played is none %}Not played yet{% elif c.played %}Played ({{ c.minutes }} min){% else %}Did not play{% endif %}</span>
           </span>
           {% if c.quote %}<q>{{ c.quote }}</q>{% endif %}

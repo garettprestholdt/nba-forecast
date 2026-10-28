@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% from "_macros.html" import logo %}
+{% from "_macros.html" import logo, team_href %}
 {% block title %}Standings &amp; odds · NBA Forecast{% endblock %}
 
 {% set st = standings %}
@@ -17,11 +17,11 @@
     <h2 class="kicker" style="margin-top: 26px">Title odds</h2>
     <div class="contenders" style="margin-top: 8px">
       {% for c in st.contenders %}
-      <div class="contender" style="--team: {{ c.team.color_d }}">
+      <a class="contender" href="{{ team_href(c.team) }}" style="--team: {{ c.team.color_d }}">
         {{ logo(c.team, on_dark=true) }}
         <span class="pct">{{ c.title | odds }}</span>
         <span class="ab">{{ c.team.abbr }}</span>
-      </div>
+      </a>
       {% endfor %}
     </div>
     {% endif %}
@@ -58,7 +58,7 @@
           {% if loop.index == 11 %}<tr class="cutlabel"><td colspan="7">Lottery</td></tr>{% endif %}
           <tr class="{{ 'cut' if loop.index in (7, 11) }}" style="--team-l: {{ r.team.color_l }}; --team-d: {{ r.team.color_d }}">
             <td class="seed">{{ loop.index }}</td>
-            <td><span class="tm">{{ logo(r.team, cls="") }}<span>{{ r.team.short }}</span></span></td>
+            <td><a class="tm" href="{{ team_href(r.team) }}">{{ logo(r.team, cls="") }}<span>{{ r.team.short }}</span></a></td>
             <td class="r wide-only">{{ r.team.record }}</td>
             <td class="r"><strong>{{ r.proj_record }}</strong></td>
             <td class="wide-only">
@@ -104,7 +104,7 @@
     <li>
       <span class="rk">{{ loop.index }}</span>
       {{ logo(t, cls="") }}
-      <span class="nm">{{ t.name }}</span>
+      <a class="nm" href="{{ team_href(t) }}">{{ t.name }}</a>
       <span class="div" aria-hidden="true">
         {% set w = ((t.rating | abs) / rating_span * 50) | round(1) %}
         <span class="{{ 'pos' if t.rating >= 0 else 'neg' }}" style="width: {{ [w, 50] | min }}%"></span>

@@ -48,6 +48,16 @@ See `docs/roadmap.md` for the phased plan.
   in `web/fan.py` from data-branch files written by the daily job: `projections/<season>.json` and
   `schedule/<season>.csv` (`nbaf project`, 10,000 simulated seasons), `players/directory.json`
   (`nbaf rosters`), and the hybrid's `state/hybrid_state.json` (player scores).
+- More site data on the data branch: `boxscores/<season>.csv` (append-only player box scores,
+  `nbaf box-sync` daily; catches up any missed game) and `players/careers.json` (season lines
+  through the last completed season, `nbaf careers`, local, once per summer). Stat lines (TS%,
+  eFG%, usage, per-36, Game Score) are computed only in `boxlog.season_line`.
+- Team pages explain ratings by replaying this season from the published season-start ratings
+  (`data/published/elo/season_start_<season>.json`, `nbaf season-start`, local, once per season);
+  `seasonelo.check` confirms the replay lands on the live ratings.
+- Pages: Tonight, Standings & odds, Prediction history, The model, Play (The Rotation, a daily
+  coaching puzzle in `static/rotation.js`), one `team-<abbr>.html` per team, and a player pop-up
+  (`static/app.js`) that loads `players/<id>.json`. Every time shown on the site is Central.
 - Logos and headshots load from ESPN's image resizer at view time (never stored in the repo);
   `fan.USE_ESPN_IMAGES = False` falls back to monograms and initials. Team colors go through
   `fan.display_color`/`matchup_colors` (contrast against each theme's card, similar pairs

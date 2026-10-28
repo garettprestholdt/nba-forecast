@@ -10,6 +10,7 @@ from dataclasses import dataclass, field
 from datetime import date, datetime, timedelta
 from pathlib import Path
 from typing import Any
+from zoneinfo import ZoneInfo
 
 from nbaforecast import projections, shadow
 from nbaforecast.ingest import rosters
@@ -17,6 +18,7 @@ from nbaforecast.ingest.espn import EASTERN
 from nbaforecast.live import Store
 
 USE_ESPN_IMAGES = True
+CENTRAL = ZoneInfo("America/Chicago")  # times shown on the site
 KEY_PLAYERS = 5  # per team, by usual minutes, among players not ruled out
 OUT_MIN_ROLE = 15.0  # list a ruled-out player if they usually play at least this many minutes
 SCORE_SCALE = 25.0  # a projected Game Score of 25 fills the bar
@@ -255,7 +257,7 @@ class Matchup:
 
 
 def _tip(tipoff_utc: str) -> str:
-    return datetime.fromisoformat(tipoff_utc).astimezone(EASTERN).strftime("%-I:%M %p")
+    return datetime.fromisoformat(tipoff_utc).astimezone(CENTRAL).strftime("%-I:%M %p")
 
 
 def matchups(store: Store, season: str, day: str, team_map: dict[str, Team]) -> list[Matchup]:

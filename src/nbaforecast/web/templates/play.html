@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+{% block title %}The Rotation · NBA Forecast{% endblock %}
+{% set z = puzzle %}
+
+{% block hero %}
+<section class="hero" aria-labelledby="hero-h">
+  <div class="wrap">
+    <p class="kicker">The Rotation · a daily coaching puzzle{% if z %} · {{ z.date | nice_date }}{% endif %}</p>
+    <h1 id="hero-h" class="display">Coach the underdog</h1>
+    {% if z %}
+    <p class="dek">Tonight the <strong>{{ z.underdog.name }}</strong> are given <strong>{{ z.p_dog | pct }}</strong> against the
+      {{ z.favorite.name }}. You have <strong>240 minutes</strong> to hand out. Ride your best players and they tire:
+      past their usual minutes each extra minute is worth less than the last, until a dozen extra minutes are worth nothing at all. Players marked GTD
+      might not play, and if one sits, their minutes land on everyone else's legs. Find the rotation that gives the
+      {{ z.underdog.short }} their best shot. <strong>Par</strong> is the best rotation our search can find.
+      Fair warning: rotations are a game of inches. Even par moves the odds by a point or two, and that's what the
+      real numbers say.</p>
+    {% endif %}
+  </div>
+</section>
+{% endblock %}
+
+{% block content %}
+{% if z %}
+<div class="rotation" style="--team: {{ z.underdog.color }}">
+  <section class="panel" aria-labelledby="rot-h">
+    <div class="rot-head">
+      <h3 id="rot-h">{{ z.underdog.short }} rotation</h3>
+      <button type="button" class="btn ghost" id="rot-reset">Reset to usual</button>
+    </div>
+    <ol class="rot-players" id="rot-players"></ol>
+    <p class="note">The bar under each player is their legs: green while they're fresh, red once they're running on empty.
+      Per 36 is the model's production per 36 minutes (Game Score points).</p>
+  </section>
+  <aside class="rot-side" aria-live="polite">
+    <div class="panel scoreboard">
+      <p class="kicker">Win chance</p>
+      <div class="big display" id="rot-pct">–</div>
+      <div class="dial" id="rot-meter" role="img" aria-label="Share of par's swing found"><span class="needle"></span></div>
+      <div class="small" id="rot-found"></div>
+      <div class="small" id="rot-delta"></div>
+      <div class="left" id="rot-left"></div>
+      <button type="button" class="btn" id="rot-lock" disabled>Lock in rotation</button>
+    </div>
+    <div class="panel result" id="rot-result" hidden></div>
+    <details class="panel how">
+      <summary>How it works</summary>
+      <p class="small">Each player's value per minute is the model's production rating (Game Score per minute,
+        from every box score since 2004). Team production turns into win probability with the same sensitivity the
+        team + player model uses. Fatigue starts at a player's usual minutes and costs more with every extra minute.
+        A game-time decision uses tonight's injury-watch chance of playing. Par comes from an optimizer that keeps moving
+        single minutes wherever they help most.</p>
+    </details>
+  </aside>
+</div>
+<script type="application/json" id="rotation-data">{{ z | tojson }}</script>
+<script src="assets/rotation.js?v={{ asset_version }}" defer></script>
+{% else %}
+<p class="empty">No puzzle today: it needs tonight's games, ratings, and rosters. Check back tomorrow morning.</p>
+{% endif %}
+{% endblock %}

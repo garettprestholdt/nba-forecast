@@ -86,6 +86,11 @@ scorecard covers as much of it as possible. Everything after that is improvement
 - [x] Redesigned site: matchup cards with team logos, win-probability bars in team colors, and
       each team's key players with headshots and projected Game Scores; a standings "race board";
       phone layout; light and dark themes
+- [x] Player pop-ups (game log, career, advanced stats, Game Score explained), team pages (why
+      the rating, game-by-game moves, strengths and weaknesses, roster, schedule), prediction
+      history (league, by team, filterable log), a plainer model page, Central time
+- [x] The Rotation: a daily coaching puzzle built on the model (minutes budget, fatigue,
+      game-time decisions, par from an optimizer, shareable result)
 
 ## Phase 7: Write-up
 - [ ] README with architecture diagram, live link, headline results, reproduction steps

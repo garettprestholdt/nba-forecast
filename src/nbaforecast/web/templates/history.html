@@ -1,0 +1,97 @@
+{% extends "base.html" %}
+{% from "_macros.html" import logo, team_href %}
+{% block title %}Prediction history · NBA Forecast{% endblock %}
+{% set h = history %}
+
+{% block hero %}
+<section class="hero" aria-labelledby="hero-h">
+  <div class="wrap">
+    <p class="kicker">{{ season }} season · every forecast, scored</p>
+    <h1 id="hero-h" class="display">The record</h1>
+    <p class="dek">Every game we've predicted this season and how it turned out. Forecasts are logged
+      before tip-off in a <a href="{{ repo_url }}/tree/data">public, append-only record</a>, so nothing here can be edited after the fact.</p>
+    {% if h.summary %}
+    <div class="hero-stats">
+      <div><span class="k">Picks right</span><span class="v">{{ h.summary.accuracy | pct }}</span><span class="n">{{ h.summary.correct }} of {{ h.summary.games }} games</span></div>
+      <div><span class="k">Log-loss</span><span class="v">{{ h.summary.log_loss | num }}</span><span class="n">lower is better · coin flip 0.693</span></div>
+      {% set mk = scorecard.head_to_head_with_market if scorecard else none %}
+      {% if mk and mk.games and mk.elo and mk.market %}
+      <div><span class="k">vs. betting market</span><span class="v">{{ mk.elo.log_loss | num }} / {{ mk.market.log_loss | num }}</span><span class="n">us / market, same {{ mk.games }} games</span></div>
+      {% endif %}
+    </div>
+    {% endif %}
+  </div>
+</section>
+{% endblock %}
+
+{% block content %}
+{% if h.summary %}
+<div class="grid-2">
+  <section class="panel" aria-labelledby="cal-h">
+    <h3 id="cal-h">When we say X%, how often are we right?</h3>
+    <p class="small">Picks grouped by how confident the forecast was. If the forecasts are honest, the two bars in each row match.</p>
+    <ul class="calib">
+      {% for b in h.buckets %}
+      <li>
+        <span class="lb">{{ b.label }} <span class="muted">· {{ b.games }} games</span></span>
+        <span class="pair">
+          <span class="row"><span class="t">Said</span><span class="track"><span class="f said" style="width: {{ (b.said * 100) | round(1) }}%"></span></span><span class="v">{{ b.said | pct }}</span></span>
+          <span class="row"><span class="t">Right</span><span class="track"><span class="f right" style="width: {{ (b.right * 100) | round(1) }}%"></span></span><span class="v">{{ b.right | pct }}</span></span>
+        </span>
+      </li>
+      {% endfor %}
+    </ul>
+    <p class="note">Small groups swing a lot early in the season.</p>
+  </section>
+
+  <section class="panel" aria-labelledby="teams-h">
+    <h3 id="teams-h">By team</h3>
+    <p class="small">How often we've picked the winner in each team's games.</p>
+    <div class="table-wrap" style="max-height: 420px; overflow-y: auto">
+      <table class="data compact">
+        <thead><tr><th>Team</th><th class="r">Games</th><th class="r">Right</th><th class="r">Hit rate</th></tr></thead>
+        <tbody>
+          {% for t in h.teams %}
+          <tr><td><a class="tm" href="{{ team_href(t.team) }}">{{ logo(t.team, cls="") }}<span>{{ t.team.short }}</span></a></td>
+            <td class="r">{{ t.games }}</td><td class="r">{{ t.correct }}</td><td class="r"><b>{{ t.accuracy | pct }}</b></td></tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </section>
+</div>
+
+<section class="panel" aria-labelledby="log-h" style="margin-top: 22px">
+  <div class="log-head">
+    <h3 id="log-h">Every game</h3>
+    <label class="filter">Team
+      <select id="team-filter">
+        <option value="">All teams</option>
+        {% for t in team_list %}<option value="{{ t.abbr }}">{{ t.name }}</option>{% endfor %}
+      </select>
+    </label>
+    <span id="filter-summary" class="small">{{ h.summary.correct }} of {{ h.summary.games }} picks right ({{ h.summary.accuracy | pct }})</span>
+  </div>
+  <div class="table-wrap">
+    <table class="data compact" id="log">
+      <thead><tr><th>Date</th><th>Game</th><th>Our pick</th><th class="r wide-only">Market</th><th class="r wide-only">Challenger</th><th>Final</th><th></th></tr></thead>
+      <tbody>
+        {% for g in h.games %}
+        <tr data-teams="{{ g.home.abbr }} {{ g.away.abbr }}" data-correct="{{ 1 if g.correct else 0 }}">
+          <td>{{ g.date | nice_date }}</td>
+          <td><a href="{{ team_href(g.away) }}">{{ g.away.abbr }}</a> @ <a href="{{ team_href(g.home) }}">{{ g.home.abbr }}</a></td>
+          <td>{{ g.pick.abbr }} {{ g.pick_p | pct }}</td>
+          <td class="r wide-only">{% if g.market is not none %}{{ g.pick.abbr }} {{ (g.market if g.pick is sameas g.home else 1 - g.market) | pct }}{% else %}–{% endif %}</td>
+          <td class="r wide-only">{% if g.hybrid is not none %}{{ g.pick.abbr }} {{ (g.hybrid if g.pick is sameas g.home else 1 - g.hybrid) | pct }}{% else %}–{% endif %}</td>
+          <td>{{ g.away_score }}–{{ g.home_score }}</td>
+          <td><span class="call {{ 'hit' if g.correct else 'miss' }}">{{ '✓ Right' if g.correct else '✗ Upset' }}</span></td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</section>
+{% else %}
+<p class="empty">The record starts the morning after the first predicted games are played.</p>
+{% endif %}
+{% endblock %}

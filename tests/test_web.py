@@ -122,7 +122,7 @@ def test_today_page_shows_slate_result_and_market(site):
     html = (site / "index.html").read_text()
     assert "Tuesday, October 27" in html and "2 games" in html
     assert "Celtics" in html and "Nets" in html  # franchise 2 hosts franchise 17
-    assert "7:30 PM ET" in html
+    assert "6:30 PM CT" in html
     assert "Betting market:</span> <b>BOS 82%" in html  # the market's view of the favorite
     assert '<div class="pct score">110</div>' in html  # final score replaces the percentage
     assert 'aria-label="Brooklyn Nets 13%, Boston Celtics 87%"' in html  # the split bar
@@ -148,7 +148,7 @@ def test_chart_specs_are_valid_json_with_safe_field_names(site):
                 assert not re.search(r"['.\[\]]", field), f"{page}:{spec_id} field {field!r}"
 
 
-def test_model_page_compares_both_elo_variants(site):
+def test_model_page_is_plain_and_simple(site):
     html = (site / "model.html").read_text()
     calibration = specs(html)["spec-calibration"]
     series = {
@@ -157,8 +157,29 @@ def test_model_page_compares_both_elo_variants(site):
         for row in layer.get("data", {}).get("values", [])
         if "series" in row
     }
-    assert series == {web.FIXED, web.ADAPTIVE}  # live joins only after 100 scored games
-    assert "the live model" in html
+    assert series == {web.ADAPTIVE}  # one model on the honesty chart; live joins after 100 games
+    for approach in ("Coin flip", "Always back the home team", "Our model (published)",
+                     "Team + player model"):  # fmt: skip
+        assert approach in html
+    assert "For the curious" in html  # the technical tables are tucked away, not gone
+    market = specs(html)["spec-market"]
+    assert market["width"] == market["height"]  # same scale on both axes
+    for layer in market["layer"]:
+        enc = layer["encoding"]
+        assert enc["x"]["scale"]["domain"] == enc["y"]["scale"]["domain"] == [0, 1]
+
+
+def test_new_pages_are_built(site):
+    for name in ("history.html", "play.html", "team-bos.html", "team-bkn.html",
+                 "assets/app.js", "assets/rotation.js"):  # fmt: skip
+        assert (site / name).exists(), name
+    team = (site / "team-bos.html").read_text()
+    assert "Boston Celtics" in team and "Why +" in team
+    history = (site / "history.html").read_text()
+    assert "1 of 1 picks right" in history  # the fixture's one finished, predicted game
+    index = (site / "index.html").read_text()
+    assert "team-bos.html" in index and 'id="player-dialog"' in index
+    assert "6:30 PM CT" in index
 
 
 def test_colors_are_tokens_not_hex(site):
@@ -230,7 +251,7 @@ def test_injury_watch_card(data_dir, tmp_path_factory):
     web.build(data_dir, out, published_dir=config.PUBLISHED_DIR)
     html = (out / "index.html").read_text()
     assert "Injury watch" in html and "Derrick White" in html
-    assert "Agent 93%" in html and "Played (31 min)" in html
+    assert "<strong>93%</strong> chance of playing" in html and "Played (31 min)" in html
     assert "<q>White is probable</q>" in html
 
 

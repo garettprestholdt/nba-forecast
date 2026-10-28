@@ -1,0 +1,109 @@
+{% extends "base.html" %}
+{% from "_macros.html" import logo, team_href %}
+{% set t = tp.team %}
+{% block title %}{{ t.name }} · NBA Forecast{% endblock %}
+
+{% block hero %}
+<section class="hero team-hero" style="--team: {{ t.color_d }}" aria-labelledby="hero-h">
+  <div class="wrap team-hero-grid">
+    <div class="team-mark">{{ logo(t, on_dark=true) }}</div>
+    <div>
+      <p class="kicker">{{ t.conference }}ern Conference · {{ t.record }}</p>
+      <h1 id="hero-h" class="display">{{ t.name }}</h1>
+      <div class="hero-stats">
+        <div><span class="k">Rating</span><span class="v">{{ t.rating | signed }}</span><span class="n">#{{ tp.rank }} of 30 · points vs. average</span></div>
+        {% if tp.projection %}
+        <div><span class="k">Projected</span><span class="v">{{ "%.0f" | format(tp.projection.proj_wins) }}-{{ 82 - (tp.projection.proj_wins | round | int) }}</span><span class="n">{{ "%.0f" | format(tp.projection.wins_p10) }}–{{ "%.0f" | format(tp.projection.wins_p90) }} wins likely</span></div>
+        <div><span class="k">Playoffs</span><span class="v">{{ tp.projection.playoffs | odds }}</span><span class="n">Title {{ tp.projection.title | odds }}</span></div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}
+
+{% block content %}
+<div class="team-grid">
+  <div>
+    <section class="panel" aria-labelledby="why-h">
+      <h3 id="why-h">Why {{ t.rating | signed }}?</h3>
+      <p>{{ tp.summary }}</p>
+      <p class="small">A team's rating is how many points better or worse than an average team it is, per game,
+        on a neutral floor. It moves after every game: more for a win nobody expected, more for a big margin,
+        less for a blowout of a weak team.</p>
+      {% if tp.games %}
+      {% set span = [tp.games | map(attribute="change_pts") | map("abs") | max, 0.5] | max %}
+      <ol class="moves">
+        <li class="start"><span class="d">Opening night</span><span class="g">Started at {{ tp.start_rating | signed }}</span><span class="bar"></span><span class="v"></span></li>
+        {% for g in tp.games %}
+        <li>
+          <span class="d">{{ g.date | nice_date }}</span>
+          <span class="g"><b class="{{ 'win' if g.won else 'loss' }}">{{ 'W' if g.won else 'L' }}</b> {{ g.pts }}–{{ g.opp_pts }} {{ 'vs' if g.home else '@' }} <a href="{{ team_href(g.opp) }}">{{ g.opp.short }}</a>
+            <span class="muted">· given {{ g.p_win | pct }}</span></span>
+          <span class="bar" aria-hidden="true"><span class="{{ 'pos' if g.change_pts >= 0 else 'neg' }}" style="width: {{ ((g.change_pts | abs) / span * 50) | round(1) }}%"></span></span>
+          <span class="v">{{ "%+.1f" | format(g.change_pts) }}</span>
+        </li>
+        {% endfor %}
+        <li class="start"><span class="d">Now</span><span class="g"><strong>{{ t.rating | signed }}</strong></span><span class="bar"></span><span class="v"></span></li>
+      </ol>
+      {% endif %}
+    </section>
+
+    <section class="panel" aria-labelledby="sw-h" style="margin-top: 18px">
+      <h3 id="sw-h">Strengths and weaknesses</h3>
+      {% if tp.stats %}
+      <p class="small">League rank (1 = best of 30) this season, after {{ tp.stats.games | int }} games{% if tp.stats.games < 10 %}. Early-season numbers move a lot{% endif %}.</p>
+      <div class="sw">
+        <div><h4 class="good">Strengths</h4>
+          <ul>{% for m in tp.strengths %}<li><span class="rk good">{{ m.rank }}</span>{{ m.label }} <span class="muted">· {{ m.value | metric(m.format) }}</span></li>{% endfor %}</ul></div>
+        <div><h4 class="bad">Weaknesses</h4>
+          <ul>{% for m in tp.weaknesses %}<li><span class="rk bad">{{ m.rank }}</span>{{ m.label }} <span class="muted">· {{ m.value | metric(m.format) }}</span></li>{% endfor %}</ul></div>
+      </div>
+      <details>
+        <summary>Every measure</summary>
+        <div class="table-wrap">
+          <table class="data compact">
+            <thead><tr><th>Measure</th><th>Side</th><th class="r">Value</th><th class="r">Rank</th></tr></thead>
+            <tbody>
+              {% for key, label, side, _, fmt in team_metrics %}
+              <tr><td>{{ label }}</td><td>{{ side }}</td><td class="r">{{ tp.stats[key] | metric(fmt) }}</td><td class="r">{{ tp.ranks[key] }}</td></tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </details>
+      {% else %}
+      <p class="empty">Appears once box scores for this season are in.</p>
+      {% endif %}
+    </section>
+  </div>
+
+  <div>
+    <section class="panel" aria-labelledby="roster-h">
+      <h3 id="roster-h">Roster</h3>
+      <p class="small">Tap a player for game logs, career stats and advanced numbers.</p>
+      <ul class="roster-list">
+        {% for p in tp.roster %}
+        <li data-player="{{ p.id }}" tabindex="0" role="button" aria-label="{{ p.name }}: season stats">
+          <span class="avatar" aria-hidden="true"><span class="ini">{{ p.name.split()[:2] | map("first") | join }}</span>{% if p.headshot %}<img src="{{ p.headshot }}" alt="" loading="lazy" onerror="this.remove()">{% endif %}</span>
+          <span class="nm"><span>{{ p.name }}{% if p.status == "Out" %}<span class="tag out">Out</span>{% elif p.status %}<span class="tag gtd">GTD</span>{% endif %}</span><span class="sub">{{ p.position or "–" }}{% if p.line.g %} · {{ p.line.pts }} pts · {{ p.line.reb }} reb · {{ p.line.ast }} ast{% endif %}</span></span>
+          <span class="sc">{% if p.projection %}<b>{{ "%.1f" | format(p.projection.score) }}</b><span class="sub">proj. GmSc</span>{% endif %}</span>
+        </li>
+        {% endfor %}
+      </ul>
+    </section>
+
+    {% if tp.upcoming %}
+    <section class="panel" aria-labelledby="next-h" style="margin-top: 18px">
+      <h3 id="next-h">Next up</h3>
+      <ul class="next">
+        {% for g in tp.upcoming %}
+        <li><span>{{ g.date | tip_day }}</span><span>{{ 'vs' if g.home else '@' }} <a href="{{ team_href(g.opp) }}">{{ g.opp.short }}</a></span><span class="v">{{ g.p_win | pct }}</span></li>
+        {% endfor %}
+      </ul>
+      <p class="note">Chance to win from today's ratings, home court included.</p>
+    </section>
+    {% endif %}
+  </div>
+</div>
+{% endblock %}

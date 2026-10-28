@@ -14,17 +14,19 @@ from dataclasses import dataclass
 from datetime import UTC, datetime
 from pathlib import Path
 from typing import Any
+from zoneinfo import ZoneInfo
 
 from jinja2 import Environment, FileSystemLoader, select_autoescape
 
 from nbaforecast import availability, config, metrics, projections, recap
-from nbaforecast.ingest.espn import EASTERN
+from nbaforecast.ingest.espn import EASTERN  # noqa: F401  (slate dates stay US Eastern)
 from nbaforecast.live import Store
 from nbaforecast.models.elo import win_probability
-from nbaforecast.web import fan
+from nbaforecast.web import fan, pages
 
 HERE = Path(__file__).parent
 REPO_URL = "https://github.com/garettprestholdt/nba-forecast"
+CENTRAL = ZoneInfo("America/Chicago")  # every time shown on the site is Central
 LIVE_CALIBRATION_MIN_GAMES = 100  # fewer than this and live calibration bins are mostly noise
 
 
@@ -44,6 +46,20 @@ def _long_date(iso: str | None) -> str:
     return "–" if not iso else datetime.fromisoformat(iso).strftime("%A, %B %-d")
 
 
+def _metric(x: float | None, fmt: str) -> str:
+    if x is None:
+        return "–"
+    return {"pct1": f"{x * 100:.1f}%", "num1": f"{x:.1f}", "num3": f"{x:.3f}"}.get(fmt, str(x))
+
+
+def _tip_day(tipoff_utc: str) -> str:
+    return (
+        datetime.fromisoformat(tipoff_utc.replace("Z", "+00:00"))
+        .astimezone(CENTRAL)
+        .strftime("%a %b %-d")
+    )
+
+
 def _signed(x: float | None) -> str:
     return "–" if x is None else f"{x:+.1f}"
 
@@ -59,6 +75,30 @@ def _odds(p: float | None) -> str:
     return f"{p:.0%}"
 
 
+def _simple_backtest(summary: dict, published: Path) -> list[dict]:
+    """The held-out comparison in plain language: a few approaches, one line each."""
+    rows = {r["model"]: r for r in summary["holdout"]}
+    hybrid_path = published / "hybrid" / "summary.json"
+    hybrid = {r["model"]: r for r in json.loads(hybrid_path.read_text())["holdout"]} \
+        if hybrid_path.exists() else {}  # fmt: skip
+    plan = [
+        (rows.get("Coin flip"), "Coin flip", "Says 50% for every game.", "muted-row"),
+        (rows.get("Previous season's home win rate"), "Always back the home team",
+         "Says the home team wins as often as home teams did last season.", "muted-row"),
+        (next((r for m, r in rows.items() if "adaptive" in m), None), "Our model (published)",
+         "Rates every team from its results and margins; the forecast on this site.", "ours"),
+        (hybrid.get("Hybrid, realistic"), "Team + player model",
+         "Our model plus every player's production and playing time. Running in shadow mode.",
+         ""),
+        (hybrid.get("Hybrid, knows the lineup"), "…if we knew every lineup",
+         "The same, told who's available each night. A ceiling, not a forecast we can make yet.",
+         "muted-row"),
+    ]  # fmt: skip
+    return [{"name": name, "what": what, "cls": cls, "games": r["n"],
+             "accuracy": r["accuracy"], "log_loss": r["log_loss"]}
+            for r, name, what, cls in plan if r]  # fmt: skip
+
+
 WIN_AXIS = (10, 72)  # the range-of-wins track on the standings page
 
 
@@ -68,8 +108,8 @@ def _win_pos(wins: float) -> float:
 
 
 def _tip_et(tipoff_utc: str) -> str:
-    t = datetime.fromisoformat(tipoff_utc).astimezone(EASTERN)
-    return t.strftime("%-I:%M %p ET")
+    t = datetime.fromisoformat(tipoff_utc).astimezone(CENTRAL)
+    return t.strftime("%-I:%M %p CT")
 
 
 def _franchises() -> dict[str, dict[str, str]]:
@@ -357,49 +397,92 @@ def _by_season_spec(rows: list[dict]) -> dict:
 
 
 def _elo_vs_market_spec(points: list[dict]) -> dict:
+    """Ours vs. the market, both 0-100% on equal-length axes, so the diagonal means agreement."""
+    axis_x = {"field": "market", "type": "quantitative", "title": "Betting market: home team",
+              "scale": {"domain": [0, 1]}, "axis": AXIS_PCT}  # fmt: skip
+    axis_y = {"field": "elo", "type": "quantitative", "title": "Our model: home team",
+              "scale": {"domain": [0, 1]}, "axis": AXIS_PCT}  # fmt: skip
     return {
         "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-        "width": "container",
+        "width": 300,
         "height": 300,
         "layer": [
             {
-                "data": {"values": [{"x": 0, "y": 0}, {"x": 1, "y": 1}]},
-                "mark": {"type": "line", "color": "@ink-muted", "strokeWidth": 1},
-                "encoding": {
-                    "x": {"field": "x", "type": "quantitative"},
-                    "y": {"field": "y", "type": "quantitative"},
-                },
+                "data": {"values": [{"market": 0, "elo": 0}, {"market": 1, "elo": 1}]},
+                "mark": {
+                    "type": "line",
+                    "color": "@ink-muted",
+                    "strokeWidth": 1,
+                    "strokeDash": [4, 4],
+                },  # fmt: skip
+                "encoding": {"x": axis_x, "y": axis_y},
             },
             {
                 "data": {"values": points},
                 "mark": {
                     "type": "point",
                     "filled": True,
-                    "size": 80,
+                    "size": 70,
                     "strokeWidth": 2,
                     "stroke": "@surface",
                     "color": "@series-1",
+                },  # fmt: skip
+                "encoding": {
+                    "x": axis_x,
+                    "y": axis_y,
+                    "tooltip": [
+                        {"field": "date", "title": "Date"},
+                        {"field": "matchup", "title": "Game"},
+                        {"field": "elo", "title": "Us", "format": ".1%"},
+                        {"field": "market", "title": "Market", "format": ".1%"},
+                        {"field": "result", "title": "Result"},
+                    ],
                 },
+            },
+        ],
+    }
+
+
+def _market_gap_spec(points: list[dict]) -> dict:
+    """The residual view: our probability minus the market's (points), against the market's."""
+    return {
+        "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+        "width": "container",
+        "height": 220,
+        "layer": [
+            {
+                "data": {"values": [{"y": 0}]},
+                "mark": {"type": "rule", "color": "@ink-muted", "strokeWidth": 1},
+                "encoding": {"y": {"field": "y", "type": "quantitative"}},
+            },
+            {
+                "data": {"values": points},
+                "mark": {"type": "point", "size": 70, "strokeWidth": 2, "color": "@series-1"},
                 "encoding": {
                     "x": {
                         "field": "market",
                         "type": "quantitative",
-                        "title": "Market: home win probability",
                         "scale": {"domain": [0, 1]},
                         "axis": AXIS_PCT,
-                    },
+                        "title": "Betting market: home team",
+                    },  # fmt: skip
                     "y": {
-                        "field": "elo",
+                        "field": "gap",
                         "type": "quantitative",
-                        "title": "Elo: home win probability",
-                        "scale": {"domain": [0, 1]},
-                        "axis": AXIS_PCT,
-                    },
+                        "title": "Us minus market (points)",
+                    },  # fmt: skip
+                    "fill": {
+                        "field": "outcome",
+                        "type": "nominal",
+                        "scale": {
+                            "domain": ["We got it right", "We got it wrong", "Not played yet"],
+                            "range": ["@series-1", "@surface", "@surface"],
+                        },
+                        "legend": {"orient": "top", "title": None},
+                    },  # fmt: skip
                     "tooltip": [
-                        {"field": "date", "title": "Date"},
                         {"field": "matchup", "title": "Game"},
-                        {"field": "elo", "title": "Elo", "format": ".1%"},
-                        {"field": "market", "title": "Market", "format": ".1%"},
+                        {"field": "gap", "title": "Us minus market", "format": "+.1f"},
                         {"field": "result", "title": "Result"},
                     ],
                 },
@@ -599,6 +682,10 @@ def build_context(data_dir: Path, published_dir: Path | None = None) -> dict[str
             "elo": g.p_home,
             "market": g.market_p_home,
             "result": f"{g.away_score}–{g.home_score}" if g.final else "Not played yet",
+            "gap": round((g.p_home - g.market_p_home) * 100, 1),
+            "outcome": "Not played yet"
+            if not g.final
+            else ("We got it right" if g.correct else "We got it wrong"),
         }
         for g in games
         if g.market_p_home is not None
@@ -611,6 +698,7 @@ def build_context(data_dir: Path, published_dir: Path | None = None) -> dict[str
     standings = fan.standings(store.root, team_map)
     ratings_now = [t.rating for t in team_map.values() if t.rating is not None]
     return {
+        "team_map": team_map,
         "espn_images": fan.USE_ESPN_IMAGES,
         "slate_date": latest_date,
         "games": tonight,
@@ -629,7 +717,7 @@ def build_context(data_dir: Path, published_dir: Path | None = None) -> dict[str
         "shadow": _shadow(store, season, published),
         "repo_url": REPO_URL,
         "season": season,
-        "built_at": datetime.now(UTC).astimezone(EASTERN).strftime("%b %-d, %Y %-I:%M %p ET"),
+        "built_at": datetime.now(UTC).astimezone(CENTRAL).strftime("%b %-d, %Y %-I:%M %p CT"),
         "ratings_through": state.last_date.isoformat() if state.last_date else None,
         "latest_date": latest_date,
         "slate": slate,
@@ -642,11 +730,15 @@ def build_context(data_dir: Path, published_dir: Path | None = None) -> dict[str
         "backtest": summary,
         "live_backtest": live_backtest,
         "charts": {
-            "calibration": _calibration_spec(backtest_calibration + live_cal),
+            "calibration": _calibration_spec(
+                [r for r in backtest_calibration if r["series"] == ADAPTIVE] + live_cal
+            ),
+            "market_gap": _market_gap_spec(market_points) if market_points else None,
             "by_season": _by_season_spec(by_season),
             "elo_vs_market": _elo_vs_market_spec(market_points) if market_points else None,
             "ratings": _ratings_spec(teams),
         },
+        "simple_backtest": _simple_backtest(summary, published),
         "live_calibration_ready": bool(live_cal),
         "live_calibration_min": LIVE_CALIBRATION_MIN_GAMES,
         "backtest_calibration": backtest_calibration,
@@ -659,7 +751,9 @@ def build_context(data_dir: Path, published_dir: Path | None = None) -> dict[str
 PAGES = {
     "index.html": "index.html",
     "standings.html": "standings.html",
+    "history.html": "history.html",
     "model.html": "model.html",
+    "play.html": "play.html",
     "ratings.html": "ratings.html",  # redirect to standings.html#power
 }
 
@@ -676,6 +770,8 @@ def build(data_dir: Path, out_dir: Path, published_dir: Path | None = None) -> l
     env.filters["signed"] = _signed
     env.filters["odds"] = _odds
     env.globals["win_pos"] = _win_pos
+    env.filters["metric"] = _metric
+    env.filters["tip_day"] = _tip_day
     context = build_context(data_dir, published_dir)
     # Cache-busting: asset URLs change whenever the CSS or JS changes.
     digest = hashlib.sha256()
@@ -685,10 +781,28 @@ def build(data_dir: Path, out_dir: Path, published_dir: Path | None = None) -> l
 
     out_dir.mkdir(parents=True, exist_ok=True)
     written = []
+    root, season = Path(data_dir), context["season"]
+    team_map = context["team_map"]
+    payloads = pages.player_payloads(root, season, team_map)
+    published = published_dir or config.PUBLISHED_DIR
+    context.update(
+        history=pages.history(Store(root), season, team_map),
+        puzzle=pages.rotation_puzzle(
+            Store(root), season, context["slate_date"], team_map, published
+        ),  # fmt: skip
+        team_list=sorted(team_map.values(), key=lambda t: t.name),
+        team_metrics=pages.TEAM_METRICS,
+    )
     for name, template in PAGES.items():
         path = out_dir / name
         path.write_text(env.get_template(template).render(page=name, **context))
         written.append(path)
+    state = Store(root).load_state()
+    for tp in pages.team_pages(root, season, team_map, state, payloads).values():
+        path = out_dir / tp.slug
+        path.write_text(env.get_template("team.html").render(page=tp.slug, tp=tp, **context))
+        written.append(path)
+    pages.write_player_payloads(out_dir, payloads)
     assets = out_dir / "assets"
     if assets.exists():
         shutil.rmtree(assets)
