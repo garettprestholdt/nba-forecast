@@ -1,0 +1,202 @@
+{
+ "401909277": {
+  "arena": "Capital One Arena",
+  "city": "Washington",
+  "country": "",
+  "home_team_id": "27",
+  "neutral": false,
+  "state": "DC"
+ },
+ "401909278": {
+  "arena": "TD Garden",
+  "city": "Boston",
+  "country": "",
+  "home_team_id": "2",
+  "neutral": false,
+  "state": "MA"
+ },
+ "401909279": {
+  "arena": "Barclays Center",
+  "city": "Brooklyn",
+  "country": "",
+  "home_team_id": "17",
+  "neutral": false,
+  "state": "NY"
+ },
+ "401909280": {
+  "arena": "Xfinity Mobile Arena",
+  "city": "Philadelphia",
+  "country": "",
+  "home_team_id": "20",
+  "neutral": false,
+  "state": "PA"
+ },
+ "401909281": {
+  "arena": "Scotiabank Arena",
+  "city": "Toronto",
+  "country": "",
+  "home_team_id": "28",
+  "neutral": false,
+  "state": "ON"
+ },
+ "401909282": {
+  "arena": "Kaseya Center",
+  "city": "Miami",
+  "country": "",
+  "home_team_id": "14",
+  "neutral": false,
+  "state": "FL"
+ },
+ "401909283": {
+  "arena": "American Airlines Center",
+  "city": "Dallas",
+  "country": "",
+  "home_team_id": "6",
+  "neutral": false,
+  "state": "TX"
+ },
+ "401909284": {
+  "arena": "Target Center",
+  "city": "Minneapolis",
+  "country": "",
+  "home_team_id": "16",
+  "neutral": false,
+  "state": "MN"
+ },
+ "401909285": {
+  "arena": "Chase Center",
+  "city": "San Francisco",
+  "country": "",
+  "home_team_id": "9",
+  "neutral": false,
+  "state": "CA"
+ },
+ "401909286": {
+  "arena": "Mortgage Matchup Center",
+  "city": "Phoenix",
+  "country": "",
+  "home_team_id": "21",
+  "neutral": false,
+  "state": "AZ"
+ },
+ "401909881": {
+  "arena": "State Farm Arena",
+  "city": "Atlanta",
+  "country": "",
+  "home_team_id": "1",
+  "neutral": false,
+  "state": "GA"
+ },
+ "401909882": {
+  "arena": "Rocket Arena",
+  "city": "Cleveland",
+  "country": "",
+  "home_team_id": "5",
+  "neutral": false,
+  "state": "OH"
+ },
+ "401909883": {
+  "arena": "Little Caesars Arena",
+  "city": "Detroit",
+  "country": "",
+  "home_team_id": "8",
+  "neutral": false,
+  "state": "MI"
+ },
+ "401909884": {
+  "arena": "Gainbridge Fieldhouse",
+  "city": "Indianapolis",
+  "country": "",
+  "home_team_id": "11",
+  "neutral": false,
+  "state": "IN"
+ },
+ "401909885": {
+  "arena": "Scotiabank Arena",
+  "city": "Toronto",
+  "country": "",
+  "home_team_id": "28",
+  "neutral": false,
+  "state": "ON"
+ },
+ "401909886": {
+  "arena": "United Center",
+  "city": "Chicago",
+  "country": "",
+  "home_team_id": "4",
+  "neutral": false,
+  "state": "IL"
+ },
+ "401909887": {
+  "arena": "Fiserv Forum",
+  "city": "Milwaukee",
+  "country": "",
+  "home_team_id": "15",
+  "neutral": false,
+  "state": "WI"
+ },
+ "401909888": {
+  "arena": "Target Center",
+  "city": "Minneapolis",
+  "country": "",
+  "home_team_id": "16",
+  "neutral": false,
+  "state": "MN"
+ },
+ "401909889": {
+  "arena": "Smoothie King Center",
+  "city": "New Orleans",
+  "country": "",
+  "home_team_id": "3",
+  "neutral": false,
+  "state": "LA"
+ },
+ "401909890": {
+  "arena": "Delta Center",
+  "city": "Salt Lake City",
+  "country": "",
+  "home_team_id": "26",
+  "neutral": false,
+  "state": "UT"
+ },
+ "401909891": {
+  "arena": "American Airlines Center",
+  "city": "Dallas",
+  "country": "",
+  "home_team_id": "6",
+  "neutral": false,
+  "state": "TX"
+ },
+ "401909892": {
+  "arena": "Intuit Dome",
+  "city": "Inglewood",
+  "country": "",
+  "home_team_id": "12",
+  "neutral": false,
+  "state": "CA"
+ },
+ "401909893": {
+  "arena": "State Farm Arena",
+  "city": "Atlanta",
+  "country": "",
+  "home_team_id": "1",
+  "neutral": false,
+  "state": "GA"
+ },
+ "401909894": {
+  "arena": "Smoothie King Center",
+  "city": "New Orleans",
+  "country": "",
+  "home_team_id": "3",
+  "neutral": false,
+  "state": "LA"
+ },
+ "401909895": {
+  "arena": "Moda Center",
+  "city": "Portland",
+  "country": "",
+  "home_team_id": "22",
+  "neutral": false,
+  "state": "OR"
+ }
+}

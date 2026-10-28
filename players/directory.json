@@ -1,4157 +1,5714 @@
 {
  "players": {
   "1966": {
+   "dob": "1984-12-30",
+   "height_in": "81",
    "jersey": "23",
    "name": "LeBron James",
    "position": "F",
    "short": "L. James",
    "status": "",
-   "team_id": "20"
+   "team_id": "20",
+   "weight_lb": "250"
   },
   "2490149": {
+   "dob": "1991-09-19",
+   "height_in": "75",
    "jersey": "3",
    "name": "CJ McCollum",
    "position": "G",
    "short": "C. McCollum",
    "status": "",
-   "team_id": "1"
+   "team_id": "1",
+   "weight_lb": "190"
   },
   "2528210": {
+   "dob": "1992-03-16",
+   "height_in": "77",
    "jersey": "10",
    "name": "Tim Hardaway Jr.",
    "position": "G",
    "short": "T. Hardaway Jr.",
    "status": "",
-   "team_id": "14"
+   "team_id": "14",
+   "weight_lb": "205"
   },
   "2528426": {
+   "dob": "1992-06-07",
+   "height_in": "77",
    "jersey": "00",
    "name": "Jordan Clarkson",
    "position": "G",
    "short": "J. Clarkson",
    "status": "",
-   "team_id": "18"
+   "team_id": "18",
+   "weight_lb": "194"
   },
   "2530530": {
+   "dob": "1992-03-25",
+   "height_in": "73",
    "jersey": "9",
    "name": "T.J. McConnell",
    "position": "G",
    "short": "T.J. McConnell",
    "status": "Out",
-   "team_id": "11"
+   "team_id": "11",
+   "weight_lb": "190"
   },
   "2578185": {
+   "dob": "1993-05-04",
+   "height_in": "79",
    "jersey": "8",
    "name": "Dorian Finney-Smith",
    "position": "F",
    "short": "D. Finney-Smith",
    "status": "",
-   "team_id": "1"
+   "team_id": "1",
+   "weight_lb": "220"
   },
   "2580365": {
+   "dob": "1993-01-01",
+   "height_in": "78",
    "jersey": "22",
    "name": "Larry Nance Jr.",
    "position": "F",
    "short": "L. Nance Jr.",
    "status": "",
-   "team_id": "11"
+   "team_id": "11",
+   "weight_lb": "245"
   },
   "2581018": {
+   "dob": "1993-02-18",
+   "height_in": "77",
    "jersey": "1",
    "name": "Kentavious Caldwell-Pope",
    "position": "G",
    "short": "K. Caldwell-Pope",
    "status": "",
-   "team_id": "20"
+   "team_id": "20",
+   "weight_lb": "213"
   },
   "2581184": {
+   "dob": "1992-10-17",
+   "height_in": "79",
    "jersey": "16",
    "name": "Anthony Gill",
    "position": "F",
    "short": "A. Gill",
    "status": "",
-   "team_id": "27"
+   "team_id": "27",
+   "weight_lb": "230"
   },
   "2583632": {
+   "dob": "1993-06-05",
+   "height_in": "78",
    "jersey": "00",
    "name": "Royce O'Neale",
    "position": "F",
    "short": "R. O'Neale",
    "status": "",
-   "team_id": "30"
+   "team_id": "30",
+   "weight_lb": "226"
   },
   "2595516": {
+   "dob": "1993-05-25",
+   "height_in": "76",
    "jersey": "24",
    "name": "Norman Powell",
    "position": "G",
    "short": "N. Powell",
    "status": "",
-   "team_id": "4"
+   "team_id": "4",
+   "weight_lb": "215"
   },
   "2596112": {
+   "dob": "1993-07-23",
+   "height_in": "77",
    "jersey": "31",
    "name": "Javonte Green",
    "position": "G",
    "short": "J. Green",
    "status": "",
-   "team_id": "8"
+   "team_id": "8",
+   "weight_lb": "205"
   },
   "2990962": {
+   "dob": "1994-03-22",
+   "height_in": "78",
    "jersey": "12",
    "name": "Taurean Prince",
    "position": "F",
    "short": "T. Prince",
    "status": "",
-   "team_id": "8"
+   "team_id": "8",
+   "weight_lb": "218"
   },
   "2990969": {
+   "dob": "1993-06-17",
+   "height_in": "78",
    "jersey": "32",
    "name": "Georges Niang",
    "position": "F",
    "short": "G. Niang",
    "status": "",
-   "team_id": "9"
+   "team_id": "9",
+   "weight_lb": "230"
   },
   "2990984": {
+   "dob": "1992-12-17",
+   "height_in": "76",
    "jersey": "7",
    "name": "Buddy Hield",
    "position": "G",
    "short": "B. Hield",
    "status": "",
-   "team_id": "4"
+   "team_id": "4",
+   "weight_lb": "220"
   },
   "2990992": {
+   "dob": "1994-03-06",
+   "height_in": "75",
    "jersey": "36",
    "name": "Marcus Smart",
    "position": "G",
    "short": "M. Smart",
    "status": "Day-To-Day",
-   "team_id": "10"
+   "team_id": "10",
+   "weight_lb": "220"
   },
   "2991043": {
+   "dob": "1994-08-25",
+   "height_in": "79",
    "jersey": "12",
    "name": "Caris LeVert",
    "position": "G",
    "short": "C. LeVert",
    "status": "",
-   "team_id": "15"
+   "team_id": "15",
+   "weight_lb": "205"
   },
   "2991070": {
+   "dob": "1994-03-12",
+   "height_in": "79",
    "jersey": "3",
    "name": "Jerami Grant",
    "position": "F",
    "short": "J. Grant",
    "status": "",
-   "team_id": "29"
+   "team_id": "29",
+   "weight_lb": "213"
   },
   "2991139": {
+   "dob": "1994-03-18",
+   "height_in": "75",
    "jersey": "8",
    "name": "Kris Dunn",
    "position": "G",
    "short": "K. Dunn",
    "status": "",
-   "team_id": "12"
+   "team_id": "12",
+   "weight_lb": "205"
   },
   "2991230": {
+   "dob": "1994-02-25",
+   "height_in": "72",
    "jersey": "5",
    "name": "Fred VanVleet",
    "position": "G",
    "short": "F. VanVleet",
    "status": "",
-   "team_id": "10"
+   "team_id": "10",
+   "weight_lb": "197"
   },
   "2991235": {
+   "dob": "1993-07-20",
+   "height_in": "83",
    "jersey": "12",
    "name": "Steven Adams",
    "position": "C",
    "short": "S. Adams",
    "status": "Out",
-   "team_id": "10"
+   "team_id": "10",
+   "weight_lb": "265"
   },
   "2991350": {
+   "dob": "1994-02-28",
+   "height_in": "77",
    "jersey": "9",
    "name": "Alex Caruso",
    "position": "G",
    "short": "A. Caruso",
    "status": "Out",
-   "team_id": "25"
+   "team_id": "25",
+   "weight_lb": "186"
   },
   "2993874": {
+   "dob": "1993-09-20",
+   "height_in": "80",
    "jersey": "12",
    "name": "Kyle Anderson",
    "position": "F",
    "short": "K. Anderson",
    "status": "",
-   "team_id": "28"
+   "team_id": "28",
+   "weight_lb": "230"
   },
   "2995706": {
+   "dob": "1995-02-25",
+   "height_in": "80",
    "jersey": "33",
    "name": "Mario Hezonja",
    "position": "F",
    "short": "M. Hezonja",
    "status": "",
-   "team_id": "5"
+   "team_id": "5",
+   "weight_lb": "220"
   },
   "3032976": {
+   "dob": "1992-06-26",
+   "height_in": "85",
    "jersey": "27",
    "name": "Rudy Gobert",
    "position": "C",
    "short": "R. Gobert",
    "status": "",
-   "team_id": "16"
+   "team_id": "16",
+   "weight_lb": "258"
   },
   "3032977": {
+   "dob": "1994-12-06",
+   "height_in": "83",
    "jersey": "7",
    "name": "Giannis Antetokounmpo",
    "position": "F",
    "short": "G. Antetokounmpo",
    "status": "",
-   "team_id": "14"
+   "team_id": "14",
+   "weight_lb": "243"
   },
   "3032979": {
+   "dob": "1993-09-15",
+   "height_in": "73",
    "jersey": "17",
    "name": "Dennis Schroder",
    "position": "G",
    "short": "D. Schroder",
    "status": "",
-   "team_id": "30"
+   "team_id": "30",
+   "weight_lb": "175"
   },
   "3037789": {
+   "dob": "1992-08-18",
+   "height_in": "77",
    "jersey": "31",
    "name": "Bogdan Bogdanovic",
    "position": "G",
    "short": "B. Bogdanovic",
    "status": "",
-   "team_id": "10"
+   "team_id": "10",
+   "weight_lb": "225"
   },
   "3059318": {
+   "dob": "1994-03-16",
+   "height_in": "84",
    "jersey": "21",
    "name": "Joel Embiid",
    "position": "C",
    "short": "J. Embiid",
    "status": "",
-   "team_id": "20"
+   "team_id": "20",
+   "weight_lb": "270"
   },
   "3059319": {
+   "dob": "1995-02-23",
+   "height_in": "79",
    "jersey": "22",
    "name": "Andrew Wiggins",
    "position": "F",
    "short": "A. Wiggins",
    "status": "",
-   "team_id": "14"
+   "team_id": "14",
+   "weight_lb": "210"
   },
   "3062679": {
+   "dob": "1995-03-06",
+   "height_in": "77",
    "jersey": "3",
    "name": "Josh Hart",
    "position": "G",
    "short": "J. Hart",
    "status": "",
-   "team_id": "18"
+   "team_id": "18",
+   "weight_lb": "215"
   },
   "3064290": {
+   "dob": "1995-09-16",
+   "height_in": "80",
    "jersey": "32",
    "name": "Aaron Gordon",
    "position": "F",
    "short": "A. Gordon",
    "status": "",
-   "team_id": "7"
+   "team_id": "7",
+   "weight_lb": "235"
   },
   "3064440": {
+   "dob": "1995-03-10",
+   "height_in": "77",
    "jersey": "8",
    "name": "Zach LaVine",
    "position": "G",
    "short": "Z. LaVine",
    "status": "",
-   "team_id": "23"
+   "team_id": "23",
+   "weight_lb": "200"
   },
   "3064482": {
+   "dob": "1995-02-10",
+   "height_in": "81",
    "jersey": "95",
    "name": "Bobby Portis",
    "position": "F",
    "short": "B. Portis",
    "status": "",
-   "team_id": "14"
+   "team_id": "14",
+   "weight_lb": "250"
   },
   "3064514": {
+   "dob": "1994-11-29",
+   "height_in": "81",
    "jersey": "30",
    "name": "Julius Randle",
    "position": "F",
    "short": "J. Randle",
    "status": "",
-   "team_id": "17"
+   "team_id": "17",
+   "weight_lb": "250"
   },
   "3064560": {
+   "dob": "1995-07-15",
+   "height_in": "85",
    "jersey": "7",
    "name": "Luke Kornet",
    "position": "C",
    "short": "L. Kornet",
    "status": "",
-   "team_id": "24"
+   "team_id": "24",
+   "weight_lb": "270"
   },
   "3078576": {
+   "dob": "1994-07-02",
+   "height_in": "76",
    "jersey": "9",
    "name": "Derrick White",
    "position": "G",
    "short": "D. White",
    "status": "",
-   "team_id": "2"
+   "team_id": "2",
+   "weight_lb": "200"
   },
   "3102529": {
+   "dob": "1994-05-18",
+   "height_in": "82",
    "jersey": "30",
    "name": "Clint Capela",
    "position": "C",
    "short": "C. Capela",
    "status": "",
-   "team_id": "10"
+   "team_id": "10",
+   "weight_lb": "256"
   },
   "3102530": {
+   "dob": "1994-08-23",
+   "height_in": "83",
    "jersey": "30",
    "name": "Jusuf Nurkic",
    "position": "C",
    "short": "J. Nurkic",
    "status": "Out",
-   "team_id": "26"
+   "team_id": "26",
+   "weight_lb": "290"
   },
   "3102531": {
+   "dob": "1995-08-02",
+   "height_in": "86",
    "jersey": "7",
    "name": "Kristaps Porzingis",
    "position": "C",
    "short": "K. Porzingis",
    "status": "Out",
-   "team_id": "9"
+   "team_id": "9",
+   "weight_lb": "240"
   },
   "3112335": {
+   "dob": "1995-02-19",
+   "height_in": "83",
    "jersey": "15",
    "name": "Nikola Jokic",
    "position": "C",
    "short": "N. Jokic",
    "status": "",
-   "team_id": "7"
+   "team_id": "7",
+   "weight_lb": "284"
   },
   "3133602": {
+   "dob": "1997-06-10",
+   "height_in": "79",
    "jersey": "10",
    "name": "Svi Mykhailiuk",
    "position": "G",
    "short": "S. Mykhailiuk",
    "status": "",
-   "team_id": "26"
+   "team_id": "26",
+   "weight_lb": "205"
   },
   "3133603": {
+   "dob": "1995-12-09",
+   "height_in": "80",
    "jersey": "10",
    "name": "Kelly Oubre Jr.",
    "position": "G",
    "short": "K. Oubre Jr.",
    "status": "",
-   "team_id": "11"
+   "team_id": "11",
+   "weight_lb": "203"
   },
   "3133626": {
+   "dob": "1994-12-02",
+   "height_in": "79",
    "jersey": "34",
    "name": "Kenrich Williams",
    "position": "G",
    "short": "K. Williams",
    "status": "",
-   "team_id": "25"
+   "team_id": "25",
+   "weight_lb": "210"
   },
   "3133628": {
+   "dob": "1996-03-24",
+   "height_in": "83",
    "jersey": "3",
    "name": "Myles Turner",
    "position": "C",
    "short": "M. Turner",
    "status": "",
-   "team_id": "15"
+   "team_id": "15",
+   "weight_lb": "250"
   },
   "3133635": {
+   "dob": "1995-09-14",
+   "height_in": "72",
    "jersey": "2",
    "name": "Jevon Carter",
    "position": "G",
    "short": "J. Carter",
    "status": "",
-   "team_id": "19"
+   "team_id": "19",
+   "weight_lb": "200"
   },
   "3134903": {
+   "dob": "1992-12-01",
+   "height_in": "74",
    "jersey": "0",
    "name": "Gary Payton II",
    "position": "G",
    "short": "G. Payton II",
    "status": "",
-   "team_id": "9"
+   "team_id": "9",
+   "weight_lb": "195"
   },
   "3134907": {
+   "dob": "1995-07-24",
+   "height_in": "80",
    "jersey": "18",
    "name": "Kyle Kuzma",
    "position": "F",
    "short": "K. Kuzma",
    "status": "",
-   "team_id": "15"
+   "team_id": "15",
+   "weight_lb": "221"
   },
   "3134908": {
+   "dob": "1995-10-15",
+   "height_in": "84",
    "jersey": "19",
    "name": "Jakob Poeltl",
    "position": "C",
    "short": "J. Poeltl",
    "status": "",
-   "team_id": "28"
+   "team_id": "28",
+   "weight_lb": "253"
   },
   "3134916": {
+   "dob": "1996-04-09",
+   "height_in": "72",
    "jersey": "0",
    "name": "Jordan McLaughlin",
    "position": "G",
    "short": "J. McLaughlin",
    "status": "",
-   "team_id": "24"
+   "team_id": "24",
+   "weight_lb": "180"
   },
   "3135045": {
+   "dob": "1995-10-08",
+   "height_in": "75",
    "jersey": "8",
    "name": "Grayson Allen",
    "position": "G",
    "short": "G. Allen",
    "status": "",
-   "team_id": "30"
+   "team_id": "30",
+   "weight_lb": "198"
   },
   "3135046": {
+   "dob": "1996-05-10",
+   "height_in": "72",
    "jersey": "5",
    "name": "Tyus Jones",
    "position": "G",
    "short": "T. Jones",
    "status": "",
-   "team_id": "7"
+   "team_id": "7",
+   "weight_lb": "196"
   },
   "3136193": {
+   "dob": "1996-10-30",
+   "height_in": "77",
    "jersey": "15",
    "name": "Devin Booker",
    "position": "G",
    "short": "D. Booker",
    "status": "",
-   "team_id": "21"
+   "team_id": "21",
+   "weight_lb": "206"
   },
   "3136195": {
+   "dob": "1995-11-15",
+   "height_in": "84",
    "jersey": "32",
    "name": "Karl-Anthony Towns",
    "position": "C",
    "short": "K. Towns",
    "status": "",
-   "team_id": "18"
+   "team_id": "18",
+   "weight_lb": "248"
   },
   "3136196": {
+   "dob": "1995-11-05",
+   "height_in": "81",
    "jersey": "41",
    "name": "Trey Lyles",
    "position": "F",
    "short": "T. Lyles",
    "status": "",
-   "team_id": "16"
+   "team_id": "16",
+   "weight_lb": "234"
   },
   "3136777": {
+   "dob": "1995-10-28",
+   "height_in": "76",
    "jersey": "8",
    "name": "Jae'Sean Tate",
    "position": "F",
    "short": "J. Tate",
    "status": "",
-   "team_id": "10"
+   "team_id": "10",
+   "weight_lb": "230"
   },
   "3138160": {
+   "dob": "1995-09-28",
+   "height_in": "77",
    "jersey": "16",
    "name": "Caleb Martin",
    "position": "F",
    "short": "C. Martin",
    "status": "Out",
-   "team_id": "6"
+   "team_id": "6",
+   "weight_lb": "205"
   },
   "3138196": {
+   "dob": "1996-03-03",
+   "height_in": "80",
    "jersey": "23",
    "name": "Cameron Johnson",
    "position": "F",
    "short": "C. Johnson",
    "status": "Day-To-Day",
-   "team_id": "7"
+   "team_id": "7",
+   "weight_lb": "210"
   },
   "3146557": {
+   "dob": "1995-10-25",
+   "height_in": "83",
    "jersey": "31",
    "name": "Jock Landale",
    "position": "C",
    "short": "J. Landale",
    "status": "",
-   "team_id": "1"
+   "team_id": "1",
+   "weight_lb": "255"
   },
   "3147657": {
+   "dob": "1996-08-30",
+   "height_in": "78",
    "jersey": "25",
    "name": "Mikal Bridges",
    "position": "G",
    "short": "M. Bridges",
    "status": "",
-   "team_id": "18"
+   "team_id": "18",
+   "weight_lb": "209"
   },
   "3149673": {
+   "dob": "1994-04-02",
+   "height_in": "80",
    "jersey": "43",
    "name": "Pascal Siakam",
    "position": "F",
    "short": "P. Siakam",
    "status": "",
-   "team_id": "11"
+   "team_id": "11",
+   "weight_lb": "245"
   },
   "3150844": {
+   "dob": "1997-04-26",
+   "height_in": "83",
    "jersey": "13",
    "name": "Moritz Wagner",
    "position": "C",
    "short": "M. Wagner",
    "status": "",
-   "team_id": "17"
+   "team_id": "17",
+   "weight_lb": "245"
   },
   "3155526": {
+   "dob": "1996-01-22",
+   "height_in": "79",
    "jersey": "3",
    "name": "Dillon Brooks",
    "position": "F",
    "short": "D. Brooks",
    "status": "",
-   "team_id": "21"
+   "team_id": "21",
+   "weight_lb": "225"
   },
   "3155535": {
+   "dob": "1996-02-06",
+   "height_in": "81",
    "jersey": "55",
    "name": "Kevon Looney",
    "position": "F",
    "short": "K. Looney",
    "status": "",
-   "team_id": "13"
+   "team_id": "13",
+   "weight_lb": "222"
   },
   "3155942": {
+   "dob": "1996-05-03",
+   "height_in": "82",
    "jersey": "11",
    "name": "Domantas Sabonis",
    "position": "F",
    "short": "D. Sabonis",
    "status": "",
-   "team_id": "23"
+   "team_id": "23",
+   "weight_lb": "240"
   },
   "3157465": {
+   "dob": "1994-04-22",
+   "height_in": "79",
    "jersey": "55",
    "name": "Duncan Robinson",
    "position": "F",
    "short": "D. Robinson",
    "status": "",
-   "team_id": "8"
+   "team_id": "8",
+   "weight_lb": "215"
   },
   "3195": {
+   "dob": "1987-10-11",
+   "height_in": "73",
    "jersey": "45",
    "name": "Mike Conley",
    "position": "G",
    "short": "M. Conley",
    "status": "",
-   "team_id": "2"
+   "team_id": "2",
+   "weight_lb": "175"
   },
   "3202": {
+   "dob": "1988-09-29",
+   "height_in": "83",
    "jersey": "7",
    "name": "Kevin Durant",
    "position": "F",
    "short": "K. Durant",
    "status": "",
-   "team_id": "10"
+   "team_id": "10",
+   "weight_lb": "240"
   },
   "3213": {
+   "dob": "1986-06-03",
+   "height_in": "80",
    "jersey": "20",
    "name": "Al Horford",
    "position": "C",
    "short": "A. Horford",
    "status": "",
-   "team_id": "9"
+   "team_id": "9",
+   "weight_lb": "240"
   },
   "3442": {
+   "dob": "1988-07-21",
+   "height_in": "83",
    "jersey": "6",
    "name": "DeAndre Jordan",
    "position": "C",
    "short": "D. Jordan",
    "status": "",
-   "team_id": "3"
+   "team_id": "3",
+   "weight_lb": "265"
   },
   "3448": {
+   "dob": "1988-04-01",
+   "height_in": "85",
    "jersey": "11",
    "name": "Brook Lopez",
    "position": "C",
    "short": "B. Lopez",
    "status": "",
-   "team_id": "12"
+   "team_id": "12",
+   "weight_lb": "282"
   },
   "3899664": {
+   "dob": "1995-12-09",
+   "height_in": "79",
    "jersey": "0",
    "name": "Simone Fontecchio",
    "position": "F",
    "short": "S. Fontecchio",
    "status": "Day-To-Day",
-   "team_id": "14"
+   "team_id": "14",
+   "weight_lb": "220"
   },
   "3904625": {
+   "dob": "1995-12-10",
+   "height_in": "90",
    "jersey": "99",
    "name": "Tacko Fall",
    "position": "C",
    "short": "T. Fall",
    "status": "Out",
-   "team_id": "20"
+   "team_id": "20",
+   "weight_lb": "299"
   },
   "3907387": {
+   "dob": "1996-07-20",
+   "height_in": "82",
    "jersey": "25",
    "name": "Ben Simmons",
    "position": "G",
    "short": "B. Simmons",
    "status": "Out",
-   "team_id": "23"
+   "team_id": "23",
+   "weight_lb": "240"
   },
   "3907497": {
+   "dob": "1996-09-19",
+   "height_in": "76",
    "jersey": "5",
    "name": "Dejounte Murray",
    "position": "G",
    "short": "D. Murray",
    "status": "",
-   "team_id": "3"
+   "team_id": "3",
+   "weight_lb": "180"
   },
   "3907498": {
+   "dob": "1997-03-04",
+   "height_in": "77",
    "jersey": "4",
    "name": "Matisse Thybulle",
    "position": "G",
    "short": "M. Thybulle",
    "status": "",
-   "team_id": "13"
+   "team_id": "13",
+   "weight_lb": "202"
   },
   "3907823": {
+   "dob": "1996-10-18",
+   "height_in": "78",
    "jersey": "14",
    "name": "Terance Mann",
    "position": "G",
    "short": "T. Mann",
    "status": "",
-   "team_id": "17"
+   "team_id": "17",
+   "weight_lb": "215"
   },
   "3908809": {
+   "dob": "1996-09-07",
+   "height_in": "74",
    "jersey": "45",
    "name": "Donovan Mitchell",
    "position": "G",
    "short": "D. Mitchell",
    "status": "",
-   "team_id": "5"
+   "team_id": "5",
+   "weight_lb": "215"
   },
   "3908845": {
+   "dob": "1997-09-23",
+   "height_in": "81",
    "jersey": "20",
    "name": "John Collins",
    "position": "F",
    "short": "J. Collins",
    "status": "",
-   "team_id": "8"
+   "team_id": "8",
+   "weight_lb": "226"
   },
   "3912848": {
+   "dob": "1996-11-20",
+   "height_in": "81",
    "jersey": "45",
    "name": "Dean Wade",
    "position": "F",
    "short": "D. Wade",
    "status": "",
-   "team_id": "20"
+   "team_id": "20",
+   "weight_lb": "223"
   },
   "3913174": {
+   "dob": "1996-06-24",
+   "height_in": "77",
    "jersey": "8",
    "name": "Luke Kennard",
    "position": "G",
    "short": "L. Kennard",
    "status": "",
-   "team_id": "21"
+   "team_id": "21",
+   "weight_lb": "206"
   },
   "3913176": {
+   "dob": "1997-09-02",
+   "height_in": "80",
    "jersey": "7",
    "name": "Brandon Ingram",
    "position": "F",
    "short": "B. Ingram",
    "status": "Out",
-   "team_id": "12"
+   "team_id": "12",
+   "weight_lb": "190"
   },
   "3914044": {
+   "dob": "1997-03-13",
+   "height_in": "77",
    "jersey": "44",
    "name": "Landry Shamet",
    "position": "G",
    "short": "L. Shamet",
    "status": "",
-   "team_id": "18"
+   "team_id": "18",
+   "weight_lb": "190"
   },
   "3917376": {
+   "dob": "1996-10-24",
+   "height_in": "78",
    "jersey": "7",
    "name": "Jaylen Brown",
    "position": "G",
    "short": "J. Brown",
    "status": "",
-   "team_id": "20"
+   "team_id": "20",
+   "weight_lb": "223"
   },
   "3934672": {
+   "dob": "1996-08-31",
+   "height_in": "74",
    "jersey": "11",
    "name": "Jalen Brunson",
    "position": "G",
    "short": "J. Brunson",
    "status": "",
-   "team_id": "18"
+   "team_id": "18",
+   "weight_lb": "190"
   },
   "3934673": {
+   "dob": "1997-01-31",
+   "height_in": "76",
    "jersey": "0",
    "name": "Donte DiVincenzo",
    "position": "G",
    "short": "D. DiVincenzo",
    "status": "Out",
-   "team_id": "16"
+   "team_id": "16",
+   "weight_lb": "203"
   },
   "3934719": {
+   "dob": "1997-07-17",
+   "height_in": "79",
    "jersey": "8",
    "name": "OG Anunoby",
    "position": "F",
    "short": "O. Anunoby",
    "status": "",
-   "team_id": "18"
+   "team_id": "18",
+   "weight_lb": "240"
   },
   "3934723": {
+   "dob": "1997-07-31",
+   "height_in": "81",
    "jersey": "3",
    "name": "Thomas Bryant",
    "position": "C",
    "short": "T. Bryant",
    "status": "",
-   "team_id": "5"
+   "team_id": "5",
+   "weight_lb": "248"
   },
   "3936099": {
+   "dob": "1997-02-15",
+   "height_in": "78",
    "jersey": "5",
    "name": "Derrick Jones Jr.",
    "position": "F",
    "short": "D. Jones Jr.",
    "status": "",
-   "team_id": "12"
+   "team_id": "12",
+   "weight_lb": "210"
   },
   "3936299": {
+   "dob": "1997-02-23",
+   "height_in": "76",
    "jersey": "27",
    "name": "Jamal Murray",
    "position": "G",
    "short": "J. Murray",
    "status": "",
-   "team_id": "7"
+   "team_id": "7",
+   "weight_lb": "215"
   },
   "3945274": {
+   "dob": "1999-02-28",
+   "height_in": "80",
    "jersey": "77",
    "name": "Luka Doncic",
    "position": "G",
    "short": "L. Doncic",
    "status": "",
-   "team_id": "13"
+   "team_id": "13",
+   "weight_lb": "230"
   },
   "3975": {
+   "dob": "1988-03-14",
+   "height_in": "74",
    "jersey": "30",
    "name": "Stephen Curry",
    "position": "G",
    "short": "S. Curry",
    "status": "",
-   "team_id": "9"
+   "team_id": "9",
+   "weight_lb": "185"
   },
   "3978": {
+   "dob": "1989-08-07",
+   "height_in": "78",
    "jersey": "10",
    "name": "DeMar DeRozan",
    "position": "G",
    "short": "D. DeRozan",
    "status": "",
-   "team_id": "7"
+   "team_id": "7",
+   "weight_lb": "220"
   },
   "3992": {
+   "dob": "1989-08-26",
+   "height_in": "77",
    "jersey": "1",
    "name": "James Harden",
    "position": "G",
    "short": "J. Harden",
    "status": "",
-   "team_id": "5"
+   "team_id": "5",
+   "weight_lb": "220"
   },
   "3995": {
+   "dob": "1990-06-12",
+   "height_in": "76",
    "jersey": "5",
    "name": "Jrue Holiday",
    "position": "G",
    "short": "J. Holiday",
    "status": "",
-   "team_id": "22"
+   "team_id": "22",
+   "weight_lb": "220"
   },
   "4017837": {
+   "dob": "1997-03-18",
+   "height_in": "84",
    "jersey": "40",
    "name": "Ivica Zubac",
    "position": "C",
    "short": "I. Zubac",
    "status": "Out",
-   "team_id": "11"
+   "team_id": "11",
+   "weight_lb": "240"
   },
   "4065648": {
+   "dob": "1998-03-03",
+   "height_in": "80",
    "jersey": "0",
    "name": "Jayson Tatum",
    "position": "F",
    "short": "J. Tatum",
    "status": "",
-   "team_id": "2"
+   "team_id": "2",
+   "weight_lb": "224"
   },
   "4065654": {
+   "dob": "1997-10-03",
+   "height_in": "82",
    "jersey": "1",
    "name": "Jonathan Isaac",
    "position": "F",
    "short": "J. Isaac",
    "status": "Out",
-   "team_id": "19"
+   "team_id": "19",
+   "weight_lb": "230"
   },
   "4065663": {
+   "dob": "1998-09-01",
+   "height_in": "76",
    "jersey": "21",
    "name": "Josh Okogie",
    "position": "G",
    "short": "J. Okogie",
    "status": "",
-   "team_id": "26"
+   "team_id": "26",
+   "weight_lb": "213"
   },
   "4065673": {
+   "dob": "1998-01-08",
+   "height_in": "82",
    "jersey": "13",
    "name": "Tony Bradley",
    "position": "C",
    "short": "T. Bradley",
    "status": "",
-   "team_id": "26"
+   "team_id": "26",
+   "weight_lb": "248"
   },
   "4065731": {
+   "dob": "1997-08-25",
+   "height_in": "85",
    "jersey": "32",
    "name": "Jay Huff",
    "position": "C",
    "short": "J. Huff",
    "status": "",
-   "team_id": "11"
+   "team_id": "11",
+   "weight_lb": "240"
   },
   "4065732": {
+   "dob": "1997-12-02",
+   "height_in": "79",
    "jersey": "15",
    "name": "De'Andre Hunter",
    "position": "F",
    "short": "D. Hunter",
    "status": "",
-   "team_id": "23"
+   "team_id": "23",
+   "weight_lb": "221"
   },
   "4065733": {
+   "dob": "1997-07-08",
+   "height_in": "77",
    "jersey": "2",
    "name": "Ty Jerome",
    "position": "G",
    "short": "T. Jerome",
    "status": "",
-   "team_id": "29"
+   "team_id": "29",
+   "weight_lb": "195"
   },
   "4065778": {
+   "dob": "1996-03-28",
+   "height_in": "77",
    "jersey": "31",
    "name": "Max Strus",
    "position": "G",
    "short": "M. Strus",
    "status": "Out",
-   "team_id": "12"
+   "team_id": "12",
+   "weight_lb": "215"
   },
   "4065804": {
+   "dob": "1997-12-08",
+   "height_in": "80",
    "jersey": "30",
    "name": "Sam Hauser",
    "position": "F",
    "short": "S. Hauser",
    "status": "",
-   "team_id": "2"
+   "team_id": "2",
+   "weight_lb": "221"
   },
   "4065813": {
+   "dob": "1997-06-29",
+   "height_in": "79",
    "jersey": "11",
    "name": "Alpha Diallo",
    "position": "F",
    "short": "A. Diallo",
    "status": "Out",
-   "team_id": "7"
+   "team_id": "7",
+   "weight_lb": "210"
   },
   "4066211": {
+   "dob": "1997-10-17",
+   "height_in": "81",
    "jersey": "35",
    "name": "Robert Williams III",
    "position": "C",
    "short": "R. Williams III",
    "status": "",
-   "team_id": "22"
+   "team_id": "22",
+   "weight_lb": "249"
   },
   "4066218": {
+   "dob": "1998-11-30",
+   "height_in": "79",
    "jersey": "2",
    "name": "Grant Williams",
    "position": "F",
    "short": "G. Williams",
    "status": "Out",
-   "team_id": "30"
+   "team_id": "30",
+   "weight_lb": "236"
   },
   "4066259": {
+   "dob": "1997-12-20",
+   "height_in": "75",
    "jersey": "4",
    "name": "De'Aaron Fox",
    "position": "G",
    "short": "D. Fox",
    "status": "",
-   "team_id": "24"
+   "team_id": "24",
+   "weight_lb": "190"
   },
   "4066261": {
+   "dob": "1997-07-18",
+   "height_in": "81",
    "jersey": "13",
    "name": "Bam Adebayo",
    "position": "C",
    "short": "B. Adebayo",
    "status": "",
-   "team_id": "14"
+   "team_id": "14",
+   "weight_lb": "260"
   },
   "4066262": {
+   "dob": "1998-02-04",
+   "height_in": "75",
    "jersey": "0",
    "name": "Malik Monk",
    "position": "G",
    "short": "M. Monk",
    "status": "",
-   "team_id": "23"
+   "team_id": "23",
+   "weight_lb": "200"
   },
   "4066268": {
+   "dob": "1996-06-26",
+   "height_in": "81",
    "jersey": "26",
    "name": "Duop Reath",
    "position": "C",
    "short": "D. Reath",
    "status": "",
-   "team_id": "21"
+   "team_id": "21",
+   "weight_lb": "245"
   },
   "4066320": {
+   "dob": "1998-06-25",
+   "height_in": "78",
    "jersey": "3",
    "name": "Desmond Bane",
    "position": "G",
    "short": "D. Bane",
    "status": "",
-   "team_id": "19"
+   "team_id": "19",
+   "weight_lb": "215"
   },
   "4066328": {
+   "dob": "1998-04-21",
+   "height_in": "81",
    "jersey": "31",
    "name": "Jarrett Allen",
    "position": "C",
    "short": "J. Allen",
    "status": "",
-   "team_id": "5"
+   "team_id": "5",
+   "weight_lb": "243"
   },
   "4066336": {
+   "dob": "1997-05-22",
+   "height_in": "85",
    "jersey": "23",
    "name": "Lauri Markkanen",
    "position": "F",
    "short": "L. Markkanen",
    "status": "Day-To-Day",
-   "team_id": "26"
+   "team_id": "26",
+   "weight_lb": "240"
   },
   "4066354": {
+   "dob": "1998-01-28",
+   "height_in": "74",
    "jersey": "11",
    "name": "Payton Pritchard",
    "position": "G",
    "short": "P. Pritchard",
    "status": "",
-   "team_id": "2"
+   "team_id": "2",
+   "weight_lb": "211"
   },
   "4066372": {
+   "dob": "1998-08-27",
+   "height_in": "78",
    "jersey": "27",
    "name": "Kevin Huerter",
    "position": "G",
    "short": "K. Huerter",
    "status": "",
-   "team_id": "8"
+   "team_id": "8",
+   "weight_lb": "198"
   },
   "4066383": {
+   "dob": "1998-03-21",
+   "height_in": "79",
    "jersey": "22",
    "name": "Miles Bridges",
    "position": "F",
    "short": "M. Bridges",
    "status": "",
-   "team_id": "21"
+   "team_id": "21",
+   "weight_lb": "225"
   },
   "4066399": {
+   "dob": "1998-04-06",
+   "height_in": "81",
    "jersey": "9",
    "name": "Micah Potter",
    "position": "C",
    "short": "M. Potter",
    "status": "",
-   "team_id": "22"
+   "team_id": "22",
+   "weight_lb": "248"
   },
   "4066436": {
+   "dob": "1998-05-28",
+   "height_in": "74",
    "jersey": "8",
    "name": "De'Anthony Melton",
    "position": "G",
    "short": "D. Melton",
    "status": "",
-   "team_id": "9"
+   "team_id": "9",
+   "weight_lb": "200"
   },
   "4066457": {
+   "dob": "1998-05-29",
+   "height_in": "77",
    "jersey": "15",
    "name": "Austin Reaves",
    "position": "G",
    "short": "A. Reaves",
    "status": "",
-   "team_id": "13"
+   "team_id": "13",
+   "weight_lb": "197"
   },
   "4066648": {
+   "dob": "1998-02-08",
+   "height_in": "80",
    "jersey": "28",
    "name": "Rui Hachimura",
    "position": "F",
    "short": "R. Hachimura",
    "status": "Out",
-   "team_id": "12"
+   "team_id": "12",
+   "weight_lb": "230"
   },
   "4066650": {
+   "dob": "1997-11-19",
+   "height_in": "81",
    "jersey": "12",
    "name": "Zach Collins",
    "position": "F",
    "short": "Z. Collins",
    "status": "",
-   "team_id": "4"
+   "team_id": "4",
+   "weight_lb": "250"
   },
   "4066757": {
+   "dob": "1996-05-15",
+   "height_in": "76",
    "jersey": "5",
    "name": "Sam Merrill",
    "position": "G",
    "short": "S. Merrill",
    "status": "",
-   "team_id": "5"
+   "team_id": "5",
+   "weight_lb": "205"
   },
   "4066993": {
+   "dob": "1997-12-30",
+   "height_in": "74",
    "jersey": "12",
    "name": "Dru Smith",
    "position": "G",
    "short": "D. Smith",
    "status": "",
-   "team_id": "14"
+   "team_id": "14",
+   "weight_lb": "200"
   },
   "4222252": {
+   "dob": "1998-05-05",
+   "height_in": "84",
    "jersey": "55",
    "name": "Isaiah Hartenstein",
    "position": "C",
    "short": "I. Hartenstein",
    "status": "",
-   "team_id": "25"
+   "team_id": "25",
+   "weight_lb": "250"
   },
   "4251": {
+   "dob": "1990-05-02",
+   "height_in": "80",
    "jersey": "13",
    "name": "Paul George",
    "position": "F",
    "short": "P. George",
    "status": "",
-   "team_id": "2"
+   "team_id": "2",
+   "weight_lb": "221"
   },
   "4277811": {
+   "dob": "1999-01-04",
+   "height_in": "75",
    "jersey": "10",
    "name": "Collin Sexton",
    "position": "G",
    "short": "C. Sexton",
    "status": "",
-   "team_id": "13"
+   "team_id": "13",
+   "weight_lb": "190"
   },
   "4277813": {
+   "dob": "1998-10-06",
+   "height_in": "79",
    "jersey": "2",
    "name": "Herbert Jones",
    "position": "F",
    "short": "H. Jones",
    "status": "",
-   "team_id": "3"
+   "team_id": "3",
+   "weight_lb": "206"
   },
   "4277843": {
+   "dob": "1999-01-18",
+   "height_in": "77",
    "jersey": "5",
    "name": "Gary Trent Jr.",
    "position": "G",
    "short": "G. Trent Jr.",
    "status": "",
-   "team_id": "15"
+   "team_id": "15",
+   "weight_lb": "204"
   },
   "4277847": {
+   "dob": "1999-04-16",
+   "height_in": "82",
    "jersey": "34",
    "name": "Wendell Carter Jr.",
    "position": "C",
    "short": "W. Carter Jr.",
    "status": "",
-   "team_id": "19"
+   "team_id": "19",
+   "weight_lb": "270"
   },
   "4277848": {
+   "dob": "1999-03-14",
+   "height_in": "82",
    "jersey": "3",
    "name": "Marvin Bagley III",
    "position": "F",
    "short": "M. Bagley III",
    "status": "",
-   "team_id": "7"
+   "team_id": "7",
+   "weight_lb": "235"
   },
   "4277869": {
+   "dob": "1998-04-12",
+   "height_in": "72",
    "jersey": "5",
    "name": "Jose Alvarado",
    "position": "G",
    "short": "J. Alvarado",
    "status": "Day-To-Day",
-   "team_id": "18"
+   "team_id": "18",
+   "weight_lb": "179"
   },
   "4277905": {
+   "dob": "1998-09-19",
+   "height_in": "74",
    "jersey": "3",
    "name": "Trae Young",
    "position": "G",
    "short": "T. Young",
    "status": "",
-   "team_id": "27"
+   "team_id": "27",
+   "weight_lb": "164"
   },
   "4277919": {
+   "dob": "1998-05-12",
+   "height_in": "84",
    "jersey": "44",
    "name": "Mo Bamba",
    "position": "C",
    "short": "M. Bamba",
    "status": "",
-   "team_id": "26"
+   "team_id": "26",
+   "weight_lb": "231"
   },
   "4277922": {
+   "dob": "1998-10-20",
+   "height_in": "82",
    "jersey": "00",
    "name": "Jericho Sims",
    "position": "C",
    "short": "J. Sims",
    "status": "",
-   "team_id": "15"
+   "team_id": "15",
+   "weight_lb": "250"
   },
   "4277951": {
+   "dob": "1998-12-27",
+   "height_in": "82",
    "jersey": "52",
    "name": "Luka Garza",
    "position": "C",
    "short": "L. Garza",
    "status": "",
-   "team_id": "2"
+   "team_id": "2",
+   "weight_lb": "243"
   },
   "4277956": {
+   "dob": "1999-06-19",
+   "height_in": "76",
    "jersey": "3",
    "name": "Jordan Poole",
    "position": "G",
    "short": "J. Poole",
    "status": "Day-To-Day",
-   "team_id": "3"
+   "team_id": "3",
+   "weight_lb": "194"
   },
   "4277961": {
+   "dob": "1999-09-15",
+   "height_in": "82",
    "jersey": "20",
    "name": "Jaren Jackson Jr.",
    "position": "F",
    "short": "J. Jackson Jr.",
    "status": "Out",
-   "team_id": "26"
+   "team_id": "26",
+   "weight_lb": "242"
   },
   "4278039": {
+   "dob": "1998-09-02",
+   "height_in": "77",
    "jersey": "7",
    "name": "Nickeil Alexander-Walker",
    "position": "G",
    "short": "N. Alexander-Walker",
    "status": "",
-   "team_id": "1"
+   "team_id": "1",
+   "weight_lb": "205"
   },
   "4278049": {
+   "dob": "1998-10-01",
+   "height_in": "82",
    "jersey": "21",
    "name": "Daniel Gafford",
    "position": "F",
    "short": "D. Gafford",
    "status": "",
-   "team_id": "6"
+   "team_id": "6",
+   "weight_lb": "265"
   },
   "4278053": {
+   "dob": "1998-09-05",
+   "height_in": "72",
    "jersey": "2",
    "name": "Davion Mitchell",
    "position": "G",
    "short": "D. Mitchell",
    "status": "",
-   "team_id": "14"
+   "team_id": "14",
+   "weight_lb": "210"
   },
   "4278067": {
+   "dob": "1999-04-17",
+   "height_in": "83",
    "jersey": "9",
    "name": "Nic Claxton",
    "position": "C",
    "short": "N. Claxton",
    "status": "Out",
-   "team_id": "4"
+   "team_id": "4",
+   "weight_lb": "215"
   },
   "4278073": {
+   "dob": "1998-07-12",
+   "height_in": "78",
    "jersey": "2",
    "name": "Shai Gilgeous-Alexander",
    "position": "G",
    "short": "S. Gilgeous-Alexander",
    "status": "",
-   "team_id": "25"
+   "team_id": "25",
+   "weight_lb": "195"
   },
   "4278076": {
+   "dob": "1997-11-29",
+   "height_in": "83",
    "jersey": "8",
    "name": "Nick Richards",
    "position": "C",
    "short": "N. Richards",
    "status": "",
-   "team_id": "14"
+   "team_id": "14",
+   "weight_lb": "245"
   },
   "4278077": {
+   "dob": "1999-04-03",
+   "height_in": "80",
    "jersey": "2",
    "name": "Jarred Vanderbilt",
    "position": "F",
    "short": "J. Vanderbilt",
    "status": "",
-   "team_id": "13"
+   "team_id": "13",
+   "weight_lb": "214"
   },
   "4278078": {
+   "dob": "1998-08-23",
+   "height_in": "79",
    "jersey": "25",
    "name": "P.J. Washington",
    "position": "F",
    "short": "P.J. Washington",
    "status": "",
-   "team_id": "6"
+   "team_id": "6",
+   "weight_lb": "230"
   },
   "4278104": {
+   "dob": "1998-06-29",
+   "height_in": "82",
    "jersey": "17",
    "name": "Michael Porter Jr.",
    "position": "F",
    "short": "M. Porter Jr.",
    "status": "",
-   "team_id": "17"
+   "team_id": "17",
+   "weight_lb": "218"
   },
   "4278129": {
+   "dob": "1998-07-23",
+   "height_in": "84",
    "jersey": "8",
    "name": "Deandre Ayton",
    "position": "C",
    "short": "D. Ayton",
    "status": "",
-   "team_id": "27"
+   "team_id": "27",
+   "weight_lb": "252"
   },
   "4278355": {
+   "dob": "1998-03-04",
+   "height_in": "81",
    "jersey": "1",
    "name": "Obi Toppin",
    "position": "F",
    "short": "O. Toppin",
    "status": "Day-To-Day",
-   "team_id": "11"
+   "team_id": "11",
+   "weight_lb": "220"
   },
   "4278402": {
+   "dob": "1998-10-23",
+   "height_in": "75",
    "jersey": "23",
    "name": "Jordan Goodwin",
    "position": "G",
    "short": "J. Goodwin",
    "status": "",
-   "team_id": "21"
+   "team_id": "21",
+   "weight_lb": "215"
   },
   "4278562": {
+   "dob": "1999-06-14",
+   "height_in": "81",
    "jersey": "7",
    "name": "Paul Reed",
    "position": "F",
    "short": "P. Reed",
    "status": "",
-   "team_id": "8"
+   "team_id": "8",
+   "weight_lb": "210"
   },
   "4278572": {
+   "dob": "1999-03-20",
+   "height_in": "79",
    "jersey": "8",
    "name": "Jamal Cain",
    "position": "F",
    "short": "J. Cain",
    "status": "",
-   "team_id": "19"
+   "team_id": "19",
+   "weight_lb": "191"
   },
   "4278580": {
+   "dob": "1999-05-23",
+   "height_in": "81",
    "jersey": "54",
    "name": "Sandro Mamukelashvili",
    "position": "F",
    "short": "S. Mamukelashvili",
    "status": "",
-   "team_id": "13"
+   "team_id": "13",
+   "weight_lb": "240"
   },
   "4278585": {
+   "dob": "1999-06-25",
+   "height_in": "73",
    "jersey": "12",
    "name": "Collin Gillespie",
    "position": "G",
    "short": "C. Gillespie",
    "status": "",
-   "team_id": "21"
+   "team_id": "21",
+   "weight_lb": "195"
   },
   "4278594": {
+   "dob": "1998-01-24",
+   "height_in": "78",
    "jersey": "3",
    "name": "Naji Marshall",
    "position": "F",
    "short": "N. Marshall",
    "status": "Day-To-Day",
-   "team_id": "6"
+   "team_id": "6",
+   "weight_lb": "220"
   },
   "4279318": {
+   "dob": "1998-08-29",
+   "height_in": "78",
    "jersey": "29",
    "name": "Daeqwon Plowden",
    "position": "G",
    "short": "D. Plowden",
    "status": "",
-   "team_id": "23"
+   "team_id": "23",
+   "weight_lb": "216"
   },
   "4279888": {
+   "dob": "1999-08-10",
+   "height_in": "74",
    "jersey": "1",
    "name": "Ja Morant",
    "position": "G",
    "short": "J. Morant",
    "status": "",
-   "team_id": "22"
+   "team_id": "22",
+   "weight_lb": "174"
   },
   "4280151": {
+   "dob": "1999-03-03",
+   "height_in": "78",
    "jersey": "24",
    "name": "Corey Kispert",
    "position": "F",
    "short": "C. Kispert",
    "status": "",
-   "team_id": "1"
+   "team_id": "1",
+   "weight_lb": "224"
   },
   "4280245": {
+   "dob": "1999-06-27",
+   "height_in": "74",
    "jersey": "17",
    "name": "Jamaree Bouyea",
    "position": "G",
    "short": "J. Bouyea",
    "status": "",
-   "team_id": "21"
+   "team_id": "21",
+   "weight_lb": "180"
   },
   "4348700": {
+   "dob": "1999-07-20",
+   "height_in": "83",
    "jersey": "35",
    "name": "Goga Bitadze",
    "position": "C",
    "short": "G. Bitadze",
    "status": "",
-   "team_id": "19"
+   "team_id": "19",
+   "weight_lb": "250"
   },
   "4351851": {
+   "dob": "1999-06-08",
+   "height_in": "76",
    "jersey": "5",
    "name": "Anfernee Simons",
    "position": "G",
    "short": "A. Simons",
    "status": "",
-   "team_id": "20"
+   "team_id": "20",
+   "weight_lb": "206"
   },
   "4351852": {
+   "dob": "1998-04-01",
+   "height_in": "84",
    "jersey": "4",
    "name": "Mitchell Robinson",
    "position": "C",
    "short": "M. Robinson",
    "status": "",
-   "team_id": "2"
+   "team_id": "2",
+   "weight_lb": "240"
   },
   "4395625": {
+   "dob": "2000-06-14",
+   "height_in": "78",
    "jersey": "9",
    "name": "RJ Barrett",
    "position": "F",
    "short": "R. Barrett",
    "status": "",
-   "team_id": "28"
+   "team_id": "28",
+   "weight_lb": "214"
   },
   "4395626": {
+   "dob": "2000-01-08",
+   "height_in": "73",
    "jersey": "30",
    "name": "Tre Jones",
    "position": "G",
    "short": "T. Jones",
    "status": "",
-   "team_id": "4"
+   "team_id": "4",
+   "weight_lb": "185"
   },
   "4395628": {
+   "dob": "2000-07-06",
+   "height_in": "78",
    "jersey": "1",
    "name": "Zion Williamson",
    "position": "F",
    "short": "Z. Williamson",
    "status": "",
-   "team_id": "3"
+   "team_id": "3",
+   "weight_lb": "284"
   },
   "4395630": {
+   "dob": "2000-08-23",
+   "height_in": "77",
    "jersey": "24",
    "name": "Devin Vassell",
    "position": "G",
    "short": "D. Vassell",
    "status": "",
-   "team_id": "24"
+   "team_id": "24",
+   "weight_lb": "205"
   },
   "4395650": {
+   "dob": "1999-06-14",
+   "height_in": "78",
    "jersey": "19",
    "name": "Leaky Black",
    "position": "F",
    "short": "L. Black",
    "status": "",
-   "team_id": "23"
+   "team_id": "23",
+   "weight_lb": "209"
   },
   "4395651": {
+   "dob": "2000-02-16",
+   "height_in": "76",
    "jersey": "3",
    "name": "Coby White",
    "position": "G",
    "short": "C. White",
    "status": "Out",
-   "team_id": "30"
+   "team_id": "30",
+   "weight_lb": "195"
   },
   "4395702": {
+   "dob": "1999-07-02",
+   "height_in": "76",
    "jersey": "17",
    "name": "Isaiah Joe",
    "position": "G",
    "short": "I. Joe",
    "status": "Day-To-Day",
-   "team_id": "8"
+   "team_id": "8",
+   "weight_lb": "165"
   },
   "4395712": {
+   "dob": "2000-01-16",
+   "height_in": "76",
    "jersey": "2",
    "name": "Andrew Nembhard",
    "position": "G",
    "short": "A. Nembhard",
    "status": "Day-To-Day",
-   "team_id": "11"
+   "team_id": "11",
+   "weight_lb": "191"
   },
   "4395723": {
+   "dob": "1999-10-11",
+   "height_in": "78",
    "jersey": "3",
    "name": "Keldon Johnson",
    "position": "F",
    "short": "K. Johnson",
    "status": "",
-   "team_id": "24"
+   "team_id": "24",
+   "weight_lb": "215"
   },
   "4395724": {
+   "dob": "1999-06-17",
+   "height_in": "74",
    "jersey": "5",
    "name": "Immanuel Quickley",
    "position": "G",
    "short": "I. Quickley",
    "status": "",
-   "team_id": "28"
+   "team_id": "28",
+   "weight_lb": "190"
   },
   "4395725": {
+   "dob": "2000-01-20",
+   "height_in": "77",
    "jersey": "11",
    "name": "Tyler Herro",
    "position": "G",
    "short": "T. Herro",
    "status": "",
-   "team_id": "15"
+   "team_id": "15",
+   "weight_lb": "205"
   },
   "4396818": {
+   "dob": "2000-01-23",
+   "height_in": "77",
    "jersey": "22",
    "name": "Jordan Miller",
    "position": "G",
    "short": "J. Miller",
    "status": "Out",
-   "team_id": "12"
+   "team_id": "12",
+   "weight_lb": "194"
   },
   "4396907": {
+   "dob": "2000-01-26",
+   "height_in": "73",
    "jersey": "10",
    "name": "Darius Garland",
    "position": "G",
    "short": "D. Garland",
    "status": "",
-   "team_id": "12"
+   "team_id": "12",
+   "weight_lb": "192"
   },
   "4396909": {
+   "dob": "1999-10-16",
+   "height_in": "77",
    "jersey": "23",
    "name": "Aaron Nesmith",
    "position": "G",
    "short": "A. Nesmith",
    "status": "Day-To-Day",
-   "team_id": "11"
+   "team_id": "11",
+   "weight_lb": "215"
   },
   "4396963": {
+   "dob": "1999-12-26",
+   "height_in": "80",
    "jersey": "25",
    "name": "Blake Hinson",
    "position": "F",
    "short": "B. Hinson",
    "status": "Out",
-   "team_id": "26"
+   "team_id": "26",
+   "weight_lb": "230"
   },
   "4396971": {
+   "dob": "1999-08-26",
+   "height_in": "81",
    "jersey": "0",
    "name": "Naz Reid",
    "position": "C",
    "short": "N. Reid",
    "status": "",
-   "team_id": "30"
+   "team_id": "30",
+   "weight_lb": "264"
   },
   "4396993": {
+   "dob": "2000-02-29",
+   "height_in": "77",
    "jersey": "0",
    "name": "Tyrese Haliburton",
    "position": "G",
    "short": "T. Haliburton",
    "status": "Day-To-Day",
-   "team_id": "11"
+   "team_id": "11",
+   "weight_lb": "185"
   },
   "4397002": {
+   "dob": "2000-01-17",
+   "height_in": "76",
    "jersey": "13",
    "name": "Ayo Dosunmu",
    "position": "G",
    "short": "A. Dosunmu",
    "status": "",
-   "team_id": "16"
+   "team_id": "16",
+   "weight_lb": "200"
   },
   "4397014": {
+   "dob": "2000-05-08",
+   "height_in": "76",
    "jersey": "5",
    "name": "Quentin Grimes",
    "position": "G",
    "short": "Q. Grimes",
    "status": "",
-   "team_id": "13"
+   "team_id": "13",
+   "weight_lb": "210"
   },
   "4397020": {
+   "dob": "1999-04-19",
+   "height_in": "76",
    "jersey": "0",
    "name": "Luguentz Dort",
    "position": "G",
    "short": "L. Dort",
    "status": "",
-   "team_id": "1"
+   "team_id": "1",
+   "weight_lb": "220"
   },
   "4397040": {
+   "dob": "1999-11-22",
+   "height_in": "73",
    "jersey": "12",
    "name": "Brandon Williams",
    "position": "G",
    "short": "B. Williams",
    "status": "",
-   "team_id": "9"
+   "team_id": "9",
+   "weight_lb": "190"
   },
   "4397077": {
+   "dob": "2000-05-23",
+   "height_in": "84",
    "jersey": "11",
    "name": "Jaxson Hayes",
    "position": "C",
    "short": "J. Hayes",
    "status": "Day-To-Day",
-   "team_id": "26"
+   "team_id": "26",
+   "weight_lb": "220"
   },
   "4397114": {
+   "dob": "1998-10-26",
+   "height_in": "77",
    "jersey": "30",
    "name": "Cormac Ryan",
    "position": "G",
    "short": "C. Ryan",
    "status": "",
-   "team_id": "15"
+   "team_id": "15",
+   "weight_lb": "195"
   },
   "4397136": {
+   "dob": "1999-04-09",
+   "height_in": "80",
    "jersey": "41",
    "name": "Saddiq Bey",
    "position": "G",
    "short": "S. Bey",
    "status": "",
-   "team_id": "3"
+   "team_id": "3",
+   "weight_lb": "215"
   },
   "4397183": {
+   "dob": "1999-01-02",
+   "height_in": "77",
    "jersey": "2",
    "name": "Aaron Wiggins",
    "position": "G",
    "short": "A. Wiggins",
    "status": "Day-To-Day",
-   "team_id": "1"
+   "team_id": "1",
+   "weight_lb": "190"
   },
   "4397189": {
+   "dob": "2000-03-16",
+   "height_in": "80",
    "jersey": "25",
    "name": "Jalen Smith",
    "position": "F",
    "short": "J. Smith",
    "status": "",
-   "team_id": "4"
+   "team_id": "4",
+   "weight_lb": "215"
   },
   "4397204": {
+   "dob": "2000-05-25",
+   "height_in": "82",
    "jersey": "14",
    "name": "Colin Castleton",
    "position": "C",
    "short": "C. Castleton",
    "status": "",
-   "team_id": "19"
+   "team_id": "19",
+   "weight_lb": "250"
   },
   "4397233": {
+   "dob": "2000-02-19",
+   "height_in": "81",
    "jersey": "35",
    "name": "Pete Nance",
    "position": "F",
    "short": "P. Nance",
    "status": "",
-   "team_id": "15"
+   "team_id": "15",
+   "weight_lb": "225"
   },
   "4397251": {
+   "dob": "2000-04-12",
+   "height_in": "77",
    "jersey": "8",
    "name": "Ron Harper Jr.",
    "position": "G",
    "short": "R. Harper Jr.",
    "status": "",
-   "team_id": "2"
+   "team_id": "2",
+   "weight_lb": "233"
   },
   "4397424": {
+   "dob": "1999-07-13",
+   "height_in": "84",
    "jersey": "88",
    "name": "Neemias Queta",
    "position": "C",
    "short": "N. Queta",
    "status": "",
-   "team_id": "2"
+   "team_id": "2",
+   "weight_lb": "260"
   },
   "4397449": {
+   "dob": "2000-02-03",
+   "height_in": "75",
    "jersey": "94",
    "name": "Elijah Harkless",
    "position": "G",
    "short": "E. Harkless",
    "status": "",
-   "team_id": "8"
+   "team_id": "8",
+   "weight_lb": "195"
   },
   "4397475": {
+   "dob": "1999-09-27",
+   "height_in": "76",
    "jersey": "20",
    "name": "AJ Green",
    "position": "G",
    "short": "A. Green",
    "status": "",
-   "team_id": "15"
+   "team_id": "15",
+   "weight_lb": "190"
   },
   "4397688": {
+   "dob": "2000-06-18",
+   "height_in": "80",
    "jersey": "25",
    "name": "Trey Murphy III",
    "position": "F",
    "short": "T. Murphy III",
    "status": "",
-   "team_id": "3"
+   "team_id": "3",
+   "weight_lb": "206"
   },
   "4397784": {
+   "dob": "1999-12-06",
+   "height_in": "76",
    "jersey": "18",
    "name": "Malachi Smith",
    "position": "G",
    "short": "M. Smith",
    "status": "",
-   "team_id": "28"
+   "team_id": "28",
+   "weight_lb": "205"
   },
   "4397882": {
+   "dob": "2000-07-26",
+   "height_in": "83",
    "jersey": "35",
    "name": "Tolu Smith",
    "position": "F",
    "short": "T. Smith",
    "status": "",
-   "team_id": "8"
+   "team_id": "8",
+   "weight_lb": "250"
   },
   "4397886": {
+   "dob": "2000-10-28",
+   "height_in": "82",
    "jersey": "28",
    "name": "Charles Bassey",
    "position": "C",
    "short": "C. Bassey",
    "status": "",
-   "team_id": "9"
+   "team_id": "9",
+   "weight_lb": "230"
   },
   "4398207": {
+   "dob": "1999-10-22",
+   "height_in": "79",
    "jersey": "18",
    "name": "Jalen Slawson",
    "position": "F",
    "short": "J. Slawson",
    "status": "",
-   "team_id": "11"
+   "team_id": "11",
+   "weight_lb": "215"
   },
   "4398390": {
+   "dob": "1999-10-22",
+   "height_in": "74",
    "jersey": "21",
    "name": "Jalen Pickett",
    "position": "G",
    "short": "J. Pickett",
    "status": "",
-   "team_id": "12"
+   "team_id": "12",
+   "weight_lb": "202"
   },
   "4431671": {
+   "dob": "2000-09-29",
+   "height_in": "81",
    "jersey": "3",
    "name": "Jaden McDaniels",
    "position": "F",
    "short": "J. McDaniels",
    "status": "",
-   "team_id": "16"
+   "team_id": "16",
+   "weight_lb": "185"
   },
   "4431675": {
+   "dob": "2000-11-09",
+   "height_in": "80",
    "jersey": "9",
    "name": "Trendon Watford",
    "position": "F",
    "short": "T. Watford",
    "status": "",
-   "team_id": "3"
+   "team_id": "3",
+   "weight_lb": "237"
   },
   "4431678": {
+   "dob": "2000-11-04",
+   "height_in": "74",
    "jersey": "0",
    "name": "Tyrese Maxey",
    "position": "G",
    "short": "T. Maxey",
    "status": "",
-   "team_id": "20"
+   "team_id": "20",
+   "weight_lb": "204"
   },
   "4431679": {
+   "dob": "1999-09-19",
+   "height_in": "80",
    "jersey": "9",
    "name": "Precious Achiuwa",
    "position": "F",
    "short": "P. Achiuwa",
    "status": "",
-   "team_id": "23"
+   "team_id": "23",
+   "weight_lb": "243"
   },
   "4431680": {
+   "dob": "2000-12-11",
+   "height_in": "82",
    "jersey": "17",
    "name": "Onyeka Okongwu",
    "position": "F",
    "short": "O. Okongwu",
    "status": "",
-   "team_id": "1"
+   "team_id": "1",
+   "weight_lb": "240"
   },
   "4431684": {
+   "dob": "2000-02-22",
+   "height_in": "81",
    "jersey": "32",
    "name": "Trayce Jackson-Davis",
    "position": "F",
    "short": "T. Jackson-Davis",
    "status": "",
-   "team_id": "28"
+   "team_id": "28",
+   "weight_lb": "245"
   },
   "4431687": {
+   "dob": "2001-08-26",
+   "height_in": "78",
    "jersey": "44",
    "name": "Patrick Williams",
    "position": "F",
    "short": "P. Williams",
    "status": "Day-To-Day",
-   "team_id": "4"
+   "team_id": "4",
+   "weight_lb": "215"
   },
   "4431690": {
+   "dob": "2001-01-09",
+   "height_in": "82",
    "jersey": "22",
    "name": "Zeke Nnaji",
    "position": "F",
    "short": "Z. Nnaji",
    "status": "",
-   "team_id": "7"
+   "team_id": "7",
+   "weight_lb": "240"
   },
   "4431695": {
+   "dob": "2000-09-09",
+   "height_in": "82",
    "jersey": "",
    "name": "Drew Timme",
    "position": "F",
    "short": "D. Timme",
    "status": "",
-   "team_id": "21"
+   "team_id": "21",
+   "weight_lb": "235"
   },
   "4431714": {
+   "dob": "2000-11-04",
+   "height_in": "78",
    "jersey": "22",
    "name": "Jalen Wilson",
    "position": "F",
    "short": "J. Wilson",
    "status": "",
-   "team_id": "1"
+   "team_id": "1",
+   "weight_lb": "220"
   },
   "4431734": {
+   "dob": "2001-06-26",
+   "height_in": "80",
    "jersey": "21",
    "name": "Tristan Enaruna",
    "position": "F",
    "short": "T. Enaruna",
    "status": "",
-   "team_id": "5"
+   "team_id": "5",
+   "weight_lb": "220"
   },
   "4431736": {
+   "dob": "2000-05-08",
+   "height_in": "79",
    "jersey": "33",
    "name": "Toumani Camara",
    "position": "F",
    "short": "T. Camara",
    "status": "",
-   "team_id": "22"
+   "team_id": "22",
+   "weight_lb": "230"
   },
   "4431752": {
+   "dob": "2000-01-01",
+   "height_in": "79",
    "jersey": "24",
    "name": "Kobe Brown",
    "position": "G",
    "short": "K. Brown",
    "status": "",
-   "team_id": "11"
+   "team_id": "11",
+   "weight_lb": "250"
   },
   "4431767": {
+   "dob": "2001-04-17",
+   "height_in": "78",
    "jersey": "0",
    "name": "Christian Braun",
    "position": "G",
    "short": "C. Braun",
    "status": "",
-   "team_id": "7"
+   "team_id": "7",
+   "weight_lb": "220"
   },
   "4431772": {
+   "dob": "2001-05-21",
+   "height_in": "77",
    "jersey": "15",
    "name": "Myron Gardner",
    "position": "F",
    "short": "M. Gardner",
    "status": "",
-   "team_id": "14"
+   "team_id": "14",
+   "weight_lb": "225"
   },
   "4431785": {
+   "dob": "2000-11-10",
+   "height_in": "74",
    "jersey": "1",
    "name": "Scotty Pippen Jr.",
    "position": "G",
    "short": "S. Pippen Jr.",
    "status": "",
-   "team_id": "29"
+   "team_id": "29",
+   "weight_lb": "170"
   },
   "4431786": {
+   "dob": "2001-06-23",
+   "height_in": "78",
    "jersey": "16",
    "name": "Keshad Johnson",
    "position": "F",
    "short": "K. Johnson",
    "status": "",
-   "team_id": "14"
+   "team_id": "14",
+   "weight_lb": "230"
   },
   "4431823": {
+   "dob": "2000-09-08",
+   "height_in": "74",
    "jersey": "2",
    "name": "Miles McBride",
    "position": "G",
    "short": "M. McBride",
    "status": "",
-   "team_id": "18"
+   "team_id": "18",
+   "weight_lb": "195"
   },
   "4431893": {
+   "dob": "2001-05-10",
+   "height_in": "79",
    "jersey": "77",
    "name": "Jamison Battle",
    "position": "F",
    "short": "J. Battle",
    "status": "",
-   "team_id": "28"
+   "team_id": "28",
+   "weight_lb": "220"
   },
   "4431941": {
+   "dob": "2001-03-30",
+   "height_in": "74",
    "jersey": "10",
    "name": "RayJ Dennis",
    "position": "G",
    "short": "R. Dennis",
    "status": "",
-   "team_id": "1"
+   "team_id": "1",
+   "weight_lb": "180"
   },
   "4432107": {
+   "dob": "2000-09-21",
+   "height_in": "73",
    "jersey": "8",
    "name": "Marcus Sasser",
    "position": "G",
    "short": "M. Sasser",
    "status": "",
-   "team_id": "6"
+   "team_id": "6",
+   "weight_lb": "195"
   },
   "4432158": {
+   "dob": "2001-06-18",
+   "height_in": "83",
    "jersey": "4",
    "name": "Evan Mobley",
    "position": "C",
    "short": "E. Mobley",
    "status": "",
-   "team_id": "5"
+   "team_id": "5",
+   "weight_lb": "215"
   },
   "4432165": {
+   "dob": "2001-06-03",
+   "height_in": "77",
    "jersey": "4",
    "name": "Jalen Suggs",
    "position": "G",
    "short": "J. Suggs",
    "status": "Out",
-   "team_id": "19"
+   "team_id": "19",
+   "weight_lb": "205"
   },
   "4432166": {
+   "dob": "2001-09-25",
+   "height_in": "78",
    "jersey": "2",
    "name": "Cade Cunningham",
    "position": "G",
    "short": "C. Cunningham",
    "status": "",
-   "team_id": "8"
+   "team_id": "8",
+   "weight_lb": "220"
   },
   "4432170": {
+   "dob": "2002-01-10",
+   "height_in": "80",
    "jersey": "23",
    "name": "Isaiah Jackson",
    "position": "F",
    "short": "I. Jackson",
    "status": "",
-   "team_id": "12"
+   "team_id": "12",
+   "weight_lb": "205"
   },
   "4432171": {
+   "dob": "2002-05-31",
+   "height_in": "77",
    "jersey": "4",
    "name": "Moses Moody",
    "position": "G",
    "short": "M. Moody",
    "status": "Out",
-   "team_id": "9"
+   "team_id": "9",
+   "weight_lb": "211"
   },
   "4432181": {
+   "dob": "2002-04-18",
+   "height_in": "78",
    "jersey": "1",
    "name": "Julian Strawther",
    "position": "G",
    "short": "J. Strawther",
    "status": "Out",
-   "team_id": "7"
+   "team_id": "7",
+   "weight_lb": "205"
   },
   "4432185": {
+   "dob": "2001-07-16",
+   "height_in": "79",
    "jersey": "",
    "name": "Micah Peavy",
    "position": "G",
    "short": "M. Peavy",
    "status": "",
-   "team_id": "25"
+   "team_id": "25",
+   "weight_lb": "220"
   },
   "4432187": {
+   "dob": "2001-10-08",
+   "height_in": "75",
    "jersey": "26",
    "name": "Reece Beekman",
    "position": "G",
    "short": "R. Beekman",
    "status": "",
-   "team_id": "27"
+   "team_id": "27",
+   "weight_lb": "190"
   },
   "4432194": {
+   "dob": "2001-11-06",
+   "height_in": "82",
    "jersey": "20",
    "name": "Day'Ron Sharpe",
    "position": "C",
    "short": "D. Sharpe",
    "status": "",
-   "team_id": "17"
+   "team_id": "17",
+   "weight_lb": "265"
   },
   "4432241": {
+   "dob": "2002-07-24",
+   "height_in": "73",
    "jersey": "23",
    "name": "Jamal Shead",
    "position": "G",
    "short": "J. Shead",
    "status": "",
-   "team_id": "28"
+   "team_id": "28",
+   "weight_lb": "200"
   },
   "4432247": {
+   "dob": "2001-10-13",
+   "height_in": "77",
    "jersey": "7",
    "name": "Jaylen Clark",
    "position": "G",
    "short": "J. Clark",
    "status": "",
-   "team_id": "16"
+   "team_id": "16",
+   "weight_lb": "205"
   },
   "4432446": {
+   "dob": "2002-07-30",
+   "height_in": "79",
    "jersey": "33",
    "name": "Jabari Walker",
    "position": "F",
    "short": "J. Walker",
    "status": "Out",
-   "team_id": "20"
+   "team_id": "20",
+   "weight_lb": "240"
   },
   "4432573": {
+   "dob": "2002-11-12",
+   "height_in": "82",
    "jersey": "5",
    "name": "Paolo Banchero",
    "position": "F",
    "short": "P. Banchero",
    "status": "Out",
-   "team_id": "19"
+   "team_id": "19",
+   "weight_lb": "250"
   },
   "4432582": {
+   "dob": "2003-02-10",
+   "height_in": "77",
    "jersey": "0",
    "name": "Max Christie",
    "position": "G",
    "short": "M. Christie",
    "status": "",
-   "team_id": "6"
+   "team_id": "6",
+   "weight_lb": "190"
   },
   "4432586": {
+   "dob": "2003-06-03",
+   "height_in": "84",
    "jersey": "",
    "name": "Nate Bittle",
    "position": "C",
    "short": "N. Bittle",
    "status": "Out",
-   "team_id": "28"
+   "team_id": "28",
+   "weight_lb": "250"
   },
   "4432639": {
+   "dob": "2003-05-13",
+   "height_in": "83",
    "jersey": "10",
    "name": "Jabari Smith Jr.",
    "position": "F",
    "short": "J. Smith Jr.",
    "status": "",
-   "team_id": "10"
+   "team_id": "10",
+   "weight_lb": "220"
   },
   "4432737": {
+   "dob": "2003-09-14",
+   "height_in": "75",
    "jersey": "8",
    "name": "Jaden Bradley",
    "position": "G",
    "short": "J. Bradley",
    "status": "",
-   "team_id": "28"
+   "team_id": "28",
+   "weight_lb": "205"
   },
   "4432808": {
+   "dob": "2001-03-31",
+   "height_in": "83",
    "jersey": "35",
    "name": "James Wiseman",
    "position": "C",
    "short": "J. Wiseman",
    "status": "",
-   "team_id": "18"
+   "team_id": "18",
+   "weight_lb": "240"
   },
   "4432810": {
+   "dob": "2001-05-22",
+   "height_in": "80",
    "jersey": "28",
    "name": "Isaiah Stewart",
    "position": "C",
    "short": "I. Stewart",
    "status": "",
-   "team_id": "29"
+   "team_id": "29",
+   "weight_lb": "250"
   },
   "4432811": {
+   "dob": "2000-11-16",
+   "height_in": "78",
    "jersey": "5",
    "name": "Josh Green",
    "position": "G",
    "short": "J. Green",
    "status": "",
-   "team_id": "26"
+   "team_id": "26",
+   "weight_lb": "200"
   },
   "4432816": {
+   "dob": "2001-08-22",
+   "height_in": "79",
    "jersey": "1",
    "name": "LaMelo Ball",
    "position": "G",
    "short": "L. Ball",
    "status": "",
-   "team_id": "16"
+   "team_id": "16",
+   "weight_lb": "180"
   },
   "4432819": {
+   "dob": "2001-02-03",
+   "height_in": "76",
    "jersey": "1",
    "name": "Tre Mann",
    "position": "G",
    "short": "T. Mann",
    "status": "",
-   "team_id": "27"
+   "team_id": "27",
+   "weight_lb": "178"
   },
   "4432822": {
+   "dob": "2001-01-26",
+   "height_in": "76",
    "jersey": "35",
    "name": "Isaac Okoro",
    "position": "F",
    "short": "I. Okoro",
    "status": "",
-   "team_id": "4"
+   "team_id": "4",
+   "weight_lb": "225"
   },
   "4432823": {
+   "dob": "2002-06-29",
+   "height_in": "81",
    "jersey": "6",
    "name": "Jaylin Williams",
    "position": "F",
    "short": "J. Williams",
    "status": "",
-   "team_id": "25"
+   "team_id": "25",
+   "weight_lb": "240"
   },
   "4432827": {
+   "dob": "1999-11-27",
+   "height_in": "80",
    "jersey": "9",
    "name": "Oscar Tshiebwe",
    "position": "C",
    "short": "O. Tshiebwe",
    "status": "",
-   "team_id": "10"
+   "team_id": "10",
+   "weight_lb": "255"
   },
   "4432847": {
+   "dob": "2000-07-30",
+   "height_in": "78",
    "jersey": "4",
    "name": "Terrence Shannon Jr.",
    "position": "G",
    "short": "T. Shannon Jr.",
    "status": "",
-   "team_id": "16"
+   "team_id": "16",
+   "weight_lb": "215"
   },
   "4432848": {
+   "dob": "2001-02-18",
+   "height_in": "78",
    "jersey": "24",
    "name": "Jaime Jaquez Jr.",
    "position": "F",
    "short": "J. Jaquez Jr.",
    "status": "",
-   "team_id": "15"
+   "team_id": "15",
+   "weight_lb": "230"
   },
   "4432907": {
+   "dob": "2001-06-29",
+   "height_in": "78",
    "jersey": "9",
    "name": "Justin Champagnie",
    "position": "F",
    "short": "J. Champagnie",
    "status": "Out",
-   "team_id": "27"
+   "team_id": "27",
+   "weight_lb": "206"
   },
   "4433076": {
+   "dob": "2001-07-16",
+   "height_in": "78",
    "jersey": "26",
    "name": "Ben Sheppard",
    "position": "G",
    "short": "B. Sheppard",
    "status": "Out",
-   "team_id": "11"
+   "team_id": "11",
+   "weight_lb": "190"
   },
   "4433083": {
+   "dob": "2000-04-06",
+   "height_in": "75",
    "jersey": "24",
    "name": "Cam Spencer",
    "position": "G",
    "short": "C. Spencer",
    "status": "",
-   "team_id": "29"
+   "team_id": "29",
+   "weight_lb": "205"
   },
   "4433134": {
+   "dob": "2001-08-01",
+   "height_in": "80",
    "jersey": "4",
    "name": "Scottie Barnes",
    "position": "F",
    "short": "S. Barnes",
    "status": "",
-   "team_id": "28"
+   "team_id": "28",
+   "weight_lb": "237"
   },
   "4433136": {
+   "dob": "2001-07-26",
+   "height_in": "86",
    "jersey": "14",
    "name": "Walker Kessler",
    "position": "C",
    "short": "W. Kessler",
    "status": "",
-   "team_id": "13"
+   "team_id": "13",
+   "weight_lb": "245"
   },
   "4433137": {
+   "dob": "2001-09-12",
+   "height_in": "81",
    "jersey": "11",
    "name": "Ziaire Williams",
    "position": "F",
    "short": "Z. Williams",
    "status": "",
-   "team_id": "13"
+   "team_id": "13",
+   "weight_lb": "185"
   },
   "4433144": {
+   "dob": "2001-09-27",
+   "height_in": "75",
    "jersey": "8",
    "name": "Caleb Love",
    "position": "G",
    "short": "C. Love",
    "status": "",
-   "team_id": "20"
+   "team_id": "20",
+   "weight_lb": "214"
   },
   "4433149": {
+   "dob": "2001-10-09",
+   "height_in": "72",
    "jersey": "18",
    "name": "LJ Cryer",
    "position": "G",
    "short": "L. Cryer",
    "status": "",
-   "team_id": "9"
+   "team_id": "9",
+   "weight_lb": "200"
   },
   "4433174": {
+   "dob": "2001-12-16",
+   "height_in": "82",
    "jersey": "32",
    "name": "Dylan Cardwell",
    "position": "C",
    "short": "D. Cardwell",
    "status": "Out",
-   "team_id": "23"
+   "team_id": "23",
+   "weight_lb": "255"
   },
   "4433188": {
+   "dob": "2002-03-18",
+   "height_in": "74",
    "jersey": "99",
    "name": "Devin Carter",
    "position": "G",
    "short": "D. Carter",
    "status": "Out",
-   "team_id": "2"
+   "team_id": "2",
+   "weight_lb": "188"
   },
   "4433192": {
+   "dob": "2001-05-10",
+   "height_in": "80",
    "jersey": "17",
    "name": "Tari Eason",
    "position": "F",
    "short": "T. Eason",
    "status": "",
-   "team_id": "10"
+   "team_id": "10",
+   "weight_lb": "215"
   },
   "4433225": {
+   "dob": "2001-03-27",
+   "height_in": "74",
    "jersey": "13",
    "name": "Tyler Kolek",
    "position": "G",
    "short": "T. Kolek",
    "status": "",
-   "team_id": "18"
+   "team_id": "18",
+   "weight_lb": "195"
   },
   "4433247": {
+   "dob": "2002-10-06",
+   "height_in": "79",
    "jersey": "24",
    "name": "Jonathan Kuminga",
    "position": "F",
    "short": "J. Kuminga",
    "status": "",
-   "team_id": "16"
+   "team_id": "16",
+   "weight_lb": "225"
   },
   "4433249": {
+   "dob": "2002-01-21",
+   "height_in": "82",
    "jersey": "14",
    "name": "Moussa Diabate",
    "position": "F",
    "short": "M. Diabate",
    "status": "",
-   "team_id": "30"
+   "team_id": "30",
+   "weight_lb": "210"
   },
   "4433255": {
+   "dob": "2002-05-01",
+   "height_in": "85",
    "jersey": "7",
    "name": "Chet Holmgren",
    "position": "C",
    "short": "C. Holmgren",
    "status": "Out",
-   "team_id": "25"
+   "team_id": "25",
+   "weight_lb": "208"
   },
   "4433268": {
+   "dob": "2003-05-02",
+   "height_in": "77",
    "jersey": "15",
    "name": "Trey Alexander",
    "position": "G",
    "short": "T. Alexander",
    "status": "Out",
-   "team_id": "26"
+   "team_id": "26",
+   "weight_lb": "185"
   },
   "4433287": {
+   "dob": "2002-11-22",
+   "height_in": "79",
    "jersey": "24",
    "name": "Brandon Miller",
    "position": "F",
    "short": "B. Miller",
    "status": "",
-   "team_id": "30"
+   "team_id": "30",
+   "weight_lb": "200"
   },
   "4433599": {
+   "dob": "2002-03-01",
+   "height_in": "78",
    "jersey": "47",
    "name": "Arthur Kaluma",
    "position": "F",
    "short": "A. Kaluma",
    "status": "",
-   "team_id": "13"
+   "team_id": "13",
+   "weight_lb": "223"
   },
   "4433607": {
+   "dob": "2002-08-15",
+   "height_in": "81",
    "jersey": "14",
    "name": "DaRon Holmes II",
    "position": "F",
    "short": "D. Holmes II",
    "status": "",
-   "team_id": "7"
+   "team_id": "7",
+   "weight_lb": "225"
   },
   "4433618": {
+   "dob": "2002-11-27",
+   "height_in": "77",
    "jersey": "00",
    "name": "Harrison Ingram",
    "position": "F",
    "short": "H. Ingram",
    "status": "",
-   "team_id": "26"
+   "team_id": "26",
+   "weight_lb": "230"
   },
   "4433621": {
+   "dob": "2003-11-18",
+   "height_in": "82",
    "jersey": "0",
    "name": "Jalen Duren",
    "position": "C",
    "short": "J. Duren",
    "status": "Out",
-   "team_id": "8"
+   "team_id": "8",
+   "weight_lb": "250"
   },
   "4433627": {
+   "dob": "2003-11-08",
+   "height_in": "76",
    "jersey": "3",
    "name": "Keyonte George",
    "position": "G",
    "short": "K. George",
    "status": "",
-   "team_id": "26"
+   "team_id": "26",
+   "weight_lb": "185"
   },
   "4433629": {
+   "dob": "2003-03-10",
+   "height_in": "71",
    "jersey": "9",
    "name": "Ryan Nembhard",
    "position": "G",
    "short": "R. Nembhard",
    "status": "",
-   "team_id": "7"
+   "team_id": "7",
+   "weight_lb": "180"
   },
   "4437244": {
+   "dob": "2002-02-09",
+   "height_in": "76",
    "jersey": "4",
    "name": "Jalen Green",
    "position": "G",
    "short": "J. Green",
    "status": "",
-   "team_id": "21"
+   "team_id": "21",
+   "weight_lb": "186"
   },
   "4565698": {
+   "dob": "2002-09-07",
+   "height_in": "79",
    "jersey": "13",
    "name": "Bryce Hopkins",
    "position": "F",
    "short": "B. Hopkins",
    "status": "",
-   "team_id": "7"
+   "team_id": "7",
+   "weight_lb": "220"
   },
   "4566434": {
+   "dob": "2001-08-27",
+   "height_in": "82",
    "jersey": "22",
    "name": "Franz Wagner",
    "position": "F",
    "short": "F. Wagner",
    "status": "",
-   "team_id": "19"
+   "team_id": "19",
+   "weight_lb": "220"
   },
   "4576060": {
+   "dob": "2002-01-17",
+   "height_in": "85",
    "jersey": "11",
    "name": "Ryan Kalkbrenner",
    "position": "C",
    "short": "R. Kalkbrenner",
    "status": "",
-   "team_id": "30"
+   "team_id": "30",
+   "weight_lb": "256"
   },
   "4576086": {
+   "dob": "2002-11-08",
+   "height_in": "78",
    "jersey": "11",
    "name": "Bryce McGowens",
    "position": "G",
    "short": "B. McGowens",
    "status": "",
-   "team_id": "3"
+   "team_id": "3",
+   "weight_lb": "190"
   },
   "4576087": {
+   "dob": "2002-09-11",
+   "height_in": "80",
    "jersey": "8",
    "name": "Peyton Watson",
    "position": "G",
    "short": "P. Watson",
    "status": "",
-   "team_id": "5"
+   "team_id": "5",
+   "weight_lb": "200"
   },
   "4578893": {
+   "dob": "2000-06-19",
+   "height_in": "80",
    "jersey": "27",
    "name": "Vit Krejci",
    "position": "G",
    "short": "V. Krejci",
    "status": "",
-   "team_id": "22"
+   "team_id": "22",
+   "weight_lb": "195"
   },
   "4585618": {
+   "dob": "2003-06-30",
+   "height_in": "76",
    "jersey": "00",
    "name": "Keshon Gilbert",
    "position": "G",
    "short": "K. Gilbert",
    "status": "",
-   "team_id": "1"
+   "team_id": "1",
+   "weight_lb": "200"
   },
   "4591725": {
+   "dob": "2002-07-03",
+   "height_in": "75",
    "jersey": "13",
    "name": "Ryan Rollins",
    "position": "G",
    "short": "R. Rollins",
    "status": "",
-   "team_id": "15"
+   "team_id": "15",
+   "weight_lb": "180"
   },
   "4592427": {
+   "dob": "2001-06-14",
+   "height_in": "79",
    "jersey": "21",
    "name": "Spencer Jones",
    "position": "F",
    "short": "S. Jones",
    "status": "Out",
-   "team_id": "7"
+   "team_id": "7",
+   "weight_lb": "225"
   },
   "4592435": {
+   "dob": "1999-06-14",
+   "height_in": "84",
    "jersey": "10",
    "name": "Branden Carlson",
    "position": "C",
    "short": "B. Carlson",
    "status": "",
-   "team_id": "22"
+   "team_id": "22",
+   "weight_lb": "220"
   },
   "4592479": {
+   "dob": "2001-06-29",
+   "height_in": "79",
    "jersey": "30",
    "name": "Julian Champagnie",
    "position": "F",
    "short": "J. Champagnie",
    "status": "",
-   "team_id": "24"
+   "team_id": "24",
+   "weight_lb": "215"
   },
   "4592492": {
+   "dob": "2000-09-14",
+   "height_in": "74",
    "jersey": "8",
    "name": "Bones Hyland",
    "position": "G",
    "short": "B. Hyland",
    "status": "",
-   "team_id": "16"
+   "team_id": "16",
+   "weight_lb": "169"
   },
   "4592691": {
+   "dob": "2001-11-03",
+   "height_in": "79",
    "jersey": "12",
    "name": "Jake LaRavia",
    "position": "F",
    "short": "J. LaRavia",
    "status": "",
-   "team_id": "13"
+   "team_id": "13",
+   "weight_lb": "235"
   },
   "4592699": {
+   "dob": "2000-07-29",
+   "height_in": "81",
    "jersey": "25",
    "name": "Enrique Freeman",
    "position": "F",
    "short": "E. Freeman",
    "status": "",
-   "team_id": "16"
+   "team_id": "16",
+   "weight_lb": "220"
   },
   "4592714": {
+   "dob": "1996-07-04",
+   "height_in": "74",
    "jersey": "61",
    "name": "Pat Spencer",
    "position": "G",
    "short": "P. Spencer",
    "status": "",
-   "team_id": "21"
+   "team_id": "21",
+   "weight_lb": "205"
   },
   "4592829": {
+   "dob": "1998-09-15",
+   "height_in": "76",
    "jersey": "29",
    "name": "Quenton Jackson",
    "position": "G",
    "short": "Q. Jackson",
    "status": "",
-   "team_id": "11"
+   "team_id": "11",
+   "weight_lb": "173"
   },
   "4592857": {
+   "dob": "2001-11-01",
+   "height_in": "78",
    "jersey": "27",
    "name": "Isaiah Crawford",
    "position": "F",
    "short": "I. Crawford",
    "status": "",
-   "team_id": "10"
+   "team_id": "10",
+   "weight_lb": "220"
   },
   "4592979": {
+   "dob": "2001-03-03",
+   "height_in": "76",
    "jersey": "15",
    "name": "Zyon Pullin",
    "position": "G",
    "short": "Z. Pullin",
    "status": "",
-   "team_id": "16"
+   "team_id": "16",
+   "weight_lb": "206"
   },
   "4593016": {
+   "dob": "2000-03-21",
+   "height_in": "84",
    "jersey": "41",
    "name": "Quinten Post",
    "position": "C",
    "short": "Q. Post",
    "status": "",
-   "team_id": "29"
+   "team_id": "29",
+   "weight_lb": "238"
   },
   "4593034": {
+   "dob": "1997-11-21",
+   "height_in": "78",
    "jersey": "30",
    "name": "Alex Morales",
    "position": "G",
    "short": "A. Morales",
    "status": "",
-   "team_id": "19"
+   "team_id": "19",
+   "weight_lb": "180"
   },
   "4593043": {
+   "dob": "2001-04-23",
+   "height_in": "77",
    "jersey": "2",
    "name": "John Tonje",
    "position": "F",
    "short": "J. Tonje",
    "status": "",
-   "team_id": "22"
+   "team_id": "22",
+   "weight_lb": "225"
   },
   "4593125": {
+   "dob": "2001-01-10",
+   "height_in": "84",
    "jersey": "34",
    "name": "Santi Aldama",
    "position": "F",
    "short": "S. Aldama",
    "status": "Out",
-   "team_id": "6"
+   "team_id": "6",
+   "weight_lb": "215"
   },
   "4593803": {
+   "dob": "2001-04-14",
+   "height_in": "77",
    "jersey": "8",
    "name": "Jalen Williams",
    "position": "G",
    "short": "J. Williams",
    "status": "Out",
-   "team_id": "25"
+   "team_id": "25",
+   "weight_lb": "211"
   },
   "4593841": {
+   "dob": "2000-09-26",
+   "height_in": "78",
    "jersey": "55",
    "name": "Baylor Scheierman",
    "position": "G",
    "short": "B. Scheierman",
    "status": "",
-   "team_id": "2"
+   "team_id": "2",
+   "weight_lb": "213"
   },
   "4594268": {
+   "dob": "2001-08-05",
+   "height_in": "76",
    "jersey": "5",
    "name": "Anthony Edwards",
    "position": "G",
    "short": "A. Edwards",
    "status": "Out",
-   "team_id": "16"
+   "team_id": "16",
+   "weight_lb": "225"
   },
   "4594326": {
+   "dob": "2000-08-19",
+   "height_in": "80",
    "jersey": "17",
    "name": "Kris Murray",
    "position": "F",
    "short": "K. Murray",
    "status": "",
-   "team_id": "29"
+   "team_id": "29",
+   "weight_lb": "218"
   },
   "4594327": {
+   "dob": "2000-08-19",
+   "height_in": "80",
    "jersey": "13",
    "name": "Keegan Murray",
    "position": "F",
    "short": "K. Murray",
    "status": "Out",
-   "team_id": "23"
+   "team_id": "23",
+   "weight_lb": "225"
   },
   "4595400": {
+   "dob": "2002-07-03",
+   "height_in": "79",
    "jersey": "18",
    "name": "Olivier-Maxence Prosper",
    "position": "F",
    "short": "O. Prosper",
    "status": "",
-   "team_id": "29"
+   "team_id": "29",
+   "weight_lb": "230"
   },
   "4600663": {
+   "dob": "2002-03-14",
+   "height_in": "87",
    "jersey": "14",
    "name": "Zach Edey",
    "position": "C",
    "short": "Z. Edey",
    "status": "",
-   "team_id": "29"
+   "team_id": "29",
+   "weight_lb": "305"
   },
   "4601023": {
+   "dob": "2002-07-14",
+   "height_in": "83",
    "jersey": "11",
    "name": "Oso Ighodaro",
    "position": "F",
    "short": "O. Ighodaro",
    "status": "Day-To-Day",
-   "team_id": "21"
+   "team_id": "21",
+   "weight_lb": "235"
   },
   "4601025": {
+   "dob": "2001-02-23",
+   "height_in": "77",
    "jersey": "9",
    "name": "Pelle Larsson",
    "position": "G",
    "short": "P. Larsson",
    "status": "Day-To-Day",
-   "team_id": "14"
+   "team_id": "14",
+   "weight_lb": "215"
   },
   "4602025": {
+   "dob": "2002-12-04",
+   "height_in": "77",
    "jersey": "4",
    "name": "Sion James",
    "position": "G",
    "short": "S. James",
    "status": "",
-   "team_id": "30"
+   "team_id": "30",
+   "weight_lb": "220"
   },
   "4606840": {
+   "dob": "2001-07-06",
+   "height_in": "78",
    "jersey": "5",
    "name": "Jamir Watkins",
    "position": "G",
    "short": "J. Watkins",
    "status": "Out",
-   "team_id": "27"
+   "team_id": "27",
+   "weight_lb": "210"
   },
   "4683021": {
+   "dob": "2001-01-03",
+   "height_in": "80",
    "jersey": "8",
    "name": "Deni Avdija",
    "position": "F",
    "short": "D. Avdija",
    "status": "",
-   "team_id": "22"
+   "team_id": "22",
+   "weight_lb": "228"
   },
   "4683634": {
+   "dob": "2002-06-19",
+   "height_in": "77",
    "jersey": "24",
    "name": "Bennedict Mathurin",
    "position": "G",
    "short": "B. Mathurin",
    "status": "",
-   "team_id": "3"
+   "team_id": "3",
+   "weight_lb": "210"
   },
   "4683678": {
+   "dob": "2004-02-03",
+   "height_in": "75",
    "jersey": "00",
    "name": "Scoot Henderson",
    "position": "G",
    "short": "S. Henderson",
    "status": "",
-   "team_id": "22"
+   "team_id": "22",
+   "weight_lb": "207"
   },
   "4683688": {
+   "dob": "2004-02-12",
+   "height_in": "85",
    "jersey": "2",
    "name": "Dereck Lively II",
    "position": "C",
    "short": "D. Lively II",
    "status": "Out",
-   "team_id": "6"
+   "team_id": "6",
+   "weight_lb": "230"
   },
   "4683689": {
+   "dob": "2004-03-03",
+   "height_in": "79",
    "jersey": "27",
    "name": "Jordan Walsh",
    "position": "G",
    "short": "J. Walsh",
    "status": "",
-   "team_id": "2"
+   "team_id": "2",
+   "weight_lb": "208"
   },
   "4683692": {
+   "dob": "2003-11-07",
+   "height_in": "75",
    "jersey": "22",
    "name": "Cason Wallace",
    "position": "G",
    "short": "C. Wallace",
    "status": "Out",
-   "team_id": "25"
+   "team_id": "25",
+   "weight_lb": "195"
   },
   "4683730": {
+   "dob": "2003-02-25",
+   "height_in": "76",
    "jersey": "14",
    "name": "Jaden Akins",
    "position": "G",
    "short": "J. Akins",
    "status": "",
-   "team_id": "18"
+   "team_id": "18",
+   "weight_lb": "195"
   },
   "4683742": {
+   "dob": "2003-06-30",
+   "height_in": "81",
    "jersey": "13",
    "name": "Julian Reese",
    "position": "F",
    "short": "J. Reese",
    "status": "",
-   "team_id": "3"
+   "team_id": "3",
+   "weight_lb": "252"
   },
   "4683747": {
+   "dob": "2002-12-02",
+   "height_in": "78",
    "jersey": "20",
    "name": "Jaylon Tyson",
    "position": "G",
    "short": "J. Tyson",
    "status": "",
-   "team_id": "5"
+   "team_id": "5",
+   "weight_lb": "215"
   },
   "4683750": {
+   "dob": "2002-04-29",
+   "height_in": "77",
    "jersey": "15",
    "name": "Jordan Hawkins",
    "position": "G",
    "short": "J. Hawkins",
    "status": "",
-   "team_id": "4"
+   "team_id": "4",
+   "weight_lb": "190"
   },
   "4683766": {
+   "dob": "2004-10-08",
+   "height_in": "76",
    "jersey": "8",
    "name": "Isaiah Collier",
    "position": "G",
    "short": "I. Collier",
    "status": "",
-   "team_id": "26"
+   "team_id": "26",
+   "weight_lb": "210"
   },
   "4683771": {
+   "dob": "2005-07-07",
+   "height_in": "80",
    "jersey": "5",
    "name": "Ronald Holland II",
    "position": "F",
    "short": "R. Holland II",
    "status": "",
-   "team_id": "8"
+   "team_id": "8",
+   "weight_lb": "206"
   },
   "4683774": {
+   "dob": "2004-10-06",
+   "height_in": "74",
    "jersey": "9",
    "name": "Bronny James",
    "position": "G",
    "short": "B. James",
    "status": "",
-   "team_id": "13"
+   "team_id": "13",
+   "weight_lb": "210"
   },
   "4683778": {
+   "dob": "2004-02-20",
+   "height_in": "75",
    "jersey": "3",
    "name": "Jared McCain",
    "position": "G",
    "short": "J. McCain",
    "status": "",
-   "team_id": "25"
+   "team_id": "25",
+   "weight_lb": "195"
   },
   "4683860": {
+   "dob": "2003-09-01",
+   "height_in": "78",
    "jersey": "25",
    "name": "Quadir Copeland",
    "position": "G",
    "short": "Q. Copeland",
    "status": "",
-   "team_id": "10"
+   "team_id": "10",
+   "weight_lb": "220"
   },
   "4683934": {
+   "dob": "2002-11-10",
+   "height_in": "75",
    "jersey": "21",
    "name": "Jahmai Mashack",
    "position": "G",
    "short": "J. Mashack",
    "status": "",
-   "team_id": "29"
+   "team_id": "29",
+   "weight_lb": "197"
   },
   "4684208": {
+   "dob": "2002-03-02",
+   "height_in": "78",
    "jersey": "23",
    "name": "Brooks Barnhizer",
    "position": "F",
    "short": "B. Barnhizer",
    "status": "",
-   "team_id": "25"
+   "team_id": "25",
+   "weight_lb": "226"
   },
   "4684269": {
+   "dob": "2005-04-18",
+   "height_in": "73",
    "jersey": "18",
    "name": "Kylan Boswell",
    "position": "G",
    "short": "K. Boswell",
    "status": "Out",
-   "team_id": "30"
+   "team_id": "30",
+   "weight_lb": "226"
   },
   "4684272": {
+   "dob": "2004-09-04",
+   "height_in": "76",
    "jersey": "14",
    "name": "Ja'Kobe Walter",
    "position": "G",
    "short": "J. Walter",
    "status": "",
-   "team_id": "28"
+   "team_id": "28",
+   "weight_lb": "180"
   },
   "4684740": {
+   "dob": "2003-01-30",
+   "height_in": "79",
    "jersey": "1",
    "name": "Amen Thompson",
    "position": "G",
    "short": "A. Thompson",
    "status": "",
-   "team_id": "10"
+   "team_id": "10",
+   "weight_lb": "200"
   },
   "4684742": {
+   "dob": "2003-01-30",
+   "height_in": "79",
    "jersey": "9",
    "name": "Ausar Thompson",
    "position": "G",
    "short": "A. Thompson",
    "status": "",
-   "team_id": "8"
+   "team_id": "8",
+   "weight_lb": "205"
   },
   "4684793": {
+   "dob": "2003-11-07",
+   "height_in": "83",
    "jersey": "2",
    "name": "Kyle Filipowski",
    "position": "F",
    "short": "K. Filipowski",
    "status": "",
-   "team_id": "26"
+   "team_id": "26",
+   "weight_lb": "250"
   },
   "4684806": {
+   "dob": "2003-11-22",
+   "height_in": "81",
    "jersey": "22",
    "name": "Taylor Hendricks",
    "position": "F",
    "short": "T. Hendricks",
    "status": "",
-   "team_id": "29"
+   "team_id": "29",
+   "weight_lb": "215"
   },
   "4687718": {
+   "dob": "2002-11-25",
+   "height_in": "80",
    "jersey": "00",
    "name": "Josh Minott",
    "position": "F",
    "short": "J. Minott",
    "status": "",
-   "team_id": "17"
+   "team_id": "17",
+   "weight_lb": "205"
   },
   "4697268": {
+   "dob": "2002-02-25",
+   "height_in": "76",
    "jersey": "19",
    "name": "Kam Jones",
    "position": "G",
    "short": "K. Jones",
    "status": "",
-   "team_id": "15"
+   "team_id": "15",
+   "weight_lb": "200"
   },
   "4698719": {
+   "dob": "2003-01-07",
+   "height_in": "82",
    "jersey": "7",
    "name": "Trevon Brazile",
    "position": "F",
    "short": "T. Brazile",
    "status": "",
-   "team_id": "7"
+   "team_id": "7",
+   "weight_lb": "220"
   },
   "4700818": {
+   "dob": "2001-05-12",
+   "height_in": "84",
    "jersey": "50",
    "name": "Vladislav Goldin",
    "position": "C",
    "short": "V. Goldin",
    "status": "",
-   "team_id": "14"
+   "team_id": "14",
+   "weight_lb": "255"
   },
   "4700852": {
+   "dob": "2001-12-19",
+   "height_in": "75",
    "jersey": "8",
    "name": "Chaz Lanier",
    "position": "G",
    "short": "C. Lanier",
    "status": "",
-   "team_id": "8"
+   "team_id": "8",
+   "weight_lb": "206"
   },
   "4701208": {
+   "dob": "2002-09-10",
+   "height_in": "83",
    "jersey": "30",
    "name": "Moussa Cisse",
    "position": "C",
    "short": "M. Cisse",
    "status": "",
-   "team_id": "6"
+   "team_id": "6",
+   "weight_lb": "220"
   },
   "4701225": {
+   "dob": "2002-02-21",
+   "height_in": "80",
    "jersey": "16",
    "name": "PJ Hall",
    "position": "C",
    "short": "P. Hall",
    "status": "",
-   "team_id": "30"
+   "team_id": "30",
+   "weight_lb": "245"
   },
   "4701230": {
+   "dob": "2001-12-18",
+   "height_in": "80",
    "jersey": "1",
    "name": "Jalen Johnson",
    "position": "F",
    "short": "J. Johnson",
    "status": "",
-   "team_id": "1"
+   "team_id": "1",
+   "weight_lb": "219"
   },
   "4701232": {
+   "dob": "2001-12-16",
+   "height_in": "85",
    "jersey": "25",
    "name": "Mark Williams",
    "position": "C",
    "short": "M. Williams",
    "status": "Out",
-   "team_id": "21"
+   "team_id": "21",
+   "weight_lb": "240"
   },
   "4701233": {
+   "dob": "2000-02-26",
+   "height_in": "73",
    "jersey": "9",
    "name": "Craig Porter Jr.",
    "position": "G",
    "short": "C. Porter Jr.",
    "status": "",
-   "team_id": "5"
+   "team_id": "5",
+   "weight_lb": "180"
   },
   "4702177": {
+   "dob": "2000-01-08",
+   "height_in": "76",
    "jersey": "1",
    "name": "Keon Ellis",
    "position": "G",
    "short": "K. Ellis",
    "status": "",
-   "team_id": "17"
+   "team_id": "17",
+   "weight_lb": "175"
   },
   "4702352": {
+   "dob": "2002-05-30",
+   "height_in": "80",
    "jersey": "4",
    "name": "Kobe Sanders",
    "position": "G",
    "short": "K. Sanders",
    "status": "",
-   "team_id": "12"
+   "team_id": "12",
+   "weight_lb": "207"
   },
   "4702382": {
+   "dob": "2001-05-15",
+   "height_in": "80",
    "jersey": "23",
    "name": "Tristan da Silva",
    "position": "F",
    "short": "T. da Silva",
    "status": "",
-   "team_id": "19"
+   "team_id": "19",
+   "weight_lb": "217"
   },
   "4702384": {
+   "dob": "2002-02-09",
+   "height_in": "77",
    "jersey": "10",
    "name": "Nique Clifford",
    "position": "G",
    "short": "N. Clifford",
    "status": "",
-   "team_id": "23"
+   "team_id": "23",
+   "weight_lb": "175"
   },
   "4702656": {
+   "dob": "2001-12-26",
+   "height_in": "74",
    "jersey": "55",
    "name": "Alijah Martin",
    "position": "G",
    "short": "A. Martin",
    "status": "",
-   "team_id": "28"
+   "team_id": "28",
+   "weight_lb": "212"
   },
   "4702670": {
+   "dob": "2002-03-18",
+   "height_in": "83",
    "jersey": "16",
    "name": "Grant Nelson",
    "position": "F",
    "short": "G. Nelson",
    "status": "",
-   "team_id": "17"
+   "team_id": "17",
+   "weight_lb": "230"
   },
   "4702745": {
+   "dob": "2002-01-28",
+   "height_in": "84",
    "jersey": "77",
    "name": "Amari Williams",
    "position": "F",
    "short": "A. Williams",
    "status": "",
-   "team_id": "2"
+   "team_id": "2",
+   "weight_lb": "262"
   },
   "4702972": {
+   "dob": "2001-12-09",
+   "height_in": "76",
    "jersey": "30",
    "name": "Chris Manon",
    "position": "G",
    "short": "C. Manon",
    "status": "",
-   "team_id": "13"
+   "team_id": "13",
+   "weight_lb": "209"
   },
   "4703115": {
+   "dob": "2002-07-12",
+   "height_in": "78",
    "jersey": "10",
    "name": "Jaron Pierre Jr.",
    "position": "G",
    "short": "J. Pierre Jr.",
    "status": "",
-   "team_id": "3"
+   "team_id": "3",
+   "weight_lb": "210"
   },
   "4703396": {
+   "dob": "2002-08-03",
+   "height_in": "81",
    "jersey": "",
    "name": "Graham Ike",
    "position": "F",
    "short": "G. Ike",
    "status": "",
-   "team_id": "9"
+   "team_id": "9",
+   "weight_lb": "250"
   },
   "4703889": {
+   "dob": "2002-02-03",
+   "height_in": "80",
    "jersey": "29",
    "name": "Jayson Kent",
    "position": "G",
    "short": "J. Kent",
    "status": "",
-   "team_id": "22"
+   "team_id": "22",
+   "weight_lb": "215"
   },
   "4706557": {
+   "dob": "2002-02-09",
+   "height_in": "76",
    "jersey": "11",
    "name": "Chris Youngblood",
    "position": "G",
    "short": "C. Youngblood",
    "status": "Out",
-   "team_id": "22"
+   "team_id": "22",
+   "weight_lb": "221"
   },
   "4709131": {
+   "dob": "2002-10-10",
+   "height_in": "73",
    "jersey": "3",
    "name": "Sean Pedulla",
    "position": "G",
    "short": "S. Pedulla",
    "status": "",
-   "team_id": "23"
+   "team_id": "23",
+   "weight_lb": "195"
   },
   "4709138": {
+   "dob": "2003-02-25",
+   "height_in": "76",
    "jersey": "2",
    "name": "Brandin Podziemski",
    "position": "G",
    "short": "B. Podziemski",
    "status": "",
-   "team_id": "9"
+   "team_id": "9",
+   "weight_lb": "205"
   },
   "4711272": {
+   "dob": "2004-06-24",
+   "height_in": "74",
    "jersey": "15",
    "name": "Reed Sheppard",
    "position": "G",
    "short": "R. Sheppard",
    "status": "",
-   "team_id": "10"
+   "team_id": "10",
+   "weight_lb": "185"
   },
   "4711294": {
+   "dob": "2004-10-13",
+   "height_in": "80",
    "jersey": "14",
    "name": "Matas Buzelis",
    "position": "F",
    "short": "M. Buzelis",
    "status": "",
-   "team_id": "4"
+   "team_id": "4",
+   "weight_lb": "209"
   },
   "4711297": {
+   "dob": "2003-12-16",
+   "height_in": "79",
    "jersey": "11",
    "name": "Justin Edwards",
    "position": "F",
    "short": "J. Edwards",
    "status": "",
-   "team_id": "20"
+   "team_id": "20",
+   "weight_lb": "222"
   },
   "4712849": {
+   "dob": "2004-01-20",
+   "height_in": "79",
    "jersey": "0",
    "name": "Anthony Black",
    "position": "G",
    "short": "A. Black",
    "status": "",
-   "team_id": "19"
+   "team_id": "19",
+   "weight_lb": "200"
   },
   "4712862": {
+   "dob": "2004-02-04",
+   "height_in": "81",
    "jersey": "8",
    "name": "Malik Dia",
    "position": "F",
    "short": "M. Dia",
    "status": "",
-   "team_id": "3"
+   "team_id": "3",
+   "weight_lb": "250"
   },
   "4712863": {
+   "dob": "2002-11-09",
+   "height_in": "83",
    "jersey": "18",
    "name": "Mouhamed Gueye",
    "position": "F",
    "short": "M. Gueye",
    "status": "Out",
-   "team_id": "1"
+   "team_id": "1",
+   "weight_lb": "210"
   },
   "4712896": {
+   "dob": "2004-07-14",
+   "height_in": "82",
    "jersey": "21",
    "name": "Noah Clowney",
    "position": "F",
    "short": "N. Clowney",
    "status": "",
-   "team_id": "17"
+   "team_id": "17",
+   "weight_lb": "210"
   },
   "4713010": {
+   "dob": "2001-11-24",
+   "height_in": "76",
    "jersey": "25",
    "name": "David Jones Garcia",
    "position": "F",
    "short": "D. Jones Garcia",
    "status": "",
-   "team_id": "24"
+   "team_id": "24",
+   "weight_lb": "215"
   },
   "4781746": {
+   "dob": "2002-12-19",
+   "height_in": "73",
    "jersey": "10",
    "name": "Javon Small",
    "position": "G",
    "short": "J. Small",
    "status": "",
-   "team_id": "29"
+   "team_id": "29",
+   "weight_lb": "190"
   },
   "4837356": {
+   "dob": "2003-12-11",
+   "height_in": "74",
    "jersey": "24",
    "name": "Tre Donaldson",
    "position": "G",
    "short": "T. Donaldson",
    "status": "",
-   "team_id": "14"
+   "team_id": "14",
+   "weight_lb": "210"
   },
   "4838721": {
+   "dob": "2003-09-05",
+   "height_in": "80",
    "jersey": "55",
    "name": "Tyler Nickel",
    "position": "F",
    "short": "T. Nickel",
    "status": "",
-   "team_id": "18"
+   "team_id": "18",
+   "weight_lb": "217"
   },
   "4845363": {
+   "dob": "2005-07-24",
+   "height_in": "77",
    "jersey": "24",
    "name": "Cam Christie",
    "position": "G",
    "short": "C. Christie",
    "status": "",
-   "team_id": "12"
+   "team_id": "12",
+   "weight_lb": "190"
   },
   "4845367": {
+   "dob": "2004-11-01",
+   "height_in": "78",
    "jersey": "5",
    "name": "Stephon Castle",
    "position": "G",
    "short": "S. Castle",
    "status": "",
-   "team_id": "24"
+   "team_id": "24",
+   "weight_lb": "220"
   },
   "4845374": {
+   "dob": "2005-07-21",
+   "height_in": "76",
    "jersey": "7",
    "name": "Bub Carrington",
    "position": "G",
    "short": "B. Carrington",
    "status": "",
-   "team_id": "27"
+   "team_id": "27",
+   "weight_lb": "190"
   },
   "4848625": {
+   "dob": "2005-07-15",
+   "height_in": "79",
    "jersey": "5",
    "name": "Dailyn Swain",
    "position": "G",
    "short": "D. Swain",
    "status": "",
-   "team_id": "4"
+   "team_id": "4",
+   "weight_lb": "211"
   },
   "4868423": {
+   "dob": "2002-07-05",
+   "height_in": "75",
    "jersey": "7",
    "name": "Jaden Hardy",
    "position": "G",
    "short": "J. Hardy",
    "status": "",
-   "team_id": "13"
+   "team_id": "13",
+   "weight_lb": "198"
   },
   "4869342": {
+   "dob": "2003-03-17",
+   "height_in": "79",
    "jersey": "5",
    "name": "Dyson Daniels",
    "position": "G",
    "short": "D. Daniels",
    "status": "",
-   "team_id": "1"
+   "team_id": "1",
+   "weight_lb": "199"
   },
   "4869780": {
+   "dob": "2004-12-27",
+   "height_in": "81",
    "jersey": "22",
    "name": "Derik Queen",
    "position": "C",
    "short": "D. Queen",
    "status": "",
-   "team_id": "3"
+   "team_id": "3",
+   "weight_lb": "250"
   },
   "4870562": {
+   "dob": "2003-05-26",
+   "height_in": "81",
    "jersey": "25",
    "name": "Dominick Barlow",
    "position": "F",
    "short": "D. Barlow",
    "status": "Out",
-   "team_id": "20"
+   "team_id": "20",
+   "weight_lb": "238"
   },
   "4870564": {
+   "dob": "2003-11-21",
+   "height_in": "80",
    "jersey": "9",
    "name": "Joshua Jefferson",
    "position": "F",
    "short": "J. Jefferson",
    "status": "",
-   "team_id": "17"
+   "team_id": "17",
+   "weight_lb": "246"
   },
   "4871141": {
+   "dob": "2002-04-12",
+   "height_in": "84",
    "jersey": "55",
    "name": "Ariel Hukporti",
    "position": "C",
    "short": "A. Hukporti",
    "status": "Out",
-   "team_id": "20"
+   "team_id": "20",
+   "weight_lb": "258"
   },
   "4871144": {
+   "dob": "2002-07-25",
+   "height_in": "83",
    "jersey": "28",
    "name": "Alperen Sengun",
    "position": "C",
    "short": "A. Sengun",
    "status": "Out",
-   "team_id": "10"
+   "team_id": "10",
+   "weight_lb": "243"
   },
   "4871145": {
+   "dob": "2002-10-10",
+   "height_in": "79",
    "jersey": "3",
    "name": "Josh Giddey",
    "position": "G",
    "short": "J. Giddey",
    "status": "",
-   "team_id": "4"
+   "team_id": "4",
+   "weight_lb": "216"
   },
   "4873090": {
+   "dob": "2005-11-24",
+   "height_in": "75",
    "jersey": "00",
    "name": "Labaron Philon Jr.",
    "position": "G",
    "short": "L. Philon Jr.",
    "status": "",
-   "team_id": "20"
+   "team_id": "20",
+   "weight_lb": "179"
   },
   "4873138": {
+   "dob": "2006-08-13",
+   "height_in": "81",
    "jersey": "19",
    "name": "Ace Bailey",
    "position": "G",
    "short": "A. Bailey",
    "status": "",
-   "team_id": "26"
+   "team_id": "26",
+   "weight_lb": "200"
   },
   "4873153": {
+   "dob": "2006-01-25",
+   "height_in": "81",
    "jersey": "14",
    "name": "Morez Johnson Jr.",
    "position": "F",
    "short": "M. Johnson Jr.",
    "status": "",
-   "team_id": "6"
+   "team_id": "6",
+   "weight_lb": "250"
   },
   "4873201": {
+   "dob": "2005-10-05",
+   "height_in": "83",
    "jersey": "14",
    "name": "Asa Newell",
    "position": "F",
    "short": "A. Newell",
    "status": "",
-   "team_id": "1"
+   "team_id": "1",
+   "weight_lb": "224"
   },
   "4888725": {
+   "dob": "2003-01-07",
+   "height_in": "79",
    "jersey": "0",
    "name": "Ryan Dunn",
    "position": "F",
    "short": "R. Dunn",
    "status": "",
-   "team_id": "21"
+   "team_id": "21",
+   "weight_lb": "216"
   },
   "4895758": {
+   "dob": "2004-11-20",
+   "height_in": "80",
    "jersey": "9",
    "name": "Cody Williams",
    "position": "F",
    "short": "C. Williams",
    "status": "",
-   "team_id": "16"
+   "team_id": "16",
+   "weight_lb": "190"
   },
   "4896372": {
+   "dob": "2003-03-06",
+   "height_in": "76",
    "jersey": "1",
    "name": "Walter Clayton Jr.",
    "position": "G",
    "short": "W. Clayton Jr.",
    "status": "",
-   "team_id": "6"
+   "team_id": "6",
+   "weight_lb": "195"
   },
   "4897262": {
+   "dob": "2002-12-24",
+   "height_in": "75",
    "jersey": "3",
    "name": "Will Richard",
    "position": "G",
    "short": "W. Richard",
    "status": "",
-   "team_id": "9"
+   "team_id": "9",
+   "weight_lb": "206"
   },
   "4897449": {
+   "dob": "1999-09-23",
+   "height_in": "81",
    "jersey": "33",
    "name": "Malevy Leons",
    "position": "F",
    "short": "M. Leons",
    "status": "",
-   "team_id": "9"
+   "team_id": "9",
+   "weight_lb": "203"
   },
   "4897943": {
+   "dob": "2001-04-19",
+   "height_in": "78",
    "jersey": "99",
    "name": "Dalton Knecht",
    "position": "F",
    "short": "D. Knecht",
    "status": "",
-   "team_id": "18"
+   "team_id": "18",
+   "weight_lb": "215"
   },
   "4898010": {
+   "dob": "2003-06-03",
+   "height_in": "77",
    "jersey": "22",
    "name": "Jaylin Sellers",
    "position": "G",
    "short": "J. Sellers",
    "status": "",
-   "team_id": "4"
+   "team_id": "4",
+   "weight_lb": "205"
   },
   "4898371": {
+   "dob": "2003-04-07",
+   "height_in": "85",
    "jersey": "42",
    "name": "Maxime Raynaud",
    "position": "C",
    "short": "M. Raynaud",
    "status": "Out",
-   "team_id": "23"
+   "team_id": "23",
+   "weight_lb": "250"
   },
   "4900671": {
+   "dob": "2002-06-25",
+   "height_in": "76",
    "jersey": "25",
    "name": "Ajay Mitchell",
    "position": "G",
    "short": "A. Mitchell",
    "status": "Day-To-Day",
-   "team_id": "25"
+   "team_id": "25",
+   "weight_lb": "190"
   },
   "4903027": {
+   "dob": "2003-09-11",
+   "height_in": "77",
    "jersey": "23",
    "name": "Cedric Coward",
    "position": "F",
    "short": "C. Coward",
    "status": "",
-   "team_id": "29"
+   "team_id": "29",
+   "weight_lb": "206"
   },
   "4914336": {
+   "dob": "2003-05-30",
+   "height_in": "77",
    "jersey": "17",
    "name": "Shaedon Sharpe",
    "position": "G",
    "short": "S. Sharpe",
    "status": "Out",
-   "team_id": "22"
+   "team_id": "22",
+   "weight_lb": "210"
   },
   "4917149": {
+   "dob": "2002-11-11",
+   "height_in": "79",
    "jersey": "33",
    "name": "Alex Karaban",
    "position": "F",
    "short": "A. Karaban",
    "status": "",
-   "team_id": "23"
+   "team_id": "23",
+   "weight_lb": "225"
   },
   "4997526": {
+   "dob": "2003-05-21",
+   "height_in": "81",
    "jersey": "21",
    "name": "Ousmane Dieng",
    "position": "F",
    "short": "O. Dieng",
    "status": "",
-   "team_id": "15"
+   "team_id": "15",
+   "weight_lb": "185"
   },
   "4997528": {
+   "dob": "2003-06-09",
+   "height_in": "82",
    "jersey": "5",
    "name": "Nikola Jovic",
    "position": "F",
    "short": "N. Jovic",
    "status": "",
-   "team_id": "14"
+   "team_id": "14",
+   "weight_lb": "240"
   },
   "4997536": {
+   "dob": "2002-06-22",
+   "height_in": "79",
    "jersey": "15",
    "name": "Gui Santos",
    "position": "F",
    "short": "G. Santos",
    "status": "",
-   "team_id": "9"
+   "team_id": "9",
+   "weight_lb": "185"
   },
   "4997537": {
+   "dob": "2003-03-11",
+   "height_in": "84",
    "jersey": "00",
    "name": "Tristan Vukcevic",
    "position": "F",
    "short": "T. Vukcevic",
    "status": "Out",
-   "team_id": "27"
+   "team_id": "27",
+   "weight_lb": "220"
   },
   "4997538": {
+   "dob": "2001-03-30",
+   "height_in": "82",
    "jersey": "17",
    "name": "Karlo Matkovic",
    "position": "F",
    "short": "K. Matkovic",
    "status": "",
-   "team_id": "3"
+   "team_id": "3",
+   "weight_lb": "231"
   },
   "5023693": {
+   "dob": "2004-04-01",
+   "height_in": "76",
    "jersey": "24",
    "name": "Tyrese Proctor",
    "position": "G",
    "short": "T. Proctor",
    "status": "",
-   "team_id": "5"
+   "team_id": "5",
+   "weight_lb": "185"
   },
   "5037871": {
+   "dob": "2006-03-02",
+   "height_in": "77",
    "jersey": "2",
    "name": "Dylan Harper",
    "position": "G",
    "short": "D. Harper",
    "status": "",
-   "team_id": "24"
+   "team_id": "24",
+   "weight_lb": "220"
   },
   "5037873": {
+   "dob": "2005-09-08",
+   "height_in": "77",
    "jersey": "4",
    "name": "Drake Powell",
    "position": "G",
    "short": "D. Powell",
    "status": "",
-   "team_id": "17"
+   "team_id": "17",
+   "weight_lb": "195"
   },
   "5037878": {
+   "dob": "2004-09-25",
+   "height_in": "84",
    "jersey": "34",
    "name": "Ugonna Onyenso",
    "position": "C",
    "short": "U. Onyenso",
    "status": "",
-   "team_id": "8"
+   "team_id": "8",
+   "weight_lb": "236"
   },
   "5041935": {
+   "dob": "2007-07-18",
+   "height_in": "80",
    "jersey": "27",
    "name": "Cameron Boozer",
    "position": "F",
    "short": "C. Boozer",
    "status": "",
-   "team_id": "29"
+   "team_id": "29",
+   "weight_lb": "253"
   },
   "5041939": {
+   "dob": "2006-12-21",
+   "height_in": "81",
    "jersey": "32",
    "name": "Cooper Flagg",
    "position": "F",
    "short": "C. Flagg",
    "status": "",
-   "team_id": "6"
+   "team_id": "6",
+   "weight_lb": "205"
   },
   "5041951": {
+   "dob": "2006-08-06",
+   "height_in": "75",
    "jersey": "15",
    "name": "Meleek Thomas",
    "position": "G",
    "short": "M. Thomas",
    "status": "",
-   "team_id": "5"
+   "team_id": "5",
+   "weight_lb": "190"
   },
   "5041953": {
+   "dob": "2007-01-20",
+   "height_in": "80",
    "jersey": "18",
    "name": "Koa Peat",
    "position": "F",
    "short": "K. Peat",
    "status": "",
-   "team_id": "21"
+   "team_id": "21",
+   "weight_lb": "245"
   },
   "5041955": {
+   "dob": "2007-01-17",
+   "height_in": "77",
    "jersey": "22",
    "name": "Darryn Peterson",
    "position": "G",
    "short": "D. Peterson",
    "status": "",
-   "team_id": "26"
+   "team_id": "26",
+   "weight_lb": "199"
   },
   "5044385": {
+   "dob": "2003-11-26",
+   "height_in": "82",
    "jersey": "11",
    "name": "Leonard Miller",
    "position": "F",
    "short": "L. Miller",
    "status": "",
-   "team_id": "4"
+   "team_id": "4",
+   "weight_lb": "220"
   },
   "5060631": {
+   "dob": "2004-05-08",
+   "height_in": "80",
    "jersey": "1",
    "name": "Adou Thiero",
    "position": "F",
    "short": "A. Thiero",
    "status": "Out",
-   "team_id": "13"
+   "team_id": "13",
+   "weight_lb": "220"
   },
   "5060701": {
+   "dob": "2006-04-02",
+   "height_in": "73",
    "jersey": "5",
    "name": "Christian Anderson",
    "position": "G",
    "short": "C. Anderson",
    "status": "",
-   "team_id": "30"
+   "team_id": "30",
+   "weight_lb": "180"
   },
   "5061568": {
+   "dob": "2005-11-26",
+   "height_in": "79",
    "jersey": "11",
    "name": "Carter Bryant",
    "position": "F",
    "short": "C. Bryant",
    "status": "",
-   "team_id": "24"
+   "team_id": "24",
+   "weight_lb": "230"
   },
   "5061575": {
+   "dob": "2005-08-03",
+   "height_in": "78",
    "jersey": "7",
    "name": "Kon Knueppel",
    "position": "G",
    "short": "K. Knueppel",
    "status": "Out",
-   "team_id": "30"
+   "team_id": "30",
+   "weight_lb": "215"
   },
   "5061585": {
+   "dob": "2005-12-06",
+   "height_in": "78",
    "jersey": "33",
    "name": "Isaiah Evans",
    "position": "F",
    "short": "I. Evans",
    "status": "",
-   "team_id": "16"
+   "team_id": "16",
+   "weight_lb": "186"
   },
   "5061589": {
+   "dob": "2004-05-14",
+   "height_in": "83",
    "jersey": "21",
    "name": "Yves Missi",
    "position": "C",
    "short": "Y. Missi",
    "status": "Out",
-   "team_id": "3"
+   "team_id": "3",
+   "weight_lb": "235"
   },
   "5061603": {
+   "dob": "2005-12-25",
+   "height_in": "81",
    "jersey": "12",
    "name": "Thomas Sorber",
    "position": "C",
    "short": "T. Sorber",
    "status": "Out",
-   "team_id": "25"
+   "team_id": "25",
+   "weight_lb": "250"
   },
   "5075626": {
+   "dob": "2004-02-07",
+   "height_in": "83",
    "jersey": "18",
    "name": "Baba Miller",
    "position": "F",
    "short": "B. Miller",
    "status": "",
-   "team_id": "12"
+   "team_id": "12",
+   "weight_lb": "208"
   },
   "5081727": {
+   "dob": "2004-04-02",
+   "height_in": "78",
    "jersey": "91",
    "name": "Sidy Cissoko",
    "position": "G",
    "short": "S. Cissoko",
    "status": "",
-   "team_id": "22"
+   "team_id": "22",
+   "weight_lb": "220"
   },
   "5082206": {
+   "dob": "2005-09-18",
+   "height_in": "76",
    "jersey": "0",
    "name": "Brayden Burries",
    "position": "G",
    "short": "B. Burries",
    "status": "",
-   "team_id": "15"
+   "team_id": "15",
+   "weight_lb": "215"
   },
   "5093267": {
+   "dob": "2005-06-10",
+   "height_in": "79",
    "jersey": "30",
    "name": "Collin Murray-Boyles",
    "position": "F",
    "short": "C. Murray-Boyles",
    "status": "",
-   "team_id": "28"
+   "team_id": "28",
+   "weight_lb": "245"
   },
   "5095151": {
+   "dob": "2006-07-18",
+   "height_in": "81",
    "jersey": "8",
    "name": "Caleb Wilson",
    "position": "F",
    "short": "C. Wilson",
    "status": "",
-   "team_id": "4"
+   "team_id": "4",
+   "weight_lb": "211"
   },
   "5099752": {
+   "dob": "2004-05-31",
+   "height_in": "79",
    "jersey": "12",
    "name": "Rayan Rupert",
    "position": "G",
    "short": "R. Rupert",
    "status": "",
-   "team_id": "20"
+   "team_id": "20",
+   "weight_lb": "207"
   },
   "5101761": {
+   "dob": "2006-04-03",
+   "height_in": "77",
    "jersey": "0",
    "name": "Mikel Brown Jr.",
    "position": "G",
    "short": "M. Brown Jr.",
    "status": "",
-   "team_id": "17"
+   "team_id": "17",
+   "weight_lb": "180"
   },
   "5101845": {
+   "dob": "2007-07-11",
+   "height_in": "82",
    "jersey": "22",
    "name": "Jayden Quaintance",
    "position": "F",
    "short": "J. Quaintance",
    "status": "Out",
-   "team_id": "24"
+   "team_id": "24",
+   "weight_lb": "255"
   },
   "5104155": {
+   "dob": "2004-07-26",
+   "height_in": "79",
    "jersey": "0",
    "name": "Bilal Coulibaly",
    "position": "G",
    "short": "B. Coulibaly",
    "status": "",
-   "team_id": "27"
+   "team_id": "27",
+   "weight_lb": "195"
   },
   "5104157": {
+   "dob": "2004-01-04",
+   "height_in": "88",
    "jersey": "1",
    "name": "Victor Wembanyama",
    "position": "F",
    "short": "V. Wembanyama",
    "status": "",
-   "team_id": "24"
+   "team_id": "24",
+   "weight_lb": "240"
   },
   "5105337": {
+   "dob": "2003-11-15",
+   "height_in": "81",
    "jersey": "15",
    "name": "Maliq Brown",
    "position": "F",
    "short": "M. Brown",
    "status": "",
-   "team_id": "24"
+   "team_id": "24",
+   "weight_lb": "235"
   },
   "5105550": {
+   "dob": "2004-12-17",
+   "height_in": "81",
    "jersey": "45",
    "name": "GG Jackson",
    "position": "F",
    "short": "G. Jackson",
    "status": "",
-   "team_id": "29"
+   "team_id": "29",
+   "weight_lb": "210"
   },
   "5105553": {
+   "dob": "2003-11-05",
+   "height_in": "78",
    "jersey": "3",
    "name": "Julian Phillips",
    "position": "F",
    "short": "J. Phillips",
    "status": "",
-   "team_id": "10"
+   "team_id": "10",
+   "weight_lb": "198"
   },
   "5105555": {
+   "dob": "2004-01-30",
+   "height_in": "80",
    "jersey": "19",
    "name": "Tobe Awaka",
    "position": "F",
    "short": "T. Awaka",
    "status": "Day-To-Day",
-   "team_id": "4"
+   "team_id": "4",
+   "weight_lb": "255"
   },
   "5105565": {
+   "dob": "2004-02-23",
+   "height_in": "86",
    "jersey": "23",
    "name": "Donovan Clingan",
    "position": "C",
    "short": "D. Clingan",
    "status": "",
-   "team_id": "22"
+   "team_id": "22",
+   "weight_lb": "280"
   },
   "5105571": {
+   "dob": "2004-03-28",
+   "height_in": "84",
    "jersey": "13",
    "name": "Henri Veesaar",
    "position": "C",
    "short": "H. Veesaar",
    "status": "Out",
-   "team_id": "1"
+   "team_id": "1",
+   "weight_lb": "227"
   },
   "5105592": {
+   "dob": "2004-07-08",
+   "height_in": "78",
    "jersey": "00",
    "name": "Cam Whitmore",
    "position": "F",
    "short": "C. Whitmore",
    "status": "",
-   "team_id": "7"
+   "team_id": "7",
+   "weight_lb": "230"
   },
   "5105623": {
+   "dob": "2004-04-20",
+   "height_in": "84",
    "jersey": "9",
    "name": "Kel'el Ware",
    "position": "C",
    "short": "K. Ware",
    "status": "",
-   "team_id": "15"
+   "team_id": "15",
+   "weight_lb": "250"
   },
   "5105626": {
+   "dob": "2004-04-17",
+   "height_in": "80",
    "jersey": "34",
    "name": "Tyler Bilodeau",
    "position": "F",
    "short": "T. Bilodeau",
    "status": "Out",
-   "team_id": "17"
+   "team_id": "17",
+   "weight_lb": "228"
   },
   "5105637": {
+   "dob": "2003-03-28",
+   "height_in": "82",
    "jersey": "30",
    "name": "Adem Bona",
    "position": "C",
    "short": "A. Bona",
    "status": "",
-   "team_id": "20"
+   "team_id": "20",
+   "weight_lb": "239"
   },
   "5105800": {
+   "dob": "2004-06-29",
+   "height_in": "77",
    "jersey": "21",
    "name": "Josh Dix",
    "position": "G",
    "short": "J. Dix",
    "status": "",
-   "team_id": "25"
+   "team_id": "25",
+   "weight_lb": "206"
   },
   "5105806": {
+   "dob": "2003-09-14",
+   "height_in": "80",
    "jersey": "9",
    "name": "Jett Howard",
    "position": "G",
    "short": "J. Howard",
    "status": "",
-   "team_id": "6"
+   "team_id": "6",
+   "weight_lb": "215"
   },
   "5105809": {
+   "dob": "2003-08-05",
+   "height_in": "82",
    "jersey": "10",
    "name": "Tarris Reed Jr.",
    "position": "C",
    "short": "T. Reed Jr.",
    "status": "",
-   "team_id": "24"
+   "team_id": "24",
+   "weight_lb": "270"
   },
   "5105817": {
+   "dob": "2004-04-09",
+   "height_in": "83",
    "jersey": "20",
    "name": "Carson Cooper",
    "position": "C",
    "short": "C. Cooper",
    "status": "",
-   "team_id": "29"
+   "team_id": "29",
+   "weight_lb": "245"
   },
   "5105832": {
+   "dob": "2004-04-20",
+   "height_in": "79",
    "jersey": "12",
    "name": "Nick Martinelli",
    "position": "F",
    "short": "N. Martinelli",
    "status": "",
-   "team_id": "12"
+   "team_id": "12",
+   "weight_lb": "224"
   },
   "5105837": {
+   "dob": "2003-09-14",
+   "height_in": "72",
    "jersey": "2",
    "name": "Bruce Thornton",
    "position": "G",
    "short": "B. Thornton",
    "status": "",
-   "team_id": "10"
+   "team_id": "10",
+   "weight_lb": "223"
   },
   "5105839": {
+   "dob": "2003-10-30",
+   "height_in": "78",
    "jersey": "28",
    "name": "Brice Sensabaugh",
    "position": "F",
    "short": "B. Sensabaugh",
    "status": "",
-   "team_id": "26"
+   "team_id": "26",
+   "weight_lb": "235"
   },
   "5105841": {
+   "dob": "2004-04-20",
+   "height_in": "82",
    "jersey": "34",
    "name": "Felix Okpara",
    "position": "F",
    "short": "F. Okpara",
    "status": "",
-   "team_id": "27"
+   "team_id": "27",
+   "weight_lb": "237"
   },
   "5105854": {
+   "dob": "2003-07-25",
+   "height_in": "70",
    "jersey": "3",
    "name": "Braden Smith",
    "position": "G",
    "short": "B. Smith",
    "status": "",
-   "team_id": "11"
+   "team_id": "11",
+   "weight_lb": "167"
   },
   "5105977": {
+   "dob": "2004-07-10",
+   "height_in": "81",
    "jersey": "20",
    "name": "Rasheer Fleming",
    "position": "F",
    "short": "R. Fleming",
    "status": "",
-   "team_id": "21"
+   "team_id": "21",
+   "weight_lb": "240"
   },
   "5106040": {
+   "dob": "2003-05-01",
+   "height_in": "80",
    "jersey": "33",
    "name": "Tobi Lawal",
    "position": "F",
    "short": "T. Lawal",
    "status": "",
-   "team_id": "6"
+   "team_id": "6",
+   "weight_lb": "215"
   },
   "5106058": {
+   "dob": "2004-03-07",
+   "height_in": "75",
    "jersey": "34",
    "name": "Emanuel Sharp",
    "position": "G",
    "short": "E. Sharp",
    "status": "",
-   "team_id": "23"
+   "team_id": "23",
+   "weight_lb": "208"
   },
   "5106060": {
+   "dob": "2003-09-04",
+   "height_in": "79",
    "jersey": "5",
    "name": "Jarace Walker",
    "position": "F",
    "short": "J. Walker",
    "status": "",
-   "team_id": "11"
+   "team_id": "11",
+   "weight_lb": "235"
   },
   "5106258": {
+   "dob": "2003-11-20",
+   "height_in": "79",
    "jersey": "9",
    "name": "Gradey Dick",
    "position": "G",
    "short": "G. Dick",
    "status": "",
-   "team_id": "12"
+   "team_id": "12",
+   "weight_lb": "200"
   },
   "5106262": {
+   "dob": "2004-04-20",
+   "height_in": "80",
    "jersey": "20",
    "name": "Zuby Ejiofor",
    "position": "F",
    "short": "Z. Ejiofor",
    "status": "",
-   "team_id": "1"
+   "team_id": "1",
+   "weight_lb": "245"
   },
   "5106270": {
+   "dob": "2003-06-21",
+   "height_in": "76",
    "jersey": "13",
    "name": "Otega Oweh",
    "position": "G",
    "short": "O. Oweh",
    "status": "Out",
-   "team_id": "25"
+   "team_id": "25",
+   "weight_lb": "217"
   },
   "5106283": {
+   "dob": "2003-10-03",
+   "height_in": "80",
    "jersey": "20",
    "name": "Dillon Mitchell",
    "position": "F",
    "short": "D. Mitchell",
    "status": "",
-   "team_id": "2"
+   "team_id": "2",
+   "weight_lb": "210"
   },
   "5107157": {
+   "dob": "2004-06-15",
+   "height_in": "75",
    "jersey": "4",
    "name": "Ryan Conwell",
    "position": "G",
    "short": "R. Conwell",
    "status": "",
-   "team_id": "14"
+   "team_id": "14",
+   "weight_lb": "220"
   },
   "5107173": {
+   "dob": "2004-05-05",
+   "height_in": "83",
    "jersey": "2",
    "name": "Danny Wolf",
    "position": "F",
    "short": "D. Wolf",
    "status": "",
-   "team_id": "17"
+   "team_id": "17",
+   "weight_lb": "250"
   },
   "5107199": {
+   "dob": "2001-08-17",
+   "height_in": "76",
    "jersey": "24",
    "name": "Daniss Jenkins",
    "position": "G",
    "short": "D. Jenkins",
    "status": "",
-   "team_id": "8"
+   "team_id": "8",
+   "weight_lb": "165"
   },
   "5107251": {
+   "dob": "2003-10-01",
+   "height_in": "80",
    "jersey": "25",
    "name": "Izaiyah Nelson",
    "position": "F",
    "short": "I. Nelson",
    "status": "Out",
-   "team_id": "19"
+   "team_id": "19",
+   "weight_lb": "219"
   },
   "5107818": {
+   "dob": "2000-07-11",
+   "height_in": "80",
    "jersey": "13",
    "name": "Isaac Jones",
    "position": "C",
    "short": "I. Jones",
    "status": "",
-   "team_id": "8"
+   "team_id": "8",
+   "weight_lb": "245"
   },
   "5107897": {
+   "dob": "2001-10-29",
+   "height_in": "81",
    "jersey": "22",
    "name": "Jonathan Mogbo",
    "position": "F",
    "short": "J. Mogbo",
    "status": "",
-   "team_id": "23"
+   "team_id": "23",
+   "weight_lb": "225"
   },
   "5107968": {
+   "dob": "2004-03-10",
+   "height_in": "73",
    "jersey": "17",
    "name": "Ja'Kobi Gillespie",
    "position": "G",
    "short": "J. Gillespie",
    "status": "",
-   "team_id": "24"
+   "team_id": "24",
+   "weight_lb": "180"
   },
   "5108024": {
+   "dob": "2003-03-14",
+   "height_in": "83",
    "jersey": "14",
    "name": "Yanic Konan Niederhauser",
    "position": "C",
    "short": "Y. Niederhauser",
    "status": "Out",
-   "team_id": "12"
+   "team_id": "12",
+   "weight_lb": "242"
   },
   "5112087": {
+   "dob": "2003-08-26",
+   "height_in": "79",
    "jersey": "0",
    "name": "Jaylen Wells",
    "position": "F",
    "short": "J. Wells",
    "status": "",
-   "team_id": "29"
+   "team_id": "29",
+   "weight_lb": "206"
   },
   "5113969": {
+   "dob": "2004-11-21",
+   "height_in": "77",
    "jersey": "43",
    "name": "Cameron Carr",
    "position": "G",
    "short": "C. Carr",
    "status": "Out",
-   "team_id": "13"
+   "team_id": "13",
+   "weight_lb": "184"
   },
   "5114350": {
+   "dob": "2003-07-02",
+   "height_in": "79",
    "jersey": "31",
    "name": "AK Okereke",
    "position": "F",
    "short": "A. Okereke",
    "status": "",
-   "team_id": "13"
+   "team_id": "13",
+   "weight_lb": "244"
   },
   "5124612": {
+   "dob": "2005-07-30",
+   "height_in": "77",
    "jersey": "77",
    "name": "VJ Edgecombe",
    "position": "G",
    "short": "V. Edgecombe",
    "status": "",
-   "team_id": "20"
+   "team_id": "20",
+   "weight_lb": "180"
   },
   "5142620": {
+   "dob": "2006-11-16",
+   "height_in": "74",
    "jersey": "5",
    "name": "Darius Acuff Jr.",
    "position": "G",
    "short": "D. Acuff Jr.",
    "status": "",
-   "team_id": "23"
+   "team_id": "23",
+   "weight_lb": "186"
   },
   "5142621": {
+   "dob": "2007-02-01",
+   "height_in": "83",
    "jersey": "12",
    "name": "Chris Cenac Jr.",
    "position": "F",
    "short": "C. Cenac Jr.",
    "status": "",
-   "team_id": "2"
+   "team_id": "2",
+   "weight_lb": "240"
   },
   "5142718": {
+   "dob": "2007-01-29",
+   "height_in": "81",
    "jersey": "4",
    "name": "AJ Dybantsa",
    "position": "F",
    "short": "A. Dybantsa",
    "status": "Out",
-   "team_id": "27"
+   "team_id": "27",
+   "weight_lb": "217"
   },
   "5144091": {
+   "dob": "2006-10-14",
+   "height_in": "75",
    "jersey": "0",
    "name": "Jeremiah Fears",
    "position": "G",
    "short": "J. Fears",
    "status": "",
-   "team_id": "3"
+   "team_id": "3",
+   "weight_lb": "190"
   },
   "5144126": {
+   "dob": "2006-02-10",
+   "height_in": "81",
    "jersey": "27",
    "name": "Will Riley",
    "position": "G",
    "short": "W. Riley",
    "status": "",
-   "team_id": "27"
+   "team_id": "27",
+   "weight_lb": "180"
   },
   "5148538": {
+   "dob": "2001-01-28",
+   "height_in": "79",
    "jersey": "13",
    "name": "Tarik Biberovic",
    "position": "F",
    "short": "T. Biberovic",
    "status": "Out",
-   "team_id": "6"
+   "team_id": "6",
+   "weight_lb": "218"
   },
   "5149077": {
+   "dob": "2007-01-03",
+   "height_in": "75",
    "jersey": "4",
    "name": "Kingston Flemings",
    "position": "G",
    "short": "K. Flemings",
    "status": "",
-   "team_id": "1"
+   "team_id": "1",
+   "weight_lb": "183"
   },
   "5149115": {
+   "dob": "2006-07-28",
+   "height_in": "80",
    "jersey": "22",
    "name": "Allen Graves",
    "position": "F",
    "short": "A. Graves",
    "status": "",
-   "team_id": "28"
+   "team_id": "28",
+   "weight_lb": "225"
   },
   "5157066": {
+   "dob": "2004-12-07",
+   "height_in": "80",
    "jersey": "12",
    "name": "Johnny Furphy",
    "position": "G",
    "short": "J. Furphy",
    "status": "",
-   "team_id": "11"
+   "team_id": "11",
+   "weight_lb": "200"
   },
   "5157587": {
+   "dob": "2006-07-11",
+   "height_in": "87",
    "jersey": "44",
    "name": "Rocco Zikarsky",
    "position": "C",
    "short": "R. Zikarsky",
    "status": "",
-   "team_id": "16"
+   "team_id": "16",
+   "weight_lb": "254"
   },
   "5159925": {
+   "dob": "2005-08-10",
+   "height_in": "78",
    "jersey": "44",
    "name": "Nikola Topic",
    "position": "G",
    "short": "N. Topic",
    "status": "Out",
-   "team_id": "25"
+   "team_id": "25",
+   "weight_lb": "200"
   },
   "5160992": {
+   "dob": "2005-04-26",
+   "height_in": "84",
    "jersey": "20",
    "name": "Alex Sarr",
    "position": "C",
    "short": "A. Sarr",
    "status": "",
-   "team_id": "27"
+   "team_id": "27",
+   "weight_lb": "205"
   },
   "5164559": {
+   "dob": "2006-12-10",
+   "height_in": "82",
    "jersey": "15",
    "name": "Nate Ament",
    "position": "F",
    "short": "N. Ament",
    "status": "",
-   "team_id": "15"
+   "team_id": "15",
+   "weight_lb": "211"
   },
   "5170947": {
+   "dob": "2004-12-01",
+   "height_in": "77",
    "jersey": "14",
    "name": "AJ Johnson",
    "position": "G",
    "short": "A. Johnson",
    "status": "",
-   "team_id": "3"
+   "team_id": "3",
+   "weight_lb": "160"
   },
   "5174563": {
+   "dob": "2003-12-12",
+   "height_in": "80",
    "jersey": "18",
    "name": "Kyshawn George",
    "position": "F",
    "short": "K. George",
    "status": "",
-   "team_id": "27"
+   "team_id": "27",
+   "weight_lb": "200"
   },
   "5174655": {
+   "dob": "2002-06-20",
+   "height_in": "80",
    "jersey": "31",
    "name": "Chaney Johnson",
    "position": "F",
    "short": "C. Johnson",
    "status": "",
-   "team_id": "17"
+   "team_id": "17",
+   "weight_lb": "225"
   },
   "5174983": {
+   "dob": "2005-04-07",
+   "height_in": "87",
    "jersey": "15",
    "name": "Aday Mara",
    "position": "C",
    "short": "A. Mara",
    "status": "",
-   "team_id": "25"
+   "team_id": "25",
+   "weight_lb": "262"
   },
   "5175643": {
+   "dob": "2006-03-03",
+   "height_in": "80",
    "jersey": "8",
    "name": "Egor Demin",
    "position": "G",
    "short": "E. Demin",
    "status": "Day-To-Day",
-   "team_id": "17"
+   "team_id": "17",
+   "weight_lb": "200"
   },
   "5175647": {
+   "dob": "2006-02-05",
+   "height_in": "78",
    "jersey": "28",
    "name": "Hugo Gonzalez",
    "position": "G",
    "short": "H. Gonzalez",
    "status": "",
-   "team_id": "2"
+   "team_id": "2",
+   "weight_lb": "205"
   },
   "5175737": {
+   "dob": "2002-09-30",
+   "height_in": "81",
    "jersey": "1",
    "name": "Yaxel Lendeborg",
    "position": "F",
    "short": "Y. Lendeborg",
    "status": "Day-To-Day",
-   "team_id": "9"
+   "team_id": "9",
+   "weight_lb": "241"
   },
   "5177362": {
+   "dob": "2000-09-22",
+   "height_in": "79",
    "jersey": "12",
    "name": "Riley Minix",
    "position": "F",
    "short": "R. Minix",
    "status": "",
-   "team_id": "5"
+   "team_id": "5",
+   "weight_lb": "230"
   },
   "5203685": {
+   "dob": "2006-09-14",
+   "height_in": "86",
    "jersey": "10",
    "name": "Khaman Maluach",
    "position": "C",
    "short": "K. Maluach",
    "status": "",
-   "team_id": "21"
+   "team_id": "21",
+   "weight_lb": "250"
   },
   "5211175": {
+   "dob": "2005-04-08",
+   "height_in": "80",
    "jersey": "10",
    "name": "Zaccharie Risacher",
    "position": "F",
    "short": "Z. Risacher",
    "status": "",
-   "team_id": "6"
+   "team_id": "6",
+   "weight_lb": "200"
   },
   "5211176": {
+   "dob": "2005-08-10",
+   "height_in": "82",
    "jersey": "31",
    "name": "Tidjane Salaun",
    "position": "F",
    "short": "T. Salaun",
    "status": "",
-   "team_id": "30"
+   "team_id": "30",
+   "weight_lb": "207"
   },
   "5211983": {
+   "dob": "2005-07-27",
+   "height_in": "81",
    "jersey": "4",
    "name": "Pacome Dadiet",
    "position": "F",
    "short": "P. Dadiet",
    "status": "",
-   "team_id": "18"
+   "team_id": "18",
+   "weight_lb": "210"
   },
   "5214637": {
+   "dob": "2005-01-07",
+   "height_in": "79",
    "jersey": "93",
    "name": "Noah Penda",
    "position": "F",
    "short": "N. Penda",
    "status": "Out",
-   "team_id": "19"
+   "team_id": "19",
+   "weight_lb": "215"
   },
   "5214640": {
+   "dob": "2006-05-29",
+   "height_in": "77",
    "jersey": "25",
    "name": "Kasparas Jakucionis",
    "position": "G",
    "short": "K. Jakucionis",
    "status": "",
-   "team_id": "15"
+   "team_id": "15",
+   "weight_lb": "205"
   },
   "5214989": {
+   "dob": "2005-07-12",
+   "height_in": "83",
    "jersey": "23",
    "name": "Bogoljub Markovic",
    "position": "F",
    "short": "B. Markovic",
    "status": "",
-   "team_id": "15"
+   "team_id": "15",
+   "weight_lb": "210"
   },
   "5217746": {
+   "dob": "2005-06-26",
+   "height_in": "85",
    "jersey": "16",
    "name": "Yang Hansen",
    "position": "C",
    "short": "Y. Hansen",
    "status": "",
-   "team_id": "22"
+   "team_id": "22",
+   "weight_lb": "270"
   },
   "5231919": {
+   "dob": "2007-04-12",
+   "height_in": "80",
    "jersey": "35",
    "name": "Karim Lopez",
    "position": "F",
    "short": "K. Lopez",
    "status": "",
-   "team_id": "29"
+   "team_id": "29",
+   "weight_lb": "222"
   },
   "5238230": {
+   "dob": "2006-03-07",
+   "height_in": "77",
    "jersey": "12",
    "name": "Tre Johnson",
    "position": "G",
    "short": "T. Johnson",
    "status": "",
-   "team_id": "27"
+   "team_id": "27",
+   "weight_lb": "190"
   },
   "5239561": {
+   "dob": "2005-10-16",
+   "height_in": "73",
    "jersey": "11",
    "name": "Jase Richardson",
    "position": "G",
    "short": "J. Richardson",
    "status": "",
-   "team_id": "19"
+   "team_id": "19",
+   "weight_lb": "180"
   },
   "5239590": {
+   "dob": "2005-10-10",
+   "height_in": "79",
    "jersey": "33",
    "name": "Liam McNeeley",
    "position": "G",
    "short": "L. McNeeley",
    "status": "",
-   "team_id": "30"
+   "team_id": "30",
+   "weight_lb": "210"
   },
   "5241364": {
+   "dob": "2003-10-03",
+   "height_in": "76",
    "jersey": "14",
    "name": "Bennett Stirtz",
    "position": "G",
    "short": "B. Stirtz",
    "status": "",
-   "team_id": "25"
+   "team_id": "25",
+   "weight_lb": "190"
   },
   "5242496": {
+   "dob": "2006-12-18",
+   "height_in": "83",
    "jersey": "2",
    "name": "Noa Essengue",
    "position": "F",
    "short": "N. Essengue",
    "status": "",
-   "team_id": "4"
+   "team_id": "4",
+   "weight_lb": "206"
   },
   "5242502": {
+   "dob": "2006-04-14",
+   "height_in": "78",
    "jersey": "77",
    "name": "Ben Saraf",
    "position": "G",
    "short": "B. Saraf",
    "status": "",
-   "team_id": "17"
+   "team_id": "17",
+   "weight_lb": "200"
   },
   "5254165": {
+   "dob": "2007-02-03",
+   "height_in": "77",
    "jersey": "1",
    "name": "Keaton Wagler",
    "position": "G",
    "short": "K. Wagler",
    "status": "",
-   "team_id": "12"
+   "team_id": "12",
+   "weight_lb": "188"
   },
   "5258459": {
+   "dob": "2007-04-10",
+   "height_in": "74",
    "jersey": "23",
    "name": "Ebuka Okorie",
    "position": "G",
    "short": "E. Okorie",
    "status": "",
-   "team_id": "8"
+   "team_id": "8",
+   "weight_lb": "186"
   },
   "5279129": {
+   "dob": "2005-12-04",
+   "height_in": "79",
    "jersey": "55",
    "name": "Sergio de Larrea",
    "position": "F",
    "short": "S. de Larrea",
    "status": "Out",
-   "team_id": "6"
+   "team_id": "6",
+   "weight_lb": "202"
   },
   "5279130": {
+   "dob": "2006-05-28",
+   "height_in": "75",
    "jersey": "10",
    "name": "Nolan Traore",
    "position": "G",
    "short": "N. Traore",
    "status": "",
-   "team_id": "17"
+   "team_id": "17",
+   "weight_lb": "185"
   },
   "5279133": {
+   "dob": "2006-11-11",
+   "height_in": "83",
    "jersey": "19",
    "name": "Joan Beringer",
    "position": "F",
    "short": "J. Beringer",
    "status": "",
-   "team_id": "16"
+   "team_id": "16",
+   "weight_lb": "230"
   },
   "5281370": {
+   "dob": "2006-05-01",
+   "height_in": "82",
    "jersey": "22",
    "name": "Hannes Steinbach",
    "position": "F",
    "short": "H. Steinbach",
    "status": "",
-   "team_id": "30"
+   "team_id": "30",
+   "weight_lb": "248"
   },
   "5289900": {
+   "dob": "2005-04-29",
+   "height_in": "81",
    "jersey": "51",
    "name": "Mohamed Diawara",
    "position": "F",
    "short": "M. Diawara",
    "status": "",
-   "team_id": "18"
+   "team_id": "18",
+   "weight_lb": "225"
   },
   "6430": {
+   "dob": "1989-09-14",
+   "height_in": "78",
    "jersey": "10",
    "name": "Jimmy Butler III",
    "position": "F",
    "short": "J. Butler III",
    "status": "Out",
-   "team_id": "9"
+   "team_id": "9",
+   "weight_lb": "230"
   },
   "6440": {
+   "dob": "1992-07-15",
+   "height_in": "80",
    "jersey": "23",
    "name": "Tobias Harris",
    "position": "F",
    "short": "T. Harris",
    "status": "Out",
-   "team_id": "24"
+   "team_id": "24",
+   "weight_lb": "230"
   },
   "6442": {
+   "dob": "1992-03-23",
+   "height_in": "74",
    "jersey": "11",
    "name": "Kyrie Irving",
    "position": "G",
    "short": "K. Irving",
    "status": "Day-To-Day",
-   "team_id": "6"
+   "team_id": "6",
+   "weight_lb": "195"
   },
   "6450": {
+   "dob": "1991-06-29",
+   "height_in": "78",
    "jersey": "2",
    "name": "Kawhi Leonard",
    "position": "F",
    "short": "K. Leonard",
    "status": "Out",
-   "team_id": "28"
+   "team_id": "28",
+   "weight_lb": "225"
   },
   "6475": {
+   "dob": "1990-02-08",
+   "height_in": "77",
    "jersey": "11",
    "name": "Klay Thompson",
    "position": "G",
    "short": "K. Thompson",
    "status": "",
-   "team_id": "14"
+   "team_id": "14",
+   "weight_lb": "220"
   },
   "6478": {
+   "dob": "1990-10-24",
+   "height_in": "81",
    "jersey": "9",
    "name": "Nikola Vucevic",
    "position": "C",
    "short": "N. Vucevic",
    "status": "",
-   "team_id": "19"
+   "team_id": "19",
+   "weight_lb": "260"
   },
   "6578": {
+   "dob": "1992-05-30",
+   "height_in": "80",
    "jersey": "40",
    "name": "Harrison Barnes",
    "position": "F",
    "short": "H. Barnes",
    "status": "",
-   "team_id": "24"
+   "team_id": "24",
+   "weight_lb": "225"
   },
   "6580": {
+   "dob": "1993-06-28",
+   "height_in": "76",
    "jersey": "3",
    "name": "Bradley Beal",
    "position": "G",
    "short": "B. Beal",
    "status": "Out",
-   "team_id": "12"
+   "team_id": "12",
+   "weight_lb": "207"
   },
   "6583": {
+   "dob": "1993-03-11",
+   "height_in": "82",
    "jersey": "23",
    "name": "Anthony Davis",
    "position": "F",
    "short": "A. Davis",
    "status": "",
-   "team_id": "27"
+   "team_id": "27",
+   "weight_lb": "253"
   },
   "6585": {
+   "dob": "1993-08-10",
+   "height_in": "83",
    "jersey": "0",
    "name": "Andre Drummond",
    "position": "C",
    "short": "A. Drummond",
    "status": "",
-   "team_id": "18"
+   "team_id": "18",
+   "weight_lb": "279"
   },
   "6589": {
+   "dob": "1990-03-04",
+   "height_in": "78",
    "jersey": "23",
    "name": "Draymond Green",
    "position": "F",
    "short": "D. Green",
    "status": "",
-   "team_id": "9"
+   "team_id": "9",
+   "weight_lb": "230"
   },
   "6606": {
+   "dob": "1990-07-15",
+   "height_in": "74",
    "jersey": "0",
    "name": "Damian Lillard",
    "position": "G",
    "short": "D. Lillard",
    "status": "",
-   "team_id": "22"
+   "team_id": "22",
+   "weight_lb": "200"
   },
   "6609": {
+   "dob": "1991-08-12",
+   "height_in": "79",
    "jersey": "22",
    "name": "Khris Middleton",
    "position": "F",
    "short": "K. Middleton",
    "status": "",
-   "team_id": "27"
+   "team_id": "27",
+   "weight_lb": "222"
   }
  },
- "updated_at": "2026-10-28T06:00:53+00:00"
+ "updated_at": "2026-10-28T06:45:25+00:00"
 }
