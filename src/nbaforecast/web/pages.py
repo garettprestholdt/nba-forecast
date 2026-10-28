@@ -1,18 +1,19 @@
-"""Data for the player pop-up, team pages, prediction history, and The Rotation (the game).
+"""Data for the player pop-up, team pages, game pages, prediction history, and Cold Case (the game).
 
 Everything here is computed at build time from the data branch (plus small published files on
 main); the pages make no API calls. Player pop-ups load `players/<id>.json` on click.
 """
 
 import json
-import math
+import shutil
 from collections import defaultdict
 from dataclasses import dataclass, field
-from datetime import datetime
+from datetime import date, datetime
 from pathlib import Path
 from typing import Any
 
-from nbaforecast import availability, boxlog, court, impact, metrics, projections, seasonelo, shadow
+from nbaforecast import boxlog, court, impact, metrics, projections, seasonelo, shadow
+from nbaforecast import coldcase as cc
 from nbaforecast.ingest import rosters, venues
 from nbaforecast.live import Store
 from nbaforecast.models.elo import win_probability
@@ -500,77 +501,25 @@ def history(store: Store, season: str, team_map: dict[str, fan.Team]) -> dict[st
     return {"games": games, "summary": summary, "buckets": buckets, "teams": teams}
 
 
-# --- The Rotation (the game) --------------------------------------------------------------
-ROSTER_SIZE = 9
-MAX_MINUTES = 40
-
-
-def rotation_puzzle(
-    store: Store, season: str, day: str | None, team_map: dict[str, fan.Team], published: Path
-) -> dict[str, Any] | None:
-    """Tonight's puzzle: the biggest underdog on the slate, their top nine players by usual
-    minutes, and the model's sensitivity of the win probability to player production."""
-    if day is None:
+# --- Cold Case (the game) ----------------------------------------------------------------
+def coldcase(published: Path, out_dir: Path | None, today: date) -> dict[str, Any] | None:
+    """Publish the cases that are open (through tomorrow's, so the page can switch at midnight
+    Central before the next build) and return what the Play page needs. Later cases are never
+    copied to the site."""
+    index_path = cc.bank_dir(published) / "index.json"
+    if not index_path.exists():
         return None
-    preds = [p for p in store.read(store.predictions_path(season)) if p["game_date"] == day]
-    if not preds:
+    index = json.loads(index_path.read_text())
+    last = min(cc.case_number(today) + 1, len(index["cases"]))
+    if last < 1:
         return None
-    try:
-        state = shadow.load_state(store.root).players
-        model = json.loads((published / "hybrid" / "model.json").read_text())
-    except FileNotFoundError:
-        return None
-    directory = rosters.load_directory(store.root)
-    p = min(preds, key=lambda r: min(float(r["p_home"]), 1 - float(r["p_home"])))
-    dog_home = float(p["p_home"]) < 0.5
-    dog_id = p["home_team_id"] if dog_home else p["away_team_id"]
-    fav_id = p["away_team_id"] if dog_home else p["home_team_id"]
-    # Game-time decisions: tonight's chance of playing from the injury watch (the agent's read,
-    # else the keyword rule), or a coin flip if the player wasn't in it.
-    calls = {}
-    log_path, _ = availability.paths(store, season)
-    for r in store.read(log_path):
-        if r["game_date"] == day:
-            calls[r["player_id"]] = float(r["agent_p"] or r["baseline_p"])
-    players = []
-    for pid, info in directory.items():
-        if info["team_id"] != dog_id or info["status"] == "Out" or pid not in state.players:
-            continue
-        gtd = info["status"] == "Day-To-Day"
-        players.append({"id": pid, "name": info["name"], "short": info["short"],
-                        "position": info["position"], "headshot": fan.headshot_url(pid),
-                        "prod": round(state.production(pid), 4),
-                        "usual": round(min(state.role(pid), MAX_MINUTES), 1),
-                        "p_play": round(calls.get(pid, 0.5), 2) if gtd else 1.0})  # fmt: skip
-    players = sorted(players, key=lambda x: -x["usual"])[:ROSTER_SIZE]
-    if len(players) < 5:
-        return None
-    i = model["features"].index("production_real")
-    beta = model["coef"][i] / model["sd"][i]  # logit per point of team production
-    p_dog = 1 - float(p["p_home"]) if not dog_home else float(p["p_home"])
-    return {
-        "date": day,
-        "underdog": {
-            "abbr": team_map[dog_id].abbr,
-            "name": team_map[dog_id].name,
-            "short": team_map[dog_id].short,
-            "color": team_map[dog_id].color_d,
-            "logo": team_map[dog_id].logo_dark,
-        },  # fmt: skip
-        "favorite": {
-            "abbr": team_map[fav_id].abbr,
-            "name": team_map[fav_id].name,
-            "short": team_map[fav_id].short,
-            "color": team_map[fav_id].color_d,
-            "logo": team_map[fav_id].logo_dark,
-        },  # fmt: skip
-        "dog_home": dog_home,
-        "p_dog": round(p_dog, 4),
-        "logit_dog": round(math.log(p_dog / (1 - p_dog)), 5),
-        "beta": round(beta, 6),
-        "max_minutes": MAX_MINUTES,
-        "players": players,
-    }
+    if out_dir is not None:
+        folder = out_dir / "coldcase"
+        folder.mkdir(parents=True, exist_ok=True)
+        for n in range(1, last + 1):
+            shutil.copyfile(cc.case_path(published, n), folder / cc.case_path(published, n).name)
+    return {"start": index["start"], "today": max(1, min(cc.case_number(today), last)),
+            "cases": index["cases"][:last]}  # fmt: skip
 
 
 def today_label(day: str | None) -> str:

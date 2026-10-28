@@ -171,7 +171,7 @@ def test_model_page_is_plain_and_simple(site):
 
 def test_new_pages_are_built(site):
     for name in ("history.html", "play.html", "team-bos.html", "team-bkn.html",
-                 "assets/app.js", "assets/rotation.js"):  # fmt: skip
+                 "assets/app.js", "assets/coldcase.js"):  # fmt: skip
         assert (site / name).exists(), name
     team = (site / "team-bos.html").read_text()
     assert "Boston Celtics" in team and "Why +" in team

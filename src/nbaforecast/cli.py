@@ -375,6 +375,87 @@ def _impact(args: argparse.Namespace) -> int:
     return 0
 
 
+def _coldcase_bank(args: argparse.Namespace) -> int:
+    import gzip
+    import json
+    from collections import defaultdict
+
+    import pandas as pd
+    import requests
+
+    from nbaforecast import coldcase, config, warehouse
+    from nbaforecast.ingest import playbyplay
+    from nbaforecast.ingest.athletes import Heights
+    from nbaforecast.ingest.injuries import fetch_summary
+
+    data_dir = config.local_data_dir()
+    raw = data_dir / "raw" / "espn_games"
+    games = pd.concat(pd.read_parquet(raw / f"season={s}.parquet") for s in args.seasons)
+    games = games[(games["season_type"] == "regular_season") & games["completed"]]
+    session = requests.Session()
+    fetched, missing = playbyplay.fetch_plays(
+        data_dir, games[["season", "game_id"]], lambda g: fetch_summary(g, session)
+    )
+    print(f"Plays: {fetched} games fetched, {missing} missing, the rest cached")
+
+    box = warehouse.load_box_rows(min(args.seasons))
+    box = box[box["season"].isin(args.seasons) & (box["minutes"].fillna(0) > 0)]
+    lines = {}
+    for (season, team, pid), g in box.groupby(["season", "team_id", "player_id"]):
+        n = len(g)
+        per_game = {k: round(float(g[k].sum()) / n, 1) for k in ("pts", "reb", "ast", "stl", "blk")}
+        lines[(season, str(team), str(pid))] = {"g": n, **per_game}
+
+    heights = Heights(data_dir, session)
+    cases = []
+    for season in args.seasons:
+        folder = playbyplay.plays_dir(data_dir, season)
+        rows = {str(r["game_id"]): r for r in games[games["season"] == season].to_dict("records")}
+        slims = {
+            f.name.split(".")[0]: json.loads(gzip.decompress(f.read_bytes()))
+            for f in sorted(folder.glob("*.json.gz"))
+            if f.name.split(".")[0] in rows
+        }
+        mix = coldcase.shot_profiles(slims.values())
+        season_lines = defaultdict(dict)
+        for (s, team, pid), line in lines.items():
+            if s == season:
+                season_lines[(team, pid)] = line
+        found = 0
+        for gid, slim in slims.items():
+            r = rows[gid]
+            game = {**r, "game_id": gid, "game_date": str(r["game_date"]),
+                    "home_team_id": str(r["home_team_id"]),
+                    "away_team_id": str(r["away_team_id"])}  # fmt: skip
+            try:
+                case = coldcase.build_case(slim, game, season_lines, mix, heights)
+            except (ValueError, KeyError) as exc:  # odd clocks or rosters in a handful of games
+                print(f"  skipped {gid}: {exc}")
+                continue
+            if case:
+                cases.append(case)
+                found += 1
+        print(f"{season}: {found} usable cases from {len(slims)} games")
+    heights.save()
+
+    chosen = coldcase.select(cases, args.count)
+    out = coldcase.bank_dir(config.PUBLISHED_DIR)
+    out.mkdir(parents=True, exist_ok=True)
+    for old in out.glob("case-*.json"):
+        old.unlink()
+    index = []
+    for n, case in enumerate(chosen, start=1):
+        coldcase.case_path(config.PUBLISHED_DIR, n).write_text(
+            json.dumps(coldcase.public(case, n), separators=(",", ":"), ensure_ascii=False) + "\n"
+        )
+        index.append({"n": n, "title": case["title"], "difficulty": case["difficulty"]})
+    (out / "index.json").write_text(json.dumps(
+        {"start": coldcase.START.isoformat(), "cases": index}, indent=1) + "\n")  # fmt: skip
+    levels = {d: sum(1 for c in chosen if c["difficulty"] == d) for d in ("Easy", "Medium", "Hard")}
+    print(f"Wrote {len(chosen)} cases to {out} ({levels}), first on {coldcase.START}")
+    return 0
+
+
 def _venues(args: argparse.Namespace) -> int:
     from datetime import datetime
     from pathlib import Path
@@ -744,6 +825,11 @@ def main(argv: list[str] | None = None) -> int:
     im = sub.add_parser("impact", help="fit player impact ratings (RAPM) from the stint logs")
     im.add_argument("--data-dir", required=True, help="checkout of the data branch")
     im.set_defaults(func=_impact)
+
+    cc = sub.add_parser("coldcase-bank", help="generate the Cold Case bank (local, ~5 min)")
+    cc.add_argument("--seasons", nargs="+", default=["2024-25", "2025-26"])
+    cc.add_argument("--count", type=int, default=365, help="cases to keep (one per day)")
+    cc.set_defaults(func=_coldcase_bank)
 
     ve = sub.add_parser("venues", help="where today's and the next two days' games are played")
     ve.add_argument("--data-dir", required=True, help="checkout of the data branch")
