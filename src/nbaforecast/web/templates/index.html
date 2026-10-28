@@ -106,8 +106,7 @@
         </div>
         <div class="m-models">
           <span><span class="k">Forecast (Elo):</span> <b>{{ m.favorite.abbr }} {{ [m.p_home, 1 - m.p_home] | max | pct }}</b></span>
-          {% if m.p_hybrid is not none %}<span><span class="k">Team + player model:</span> <b>{{ m.favorite.abbr }} {{ (m.p_hybrid if m.favorite is sameas m.home else 1 - m.p_hybrid) | pct }}</b></span>{% endif %}
-          {% if m.p_v2 is not none %}<span title="{% if m.missing %}Counted as out tonight: {{ m.missing }}{% else %}Nobody in either rotation listed out{% endif %}"><span class="k">With injuries (v2):</span> <b>{{ m.favorite.abbr }} {{ (m.p_v2 if m.favorite is sameas m.home else 1 - m.p_v2) | pct }}</b></span>{% endif %}
+          {% if m.p_v2 is not none %}<span title="{% if m.missing %}Counted as out tonight: {{ m.missing }}{% else %}Nobody in either rotation listed out{% endif %}"><span class="k">Player + injury model:</span> <b>{{ m.favorite.abbr }} {{ (m.p_v2 if m.favorite is sameas m.home else 1 - m.p_v2) | pct }}</b></span>{% endif %}
           {% if m.p_market is not none %}<span><span class="k">Betting market:</span> <b>{{ m.favorite.abbr }} {{ (m.p_market if m.favorite is sameas m.home else 1 - m.p_market) | pct }}</b></span>{% endif %}
           <button type="button" class="boxbtn" data-box="{{ m.game_id }}"{% if not m.final %} hidden{% endif %}>Box score</button>
           <a class="m-more" href="game-{{ m.game_id }}.html">Matchup: stats, arena, shot charts →</a>
@@ -181,8 +180,8 @@
     {% if shadow %}
     {% set hc = shadow.card %}
     <section class="panel" aria-labelledby="shadow-h">
-      <h3 id="shadow-h">Challenger: team + player model</h3>
-      <p class="small">A second model that also knows who's on each roster. It's logged before tip-off next to the published forecast and takes over only if it beats it this season, by a <a href="{{ repo_url }}/blob/main/docs/promotion-bar-hybrid.md">rule set in advance</a>.</p>
+      <h3 id="shadow-h">Challenger: player + injury model</h3>
+      <p class="small">Adds each player's production and offense and defense impact, for the players on tonight's injury report as available. It's logged before tip-off next to the published forecast and takes over only if it beats it this season, by a <a href="{{ repo_url }}/blob/main/docs/promotion-bar-hybrid-v2.md">rule set in advance</a>.</p>
       <div class="stat-row">
         <div class="stat"><div class="k">Log-loss, same games</div><div class="v">{{ (hc.hybrid.log_loss if hc.hybrid else none) | num }}</div><div class="n">Published model: {{ (hc.elo.log_loss if hc.elo else none) | num }}</div></div>
         <div class="stat"><div class="k">Games scored</div><div class="v">{{ hc.games_scored }}</div><div class="n">Status: {{ hc.promotion_check.status if hc.promotion_check else "–" }}</div></div>

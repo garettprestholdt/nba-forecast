@@ -11,7 +11,7 @@ from nbaforecast import config, metrics
 from nbaforecast.agents import availability, recap
 from nbaforecast.ingest.espn import EASTERN  # noqa: F401  (slate dates stay US Eastern)
 from nbaforecast.models.elo import win_probability
-from nbaforecast.pipeline import projections
+from nbaforecast.pipeline import projections, shadow_v2
 from nbaforecast.pipeline.live import Store
 from nbaforecast.web import fan
 from nbaforecast.web.charts import (
@@ -35,21 +35,25 @@ LIVE_CALIBRATION_MIN_GAMES = 100  # fewer than this and live calibration bins ar
 def _simple_backtest(summary: dict, published: Path) -> list[dict]:
     """The held-out comparison in plain language: a few approaches, one line each."""
     rows = {r["model"]: r for r in summary["holdout"]}
-    hybrid_path = published / "hybrid" / "summary.json"
-    hybrid = {r["model"]: r for r in json.loads(hybrid_path.read_text())["holdout"]} \
-        if hybrid_path.exists() else {}  # fmt: skip
+    v1_path = published / "hybrid" / "summary.json"
+    v1 = {r["model"]: r for r in json.loads(v1_path.read_text())["holdout"]} \
+        if v1_path.exists() else {}  # fmt: skip
+    v2_path = published / "hybrid_v2" / "backtest.json"
+    v2 = {r["model"]: r for r in json.loads(v2_path.read_text())["holdout"]} \
+        if v2_path.exists() else {}  # fmt: skip
     plan = [
         (rows.get("Coin flip"), "Coin flip", "Says 50% for every game.", "muted-row"),
         (rows.get("Previous season's home win rate"), "Always back the home team",
          "Says the home team wins as often as home teams did last season.", "muted-row"),
         (next((r for m, r in rows.items() if "adaptive" in m), None), "Our model (published)",
          "Rates every team from its results and margins; the forecast on this site.", "ours"),
-        (hybrid.get("Hybrid, realistic"), "Team + player model",
-         "Our model plus every player's production and playing time. Running in shadow mode.",
+        (v2.get(shadow_v2.MODEL_NAME), "Player + injury model (challenger)",
+         "Our model plus each available player's production and offense and defense impact, "
+         "and the value of whoever is out. Running in shadow mode against the published model.",
          ""),
-        (hybrid.get("Hybrid, knows the lineup"), "…if we knew every lineup",
-         "The same, told who's available each night. A ceiling, not a forecast we can make yet.",
-         "muted-row"),
+        (v1.get("Hybrid, realistic"), "Team + player model (earlier challenger)",
+         "Our model plus every player's production and plus-minus, but blind to injuries. "
+         "Replaced by the player + injury model; not shown elsewhere.", "muted-row"),
     ]  # fmt: skip
     return [{"name": name, "what": what, "cls": cls, "games": r["n"],
              "accuracy": r["accuracy"], "log_loss": r["log_loss"]}
@@ -173,16 +177,17 @@ def _injury_watch(store: Store, season: str, day: str | None) -> dict[str, Any] 
 
 
 def _shadow(store: Store, season: str, published: Path) -> dict[str, Any] | None:
-    """The hybrid challenger's live scorecard (shadow mode) and its backtest, if present."""
-    card_path = store.root / "scorecard" / f"{season}-hybrid.json"
-    summary_path = published / "hybrid" / "summary.json"
-    if not card_path.exists() or not summary_path.exists():
+    """The challenger shown on the site (hybrid v2) : its live scorecard and backtest. Hybrid v1
+    keeps logging in shadow (its pre-registered window runs on), but isn't shown."""
+    card_path = shadow_v2.scorecard_path(store.root, season)
+    backtest_path = published / "hybrid_v2" / "backtest.json"
+    if not card_path.exists() or not backtest_path.exists():
         return None
-    holdout = {r["model"]: r for r in json.loads(summary_path.read_text())["holdout"]}
+    holdout = {r["model"]: r for r in json.loads(backtest_path.read_text())["holdout"]}
     return {
         "card": json.loads(card_path.read_text()),
-        "backtest_hybrid": holdout.get("Hybrid, realistic"),
-        "backtest_elo": holdout.get("Elo + back-to-back"),
+        "backtest_challenger": holdout.get(shadow_v2.MODEL_NAME),
+        "backtest_elo": holdout.get("Elo, adaptive home court (published)"),
     }
 
 
@@ -299,7 +304,7 @@ def build_context(data_dir: Path, published_dir: Path | None = None) -> dict[str
     hca = state.home_court()
     team_map = fan.teams(store.root, state.ratings, state.params.mean)
     tonight = fan.matchups(store, season, latest_date, team_map) if latest_date else []
-    hybrid_summary = published / "hybrid" / "summary.json"
+    v2_backtest = published / "hybrid_v2" / "backtest.json"
     standings = fan.standings(store.root, team_map)
     ratings_now = [t.rating for t in team_map.values() if t.rating is not None]
     return {
@@ -316,8 +321,8 @@ def build_context(data_dir: Path, published_dir: Path | None = None) -> dict[str
         "win_axis": WIN_AXIS,
         "rating_span": max([abs(r) for r in ratings_now] + [1.0]),
         "home_court_points": hca / projections.ELO_PER_POINT,
-        "hybrid_backtest": (
-            json.loads(hybrid_summary.read_text())["holdout"] if hybrid_summary.exists() else None
+        "challenger_backtest": (
+            json.loads(v2_backtest.read_text())["holdout"] if v2_backtest.exists() else None
         ),
         "shadow": _shadow(store, season, published),
         "repo_url": REPO_URL,

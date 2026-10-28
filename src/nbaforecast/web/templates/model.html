@@ -31,11 +31,13 @@
   </section>
   <section class="card prose" aria-labelledby="how2-h">
     <p class="kicker">2 · Players</p>
-    <h2 id="how2-h">A challenger that knows the roster</h2>
-    <p class="sub">A second model adds every player's production (Game Score per minute), on-court
-      plus-minus, and how much they've been playing, from every box score since 2004. In testing it
-      beat the published model; it now runs in <strong>shadow mode</strong> and takes over only if
-      it wins this season by a <a href="{{ repo_url }}/blob/main/docs/promotion-bar-hybrid.md">rule set in advance</a>.</p>
+    <h2 id="how2-h">A challenger that knows who's playing</h2>
+    <p class="sub">A second model adds the players: each one's production (Game Score per minute)
+      and offense and defense impact (how the score moves with them on the floor, adjusted for
+      the other nine), weighted by who's available tonight on the morning injury report, plus the
+      value of whoever is out. In testing it beat the published model; it now runs in
+      <strong>shadow mode</strong> and takes over only if it wins this season by a
+      <a href="{{ repo_url }}/blob/main/docs/promotion-bar-hybrid-v2.md">rule set in advance</a>.</p>
   </section>
   <section class="card prose" aria-labelledby="how3-h">
     <p class="kicker">3 · Scored in public</p>
@@ -74,8 +76,8 @@
     </table>
   </div>
   <p class="sub" style="margin-top: 12px">In plain terms: the model picks the winner about two games in three, far better
-    than guessing or always backing the home team. Adding players helps a little more, and knowing who's actually
-    playing would help more still. That's what the injury reports are for.</p>
+    than guessing or always backing the home team. The challenger adds the players and tonight's injury report,
+    and it did better again in testing. Whether it keeps doing better this season decides if it takes over.</p>
 </section>
 
 <div class="grid-2">
@@ -123,15 +125,15 @@
     </div>
     <h2 style="margin-top: 18px">Log-loss by season</h2>
     <div class="chart" data-chart="spec-by-season" role="img" aria-label="Log-loss by season"></div>
-    {% if hybrid_backtest %}
-    <h2 style="margin-top: 18px">Team + player models</h2>
-    <p class="sub"><a href="{{ repo_url }}/blob/main/docs/findings/hybrid-model.md">Write-up</a> · <a href="{{ repo_url }}/blob/main/docs/promotion-bar-hybrid.md">promotion rule</a></p>
+    {% if challenger_backtest %}
+    <h2 style="margin-top: 18px">The challenger: player + injury model</h2>
+    <p class="sub">Same held-out games. <a href="{{ repo_url }}/blob/main/docs/findings/impact-challenger.md">Write-up</a> (including why this number is optimistic) · <a href="{{ repo_url }}/blob/main/docs/promotion-bar-hybrid-v2.md">promotion rule</a></p>
     <div class="table-wrap">
       <table class="data">
         <thead><tr><th>Model</th><th class="num">Log-loss</th><th class="num">Brier</th><th class="num">Accuracy</th></tr></thead>
         <tbody>
-          {% for row in hybrid_backtest %}
-          <tr><td>{{ row.model }}</td><td class="num">{{ row.log_loss | num(4) }}</td><td class="num">{{ row.brier | num(4) }}</td><td class="num">{{ row.accuracy | pct }}</td></tr>
+          {% for row in challenger_backtest %}
+          <tr><td>{{ "Player + injury model (challenger)" if row.model == "hybrid-lineup-v2" else row.model }}</td><td class="num">{{ row.log_loss | num(4) }}</td><td class="num">{{ row.brier | num(4) }}</td><td class="num">{{ row.accuracy | pct }}</td></tr>
           {% endfor %}
         </tbody>
       </table>

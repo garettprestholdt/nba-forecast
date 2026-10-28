@@ -1,0 +1,167 @@
+{
+ "generated_at": "2026-10-28T19:51:17+00:00",
+ "holdout_seasons": [
+  "2020-21",
+  "2021-22",
+  "2022-23",
+  "2023-24",
+  "2024-25",
+  "2025-26"
+ ],
+ "holdout": [
+  {
+   "model": "Elo, adaptive home court (published)",
+   "n": 7776,
+   "log_loss": 0.625426472122768,
+   "brier": 0.2180283243411662,
+   "accuracy": 0.6498199588477366,
+   "mean_forecast": 0.5489950363546319,
+   "home_win_rate": 0.5540123456790124,
+   "reliability": 0.00012512924520698766
+  },
+  {
+   "model": "hybrid-lineup-v2",
+   "n": 7776,
+   "log_loss": 0.6074384924079077,
+   "brier": 0.21040528800935868,
+   "accuracy": 0.6640946502057613,
+   "mean_forecast": 0.5503817262140704,
+   "home_win_rate": 0.5540123456790124,
+   "reliability": 0.00022161445258734032
+  }
+ ],
+ "by_season": [
+  {
+   "season": "2020-21",
+   "model": "Elo, adaptive home court (published)",
+   "n": 1171,
+   "log_loss": 0.6446813372630296,
+   "brier": 0.2265860035842056,
+   "accuracy": 0.6216908625106746,
+   "mean_forecast": 0.5536791362918272,
+   "home_win_rate": 0.5465414175918019,
+   "reliability": 0.0021618882278608997
+  },
+  {
+   "season": "2021-22",
+   "model": "Elo, adaptive home court (published)",
+   "n": 1323,
+   "log_loss": 0.6338213586899264,
+   "brier": 0.22112981432884612,
+   "accuracy": 0.655328798185941,
+   "mean_forecast": 0.5434304565806781,
+   "home_win_rate": 0.5479969765684052,
+   "reliability": 0.000707359326953112
+  },
+  {
+   "season": "2022-23",
+   "model": "Elo, adaptive home court (published)",
+   "n": 1320,
+   "log_loss": 0.6510081117134922,
+   "brier": 0.22936395565021808,
+   "accuracy": 0.6272727272727273,
+   "mean_forecast": 0.5558735791747788,
+   "home_win_rate": 0.581060606060606,
+   "reliability": 0.0018765296107322814
+  },
+  {
+   "season": "2023-24",
+   "model": "Elo, adaptive home court (published)",
+   "n": 1319,
+   "log_loss": 0.6127776014761876,
+   "brier": 0.21292832142259013,
+   "accuracy": 0.6497346474601972,
+   "mean_forecast": 0.5570400452957562,
+   "home_win_rate": 0.5473843821076573,
+   "reliability": 0.001564435061705559
+  },
+  {
+   "season": "2024-25",
+   "model": "Elo, adaptive home court (published)",
+   "n": 1321,
+   "log_loss": 0.6112312433497216,
+   "brier": 0.21215578602338112,
+   "accuracy": 0.6585919757759273,
+   "mean_forecast": 0.5449787064933458,
+   "home_win_rate": 0.5450416351249053,
+   "reliability": 0.0006423113492770961
+  },
+  {
+   "season": "2025-26",
+   "model": "Elo, adaptive home court (published)",
+   "n": 1322,
+   "log_loss": 0.6012313974818316,
+   "brier": 0.20698231828378932,
+   "accuracy": 0.6830559757942511,
+   "mean_forecast": 0.5395331501559232,
+   "home_win_rate": 0.5552193645990923,
+   "reliability": 0.0017343324389367909
+  },
+  {
+   "season": "2020-21",
+   "model": "hybrid-lineup-v2",
+   "n": 1171,
+   "log_loss": 0.6243536901014624,
+   "brier": 0.21812413105026054,
+   "accuracy": 0.6498719043552519,
+   "mean_forecast": 0.5571047954534407,
+   "home_win_rate": 0.5465414175918019,
+   "reliability": 0.0012356932956203302
+  },
+  {
+   "season": "2021-22",
+   "model": "hybrid-lineup-v2",
+   "n": 1323,
+   "log_loss": 0.6179636482450298,
+   "brier": 0.21475644311790912,
+   "accuracy": 0.6613756613756614,
+   "mean_forecast": 0.5499188468056219,
+   "home_win_rate": 0.5479969765684052,
+   "reliability": 0.0008209417986206035
+  },
+  {
+   "season": "2022-23",
+   "model": "hybrid-lineup-v2",
+   "n": 1320,
+   "log_loss": 0.6348843820522444,
+   "brier": 0.22204524665052375,
+   "accuracy": 0.6363636363636364,
+   "mean_forecast": 0.557740315742646,
+   "home_win_rate": 0.581060606060606,
+   "reliability": 0.0017117966416773686
+  },
+  {
+   "season": "2023-24",
+   "model": "hybrid-lineup-v2",
+   "n": 1319,
+   "log_loss": 0.5942434687365051,
+   "brier": 0.2046886526232483,
+   "accuracy": 0.6747536012130402,
+   "mean_forecast": 0.558420726407998,
+   "home_win_rate": 0.5473843821076573,
+   "reliability": 0.0014322723031577045
+  },
+  {
+   "season": "2024-25",
+   "model": "hybrid-lineup-v2",
+   "n": 1321,
+   "log_loss": 0.5912859383863097,
+   "brier": 0.2033649960733611,
+   "accuracy": 0.6775170325510976,
+   "mean_forecast": 0.5395145543419011,
+   "home_win_rate": 0.5450416351249053,
+   "reliability": 0.0007845010349475403
+  },
+  {
+   "season": "2025-26",
+   "model": "hybrid-lineup-v2",
+   "n": 1322,
+   "log_loss": 0.5838232942860542,
+   "brier": 0.2003299316598021,
+   "accuracy": 0.6830559757942511,
+   "mean_forecast": 0.5403805386102128,
+   "home_win_rate": 0.5552193645990923,
+   "reliability": 0.0009280959957494075
+  }
+ ]
+}

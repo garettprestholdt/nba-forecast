@@ -74,7 +74,7 @@
   </div>
   <div class="table-wrap">
     <table class="data compact" id="log">
-      <thead><tr><th>Date</th><th>Game</th><th>Our pick</th><th class="r wide-only">Market</th><th class="r wide-only">Challenger</th><th>Final</th><th></th></tr></thead>
+      <thead><tr><th>Date</th><th>Game</th><th>Our pick</th><th class="r wide-only">Market</th><th class="r wide-only" title="Player + injury model, in shadow">Challenger</th><th>Final</th><th></th></tr></thead>
       <tbody>
         {% for g in h.games %}
         <tr data-teams="{{ g.home.abbr }} {{ g.away.abbr }}" data-correct="{{ 1 if g.correct else 0 }}">
@@ -82,7 +82,7 @@
           <td><a href="{{ team_href(g.away) }}">{{ g.away.abbr }}</a> @ <a href="{{ team_href(g.home) }}">{{ g.home.abbr }}</a></td>
           <td>{{ g.pick.abbr }} {{ g.pick_p | pct }}</td>
           <td class="r wide-only">{% if g.market is not none %}{{ g.pick.abbr }} {{ (g.market if g.pick is sameas g.home else 1 - g.market) | pct }}{% else %}–{% endif %}</td>
-          <td class="r wide-only">{% if g.hybrid is not none %}{{ g.pick.abbr }} {{ (g.hybrid if g.pick is sameas g.home else 1 - g.hybrid) | pct }}{% else %}–{% endif %}</td>
+          <td class="r wide-only">{% if g.challenger is not none %}{{ g.pick.abbr }} {{ (g.challenger if g.pick is sameas g.home else 1 - g.challenger) | pct }}{% else %}–{% endif %}</td>
           <td>{{ g.away_score }}–{{ g.home_score }}</td>
           <td><span class="call {{ 'hit' if g.correct else 'miss' }}">{{ '✓ Right' if g.correct else '✗ Upset' }}</span></td>
         </tr>

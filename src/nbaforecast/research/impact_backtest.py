@@ -203,3 +203,33 @@ def write(result: dict, out_dir: Path = OUT_DIR) -> None:
         "paired_vs_elo": result["paired_vs_elo"], "paired_vs_v1": result["paired_vs_v1"],
     }  # fmt: skip
     (out_dir / "summary.json").write_text(json.dumps(summary, indent=1) + "\n")
+
+
+def chosen_holdout(feats: pd.DataFrame) -> dict:
+    """Held-out scores of the chosen v2 feature set (`pipeline/shadow_v2.FEATURES`), walk-forward
+    exactly as above, next to the published Elo on the same games. Written by `nbaf
+    hybrid-v2-fit` to data/published/hybrid_v2/backtest.json for the site."""
+    from nbaforecast.pipeline import shadow_v2
+
+    feats = feats.assign(
+        elo_x_turnover_c=feats["elo_strength"] * (feats["turnover"] - hybrid.TURNOVER_CENTER)
+    )
+    rows = feats[feats["season"] >= FIRST_RAPM_SEASON]
+    p, _ = walk(rows, shadow_v2.FEATURES, chosen()["fit"], FIRST_RAPM_SEASON)
+    held = p[p["season"].isin(HOLDOUT)]
+    elo = feats[feats["game_id"].isin(held["game_id"])]
+    models = (("Elo, adaptive home court (published)", elo), (shadow_v2.MODEL_NAME, held))
+    by_season = [
+        {"season": s, "model": name, **backtest.score(g)}
+        for name, frame in models
+        for s, g in frame.groupby("season")
+    ]
+    return {
+        "generated_at": datetime.now(UTC).isoformat(timespec="seconds"),
+        "holdout_seasons": HOLDOUT,
+        "holdout": [
+            {"model": "Elo, adaptive home court (published)", **backtest.score(elo)},
+            {"model": shadow_v2.MODEL_NAME, **backtest.score(held)},
+        ],
+        "by_season": by_season,
+    }

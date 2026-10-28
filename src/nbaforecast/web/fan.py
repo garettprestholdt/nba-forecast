@@ -234,7 +234,6 @@ class Matchup:
     home: Team
     away: Team
     p_home: float  # published model (Elo)
-    p_hybrid: float | None
     p_market: float | None
     colors: dict[str, str]  # home_l, away_l, home_d, away_d
     home_lineup: Lineup | None
@@ -242,7 +241,7 @@ class Matchup:
     neutral: bool
     home_score: int | None = None
     away_score: int | None = None
-    p_v2: float | None = None  # hybrid v2 (RAPM + who's missing), in shadow
+    p_v2: float | None = None  # challenger: hybrid v2 (RAPM + injury report), in shadow
     missing: str = ""  # rotation players v2 counted as out tonight
 
     @property
@@ -264,9 +263,7 @@ def _tip(tipoff_utc: str) -> str:
 
 def matchups(store: Store, season: str, day: str, team_map: dict[str, Team]) -> list[Matchup]:
     preds = [p for p in store.read(store.predictions_path(season)) if p["game_date"] == day]
-    hybrid = {r["game_id"]: float(r["p_home"])
-              for r in store.read(shadow.log_path(store.root, season))}  # fmt: skip
-    v2 = shadow_v2.load_log(store.root, season)
+    v2 = shadow_v2.load_log(store.root, season)  # the challenger shown next to Elo
     results = {r["game_id"]: r for r in store.read(store.results_path(season))}
     playing = {p["home_team_id"] for p in preds} | {p["away_team_id"] for p in preds}
     lines = lineups(store.root, playing)
@@ -280,7 +277,7 @@ def matchups(store: Store, season: str, day: str, team_map: dict[str, Team]) -> 
         out.append(
             Matchup(
                 p["game_id"], _tip(p["tipoff_utc"]), p["tipoff_utc"], home, away,
-                float(p["p_home"]), hybrid.get(p["game_id"]),
+                float(p["p_home"]),
                 float(p["market_p_home"]) if p["market_p_home"] else None, colors,
                 lines.get(home.team_id), lines.get(away.team_id), p["is_neutral_site"] == "True",
                 int(r["home_score"]) if r else None, int(r["away_score"]) if r else None,
