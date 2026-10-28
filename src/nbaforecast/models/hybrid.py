@@ -33,6 +33,13 @@ PLAYER_FEATURES = {
     "realistic": ["production_real", "impact_real", "elo_x_turnover"],
     "lineup": ["production_lineup", "impact_lineup", "elo_x_turnover"],
 }
+# Home-minus-away differences built from the player walk; the RAPM ones exist only when the
+# walk is given leak-free ratings (`models/rapm_walk.py`).
+PLAYER_DIFF_COLUMNS = [
+    "production_real", "impact_real", "production_lineup", "impact_lineup",
+    "rapm_o_real", "rapm_d_real", "rapm_o_lineup", "rapm_d_lineup", "absent_rapm",
+    "absent_minutes",
+]  # fmt: skip
 FIRST_TRAIN_SEASON = "2005-06"  # 2004-05 only warms up the ratings
 ELO_TO_LOGIT = math.log(10) / 400
 
@@ -178,8 +185,8 @@ def build_features(
             ),
             left_on=["game_id", key], right_on=["game_id", "team_id"], how="left",
         ).drop(columns="team_id")  # fmt: skip
-    for c in FORM_COLUMNS + ["production_real", "impact_real", "production_lineup",
-                             "impact_lineup"]:  # fmt: skip
+    player_cols = [c for c in PLAYER_DIFF_COLUMNS if c in player_features.columns]
+    for c in FORM_COLUMNS + player_cols:
         base[c] = (base[f"{c}_home"] - base[f"{c}_away"]).fillna(0.0)
     turnover = 1 - (base["continuity_home"].fillna(0) + base["continuity_away"].fillna(0)) / 2
     base["elo_x_turnover"] = base["elo_strength"] * turnover

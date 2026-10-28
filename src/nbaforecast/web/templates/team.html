@@ -101,9 +101,43 @@
         <li><span>{{ g.date | tip_day }}</span><span>{{ 'vs' if g.home else '@' }} <a href="{{ team_href(g.opp) }}">{{ g.opp.short }}</a></span><span class="v">{{ g.p_win | pct }}</span></li>
         {% endfor %}
       </ul>
-      <p class="note">Chance to win from today's ratings, home court included.</p>
+      <p class="note">Chance to win from today's ratings, home court included. <a href="#schedule">Full schedule ↓</a></p>
     </section>
     {% endif %}
   </div>
 </div>
+
+{% if tp.schedule %}
+{% set played = tp.schedule | selectattr("final") | list %}
+<section class="panel sched" id="schedule" aria-labelledby="sched-h" style="margin-top: 18px">
+  <div class="sched-head">
+    <h3 id="sched-h">Schedule</h3>
+    <span class="small">{{ played | selectattr("won") | list | length }}-{{ played | rejectattr("won") | list | length }} · {{ tp.schedule | length - played | length }} to play</span>
+    <div class="seg" role="group" aria-label="Show">
+      <button type="button" data-sched="all" aria-pressed="true">All</button>
+      <button type="button" data-sched="played" aria-pressed="false">Played</button>
+      <button type="button" data-sched="next" aria-pressed="false">To come</button>
+    </div>
+  </div>
+  <div class="table-wrap">
+    <table class="data compact sched-table">
+      <thead><tr><th>Date</th><th>Opponent</th><th>Result / tip</th><th class="r" title="Played: our forecast before tip-off. To come: from today's ratings.">Chance to win</th></tr></thead>
+      <tbody>
+        {% set ns = namespace(month="") %}
+        {% for g in tp.schedule %}
+        {% set month = g.date | tip_day %}{% set month = month.split(" ")[1] %}
+        {% if month != ns.month %}{% set ns.month = month %}<tr class="month"><td colspan="4">{{ month }}</td></tr>{% endif %}
+        <tr class="{{ 'played' if g.final else 'next' }}">
+          <td>{{ g.date | tip_day }}</td>
+          <td>{{ 'vs' if g.home else '@' }} <a href="{{ team_href(g.opp) }}">{{ g.opp.short }}</a>{% if g.neutral %} <span class="muted">(neutral)</span>{% endif %}</td>
+          <td>{% if g.final %}<b class="{{ 'win' if g.won else 'loss' }}">{{ 'W' if g.won else 'L' }}</b> {{ g.score }}{% elif g.link %}<a href="{{ g.link }}">Tonight · {{ g.date | tip_time }}</a>{% else %}{{ g.date | tip_time }}{% endif %}</td>
+          <td class="r">{% if g.p_win is not none %}{{ g.p_win | pct }}{% if g.replayed %}<span class="muted" title="Before the forecast log began: Elo's pre-game number, replayed">*</span>{% endif %}{% else %}–{% endif %}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+  <p class="note">Played games show the forecast we published before tip-off (* before the public log began: Elo's pre-game number, replayed from opening night); games to come use today's ratings. Times CT.</p>
+</section>
+{% endif %}
 {% endblock %}

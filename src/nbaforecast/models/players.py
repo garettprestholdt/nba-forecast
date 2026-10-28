@@ -94,6 +94,37 @@ class PlayerState:
         stayed = sum(m for p, m in weights.items() if self.players[p].last_season_team == team)
         return {"production": production, "impact": impact, "continuity": stayed / total}
 
+    @staticmethod
+    def _rapm(weights: dict[str, float], ratings: dict[str, tuple[float, float]], unknown) -> tuple:
+        """Team offense and defense per 100 possessions: each player's RAPM times his share of
+        the 240 minutes, five on the floor at a time."""
+        total = sum(weights.values())
+        if total <= 0:
+            return unknown
+        scale = GAME_MINUTES / total / 48
+        o = sum(ratings.get(p, unknown)[0] * m for p, m in weights.items()) * scale
+        d = sum(ratings.get(p, unknown)[1] * m for p, m in weights.items()) * scale
+        return o, d
+
+    def rapm_features(
+        self, team: str, available: list[str], ratings: dict, unknown: tuple[float, float]
+    ) -> dict[str, float]:
+        """RAPM team strength two ways (whole roster by availability; tonight's available
+        players by usual minutes) and the value above replacement of the expected minutes that
+        are missing tonight."""
+        real = {p: self.availability(p) for p in self.rosters[team]}
+        lineup = {p: self.role(p) for p in available}
+        ro, rd = self._rapm(real, ratings, unknown)
+        lo, ld = self._rapm(lineup, ratings, unknown)
+        # Missing value above replacement: an absent player's minutes go to someone at about
+        # the level of an unrated player, so only what he adds over that is lost.
+        here = set(available)
+        absent = {p: m for p, m in real.items() if p not in here}
+        floor = sum(unknown)
+        lost = sum((sum(ratings.get(p, unknown)) - floor) * m for p, m in absent.items()) / 48
+        return {"rapm_o_real": ro, "rapm_d_real": rd, "rapm_o_lineup": lo, "rapm_d_lineup": ld,
+                "absent_rapm": lost, "absent_minutes": sum(absent.values())}  # fmt: skip
+
     def realistic(self, team: str) -> dict[str, float]:
         return self._strength({p: self.availability(p) for p in self.rosters[team]}, team)
 
@@ -196,9 +227,12 @@ def walk(
     player_games: pd.DataFrame,
     params: PlayerParams | None = None,
     state: PlayerState | None = None,
+    ratings: Any = None,
+    unknown: tuple[float, float] = (-1.0, -0.5),
 ) -> pd.DataFrame:
     """Pre-game team strengths for every team in every game: one row per (game_id, team_id).
-    Pass `state` to keep the ratings it ends with (the live shadow job starts from them)."""
+    Pass `state` to keep the ratings it ends with (the live shadow job starts from them).
+    Pass `ratings` (`rapm_walk.Ratings`, fit only on earlier games) to add RAPM features."""
     state = state or PlayerState(params or PlayerParams())
     out = []
     ordered = player_games.sort_values(["game_date", "tipoff_utc", "game_id", "team_id"])
@@ -209,20 +243,22 @@ def walk(
             for (game_id, team), rows in day.groupby(["game_id", "team_id"], sort=False)
         ]
         # Features from start-of-day state for every game on this date...
+        snap = ratings.at(day["game_date"].iloc[0]) if ratings is not None else None
         for game_id, team, rows in team_games:
             available = [r.player_id for r in rows if r.available]
             real, lineup = state.realistic(team), state.knows_lineup(team, available)
-            out.append(
-                {
-                    "game_id": game_id,
-                    "team_id": team,
-                    "production_real": real["production"],
-                    "impact_real": real["impact"],
-                    "continuity": real["continuity"],
-                    "production_lineup": lineup["production"],
-                    "impact_lineup": lineup["impact"],
-                }
-            )
+            row = {
+                "game_id": game_id,
+                "team_id": team,
+                "production_real": real["production"],
+                "impact_real": real["impact"],
+                "continuity": real["continuity"],
+                "production_lineup": lineup["production"],
+                "impact_lineup": lineup["impact"],
+            }
+            if snap is not None:
+                row.update(state.rapm_features(team, available, snap, unknown))
+            out.append(row)
         # ...then the day's box scores.
         for _, team, rows in team_games:
             state.record(team, rows)

@@ -456,6 +456,26 @@ def _coldcase_bank(args: argparse.Namespace) -> int:
     return 0
 
 
+def _impact_backtest(args: argparse.Namespace) -> int:
+    import logging
+
+    from nbaforecast import config, impact_backtest, warehouse
+
+    logging.basicConfig(level=logging.INFO, format="%(asctime)s %(message)s")
+    games = warehouse.load_games()
+    feats = impact_backtest.build(
+        games, warehouse.load_team_games(), warehouse.load_player_games(),
+        warehouse.load_box_rows("2016-17"), config.local_data_dir(),
+    )  # fmt: skip
+    result = impact_backtest.run(feats)
+    impact_backtest.write(result)
+    cols = ["model", "train_from", "features", "in_sample_log_loss", "log_loss", "brier",
+            "reliability"]  # fmt: skip
+    print(result["models"][cols].to_string(index=False))
+    print(f"Wrote {impact_backtest.OUT_DIR}")
+    return 0
+
+
 def _venues(args: argparse.Namespace) -> int:
     from datetime import datetime
     from pathlib import Path
@@ -825,6 +845,11 @@ def main(argv: list[str] | None = None) -> int:
     im = sub.add_parser("impact", help="fit player impact ratings (RAPM) from the stint logs")
     im.add_argument("--data-dir", required=True, help="checkout of the data branch")
     im.set_defaults(func=_impact)
+
+    ib = sub.add_parser(
+        "impact-backtest", help="challenger with RAPM + availability: walk-forward and diagnostics"
+    )
+    ib.set_defaults(func=_impact_backtest)
 
     cc = sub.add_parser("coldcase-bank", help="generate the Cold Case bank (local, ~5 min)")
     cc.add_argument("--seasons", nargs="+", default=["2024-25", "2025-26"])

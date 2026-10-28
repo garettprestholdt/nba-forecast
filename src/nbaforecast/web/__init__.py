@@ -107,6 +107,11 @@ def _win_pos(wins: float) -> float:
     return round(max(0.0, min(100.0, (wins - lo) / (hi - lo) * 100)), 2)
 
 
+def _tip_time(tipoff_utc: str) -> str:
+    t = datetime.fromisoformat(tipoff_utc.replace("Z", "+00:00")).astimezone(CENTRAL)
+    return t.strftime("%-I:%M %p")
+
+
 def _tip_et(tipoff_utc: str) -> str:
     t = datetime.fromisoformat(tipoff_utc).astimezone(CENTRAL)
     return t.strftime("%-I:%M %p CT")
@@ -775,6 +780,7 @@ def build(
     env.globals["win_pos"] = _win_pos
     env.filters["metric"] = _metric
     env.filters["tip_day"] = _tip_day
+    env.filters["tip_time"] = _tip_time
     context = build_context(data_dir, published_dir)
     # Cache-busting: asset URLs change whenever the CSS or JS changes.
     digest = hashlib.sha256()
@@ -800,7 +806,8 @@ def build(
         path.write_text(env.get_template(template).render(page=name, **context))
         written.append(path)
     state = Store(root).load_state()
-    for tp in pages.team_pages(root, season, team_map, state, payloads).values():
+    slate_ids = {m.game_id for m in context["games"]}
+    for tp in pages.team_pages(root, season, team_map, state, payloads, slate_ids).values():
         path = out_dir / tp.slug
         path.write_text(env.get_template("team.html").render(page=tp.slug, tp=tp, **context))
         written.append(path)
