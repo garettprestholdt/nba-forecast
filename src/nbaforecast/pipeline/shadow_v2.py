@@ -25,11 +25,12 @@ from typing import Any
 import numpy as np
 import pandas as pd
 
-from nbaforecast import availability, config, impact, live, shadow
+from nbaforecast import config
 from nbaforecast.ingest import rosters
-from nbaforecast.models import hybrid, rapm_walk
+from nbaforecast.models import hybrid, impact
 from nbaforecast.models.hybrid import FORM_COLUMNS, Fit, FitParams
 from nbaforecast.models.players import PlayerState
+from nbaforecast.pipeline import live, shadow
 
 MODEL_NAME = "hybrid-lineup-v2"
 MODEL_PATH = config.PUBLISHED_DIR / "hybrid_v2" / "model.json"
@@ -79,7 +80,7 @@ def fit_model(feats: pd.DataFrame, chosen: dict) -> dict[str, Any]:
         "players": asdict(chosen["players"]),
         "form_decay": chosen["form_decay"],
         "turnover_center": hybrid.TURNOVER_CENTER,
-        "unknown_rating": list(rapm_walk.UNKNOWN),
+        "unknown_rating": list(impact.UNKNOWN),
         "fit_seasons": [FIT_FIRST, FIT_LAST],
         "fit_through": str(max(train["game_date"])),
         "created_at": datetime.now(UTC).isoformat(timespec="seconds"),
@@ -167,7 +168,7 @@ def _directory_date(root: Path) -> str | None:
 
 
 def _calls(store: live.Store, season: str, today: date) -> dict[str, float]:
-    log, _ = availability.paths(store, season)
+    log = store.availability_path(season)
     out = {}
     for r in store.read(log):
         if r["game_date"] == today.isoformat():

@@ -7,12 +7,12 @@ import pandas as pd
 import pytest
 import requests
 
-from nbaforecast import live, shadow
 from nbaforecast.ingest import boxscores as bx
 from nbaforecast.models import hybrid
 from nbaforecast.models.elo import EloState
 from nbaforecast.models.hybrid import Fit, FitParams, FormState
 from nbaforecast.models.players import PlayerParams, PlayerState
+from nbaforecast.pipeline import live, shadow
 
 FIXTURES = Path(__file__).parent / "fixtures"
 SUMMARY = json.loads((FIXTURES / "espn_boxscore_401909868.json").read_text())  # WSH @ CHA

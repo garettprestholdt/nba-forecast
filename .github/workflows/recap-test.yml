@@ -7,7 +7,7 @@ on:
   pull_request:
     paths:
       - "prompts/**"
-      - "src/nbaforecast/recap.py"
+      - "src/nbaforecast/agents/recap.py"
       - "scripts/run_agent.sh"
       - ".github/workflows/recap-test.yml"
       - ".github/workflows/daily.yml"

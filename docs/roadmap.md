@@ -76,7 +76,11 @@ scorecard covers as much of it as possible. Everything after that is improvement
       2026-27 regular season; promote if ahead and the 95% CI's low end is above −0.005](promotion-bar-hybrid.md)
 - [ ] Promotion decision, the morning after the 2026-27 regular season ends (computed in
       `scorecard/2026-27-hybrid.json`)
-- [ ] Feed pre-game availability (the injury agent's calls) into the lineup version
+- [x] Player impact ratings (RAPM, offense and defense; plain and box-score-prior fits), refit
+      daily from lineup stints; leak-free in backtests (refit every 14 days on earlier games)
+- [x] Feed pre-game availability (the injury report and the injury agent's calls) into a lineup
+      model: [hybrid v2, chosen with a multicollinearity and overfitting review](findings/impact-challenger.md),
+      in shadow with its own [pre-registered bar](promotion-bar-hybrid-v2.md)
 - [ ] Test whether players have real individual home/away effects (hierarchical shrinkage)
 - [ ] Champion vs. challenger: shadow predictions, promote only on backtest + live wins
 
@@ -89,9 +93,12 @@ scorecard covers as much of it as possible. Everything after that is improvement
 - [x] Player pop-ups (game log, career, advanced stats, Game Score explained), team pages (why
       the rating, game-by-game moves, strengths and weaknesses, roster, schedule), prediction
       history (league, by team, filterable log), a plainer model page, Central time
-- [x] The Rotation: a daily coaching puzzle built on the model (minutes budget, fatigue,
-      game-time decisions, par from an optimizer, shareable result)
+- [x] Game pages (arena, team stats, half-court shot charts), player profiles (age, RAPM,
+      defensive role, shot chart) and full team schedules
+- [x] Cold Case: a daily whodunit built from real play-by-play (replaced The Rotation, a
+      minutes-allocation puzzle that wasn't fun)
 
 ## Phase 7: Write-up
-- [ ] README with architecture diagram, live link, headline results, reproduction steps
+- [x] README with architecture diagram, live link, headline results, reproduction steps
+- [x] [Architecture](architecture.md) and [reproduction](reproduce.md) docs; `make` targets per stage
 - [ ] Methodology write-up

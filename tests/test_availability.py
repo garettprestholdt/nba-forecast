@@ -4,8 +4,8 @@ from pathlib import Path
 
 import pytest
 
-from nbaforecast import availability as av
-from nbaforecast import live
+from nbaforecast.agents import availability as av
+from nbaforecast.pipeline import live
 
 FIXTURES = Path(__file__).parent / "fixtures"
 INJURIES = json.loads((FIXTURES / "espn_injuries.json").read_text())

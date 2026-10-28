@@ -3,9 +3,9 @@ from datetime import date
 import numpy as np
 import pandas as pd
 
-from nbaforecast import impact_backtest
-from nbaforecast.models import rapm_walk
+from nbaforecast.models import impact
 from nbaforecast.models.players import PlayerParams, PlayerState
+from nbaforecast.research import impact_backtest, rapm_walk
 
 
 def test_snapshots_are_only_used_on_or_after_their_date():
@@ -33,13 +33,13 @@ def test_missing_a_good_player_costs_value_above_replacement():
     state.players["star"].avail_num, state.players["star"].avail_den = 34.0, 1.0
     state.players["bench"].avail_num, state.players["bench"].avail_den = 10.0, 1.0
     ratings = {"star": (4.0, 1.0), "bench": (-1.0, -0.5)}
-    full = state.rapm_features("T", ["star", "bench"], ratings, rapm_walk.UNKNOWN)
-    hurt = state.rapm_features("T", ["bench"], ratings, rapm_walk.UNKNOWN)
+    full = state.rapm_features("T", ["star", "bench"], ratings, impact.UNKNOWN)
+    hurt = state.rapm_features("T", ["bench"], ratings, impact.UNKNOWN)
     assert full["absent_rapm"] == 0 and full["absent_minutes"] == 0
     assert hurt["absent_rapm"] > 0 and hurt["absent_minutes"] == 34
     assert hurt["rapm_o_lineup"] < full["rapm_o_lineup"]
     # a missing replacement-level player costs nothing
-    gone = state.rapm_features("T", ["star"], ratings, rapm_walk.UNKNOWN)
+    gone = state.rapm_features("T", ["star"], ratings, impact.UNKNOWN)
     assert gone["absent_rapm"] == 0
 
 

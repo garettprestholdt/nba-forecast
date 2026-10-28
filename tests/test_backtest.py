@@ -5,8 +5,8 @@ from datetime import UTC, date, datetime, timedelta
 import pandas as pd
 import pytest
 
-from nbaforecast import backtest
 from nbaforecast.models.elo import EloParams
+from nbaforecast.research import backtest
 
 
 def league(seed=0, teams=10, days_per_season=40, seasons=("2004-05", "2005-06", "2020-21")):

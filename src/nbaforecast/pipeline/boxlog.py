@@ -19,8 +19,8 @@ from typing import Any
 
 import requests
 
-from nbaforecast import live, shadow
 from nbaforecast.ingest.boxscores import parse_boxscore
+from nbaforecast.pipeline import live, shadow
 
 log = logging.getLogger(__name__)
 

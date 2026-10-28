@@ -2,8 +2,8 @@ from datetime import UTC, datetime
 
 import pytest
 
-from nbaforecast import live, projections
 from nbaforecast.models.elo import EloState
+from nbaforecast.pipeline import live, projections
 
 TEAMS = projections.franchises()
 CONF = {t: row["conference"] for t, row in TEAMS.items()}
