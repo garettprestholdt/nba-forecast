@@ -172,7 +172,7 @@
    "name": "Marcus Smart",
    "position": "G",
    "short": "M. Smart",
-   "status": "Day-To-Day",
+   "status": "Out",
    "team_id": "10",
    "weight_lb": "220"
   },
@@ -1459,7 +1459,7 @@
    "name": "Jose Alvarado",
    "position": "G",
    "short": "J. Alvarado",
-   "status": "Day-To-Day",
+   "status": "Out",
    "team_id": "18",
    "weight_lb": "179"
   },
@@ -1514,7 +1514,7 @@
    "name": "Jordan Poole",
    "position": "G",
    "short": "J. Poole",
-   "status": "Day-To-Day",
+   "status": "",
    "team_id": "3",
    "weight_lb": "194"
   },
@@ -1866,7 +1866,7 @@
    "name": "Isaiah Joe",
    "position": "G",
    "short": "I. Joe",
-   "status": "Day-To-Day",
+   "status": "Out",
    "team_id": "8",
    "weight_lb": "165"
   },
@@ -1976,7 +1976,7 @@
    "name": "Tyrese Haliburton",
    "position": "G",
    "short": "T. Haliburton",
-   "status": "Day-To-Day",
+   "status": "Out",
    "team_id": "11",
    "weight_lb": "185"
   },
@@ -3340,7 +3340,7 @@
    "name": "Pelle Larsson",
    "position": "G",
    "short": "P. Larsson",
-   "status": "Day-To-Day",
+   "status": "",
    "team_id": "14",
    "weight_lb": "215"
   },
@@ -3593,7 +3593,7 @@
    "name": "Ausar Thompson",
    "position": "G",
    "short": "A. Thompson",
-   "status": "",
+   "status": "Day-To-Day",
    "team_id": "8",
    "weight_lb": "205"
   },
@@ -5122,7 +5122,7 @@
    "name": "AJ Dybantsa",
    "position": "F",
    "short": "A. Dybantsa",
-   "status": "Out",
+   "status": "",
    "team_id": "27",
    "weight_lb": "217"
   },
@@ -5710,5 +5710,5 @@
    "weight_lb": "222"
   }
  },
- "updated_at": "2026-10-28T15:52:21+00:00"
+ "updated_at": "2026-10-28T19:11:21+00:00"
 }
