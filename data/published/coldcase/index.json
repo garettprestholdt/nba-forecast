@@ -1,0 +1,1830 @@
+{
+ "start": "2026-10-28",
+ "cases": [
+  {
+   "n": 1,
+   "title": "The 20\u20136 job",
+   "difficulty": "Medium"
+  },
+  {
+   "n": 2,
+   "title": "The 19\u20130 job",
+   "difficulty": "Medium"
+  },
+  {
+   "n": 3,
+   "title": "The 27\u20136 turnaround",
+   "difficulty": "Medium"
+  },
+  {
+   "n": 4,
+   "title": "The 25\u20136 turnaround",
+   "difficulty": "Medium"
+  },
+  {
+   "n": 5,
+   "title": "The 29\u20135 turnaround",
+   "difficulty": "Medium"
+  },
+  {
+   "n": 6,
+   "title": "The 32\u20135 turnaround",
+   "difficulty": "Hard"
+  },
+  {
+   "n": 7,
+   "title": "The 19\u20135 job",
+   "difficulty": "Medium"
+  },
+  {
+   "n": 8,
+   "title": "The 17\u20132 turnaround",
+   "difficulty": "Hard"
+  },
+  {
+   "n": 9,
+   "title": "The 21\u20135 job",
+   "difficulty": "Hard"
+  },
+  {
+   "n": 10,
+   "title": "The 33\u20135 job",
+   "difficulty": "Medium"
+  },
+  {
+   "n": 11,
+   "title": "The 20\u20134 job",
+   "difficulty": "Medium"
+  },
+  {
+   "n": 12,
+   "title": "The 26\u20136 turnaround",
+   "difficulty": "Medium"
+  },
+  {
+   "n": 13,
+   "title": "The 27\u20136 job",
+   "difficulty": "Hard"
+  },
+  {
+   "n": 14,
+   "title": "The 32\u20136 job",
+   "difficulty": "Hard"
+  },
+  {
+   "n": 15,
+   "title": "The 29\u20136 turnaround",
+   "difficulty": "Hard"
+  },
+  {
+   "n": 16,
+   "title": "The 23\u20136 turnaround",
+   "difficulty": "Medium"
+  },
+  {
+   "n": 17,
+   "title": "The 18\u20134 job",
+   "difficulty": "Medium"
+  },
+  {
+   "n": 18,
+   "title": "The 22\u20135 turnaround",
+   "difficulty": "Hard"
+  },
+  {
+   "n": 19,
+   "title": "The 21\u20135 turnaround",
+   "difficulty": "Hard"
+  },
+  {
+   "n": 20,
+   "title": "The 20\u20132 turnaround",
+   "difficulty": "Easy"
+  },
+  {
+   "n": 21,
+   "title": "The 22\u20132 turnaround",
+   "difficulty": "Hard"
+  },
+  {
+   "n": 22,
+   "title": "The 23\u20136 turnaround",
+   "difficulty": "Hard"
+  },
+  {
+   "n": 23,
+   "title": "The 25\u20135 job",
+   "difficulty": "Medium"
+  },
+  {
+   "n": 24,
+   "title": "The 22\u20133 job",
+   "difficulty": "Medium"
+  },
+  {
+   "n": 25,
+   "title": "The fourth-quarter 27\u20136 heist",
+   "difficulty": "Easy"
+  },
+  {
+   "n": 26,
+   "title": "The 24\u20135 job",
+   "difficulty": "Hard"
+  },
+  {
+   "n": 27,
+   "title": "The 24\u20136 turnaround",
+   "difficulty": "Medium"
+  },
+  {
+   "n": 28,
+   "title": "The 23\u20136 turnaround",
+   "difficulty": "Medium"
+  },
+  {
+   "n": 29,
+   "title": "The 22\u20132 job",
+   "difficulty": "Hard"
+  },
+  {
+   "n": 30,
+   "title": "The 22\u20136 turnaround",
+   "difficulty": "Medium"
+  },
+  {
+   "n": 31,
+   "title": "The 25\u20136 turnaround",
+   "difficulty": "Easy"
+  },
+  {
+   "n": 32,
+   "title": "The 25\u20136 job",
+   "difficulty": "Medium"
+  },
+  {
+   "n": 33,
+   "title": "The 32\u20135 job",
+   "difficulty": "Hard"
+  },
+  {
+   "n": 34,
+   "title": "The 28\u20136 job",
+   "difficulty": "Hard"
+  },
+  {
+   "n": 35,
+   "title": "The 24\u20136 turnaround",
+   "difficulty": "Easy"
+  },
+  {
+   "n": 36,
+   "title": "The 16\u20130 turnaround",
+   "difficulty": "Hard"
+  },
+  {
+   "n": 37,
+   "title": "The 27\u20136 turnaround",
+   "difficulty": "Easy"
+  },
+  {
+   "n": 38,
+   "title": "The fourth-quarter 23\u20136 heist",
+   "difficulty": "Easy"
+  },
+  {
+   "n": 39,
+   "title": "The 15\u20130 job",
+   "difficulty": "Hard"
+  },
+  {
+   "n": 40,
+   "title": "The 27\u20136 turnaround",
+   "difficulty": "Hard"
+  },
+  {
+   "n": 41,
+   "title": "The 28\u20136 turnaround",
+   "difficulty": "Easy"
+  },
+  {
+   "n": 42,
+   "title": "The 22\u20134 turnaround",
+   "difficulty": "Hard"
+  },
+  {
+   "n": 43,
+   "title": "The 26\u20136 turnaround",
+   "difficulty": "Easy"
+  },
+  {
+   "n": 44,
+   "title": "The 31\u20136 turnaround",
+   "difficulty": "Easy"
+  },
+  {
+   "n": 45,
+   "title": "The 27\u20136 job",
+   "difficulty": "Hard"
+  },
+  {
+   "n": 46,
+   "title": "The 20\u20134 job",
+   "difficulty": "Medium"
+  },
+  {
+   "n": 47,
+   "title": "The fourth-quarter 23\u20136 heist",
+   "difficulty": "Medium"
+  },
+  {
+   "n": 48,
+   "title": "The 22\u20136 job",
+   "difficulty": "Medium"
+  },
+  {
+   "n": 49,
+   "title": "The 29\u20136 job",
+   "difficulty": "Hard"
+  },
+  {
+   "n": 50,
+   "title": "The 16\u20132 turnaround",
+   "difficulty": "Hard"
+  },
+  {
+   "n": 51,
+   "title": "The 33\u20136 turnaround",
+   "difficulty": "Easy"
+  },
+  {
+   "n": 52,
+   "title": "The 26\u20136 turnaround",
+   "difficulty": "Hard"
+  },
+  {
+   "n": 53,
+   "title": "The 23\u20134 turnaround",
+   "difficulty": "Easy"
+  },
+  {
+   "n": 54,
+   "title": "The 25\u20136 turnaround",
+   "difficulty": "Medium"
+  },
+  {
+   "n": 55,
+   "title": "The 21\u20136 turnaround",
+   "difficulty": "Hard"
+  },
+  {
+   "n": 56,
+   "title": "The 21\u20135 turnaround",
+   "difficulty": "Hard"
+  },
+  {
+   "n": 57,
+   "title": "The 23\u20135 turnaround",
+   "difficulty": "Hard"
+  },
+  {
+   "n": 58,
+   "title": "The 19\u20135 turnaround",
+   "difficulty": "Medium"
+  },
+  {
+   "n": 59,
+   "title": "The 22\u20135 job",
+   "difficulty": "Medium"
+  },
+  {
+   "n": 60,
+   "title": "The 31\u20135 turnaround",
+   "difficulty": "Easy"
+  },
+  {
+   "n": 61,
+   "title": "The 22\u20136 turnaround",
+   "difficulty": "Hard"
+  },
+  {
+   "n": 62,
+   "title": "The 20\u20133 turnaround",
+   "difficulty": "Medium"
+  },
+  {
+   "n": 63,
+   "title": "The fourth-quarter 22\u20136 heist",
+   "difficulty": "Easy"
+  },
+  {
+   "n": 64,
+   "title": "The 26\u20136 turnaround",
+   "difficulty": "Easy"
+  },
+  {
+   "n": 65,
+   "title": "The 23\u20134 turnaround",
+   "difficulty": "Easy"
+  },
+  {
+   "n": 66,
+   "title": "The 22\u20136 turnaround",
+   "difficulty": "Hard"
+  },
+  {
+   "n": 67,
+   "title": "The 22\u20135 job",
+   "difficulty": "Hard"
+  },
+  {
+   "n": 68,
+   "title": "The 20\u20134 turnaround",
+   "difficulty": "Hard"
+  },
+  {
+   "n": 69,
+   "title": "The 20\u20136 turnaround",
+   "difficulty": "Medium"
+  },
+  {
+   "n": 70,
+   "title": "The 21\u20135 turnaround",
+   "difficulty": "Medium"
+  },
+  {
+   "n": 71,
+   "title": "The 15\u20130 turnaround",
+   "difficulty": "Medium"
+  },
+  {
+   "n": 72,
+   "title": "The 19\u20132 turnaround",
+   "difficulty": "Hard"
+  },
+  {
+   "n": 73,
+   "title": "The 29\u20136 job",
+   "difficulty": "Medium"
+  },
+  {
+   "n": 74,
+   "title": "The 20\u20134 job",
+   "difficulty": "Medium"
+  },
+  {
+   "n": 75,
+   "title": "The 27\u20135 turnaround",
+   "difficulty": "Hard"
+  },
+  {
+   "n": 76,
+   "title": "The 24\u20136 job",
+   "difficulty": "Hard"
+  },
+  {
+   "n": 77,
+   "title": "The 31\u20136 turnaround",
+   "difficulty": "Medium"
+  },
+  {
+   "n": 78,
+   "title": "The 29\u20136 job",
+   "difficulty": "Hard"
+  },
+  {
+   "n": 79,
+   "title": "The 23\u20136 turnaround",
+   "difficulty": "Hard"
+  },
+  {
+   "n": 80,
+   "title": "The 23\u20136 turnaround",
+   "difficulty": "Hard"
+  },
+  {
+   "n": 81,
+   "title": "The 21\u20135 job",
+   "difficulty": "Hard"
+  },
+  {
+   "n": 82,
+   "title": "The 23\u20132 turnaround",
+   "difficulty": "Easy"
+  },
+  {
+   "n": 83,
+   "title": "The 27\u20136 turnaround",
+   "difficulty": "Medium"
+  },
+  {
+   "n": 84,
+   "title": "The 21\u20136 turnaround",
+   "difficulty": "Hard"
+  },
+  {
+   "n": 85,
+   "title": "The 17\u20130 turnaround",
+   "difficulty": "Hard"
+  },
+  {
+   "n": 86,
+   "title": "The 22\u20133 turnaround",
+   "difficulty": "Medium"
+  },
+  {
+   "n": 87,
+   "title": "The 23\u20134 turnaround",
+   "difficulty": "Hard"
+  },
+  {
+   "n": 88,
+   "title": "The 20\u20134 turnaround",
+   "difficulty": "Hard"
+  },
+  {
+   "n": 89,
+   "title": "The 24\u20136 turnaround",
+   "difficulty": "Hard"
+  },
+  {
+   "n": 90,
+   "title": "The 19\u20135 turnaround",
+   "difficulty": "Hard"
+  },
+  {
+   "n": 91,
+   "title": "The 30\u20136 turnaround",
+   "difficulty": "Easy"
+  },
+  {
+   "n": 92,
+   "title": "The fourth-quarter 21\u20135 heist",
+   "difficulty": "Hard"
+  },
+  {
+   "n": 93,
+   "title": "The 27\u20136 turnaround",
+   "difficulty": "Medium"
+  },
+  {
+   "n": 94,
+   "title": "The 18\u20134 turnaround",
+   "difficulty": "Hard"
+  },
+  {
+   "n": 95,
+   "title": "The 29\u20135 turnaround",
+   "difficulty": "Medium"
+  },
+  {
+   "n": 96,
+   "title": "The 23\u20132 turnaround",
+   "difficulty": "Medium"
+  },
+  {
+   "n": 97,
+   "title": "The 20\u20133 turnaround",
+   "difficulty": "Hard"
+  },
+  {
+   "n": 98,
+   "title": "The fourth-quarter 20\u20132 heist",
+   "difficulty": "Hard"
+  },
+  {
+   "n": 99,
+   "title": "The 25\u20135 turnaround",
+   "difficulty": "Easy"
+  },
+  {
+   "n": 100,
+   "title": "The 22\u20135 turnaround",
+   "difficulty": "Hard"
+  },
+  {
+   "n": 101,
+   "title": "The 20\u20135 job",
+   "difficulty": "Medium"
+  },
+  {
+   "n": 102,
+   "title": "The 31\u20136 job",
+   "difficulty": "Easy"
+  },
+  {
+   "n": 103,
+   "title": "The 24\u20135 job",
+   "difficulty": "Hard"
+  },
+  {
+   "n": 104,
+   "title": "The 22\u20135 job",
+   "difficulty": "Hard"
+  },
+  {
+   "n": 105,
+   "title": "The 25\u20135 turnaround",
+   "difficulty": "Hard"
+  },
+  {
+   "n": 106,
+   "title": "The 17\u20132 turnaround",
+   "difficulty": "Hard"
+  },
+  {
+   "n": 107,
+   "title": "The 19\u20134 turnaround",
+   "difficulty": "Hard"
+  },
+  {
+   "n": 108,
+   "title": "The 20\u20136 turnaround",
+   "difficulty": "Medium"
+  },
+  {
+   "n": 109,
+   "title": "The 22\u20136 turnaround",
+   "difficulty": "Medium"
+  },
+  {
+   "n": 110,
+   "title": "The 19\u20135 turnaround",
+   "difficulty": "Hard"
+  },
+  {
+   "n": 111,
+   "title": "The 26\u20136 turnaround",
+   "difficulty": "Medium"
+  },
+  {
+   "n": 112,
+   "title": "The 21\u20130 turnaround",
+   "difficulty": "Hard"
+  },
+  {
+   "n": 113,
+   "title": "The 20\u20136 turnaround",
+   "difficulty": "Hard"
+  },
+  {
+   "n": 114,
+   "title": "The 23\u20134 job",
+   "difficulty": "Medium"
+  },
+  {
+   "n": 115,
+   "title": "The 19\u20135 job",
+   "difficulty": "Medium"
+  },
+  {
+   "n": 116,
+   "title": "The 21\u20136 turnaround",
+   "difficulty": "Medium"
+  },
+  {
+   "n": 117,
+   "title": "The fourth-quarter 23\u20134 heist",
+   "difficulty": "Hard"
+  },
+  {
+   "n": 118,
+   "title": "The 24\u20135 job",
+   "difficulty": "Hard"
+  },
+  {
+   "n": 119,
+   "title": "The 23\u20134 job",
+   "difficulty": "Medium"
+  },
+  {
+   "n": 120,
+   "title": "The 24\u20136 turnaround",
+   "difficulty": "Hard"
+  },
+  {
+   "n": 121,
+   "title": "The 23\u20135 turnaround",
+   "difficulty": "Hard"
+  },
+  {
+   "n": 122,
+   "title": "The 26\u20136 turnaround",
+   "difficulty": "Easy"
+  },
+  {
+   "n": 123,
+   "title": "The 26\u20136 turnaround",
+   "difficulty": "Easy"
+  },
+  {
+   "n": 124,
+   "title": "The 17\u20132 turnaround",
+   "difficulty": "Medium"
+  },
+  {
+   "n": 125,
+   "title": "The 20\u20136 turnaround",
+   "difficulty": "Medium"
+  },
+  {
+   "n": 126,
+   "title": "The 22\u20136 turnaround",
+   "difficulty": "Hard"
+  },
+  {
+   "n": 127,
+   "title": "The fourth-quarter 23\u20136 heist",
+   "difficulty": "Hard"
+  },
+  {
+   "n": 128,
+   "title": "The fourth-quarter 21\u20135 heist",
+   "difficulty": "Hard"
+  },
+  {
+   "n": 129,
+   "title": "The 24\u20136 turnaround",
+   "difficulty": "Hard"
+  },
+  {
+   "n": 130,
+   "title": "The 22\u20134 turnaround",
+   "difficulty": "Medium"
+  },
+  {
+   "n": 131,
+   "title": "The 25\u20135 turnaround",
+   "difficulty": "Easy"
+  },
+  {
+   "n": 132,
+   "title": "The 20\u20134 job",
+   "difficulty": "Hard"
+  },
+  {
+   "n": 133,
+   "title": "The 30\u20136 job",
+   "difficulty": "Hard"
+  },
+  {
+   "n": 134,
+   "title": "The 28\u20134 turnaround",
+   "difficulty": "Medium"
+  },
+  {
+   "n": 135,
+   "title": "The fourth-quarter 29\u20135 heist",
+   "difficulty": "Easy"
+  },
+  {
+   "n": 136,
+   "title": "The 22\u20136 turnaround",
+   "difficulty": "Medium"
+  },
+  {
+   "n": 137,
+   "title": "The 25\u20136 turnaround",
+   "difficulty": "Hard"
+  },
+  {
+   "n": 138,
+   "title": "The 28\u20135 job",
+   "difficulty": "Medium"
+  },
+  {
+   "n": 139,
+   "title": "The 25\u20132 turnaround",
+   "difficulty": "Hard"
+  },
+  {
+   "n": 140,
+   "title": "The 21\u20134 job",
+   "difficulty": "Medium"
+  },
+  {
+   "n": 141,
+   "title": "The 20\u20136 turnaround",
+   "difficulty": "Hard"
+  },
+  {
+   "n": 142,
+   "title": "The 19\u20135 job",
+   "difficulty": "Medium"
+  },
+  {
+   "n": 143,
+   "title": "The 25\u20132 turnaround",
+   "difficulty": "Easy"
+  },
+  {
+   "n": 144,
+   "title": "The fourth-quarter 23\u20136 heist",
+   "difficulty": "Easy"
+  },
+  {
+   "n": 145,
+   "title": "The 20\u20134 turnaround",
+   "difficulty": "Hard"
+  },
+  {
+   "n": 146,
+   "title": "The 18\u20133 turnaround",
+   "difficulty": "Hard"
+  },
+  {
+   "n": 147,
+   "title": "The 36\u20136 turnaround",
+   "difficulty": "Easy"
+  },
+  {
+   "n": 148,
+   "title": "The 23\u20132 job",
+   "difficulty": "Medium"
+  },
+  {
+   "n": 149,
+   "title": "The 23\u20136 turnaround",
+   "difficulty": "Medium"
+  },
+  {
+   "n": 150,
+   "title": "The 23\u20134 turnaround",
+   "difficulty": "Hard"
+  },
+  {
+   "n": 151,
+   "title": "The fourth-quarter 31\u20134 heist",
+   "difficulty": "Medium"
+  },
+  {
+   "n": 152,
+   "title": "The 26\u20135 job",
+   "difficulty": "Hard"
+  },
+  {
+   "n": 153,
+   "title": "The fourth-quarter 25\u20136 heist",
+   "difficulty": "Easy"
+  },
+  {
+   "n": 154,
+   "title": "The 25\u20135 turnaround",
+   "difficulty": "Hard"
+  },
+  {
+   "n": 155,
+   "title": "The 21\u20136 job",
+   "difficulty": "Medium"
+  },
+  {
+   "n": 156,
+   "title": "The 20\u20135 job",
+   "difficulty": "Medium"
+  },
+  {
+   "n": 157,
+   "title": "The 23\u20136 turnaround",
+   "difficulty": "Hard"
+  },
+  {
+   "n": 158,
+   "title": "The 22\u20136 turnaround",
+   "difficulty": "Hard"
+  },
+  {
+   "n": 159,
+   "title": "The 24\u20136 turnaround",
+   "difficulty": "Medium"
+  },
+  {
+   "n": 160,
+   "title": "The 20\u20136 turnaround",
+   "difficulty": "Hard"
+  },
+  {
+   "n": 161,
+   "title": "The 28\u20136 turnaround",
+   "difficulty": "Medium"
+  },
+  {
+   "n": 162,
+   "title": "The 30\u20136 turnaround",
+   "difficulty": "Hard"
+  },
+  {
+   "n": 163,
+   "title": "The 21\u20135 turnaround",
+   "difficulty": "Hard"
+  },
+  {
+   "n": 164,
+   "title": "The 19\u20133 turnaround",
+   "difficulty": "Hard"
+  },
+  {
+   "n": 165,
+   "title": "The 28\u20136 turnaround",
+   "difficulty": "Hard"
+  },
+  {
+   "n": 166,
+   "title": "The 27\u20135 turnaround",
+   "difficulty": "Hard"
+  },
+  {
+   "n": 167,
+   "title": "The 26\u20136 turnaround",
+   "difficulty": "Medium"
+  },
+  {
+   "n": 168,
+   "title": "The 27\u20136 turnaround",
+   "difficulty": "Hard"
+  },
+  {
+   "n": 169,
+   "title": "The 26\u20135 job",
+   "difficulty": "Medium"
+  },
+  {
+   "n": 170,
+   "title": "The 21\u20135 turnaround",
+   "difficulty": "Hard"
+  },
+  {
+   "n": 171,
+   "title": "The 27\u20136 job",
+   "difficulty": "Medium"
+  },
+  {
+   "n": 172,
+   "title": "The 23\u20136 job",
+   "difficulty": "Medium"
+  },
+  {
+   "n": 173,
+   "title": "The 28\u20136 job",
+   "difficulty": "Hard"
+  },
+  {
+   "n": 174,
+   "title": "The 25\u20134 job",
+   "difficulty": "Hard"
+  },
+  {
+   "n": 175,
+   "title": "The 17\u20132 turnaround",
+   "difficulty": "Medium"
+  },
+  {
+   "n": 176,
+   "title": "The 27\u20136 turnaround",
+   "difficulty": "Easy"
+  },
+  {
+   "n": 177,
+   "title": "The 19\u20132 turnaround",
+   "difficulty": "Hard"
+  },
+  {
+   "n": 178,
+   "title": "The 22\u20130 turnaround",
+   "difficulty": "Easy"
+  },
+  {
+   "n": 179,
+   "title": "The 20\u20134 turnaround",
+   "difficulty": "Medium"
+  },
+  {
+   "n": 180,
+   "title": "The 23\u20134 turnaround",
+   "difficulty": "Hard"
+  },
+  {
+   "n": 181,
+   "title": "The 28\u20136 job",
+   "difficulty": "Medium"
+  },
+  {
+   "n": 182,
+   "title": "The 25\u20134 job",
+   "difficulty": "Hard"
+  },
+  {
+   "n": 183,
+   "title": "The 24\u20135 turnaround",
+   "difficulty": "Easy"
+  },
+  {
+   "n": 184,
+   "title": "The 23\u20136 turnaround",
+   "difficulty": "Hard"
+  },
+  {
+   "n": 185,
+   "title": "The 16\u20132 turnaround",
+   "difficulty": "Hard"
+  },
+  {
+   "n": 186,
+   "title": "The 25\u20135 turnaround",
+   "difficulty": "Medium"
+  },
+  {
+   "n": 187,
+   "title": "The 26\u20132 turnaround",
+   "difficulty": "Medium"
+  },
+  {
+   "n": 188,
+   "title": "The 25\u20135 turnaround",
+   "difficulty": "Hard"
+  },
+  {
+   "n": 189,
+   "title": "The 19\u20133 job",
+   "difficulty": "Medium"
+  },
+  {
+   "n": 190,
+   "title": "The 15\u20130 turnaround",
+   "difficulty": "Hard"
+  },
+  {
+   "n": 191,
+   "title": "The 23\u20135 turnaround",
+   "difficulty": "Hard"
+  },
+  {
+   "n": 192,
+   "title": "The 21\u20135 turnaround",
+   "difficulty": "Medium"
+  },
+  {
+   "n": 193,
+   "title": "The 25\u20135 turnaround",
+   "difficulty": "Hard"
+  },
+  {
+   "n": 194,
+   "title": "The 33\u20135 turnaround",
+   "difficulty": "Easy"
+  },
+  {
+   "n": 195,
+   "title": "The 21\u20134 job",
+   "difficulty": "Medium"
+  },
+  {
+   "n": 196,
+   "title": "The 20\u20136 turnaround",
+   "difficulty": "Hard"
+  },
+  {
+   "n": 197,
+   "title": "The 23\u20136 turnaround",
+   "difficulty": "Medium"
+  },
+  {
+   "n": 198,
+   "title": "The 26\u20135 turnaround",
+   "difficulty": "Easy"
+  },
+  {
+   "n": 199,
+   "title": "The 29\u20136 job",
+   "difficulty": "Easy"
+  },
+  {
+   "n": 200,
+   "title": "The 27\u20136 turnaround",
+   "difficulty": "Medium"
+  },
+  {
+   "n": 201,
+   "title": "The 19\u20132 turnaround",
+   "difficulty": "Hard"
+  },
+  {
+   "n": 202,
+   "title": "The 24\u20135 turnaround",
+   "difficulty": "Easy"
+  },
+  {
+   "n": 203,
+   "title": "The 26\u20135 turnaround",
+   "difficulty": "Easy"
+  },
+  {
+   "n": 204,
+   "title": "The 22\u20136 turnaround",
+   "difficulty": "Hard"
+  },
+  {
+   "n": 205,
+   "title": "The 21\u20136 job",
+   "difficulty": "Medium"
+  },
+  {
+   "n": 206,
+   "title": "The 19\u20132 turnaround",
+   "difficulty": "Medium"
+  },
+  {
+   "n": 207,
+   "title": "The 25\u20135 turnaround",
+   "difficulty": "Medium"
+  },
+  {
+   "n": 208,
+   "title": "The 20\u20136 turnaround",
+   "difficulty": "Medium"
+  },
+  {
+   "n": 209,
+   "title": "The 19\u20134 turnaround",
+   "difficulty": "Medium"
+  },
+  {
+   "n": 210,
+   "title": "The 27\u20136 turnaround",
+   "difficulty": "Easy"
+  },
+  {
+   "n": 211,
+   "title": "The 27\u20134 turnaround",
+   "difficulty": "Hard"
+  },
+  {
+   "n": 212,
+   "title": "The 26\u20134 turnaround",
+   "difficulty": "Easy"
+  },
+  {
+   "n": 213,
+   "title": "The 25\u20135 turnaround",
+   "difficulty": "Hard"
+  },
+  {
+   "n": 214,
+   "title": "The 23\u20136 turnaround",
+   "difficulty": "Hard"
+  },
+  {
+   "n": 215,
+   "title": "The 32\u20136 job",
+   "difficulty": "Easy"
+  },
+  {
+   "n": 216,
+   "title": "The 31\u20136 turnaround",
+   "difficulty": "Easy"
+  },
+  {
+   "n": 217,
+   "title": "The 30\u20136 turnaround",
+   "difficulty": "Medium"
+  },
+  {
+   "n": 218,
+   "title": "The 27\u20136 turnaround",
+   "difficulty": "Hard"
+  },
+  {
+   "n": 219,
+   "title": "The 22\u20136 turnaround",
+   "difficulty": "Medium"
+  },
+  {
+   "n": 220,
+   "title": "The 26\u20136 job",
+   "difficulty": "Hard"
+  },
+  {
+   "n": 221,
+   "title": "The 24\u20136 turnaround",
+   "difficulty": "Easy"
+  },
+  {
+   "n": 222,
+   "title": "The fourth-quarter 17\u20132 heist",
+   "difficulty": "Easy"
+  },
+  {
+   "n": 223,
+   "title": "The fourth-quarter 28\u20133 heist",
+   "difficulty": "Hard"
+  },
+  {
+   "n": 224,
+   "title": "The 27\u20136 turnaround",
+   "difficulty": "Hard"
+  },
+  {
+   "n": 225,
+   "title": "The fourth-quarter 29\u20136 heist",
+   "difficulty": "Hard"
+  },
+  {
+   "n": 226,
+   "title": "The 18\u20134 turnaround",
+   "difficulty": "Medium"
+  },
+  {
+   "n": 227,
+   "title": "The 26\u20136 turnaround",
+   "difficulty": "Hard"
+  },
+  {
+   "n": 228,
+   "title": "The 21\u20136 turnaround",
+   "difficulty": "Hard"
+  },
+  {
+   "n": 229,
+   "title": "The 43\u20135 job",
+   "difficulty": "Easy"
+  },
+  {
+   "n": 230,
+   "title": "The 22\u20135 turnaround",
+   "difficulty": "Medium"
+  },
+  {
+   "n": 231,
+   "title": "The 24\u20133 turnaround",
+   "difficulty": "Hard"
+  },
+  {
+   "n": 232,
+   "title": "The 23\u20135 turnaround",
+   "difficulty": "Hard"
+  },
+  {
+   "n": 233,
+   "title": "The 27\u20135 job",
+   "difficulty": "Hard"
+  },
+  {
+   "n": 234,
+   "title": "The 21\u20135 job",
+   "difficulty": "Hard"
+  },
+  {
+   "n": 235,
+   "title": "The 25\u20135 job",
+   "difficulty": "Medium"
+  },
+  {
+   "n": 236,
+   "title": "The 21\u20134 turnaround",
+   "difficulty": "Hard"
+  },
+  {
+   "n": 237,
+   "title": "The fourth-quarter 23\u20136 heist",
+   "difficulty": "Medium"
+  },
+  {
+   "n": 238,
+   "title": "The 23\u20136 job",
+   "difficulty": "Medium"
+  },
+  {
+   "n": 239,
+   "title": "The 23\u20134 turnaround",
+   "difficulty": "Easy"
+  },
+  {
+   "n": 240,
+   "title": "The 26\u20134 turnaround",
+   "difficulty": "Easy"
+  },
+  {
+   "n": 241,
+   "title": "The 32\u20136 turnaround",
+   "difficulty": "Easy"
+  },
+  {
+   "n": 242,
+   "title": "The 22\u20135 job",
+   "difficulty": "Hard"
+  },
+  {
+   "n": 243,
+   "title": "The fourth-quarter 21\u20133 heist",
+   "difficulty": "Easy"
+  },
+  {
+   "n": 244,
+   "title": "The 34\u20136 job",
+   "difficulty": "Easy"
+  },
+  {
+   "n": 245,
+   "title": "The 15\u20130 turnaround",
+   "difficulty": "Hard"
+  },
+  {
+   "n": 246,
+   "title": "The 25\u20136 turnaround",
+   "difficulty": "Easy"
+  },
+  {
+   "n": 247,
+   "title": "The 25\u20135 job",
+   "difficulty": "Hard"
+  },
+  {
+   "n": 248,
+   "title": "The 16\u20132 job",
+   "difficulty": "Medium"
+  },
+  {
+   "n": 249,
+   "title": "The 23\u20136 turnaround",
+   "difficulty": "Medium"
+  },
+  {
+   "n": 250,
+   "title": "The 25\u20136 turnaround",
+   "difficulty": "Medium"
+  },
+  {
+   "n": 251,
+   "title": "The 26\u20136 turnaround",
+   "difficulty": "Medium"
+  },
+  {
+   "n": 252,
+   "title": "The 17\u20132 turnaround",
+   "difficulty": "Hard"
+  },
+  {
+   "n": 253,
+   "title": "The fourth-quarter 26\u20132 heist",
+   "difficulty": "Easy"
+  },
+  {
+   "n": 254,
+   "title": "The 27\u20135 job",
+   "difficulty": "Medium"
+  },
+  {
+   "n": 255,
+   "title": "The 27\u20134 turnaround",
+   "difficulty": "Easy"
+  },
+  {
+   "n": 256,
+   "title": "The 33\u20134 turnaround",
+   "difficulty": "Easy"
+  },
+  {
+   "n": 257,
+   "title": "The 26\u20135 turnaround",
+   "difficulty": "Medium"
+  },
+  {
+   "n": 258,
+   "title": "The 32\u20136 turnaround",
+   "difficulty": "Medium"
+  },
+  {
+   "n": 259,
+   "title": "The 28\u20136 turnaround",
+   "difficulty": "Hard"
+  },
+  {
+   "n": 260,
+   "title": "The 22\u20135 job",
+   "difficulty": "Medium"
+  },
+  {
+   "n": 261,
+   "title": "The 24\u20136 job",
+   "difficulty": "Medium"
+  },
+  {
+   "n": 262,
+   "title": "The 20\u20136 turnaround",
+   "difficulty": "Medium"
+  },
+  {
+   "n": 263,
+   "title": "The 21\u20132 job",
+   "difficulty": "Medium"
+  },
+  {
+   "n": 264,
+   "title": "The 16\u20132 turnaround",
+   "difficulty": "Hard"
+  },
+  {
+   "n": 265,
+   "title": "The 20\u20135 turnaround",
+   "difficulty": "Hard"
+  },
+  {
+   "n": 266,
+   "title": "The 25\u20136 turnaround",
+   "difficulty": "Medium"
+  },
+  {
+   "n": 267,
+   "title": "The 23\u20134 job",
+   "difficulty": "Medium"
+  },
+  {
+   "n": 268,
+   "title": "The 27\u20136 turnaround",
+   "difficulty": "Easy"
+  },
+  {
+   "n": 269,
+   "title": "The 21\u20134 turnaround",
+   "difficulty": "Hard"
+  },
+  {
+   "n": 270,
+   "title": "The fourth-quarter 23\u20135 heist",
+   "difficulty": "Hard"
+  },
+  {
+   "n": 271,
+   "title": "The fourth-quarter 27\u20136 heist",
+   "difficulty": "Hard"
+  },
+  {
+   "n": 272,
+   "title": "The 22\u20136 job",
+   "difficulty": "Hard"
+  },
+  {
+   "n": 273,
+   "title": "The 23\u20136 job",
+   "difficulty": "Hard"
+  },
+  {
+   "n": 274,
+   "title": "The 31\u20136 turnaround",
+   "difficulty": "Medium"
+  },
+  {
+   "n": 275,
+   "title": "The 19\u20134 job",
+   "difficulty": "Medium"
+  },
+  {
+   "n": 276,
+   "title": "The 21\u20136 turnaround",
+   "difficulty": "Medium"
+  },
+  {
+   "n": 277,
+   "title": "The fourth-quarter 20\u20132 heist",
+   "difficulty": "Easy"
+  },
+  {
+   "n": 278,
+   "title": "The 24\u20136 job",
+   "difficulty": "Medium"
+  },
+  {
+   "n": 279,
+   "title": "The fourth-quarter 23\u20135 heist",
+   "difficulty": "Medium"
+  },
+  {
+   "n": 280,
+   "title": "The 21\u20135 turnaround",
+   "difficulty": "Medium"
+  },
+  {
+   "n": 281,
+   "title": "The 26\u20136 turnaround",
+   "difficulty": "Easy"
+  },
+  {
+   "n": 282,
+   "title": "The 20\u20135 job",
+   "difficulty": "Medium"
+  },
+  {
+   "n": 283,
+   "title": "The fourth-quarter 20\u20135 heist",
+   "difficulty": "Easy"
+  },
+  {
+   "n": 284,
+   "title": "The 19\u20135 turnaround",
+   "difficulty": "Medium"
+  },
+  {
+   "n": 285,
+   "title": "The 21\u20134 turnaround",
+   "difficulty": "Hard"
+  },
+  {
+   "n": 286,
+   "title": "The 21\u20136 turnaround",
+   "difficulty": "Hard"
+  },
+  {
+   "n": 287,
+   "title": "The 16\u20132 turnaround",
+   "difficulty": "Medium"
+  },
+  {
+   "n": 288,
+   "title": "The 25\u20134 turnaround",
+   "difficulty": "Easy"
+  },
+  {
+   "n": 289,
+   "title": "The 20\u20136 turnaround",
+   "difficulty": "Medium"
+  },
+  {
+   "n": 290,
+   "title": "The 22\u20133 turnaround",
+   "difficulty": "Easy"
+  },
+  {
+   "n": 291,
+   "title": "The 20\u20135 turnaround",
+   "difficulty": "Medium"
+  },
+  {
+   "n": 292,
+   "title": "The 23\u20136 job",
+   "difficulty": "Medium"
+  },
+  {
+   "n": 293,
+   "title": "The 24\u20133 turnaround",
+   "difficulty": "Hard"
+  },
+  {
+   "n": 294,
+   "title": "The 23\u20136 turnaround",
+   "difficulty": "Hard"
+  },
+  {
+   "n": 295,
+   "title": "The 25\u20136 turnaround",
+   "difficulty": "Easy"
+  },
+  {
+   "n": 296,
+   "title": "The 31\u20133 turnaround",
+   "difficulty": "Easy"
+  },
+  {
+   "n": 297,
+   "title": "The 24\u20135 turnaround",
+   "difficulty": "Easy"
+  },
+  {
+   "n": 298,
+   "title": "The 20\u20133 job",
+   "difficulty": "Medium"
+  },
+  {
+   "n": 299,
+   "title": "The 21\u20133 turnaround",
+   "difficulty": "Easy"
+  },
+  {
+   "n": 300,
+   "title": "The 22\u20136 job",
+   "difficulty": "Medium"
+  },
+  {
+   "n": 301,
+   "title": "The 23\u20134 turnaround",
+   "difficulty": "Easy"
+  },
+  {
+   "n": 302,
+   "title": "The 18\u20134 job",
+   "difficulty": "Medium"
+  },
+  {
+   "n": 303,
+   "title": "The 16\u20132 turnaround",
+   "difficulty": "Hard"
+  },
+  {
+   "n": 304,
+   "title": "The 23\u20136 job",
+   "difficulty": "Medium"
+  },
+  {
+   "n": 305,
+   "title": "The 26\u20136 turnaround",
+   "difficulty": "Easy"
+  },
+  {
+   "n": 306,
+   "title": "The 21\u20131 turnaround",
+   "difficulty": "Easy"
+  },
+  {
+   "n": 307,
+   "title": "The 22\u20134 job",
+   "difficulty": "Medium"
+  },
+  {
+   "n": 308,
+   "title": "The 19\u20134 turnaround",
+   "difficulty": "Medium"
+  },
+  {
+   "n": 309,
+   "title": "The 22\u20134 turnaround",
+   "difficulty": "Hard"
+  },
+  {
+   "n": 310,
+   "title": "The 21\u20133 job",
+   "difficulty": "Medium"
+  },
+  {
+   "n": 311,
+   "title": "The 20\u20136 job",
+   "difficulty": "Medium"
+  },
+  {
+   "n": 312,
+   "title": "The 32\u20136 turnaround",
+   "difficulty": "Easy"
+  },
+  {
+   "n": 313,
+   "title": "The 28\u20136 job",
+   "difficulty": "Medium"
+  },
+  {
+   "n": 314,
+   "title": "The 24\u20136 turnaround",
+   "difficulty": "Hard"
+  },
+  {
+   "n": 315,
+   "title": "The 20\u20135 turnaround",
+   "difficulty": "Medium"
+  },
+  {
+   "n": 316,
+   "title": "The 20\u20136 turnaround",
+   "difficulty": "Medium"
+  },
+  {
+   "n": 317,
+   "title": "The 29\u20135 job",
+   "difficulty": "Medium"
+  },
+  {
+   "n": 318,
+   "title": "The 20\u20130 job",
+   "difficulty": "Medium"
+  },
+  {
+   "n": 319,
+   "title": "The fourth-quarter 25\u20136 heist",
+   "difficulty": "Hard"
+  },
+  {
+   "n": 320,
+   "title": "The fourth-quarter 24\u20136 heist",
+   "difficulty": "Medium"
+  },
+  {
+   "n": 321,
+   "title": "The 33\u20135 turnaround",
+   "difficulty": "Easy"
+  },
+  {
+   "n": 322,
+   "title": "The 22\u20135 turnaround",
+   "difficulty": "Hard"
+  },
+  {
+   "n": 323,
+   "title": "The 18\u20132 job",
+   "difficulty": "Medium"
+  },
+  {
+   "n": 324,
+   "title": "The 26\u20136 turnaround",
+   "difficulty": "Easy"
+  },
+  {
+   "n": 325,
+   "title": "The fourth-quarter 28\u20136 heist",
+   "difficulty": "Medium"
+  },
+  {
+   "n": 326,
+   "title": "The 21\u20136 job",
+   "difficulty": "Medium"
+  },
+  {
+   "n": 327,
+   "title": "The 17\u20133 job",
+   "difficulty": "Medium"
+  },
+  {
+   "n": 328,
+   "title": "The fourth-quarter 20\u20136 heist",
+   "difficulty": "Hard"
+  },
+  {
+   "n": 329,
+   "title": "The fourth-quarter 21\u20135 heist",
+   "difficulty": "Medium"
+  },
+  {
+   "n": 330,
+   "title": "The fourth-quarter 21\u20136 heist",
+   "difficulty": "Hard"
+  },
+  {
+   "n": 331,
+   "title": "The 27\u20136 turnaround",
+   "difficulty": "Easy"
+  },
+  {
+   "n": 332,
+   "title": "The fourth-quarter 20\u20136 heist",
+   "difficulty": "Easy"
+  },
+  {
+   "n": 333,
+   "title": "The 23\u20136 turnaround",
+   "difficulty": "Medium"
+  },
+  {
+   "n": 334,
+   "title": "The 25\u20136 turnaround",
+   "difficulty": "Medium"
+  },
+  {
+   "n": 335,
+   "title": "The fourth-quarter 20\u20134 heist",
+   "difficulty": "Medium"
+  },
+  {
+   "n": 336,
+   "title": "The 19\u20135 turnaround",
+   "difficulty": "Hard"
+  },
+  {
+   "n": 337,
+   "title": "The 27\u20134 job",
+   "difficulty": "Medium"
+  },
+  {
+   "n": 338,
+   "title": "The 20\u20135 turnaround",
+   "difficulty": "Hard"
+  },
+  {
+   "n": 339,
+   "title": "The 32\u20134 job",
+   "difficulty": "Medium"
+  },
+  {
+   "n": 340,
+   "title": "The 23\u20134 turnaround",
+   "difficulty": "Easy"
+  },
+  {
+   "n": 341,
+   "title": "The 30\u20136 turnaround",
+   "difficulty": "Hard"
+  },
+  {
+   "n": 342,
+   "title": "The 25\u20135 job",
+   "difficulty": "Medium"
+  },
+  {
+   "n": 343,
+   "title": "The 36\u20136 turnaround",
+   "difficulty": "Medium"
+  },
+  {
+   "n": 344,
+   "title": "The 24\u20136 turnaround",
+   "difficulty": "Hard"
+  },
+  {
+   "n": 345,
+   "title": "The 22\u20134 turnaround",
+   "difficulty": "Hard"
+  },
+  {
+   "n": 346,
+   "title": "The 25\u20136 turnaround",
+   "difficulty": "Hard"
+  },
+  {
+   "n": 347,
+   "title": "The 24\u20132 turnaround",
+   "difficulty": "Easy"
+  },
+  {
+   "n": 348,
+   "title": "The fourth-quarter 26\u20132 heist",
+   "difficulty": "Hard"
+  },
+  {
+   "n": 349,
+   "title": "The 20\u20136 turnaround",
+   "difficulty": "Hard"
+  },
+  {
+   "n": 350,
+   "title": "The 20\u20135 turnaround",
+   "difficulty": "Medium"
+  },
+  {
+   "n": 351,
+   "title": "The fourth-quarter 24\u20132 heist",
+   "difficulty": "Easy"
+  },
+  {
+   "n": 352,
+   "title": "The 21\u20136 job",
+   "difficulty": "Medium"
+  },
+  {
+   "n": 353,
+   "title": "The 19\u20134 job",
+   "difficulty": "Medium"
+  },
+  {
+   "n": 354,
+   "title": "The 31\u20133 turnaround",
+   "difficulty": "Easy"
+  },
+  {
+   "n": 355,
+   "title": "The 21\u20136 turnaround",
+   "difficulty": "Medium"
+  },
+  {
+   "n": 356,
+   "title": "The 19\u20135 job",
+   "difficulty": "Medium"
+  },
+  {
+   "n": 357,
+   "title": "The 27\u20135 turnaround",
+   "difficulty": "Easy"
+  },
+  {
+   "n": 358,
+   "title": "The 28\u20134 turnaround",
+   "difficulty": "Easy"
+  },
+  {
+   "n": 359,
+   "title": "The 19\u20134 turnaround",
+   "difficulty": "Hard"
+  },
+  {
+   "n": 360,
+   "title": "The 23\u20135 turnaround",
+   "difficulty": "Hard"
+  },
+  {
+   "n": 361,
+   "title": "The fourth-quarter 21\u20134 heist",
+   "difficulty": "Easy"
+  },
+  {
+   "n": 362,
+   "title": "The 20\u20133 job",
+   "difficulty": "Medium"
+  },
+  {
+   "n": 363,
+   "title": "The 22\u20134 job",
+   "difficulty": "Medium"
+  },
+  {
+   "n": 364,
+   "title": "The 25\u20134 turnaround",
+   "difficulty": "Medium"
+  },
+  {
+   "n": 365,
+   "title": "The 25\u20136 job",
+   "difficulty": "Hard"
+  }
+ ]
+}

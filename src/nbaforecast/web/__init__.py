@@ -11,7 +11,7 @@ import hashlib
 import json
 import shutil
 from dataclasses import dataclass
-from datetime import UTC, datetime
+from datetime import UTC, date, datetime
 from pathlib import Path
 from typing import Any
 from zoneinfo import ZoneInfo
@@ -758,8 +758,11 @@ PAGES = {
 }
 
 
-def build(data_dir: Path, out_dir: Path, published_dir: Path | None = None) -> list[Path]:
-    """Render every page into `out_dir`. Returns the files written."""
+def build(
+    data_dir: Path, out_dir: Path, published_dir: Path | None = None, today: date | None = None
+) -> list[Path]:
+    """Render every page into `out_dir`. Returns the files written. `today` (Central) decides
+    which Cold Case files are published; it defaults to now."""
     env = Environment(
         loader=FileSystemLoader(HERE / "templates"), autoescape=select_autoescape(["html"])
     )
@@ -788,9 +791,7 @@ def build(data_dir: Path, out_dir: Path, published_dir: Path | None = None) -> l
     published = published_dir or config.PUBLISHED_DIR
     context.update(
         history=pages.history(Store(root), season, team_map),
-        puzzle=pages.rotation_puzzle(
-            Store(root), season, context["slate_date"], team_map, published
-        ),  # fmt: skip
+        coldcase=pages.coldcase(published, out_dir, today or datetime.now(fan.CENTRAL).date()),
         team_list=sorted(team_map.values(), key=lambda t: t.name),
         team_metrics=pages.TEAM_METRICS,
     )

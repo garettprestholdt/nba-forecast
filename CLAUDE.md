@@ -68,9 +68,15 @@ See `docs/roadmap.md` for the phased plan.
 - Team pages explain ratings by replaying this season from the published season-start ratings
   (`data/published/elo/season_start_<season>.json`, `nbaf season-start`, local, once per season);
   `seasonelo.check` confirms the replay lands on the live ratings.
-- Pages: Tonight, Standings & odds, Prediction history, The model, Play (The Rotation, a daily
-  coaching puzzle in `static/rotation.js`), one `team-<abbr>.html` per team, and a player pop-up
-  (`static/app.js`) that loads `players/<id>.json`. Every time shown on the site is Central.
+- Pages: Tonight, Standings & odds, Prediction history, The model, Play (Cold Case), one
+  `team-<abbr>.html` per team, and a player pop-up (`static/app.js`) that loads
+  `players/<id>.json`. Every time shown on the site is Central.
+- Cold Case (`coldcase.py`, `static/coldcase.js`): a daily whodunit built from a real scoring run.
+  The bank of 365 cases is generated locally once (`uv run nbaf coldcase-bank`, ~1 min with the
+  2024-26 play-by-play cached; heights cached in `raw/espn_athletes.json`) into
+  `data/published/coldcase/`. Case #1 is `coldcase.START`; the build publishes cases only through
+  tomorrow's (`pages.coldcase`), never ahead. Every clue must be checkable on the page (suspect
+  files or a named witness); facts the redacted scene can't show aren't clues.
 - Live games (`static/live.js`): the visitor's browser polls ESPN's scoreboard every 45 s for scores,
   quarter and clock, and loads a game's box score, play-by-play and ESPN's in-game win probability
   on request. Display only: never written to the data branch or used by our models, and ESPN's
