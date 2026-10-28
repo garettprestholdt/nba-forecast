@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% from "_macros.html" import logo, player %}
+{% from "_macros.html" import logo, player, team_href %}
 {% block title %}Tonight · NBA Forecast{% endblock %}
 
 {% block hero %}
@@ -91,10 +91,10 @@
         <div class="m-teams">
           {% for side, team, p, score in [("away", m.away, 1 - m.p_home, m.away_score), ("home", m.home, m.p_home, m.home_score)] %}
           <div class="m-side {{ side }}">
-            {{ logo(team) }}
+            <a href="{{ team_href(team) }}" class="logo-link" aria-label="{{ team.name }}: team page">{{ logo(team) }}</a>
             <div class="who">
               <div class="city">{{ team.city }}</div>
-              <div class="nick">{{ team.short }}</div>
+              <div class="nick"><a href="{{ team_href(team) }}">{{ team.short }}</a></div>
               <div class="meta">{{ team.record }}{% if team.rating is not none %} · <span title="Points per game better or worse than an average team">{{ team.rating | signed }} rating</span>{% endif %}</div>
             </div>
             {% if m.final %}<div class="pct score">{{ score }}</div>
@@ -112,7 +112,7 @@
         <div class="m-players">
           {% for team, lineup, side in [(m.away, m.away_lineup, "away"), (m.home, m.home_lineup, "home")] %}
           <div class="roster">
-            <h4>{{ team.abbr }} key players · projected Game Score</h4>
+            <h4>{{ team.abbr }} key players · projected Game Score <span class="hint">tap a player</span></h4>
             <ul>
               {% for p in lineup.key %}{{ player(p, side) }}{% endfor %}
             </ul>

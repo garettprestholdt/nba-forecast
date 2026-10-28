@@ -24,8 +24,9 @@
       <nav class="site-nav" aria-label="Pages">
         <a href="index.html"{% if page == "index.html" %} aria-current="page"{% endif %}>Tonight</a>
         <a href="standings.html"{% if page == "standings.html" %} aria-current="page"{% endif %}><span class="long">Standings &amp; odds</span><span class="short">Standings</span></a>
+        <a href="history.html"{% if page == "history.html" %} aria-current="page"{% endif %}><span class="long">Prediction history</span><span class="short">History</span></a>
         <a href="model.html"{% if page == "model.html" %} aria-current="page"{% endif %}><span class="long">The model</span><span class="short">Model</span></a>
-        <a href="{{ repo_url }}">Code</a>
+        <a class="play-link" href="play.html"{% if page == "play.html" %} aria-current="page"{% endif %}>Play</a>
       </nav>
     </div>
   </header>
@@ -42,6 +43,11 @@
       <div class="fine">Data: ESPN, The Odds API. {% if espn_images %}Team logos and player photos are loaded from ESPN; team names and logos are trademarks of the NBA and its teams. {% endif %}A forecasting and calibration study, not betting advice.</div>
     </div>
   </footer>
+  <dialog id="player-dialog" class="player-dialog" aria-labelledby="pd-title">
+    <button class="pd-close" type="button" aria-label="Close">×</button>
+    <div class="pd-body"></div>
+  </dialog>
+  <script src="assets/app.js?v={{ asset_version }}" defer></script>
   {% block specs %}{% endblock %}
 </body>
 </html>

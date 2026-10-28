@@ -14,7 +14,7 @@
 {# One player in a matchup card: headshot (initials underneath, shown if the photo fails), name,
    position and usual minutes, and their projected Game Score with a bar. #}
 {% macro player(p, side, out=false) -%}
-<li class="pl {{ side }}{% if out %} out{% endif %}">
+<li class="pl {{ side }}{% if out %} out{% endif %}" data-player="{{ p.player_id }}" tabindex="0" role="button" aria-label="{{ p.name }}: season stats">
   <span class="avatar" aria-hidden="true"><span class="ini">{{ p.initials }}</span>{% if p.headshot %}<img src="{{ p.headshot }}" alt="" loading="lazy" onerror="this.remove()">{% endif %}</span>
   <span>
     <span class="nm" title="{{ p.name }}">{{ p.short }}{% if out %}<span class="tag out">Out</span>{% elif p.status == "Day-To-Day" %}<span class="tag gtd" title="Day-to-day: a game-time decision">GTD</span>{% endif %}</span>
@@ -23,3 +23,7 @@
   <span class="sc" title="Projected Game Score{% if out %} if they played{% endif %}"><b>{{ "%.1f" | format(p.score) }}</b><span class="track"><span class="fill" style="width: {{ (p.bar * 100) | round(1) }}%"></span></span></span>
 </li>
 {%- endmacro %}
+
+
+{# A team's name or logo linking to its page. #}
+{% macro team_href(team) -%}team-{{ team.abbr | lower }}.html{%- endmacro %}

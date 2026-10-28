@@ -55,77 +55,77 @@
   </section>
 </div>
 
-<section class="card" aria-labelledby="bt-h">
-  <h2 id="bt-h">Backtest: {{ backtest.holdout_seasons[0] }} to {{ backtest.holdout_seasons[1] }}, held out</h2>
-  <p class="sub">
-    {{ backtest.candidates_tried }} settings were tuned on {{ backtest.train_seasons[0] }}–{{ backtest.train_seasons[1] }}
-    and scored once on later seasons the tuning never saw.
-  </p>
+<section class="card" aria-labelledby="good-h">
+  <h2 id="good-h">Is it any good?</h2>
+  <p class="sub">Before going live, every approach below predicted six full seasons ({{ "{:,}".format(simple_backtest[0].games) }} games,
+    2020-21 to 2025-26) using only what it could have known at the time. "Picks right" is how often the favorite won.
+    Log-loss also rewards being confident when right and humble when unsure; <strong>lower is better</strong>.</p>
   <div class="table-wrap">
-    <table class="data">
-      <thead>
-        <tr><th>Model</th><th class="num">Games</th><th class="num">Log-loss</th><th class="num">Brier</th><th class="num">Accuracy</th><th class="num">Avg. forecast</th><th class="num">Home won</th></tr>
-      </thead>
+    <table class="data simple">
+      <thead><tr><th>Approach</th><th>What it does</th><th class="num">Picks right</th><th class="num">Log-loss</th></tr></thead>
       <tbody>
-        {% for row in backtest.holdout if row.model != "Elo, best fixed home court" %}
-        <tr>
-          <td>{{ row.model }}</td>
-          <td class="num">{{ "{:,}".format(row.n) }}</td>
-          <td class="num">{{ row.log_loss | num(4) }}</td>
-          <td class="num">{{ row.brier | num(4) }}</td>
-          <td class="num">{{ row.accuracy | pct }}</td>
-          <td class="num">{{ row.mean_forecast | pct }}</td>
-          <td class="num">{{ row.home_win_rate | pct }}</td>
+        {% for row in simple_backtest %}
+        <tr class="{{ row.cls }}">
+          <td><strong>{{ row.name }}</strong></td><td class="what">{{ row.what }}</td>
+          <td class="num">{{ row.accuracy | pct }}</td><td class="num">{{ row.log_loss | num }}</td>
         </tr>
         {% endfor %}
       </tbody>
     </table>
   </div>
-  <p class="sub" style="margin-top: 12px">
-    <strong>What the test found:</strong> home-court advantage shrank, from 60.5% home wins in 2004-05
-    to 54.4% in 2024-25. The fixed home bonus chosen on the early seasons kept forecasting about 60%,
-    so it was miscalibrated on recent seasons. Learning the bonus from recent games cut the
-    calibration error 17-fold. <a href="{{ repo_url }}/blob/main/docs/findings/elo-backtest.md">Full write-up</a>.
-  </p>
+  <p class="sub" style="margin-top: 12px">In plain terms: the model picks the winner about two games in three, far better
+    than guessing or always backing the home team. Adding players helps a little more, and knowing who's actually
+    playing would help more still. That's what the injury reports are for.</p>
 </section>
 
-<div class="stack">
-  <section class="card" aria-labelledby="season-h">
-    <h2 id="season-h">Log-loss by season</h2>
-    <p class="sub">Shaded seasons are the held-out test; 2019-20 (bubble) is skipped. Through 2018-19 the two
-      variants are within 0.002 of each other every season; in the held-out seasons the adaptive
-      one is better in five of six (2022-23 is a near-tie).</p>
-    <div class="chart" data-chart="spec-by-season" role="img" aria-label="Line chart of log-loss by season for Elo and the previous season's home win rate"></div>
+<div class="grid-2">
+  <section class="card" aria-labelledby="cal-h">
+    <h2 id="cal-h">Are the percentages honest?</h2>
+    <p class="sub">Every forecast from those six seasons, grouped by what it said. When the model says 70%, the team
+      should win about 70% of the time, so the dots should sit on the diagonal. They do.
+      {% if not live_calibration_ready %}This season's forecasts join after {{ live_calibration_min }} games.{% endif %}</p>
+    <div class="chart" data-chart="spec-calibration" role="img" aria-label="Calibration: forecast probability against how often the team actually won"></div>
   </section>
 
-  <section class="card" aria-labelledby="cal-h">
-    <h2 id="cal-h">Calibration</h2>
-    <p class="sub">
-      Held-out forecasts grouped by probability. On the diagonal, games forecast at 70% are won 70%
-      of the time. The fixed home bonus sits below it in every bin: it overrated home teams.
-      {% if not live_calibration_ready %}This season's live forecasts join the chart after {{ live_calibration_min }} scored games.{% endif %}
-    </p>
-    <div class="chart" data-chart="spec-calibration" role="img" aria-label="Calibration plot: forecast probability versus observed home win rate"></div>
-    <details>
-      <summary>Calibration table</summary>
-      <div class="table-wrap">
-        <table class="data">
-          <thead><tr><th>Model</th><th>Forecast bin</th><th class="num">Games</th><th class="num">Avg. forecast</th><th class="num">Home won</th></tr></thead>
-          <tbody>
-            {% for row in backtest_calibration %}
-            <tr><td>{{ row.series }}</td><td>{{ row.bin }}</td><td class="num">{{ "{:,}".format(row.n) }}</td><td class="num">{{ row.mean_forecast | pct }}</td><td class="num">{{ row.observed_rate | pct }}</td></tr>
-            {% endfor %}
-          </tbody>
-        </table>
-      </div>
-    </details>
+  <section class="card" aria-labelledby="mkt-h">
+    <h2 id="mkt-h">This season vs. the betting market</h2>
+    <p class="sub">Each dot is a game: the market's chance for the home team (across) and ours (up), on the same scale.
+      On the diagonal, we agree. Below it, we gave the home team less than the market did.</p>
+    {% if charts.elo_vs_market %}
+    <div class="chart square" data-chart="spec-market" role="img" aria-label="Scatter plot of our home win probability against the market's, same scale on both axes"></div>
+    {% else %}<p class="empty">Appears once games have market odds.</p>{% endif %}
   </section>
-  {% if hybrid_backtest %}
-  <section class="card" aria-labelledby="hy-h">
-    <h2 id="hy-h">Backtest: the team + player challenger</h2>
-    <p class="sub">The same held-out seasons ({{ "{:,}".format(hybrid_backtest[0].n) }} games), every season predicted by a model
-      trained only on earlier ones. "Knows the lineup" also uses who's available on game day; it's
-      the version the injury reports could unlock. <a href="{{ repo_url }}/blob/main/docs/findings/hybrid-model.md">Full write-up</a>.</p>
+</div>
+
+{% if charts.market_gap %}
+<section class="card" aria-labelledby="gap-h">
+  <h2 id="gap-h">Where we disagree with the market</h2>
+  <p class="sub">The same games, as the gap between us and the market (percentage points for the home team). Above
+    zero, we liked the home team more. Filled dots are games we got right.</p>
+  <div class="chart" data-chart="spec-gap" role="img" aria-label="Gap between our probability and the market's for each game"></div>
+</section>
+{% endif %}
+
+<details class="card curious">
+  <summary><strong>For the curious: the full technical backtest</strong></summary>
+  <section aria-labelledby="bt-h" style="margin-top: 16px">
+    <h2 id="bt-h">Elo variants</h2>
+    <p class="sub">{{ backtest.candidates_tried }} settings tuned on {{ backtest.train_seasons[0] }}–{{ backtest.train_seasons[1] }}, scored once on the held-out seasons. The live model learns home-court advantage from recent games, which shrank after 2020. <a href="{{ repo_url }}/blob/main/docs/findings/elo-backtest.md">Write-up</a>.</p>
+    <div class="table-wrap">
+      <table class="data">
+        <thead><tr><th>Model</th><th class="num">Log-loss</th><th class="num">Brier</th><th class="num">Accuracy</th></tr></thead>
+        <tbody>
+          {% for row in backtest.holdout if row.model != "Elo, best fixed home court" %}
+          <tr><td>{{ row.model }}</td><td class="num">{{ row.log_loss | num(4) }}</td><td class="num">{{ row.brier | num(4) }}</td><td class="num">{{ row.accuracy | pct }}</td></tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+    <h2 style="margin-top: 18px">Log-loss by season</h2>
+    <div class="chart" data-chart="spec-by-season" role="img" aria-label="Log-loss by season"></div>
+    {% if hybrid_backtest %}
+    <h2 style="margin-top: 18px">Team + player models</h2>
+    <p class="sub"><a href="{{ repo_url }}/blob/main/docs/findings/hybrid-model.md">Write-up</a> · <a href="{{ repo_url }}/blob/main/docs/promotion-bar-hybrid.md">promotion rule</a></p>
     <div class="table-wrap">
       <table class="data">
         <thead><tr><th>Model</th><th class="num">Log-loss</th><th class="num">Brier</th><th class="num">Accuracy</th></tr></thead>
@@ -136,20 +136,13 @@
         </tbody>
       </table>
     </div>
+    {% endif %}
   </section>
-  {% endif %}
-
-  <section class="card" aria-labelledby="mkt-h">
-    <h2 id="mkt-h">This season: the model vs. the market</h2>
-    <p class="sub">Each dot is one game's home win probability. On the diagonal, the two agree.</p>
-    {% if charts.elo_vs_market %}
-    <div class="chart" data-chart="spec-market" role="img" aria-label="Scatter plot of model versus market home win probability for each predicted game"></div>
-    {% else %}<p class="empty">Appears once games have market odds.</p>{% endif %}
-  </section>
-</div>
+</details>
 {% endblock %}
 {% block specs %}
 <script type="application/json" id="spec-by-season">{{ charts.by_season | tojson }}</script>
 <script type="application/json" id="spec-calibration">{{ charts.calibration | tojson }}</script>
 {% if charts.elo_vs_market %}<script type="application/json" id="spec-market">{{ charts.elo_vs_market | tojson }}</script>{% endif %}
+{% if charts.market_gap %}<script type="application/json" id="spec-gap">{{ charts.market_gap | tojson }}</script>{% endif %}
 {% endblock %}

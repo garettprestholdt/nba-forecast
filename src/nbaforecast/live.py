@@ -433,6 +433,9 @@ def verify(root: Path, previous: Callable[[Path], str | None]) -> list[str]:
         (p, ("game_id", "player_id"))
         for p in sorted((store.root / "availability").glob("*-results.csv"))
     ]
+    results += [
+        (p, ("game_id", "player_id")) for p in sorted((store.root / "boxscores").glob("*.csv"))
+    ]
     for path, key in results:
         keys = [tuple(r[k] for k in key) for r in store.read(path)]
         if len(keys) != len(set(keys)):

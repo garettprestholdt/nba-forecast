@@ -130,6 +130,8 @@ No code lives here.
 - `projections/<season>.json`, `schedule/<season>.csv`: projected records and playoff odds from
   10,000 simulated seasons, and the schedule they were simulated from (rewritten daily)
 - `players/directory.json`: current rosters and injury status, for the site's player cards
+- `boxscores/<season>.csv`: **append-only.** Every player's box score this season
+- `players/careers.json`: season-by-season stat lines for current players (earlier seasons)
 
 A forecasting and calibration study, not betting advice.
 """
@@ -356,6 +358,15 @@ def _careers(args: argparse.Namespace) -> int:
     }
     out.write_text(json.dumps(payload, separators=(",", ":"), sort_keys=True) + "\n")
     print(f"Wrote {out}: {len(careers)} players, {out.stat().st_size // 1024} KB")
+    return 0
+
+
+def _season_start(args: argparse.Namespace) -> int:
+    from nbaforecast import seasonelo, warehouse
+
+    state = seasonelo.season_start_state(warehouse.load_games(), args.season)
+    path = seasonelo.write_start(state, args.season)
+    print(f"Wrote {path}: {len(state.ratings)} teams, home court {state.home_court():.1f}")
     return 0
 
 
@@ -642,6 +653,10 @@ def main(argv: list[str] | None = None) -> int:
     ca.add_argument("--last-season", default="2025-26", help="last completed season")
     ca.add_argument("--active-since", default="2023-24", help="keep players active since")
     ca.set_defaults(func=_careers)
+
+    ss = sub.add_parser("season-start", help="publish ratings at the start of a season (local)")
+    ss.add_argument("--season", default="2026-27")
+    ss.set_defaults(func=_season_start)
 
     ver = sub.add_parser("verify", help="check the data branch before committing")
     ver.add_argument("--data-dir", required=True, help="checkout of the data branch")
