@@ -73,9 +73,9 @@
       <span class="aside">Times CT · each team's chance to win</span>
     </div>
     {% if games %}
-    <div class="games">
+    <div class="games" data-slate="{{ (slate_date or '') | replace('-', '') }}">
       {% for m in games %}
-      <article class="matchup" id="g-{{ m.game_id }}" style="--home-l: {{ m.colors.home_l }}; --away-l: {{ m.colors.away_l }}; --home-d: {{ m.colors.home_d }}; --away-d: {{ m.colors.away_d }}" aria-label="{{ m.away.name }} at {{ m.home.name }}">
+      <article class="matchup{% if m.final %} is-final{% endif %}" id="g-{{ m.game_id }}" data-game="{{ m.game_id }}" data-tip="{{ m.tip_sort }}" style="--home-l: {{ m.colors.home_l }}; --away-l: {{ m.colors.away_l }}; --home-d: {{ m.colors.home_d }}; --away-d: {{ m.colors.away_d }}" aria-label="{{ m.away.name }} at {{ m.home.name }}">
         <div class="split" role="img" aria-label="{{ m.away.name }} {{ (1 - m.p_home) | pct }}, {{ m.home.name }} {{ m.p_home | pct }}">
           <span class="away" style="width: {{ ((1 - m.p_home) * 100) | round(1) }}%"></span>
           <span class="home" style="width: {{ (m.p_home * 100) | round(1) }}%"></span>
@@ -86,6 +86,7 @@
             {% if m.neutral %}<span class="badge final">Neutral site</span>{% endif %}
             {% if spotlight and m.game_id == spotlight.game_id %}<span class="badge spot">Game of the night</span>{% endif %}
             {% if m.final %}<span class="badge final">Final</span>{% endif %}
+            <span class="badge live" data-live-badge hidden></span>
           </span>
         </div>
         <div class="m-teams">
@@ -97,8 +98,8 @@
               <div class="nick"><a href="{{ team_href(team) }}">{{ team.short }}</a></div>
               <div class="meta">{{ team.record }}{% if team.rating is not none %} · <span title="Points per game better or worse than an average team">{{ team.rating | signed }} rating</span>{% endif %}</div>
             </div>
-            {% if m.final %}<div class="pct score">{{ score }}</div>
-            {% else %}<div class="pct {{ 'fav' if p >= 0.5 else 'dog' }}">{{ p | pct }}</div>{% endif %}
+            {% if m.final %}<div class="pct score" data-score="{{ side }}">{{ score }}</div>
+            {% else %}<div class="pct {{ 'fav' if p >= 0.5 else 'dog' }}" data-score="{{ side }}">{{ p | pct }}</div>{% endif %}
           </div>
           {% if side == "away" %}<div class="m-mid" aria-hidden="true">@</div>{% endif %}
           {% endfor %}
@@ -107,6 +108,7 @@
           <span><span class="k">Forecast (Elo):</span> <b>{{ m.favorite.abbr }} {{ [m.p_home, 1 - m.p_home] | max | pct }}</b></span>
           {% if m.p_hybrid is not none %}<span><span class="k">Team + player model:</span> <b>{{ m.favorite.abbr }} {{ (m.p_hybrid if m.favorite is sameas m.home else 1 - m.p_hybrid) | pct }}</b></span>{% endif %}
           {% if m.p_market is not none %}<span><span class="k">Betting market:</span> <b>{{ m.favorite.abbr }} {{ (m.p_market if m.favorite is sameas m.home else 1 - m.p_market) | pct }}</b></span>{% endif %}
+          <button type="button" class="boxbtn" data-box="{{ m.game_id }}"{% if not m.final %} hidden{% endif %}>Box score</button>
         </div>
         {% if m.home_lineup and m.away_lineup %}
         <div class="m-players">
@@ -208,4 +210,9 @@
     {% endif %}
   </aside>
 </div>
+<dialog id="box-dialog" class="player-dialog box-dialog" aria-labelledby="box-title">
+  <button class="pd-close" type="button" aria-label="Close">×</button>
+  <div class="box-body"></div>
+</dialog>
+<script src="assets/live.js?v={{ asset_version }}" defer></script>
 {% endblock %}
