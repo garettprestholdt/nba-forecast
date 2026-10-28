@@ -156,7 +156,7 @@ def features_for(
 
 def _stale(updated_at: str | None, today: date) -> bool:
     """True unless the file was written today or yesterday (UTC dates; the daily job runs at
-    14:00 UTC, so today's run writes today's date)."""
+    14:17 UTC, with backups at 16:17 and 18:17, so today's run writes today's date)."""
     if not updated_at:
         return True
     return (today - date.fromisoformat(updated_at[:10])).days > 1

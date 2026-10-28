@@ -2,10 +2,15 @@ name: Daily predictions
 
 on:
   schedule:
-    # 14:00 UTC = 10am ET (9am in winter): last night's games are final, today's haven't
-    # started. GitHub can start scheduled runs late; games that tip off first are skipped,
-    # never predicted late.
-    - cron: "0 14 * * *"
+    # 14:17 UTC = 10:17am ET (9:17 in winter): last night's games are final, today's haven't
+    # started. GitHub can start scheduled runs hours late (2026-10-28's began at 19:10 UTC), so
+    # two backups follow. The job is idempotent: a backup after a good run finds nothing new
+    # and finishes in about 30 seconds; after a missed or failed run it catches up. Games that
+    # have already tipped off are skipped, never predicted late. Off the hour, because GitHub
+    # delays top-of-the-hour schedules most.
+    - cron: "17 14 * * *"
+    - cron: "17 16 * * *" # backup
+    - cron: "17 18 * * *" # backup
   workflow_dispatch:
 
 permissions:
