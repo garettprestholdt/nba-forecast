@@ -124,7 +124,7 @@ def test_today_page_shows_slate_result_and_market(site):
     assert "Celtics" in html and "Nets" in html  # franchise 2 hosts franchise 17
     assert "6:30 PM CT" in html
     assert "Betting market:</span> <b>BOS 82%" in html  # the market's view of the favorite
-    assert '<div class="pct score">110</div>' in html  # final score replaces the percentage
+    assert '<div class="pct score" data-score="home">110</div>' in html  # final replaces %
     assert 'aria-label="Brooklyn Nets 13%, Boston Celtics 87%"' in html  # the split bar
 
 
@@ -278,3 +278,16 @@ def test_shadow_card_only_when_the_challenger_has_a_scorecard(data_dir, tmp_path
     assert "Challenger: team + player model" in html and "0.612" in html and "0.643" in html
     assert "promotion-bar-hybrid.md" in html and "in progress" in html
     path.unlink()
+
+
+def test_live_scores_are_wired_and_display_only(site):
+    index = (site / "index.html").read_text()
+    assert 'data-slate="20261027"' in index and 'data-game="g1"' in index
+    assert 'data-tip="2026-10-27T23:30:00+00:00"' in index
+    assert 'id="box-dialog"' in index and "assets/live.js" in index
+    assert 'data-score="home"' in index and 'data-box="g1"' in index
+    live_js = (site / "assets" / "live.js").read_text()
+    assert "45 * 1000" in live_js  # the scoreboard refresh the maintainer asked for
+    assert "This is ESPN's win probability, not ours." in live_js  # always labeled as ESPN's
+    assert "Win probability (ESPN)" in live_js
+    assert "fetch(" in live_js and "localStorage" not in live_js  # reads ESPN, writes nothing

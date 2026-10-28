@@ -58,6 +58,10 @@ See `docs/roadmap.md` for the phased plan.
 - Pages: Tonight, Standings & odds, Prediction history, The model, Play (The Rotation, a daily
   coaching puzzle in `static/rotation.js`), one `team-<abbr>.html` per team, and a player pop-up
   (`static/app.js`) that loads `players/<id>.json`. Every time shown on the site is Central.
+- Live games (`static/live.js`): the visitor's browser polls ESPN's scoreboard every 45 s for scores,
+  quarter and clock, and loads a game's box score, play-by-play and ESPN's in-game win probability
+  on request. Display only: never written to the data branch or used by our models, and ESPN's
+  win probability is always labeled as ESPN's.
 - Logos and headshots load from ESPN's image resizer at view time (never stored in the repo);
   `fan.USE_ESPN_IMAGES = False` falls back to monograms and initials. Team colors go through
   `fan.display_color`/`matchup_colors` (contrast against each theme's card, similar pairs

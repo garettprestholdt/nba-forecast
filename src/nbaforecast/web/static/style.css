@@ -109,6 +109,7 @@
 
 /* ---------- base ---------- */
 * { box-sizing: border-box; }
+[hidden] { display: none !important; } /* hidden always wins over a component's display */
 html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
 body {
   margin: 0;
@@ -523,6 +524,47 @@ details.curious > summary { font-size: 15px; color: var(--ink-primary); }
 .par { list-style: none; margin: 8px 0 0; padding: 0; font-size: 13.5px; }
 .par li { display: flex; justify-content: space-between; padding: 4px 0; border-top: 1px solid var(--line); }
 
+/* ---------- live scores (display only) ---------- */
+.badge.live { background: var(--surface-2); color: var(--ink-secondary); font-variant-numeric: tabular-nums; }
+.badge.live.on { background: color-mix(in srgb, var(--status-critical) 14%, transparent); color: var(--status-critical); }
+.badge.live.on::before, .dot { content: ""; display: inline-block; width: 7px; height: 7px; border-radius: 50%; background: var(--status-critical); margin-right: 5px; animation: pulse 1.6s ease-in-out infinite; vertical-align: 1px; }
+@keyframes pulse { 50% { opacity: 0.25; } }
+@media (prefers-reduced-motion: reduce) { .badge.live.on::before, .dot { animation: none; } }
+.matchup.is-live { box-shadow: 0 0 0 2px color-mix(in srgb, var(--status-critical) 45%, transparent), var(--shadow); }
+.boxbtn { margin-left: auto; font-family: var(--display); font-stretch: 85%; font-weight: 800; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; border: 1px solid var(--border); background: var(--surface-1); color: var(--ink-primary); border-radius: 7px; padding: 5px 10px; cursor: pointer; }
+.boxbtn:hover { border-color: var(--brand); color: var(--brand-ink); }
+.box-dialog .box-body { height: 100%; overflow-y: auto; }
+.box-head { background: var(--arena); color: var(--arena-ink); padding: 22px 28px 18px; }
+.box-head h2 { font-size: clamp(30px, 5vw, 48px); margin: 4px 0 6px; }
+.box-head .muted { color: var(--arena-ink-2); }
+.box-head .small { color: var(--arena-ink-2); margin: 0; }
+.box-teams { padding: 6px 28px 26px; }
+table.data tr.starter td:first-child { font-weight: 600; }
+table.data tr.totals td { font-weight: 700; border-top: 2px solid var(--baseline); }
+button.link { background: none; border: 0; padding: 0; font: inherit; color: inherit; cursor: pointer; text-decoration: underline; text-decoration-color: var(--line); text-underline-offset: 3px; }
+button.link:hover { text-decoration-color: currentColor; }
+
+.box-tabs { position: static; padding: 12px 28px 0; }
+.pbp-filter { display: flex; flex-wrap: wrap; gap: 6px; margin: 14px 0 10px; }
+.pbp-filter button { font: 600 12.5px var(--text); border: 1px solid var(--border); background: var(--surface-2); color: var(--ink-secondary); border-radius: 999px; padding: 4px 11px; cursor: pointer; }
+.pbp-filter button[aria-pressed="true"] { background: var(--brand); border-color: var(--brand); color: #fff; }
+.pbp { list-style: none; margin: 0; padding: 0; }
+.pbp li { display: grid; grid-template-columns: 74px 46px minmax(0, 1fr) 70px; gap: 10px; padding: 7px 0; border-top: 1px solid var(--line); font-size: 13.5px; align-items: baseline; }
+.pbp .t { color: var(--ink-muted); font-variant-numeric: tabular-nums; font-size: 12.5px; }
+.pbp .tm { font-weight: 700; font-size: 12px; color: var(--ink-secondary); }
+.pbp .sc { text-align: right; font-variant-numeric: tabular-nums; color: var(--ink-muted); }
+.pbp li.scoring .tx { font-weight: 600; }
+.pbp li.scoring .sc { color: var(--ink-primary); font-weight: 700; }
+.espn-note { background: var(--accent-wash); border-left: 3px solid var(--series-1); padding: 10px 12px; border-radius: 6px; font-size: 13.5px; margin: 16px 0 10px; }
+.wp-now { font-size: 15px; margin: 6px 0 8px; }
+svg.wp { width: 100%; height: auto; display: block; }
+svg.wp .qline { stroke: var(--grid); stroke-width: 1; }
+svg.wp .mid { stroke: var(--baseline); stroke-dasharray: 4 4; }
+svg.wp .wp-line { fill: none; stroke: var(--series-1); stroke-width: 2.5; stroke-linejoin: round; }
+svg.wp .wp-area { fill: var(--series-1); opacity: 0.12; }
+svg.wp .wp-dot { fill: var(--series-1); stroke: var(--surface-1); stroke-width: 2; }
+svg.wp text { fill: var(--ink-muted); font: 600 11px var(--text); }
+
 /* ---------- footer ---------- */
 footer { background: var(--arena); color: var(--arena-ink-2); font-size: 13px; padding: 28px 0 36px; }
 footer .wrap { display: grid; gap: 8px; }
@@ -543,6 +585,10 @@ footer .fine { font-size: 12px; color: #8d8a83; }
   .howto { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 @media (max-width: 640px) {
+  .box-tabs { padding: 10px 12px 0; }
+  .pbp li { grid-template-columns: 58px 36px minmax(0, 1fr) 58px; gap: 6px; font-size: 12.5px; }
+  .box-head { padding: 18px 16px 14px; }
+  .box-teams { padding: 4px 12px 20px; }
   .player-dialog { width: 100vw; height: 100dvh; border-radius: 0; }
   .pd-head { grid-template-columns: 1fr; padding: 18px 16px; gap: 6px; }
   .pd-photo { height: 110px; }
