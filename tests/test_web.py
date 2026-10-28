@@ -291,3 +291,52 @@ def test_live_scores_are_wired_and_display_only(site):
     assert "This is ESPN's win probability, not ours." in live_js  # always labeled as ESPN's
     assert "Win probability (ESPN)" in live_js
     assert "fetch(" in live_js and "localStorage" not in live_js  # reads ESPN, writes nothing
+
+
+def test_game_pages_and_player_profiles(data_dir, tmp_path_factory):
+    from datetime import UTC, datetime
+
+    from nbaforecast import court, impact
+    from nbaforecast.ingest import rosters, venues
+
+    rosters.write_directory(data_dir, {
+        "p1": {"name": "Big Wing", "short": "B. Wing", "position": "F", "jersey": "7",
+               "team_id": "2", "status": "", "dob": "1999-11-01", "height_in": "80",
+               "weight_lb": "225"},
+    }, datetime(2026, 10, 27, tzinfo=UTC))  # fmt: skip
+    rows = []
+    for team, opp, pid in (("2", "17", "p1"), ("17", "2", "x9")):
+        for z, (fga, fgm) in zip(
+            court.ZONES,
+            [(30, 18), (5, 2), (6, 3), (4, 1), (8, 3), (9, 4), (7, 2), (12, 4), (6, 2)],
+            strict=True,
+        ):
+            rows.append({"game_id": "g1", "game_date": "2026-10-27", "team_id": team,
+                         "opponent_id": opp, "player_id": pid, "zone": z, "fga": fga,
+                         "fgm": fgm})  # fmt: skip
+    live.Store.append(court.shots_path(data_dir, "2026-27"), court.SHOT_FIELDS, rows)
+    fit = {"lambda": 3000, "home_court": 1.3, "mean_ppp": 115, "prior": {}, "players": {
+        "p1": {"o": 1.0, "d": 2.0, "o_prior": 1.2, "d_prior": 2.4, "poss": 6000}}}  # fmt: skip
+    impact.write(data_dir, fit, ["2025-26", "2026-27"], datetime(2026, 10, 27, tzinfo=UTC))
+    venues.path(data_dir).parent.mkdir(parents=True, exist_ok=True)
+    venues.path(data_dir).write_text(json.dumps({"g1": {
+        "home_team_id": "2", "arena": "TD Garden", "city": "Boston", "state": "MA",
+        "country": "USA", "neutral": False}}))  # fmt: skip
+    out = tmp_path_factory.mktemp("site")
+    web.build(data_dir, out, published_dir=config.PUBLISHED_DIR)
+
+    index = (out / "index.html").read_text()
+    assert 'href="game-g1.html"' in index and 'href="game-g2.html"' in index
+    page = (out / "game-g1.html").read_text()
+    assert "TD Garden" in page and "Boston, MA" in page and "Shot tendencies" in page
+    chart = specs(page)["court-data"]
+    assert chart["seasons"] == ["2026-27"]
+    assert chart["teams"]["2"]["2026-27"]["off"]["inside"] == [30, 18]
+    assert chart["teams"]["2"]["2026-27"]["def"]["inside"] == [30, 18]  # what team 17 shot
+    assert "Venue not listed" in (out / "game-g2.html").read_text()  # no listing, no home arena
+    assert (out / "assets/court.js").exists()
+
+    p = json.loads((out / "players/p1.json").read_text())
+    assert p["bio"] == {"age": 26, "height": "6' 8\"", "weight": 225}
+    assert p["impact"]["d"] == impact.blend(fit["players"]["p1"])[1] == 2.2
+    assert p["shots"]["2026-27"]["inside"] == [30, 18] and p["league"]["2026-27"]["inside"][0] == 60

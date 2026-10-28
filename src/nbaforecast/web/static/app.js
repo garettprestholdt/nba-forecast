@@ -28,9 +28,57 @@
         <div class="pd-id">
           <p class="kicker">${team}${p.position ? " · " + esc(p.position) : ""}${p.jersey ? " · #" + esc(p.jersey) : ""}</p>
           <h2 id="pd-title" class="display">${esc(p.name)} ${status}</h2>
+          ${bio(p)}
           <div class="pd-chips">${chips.map(([k, v, n]) => `<div class="stat"><div class="k">${k}</div><div class="v">${v}</div><div class="n">${n}</div></div>`).join("")}</div>
         </div>
       </header>`;
+  }
+
+  function bio(p) {
+    const b = p.bio || {};
+    const bits = [b.age != null ? `Age <b>${b.age}</b>` : "", b.height ? `<b>${esc(b.height)}</b>` : "", b.weight ? `<b>${b.weight}</b> lb` : ""].filter(Boolean);
+    return bits.length ? `<p class="pd-bio">${bits.join(" · ")}</p>` : "";
+  }
+
+  // Profile tab: impact ratings (RAPM), defensive role, and where they shoot from.
+  function profile(p) {
+    const imp = p.impact;
+    const bar = (v) => {
+      const w = Math.min(50, (Math.abs(v) / 5) * 50);
+      return `<span class="imp-track"><span class="${v >= 0 ? "pos" : "neg"}" style="width:${w}%"></span></span>`;
+    };
+    const fmt = (v) => (Math.abs(v) < 0.05 ? "0.0" : (v > 0 ? "+" : "−") + Math.abs(v).toFixed(1));
+    const row = (label, v, pctl) => `<div class="imp-row"><span class="k">${label}</span>${bar(v)}<span class="v">${fmt(v)}</span>
+      ${pctl != null && !imp.small_sample ? `<span class="pctl">Better than ${pctl}% of regulars</span>` : ""}</div>`;
+    const left = imp
+      ? `<h3 class="pd-sub">Impact per 100 possessions</h3>
+         <div class="imp">${row("Offense", imp.o, imp.o_pct)}${row("Defense", imp.d, imp.d_pct)}${row("Overall", imp.total, null)}</div>
+         <p class="note">How many more points their team scores (offense) or fewer it allows (defense) with them on the floor, against an
+           average player, after accounting for the other nine players: regularized adjusted plus-minus (RAPM) from every lineup over
+           ${imp.small_sample ? `only ${imp.poss.toLocaleString()} possessions, so it leans hard toward average` : "the last two seasons"}.
+           The box score can't see most defense; this can. Plain fit ${fmt(imp.fits.plain[0])} / ${fmt(imp.fits.plain[1])},
+           with a box-score prior ${fmt(imp.fits.box_prior[0])} / ${fmt(imp.fits.box_prior[1])}; shown is a 40/60 blend.</p>`
+      : `<p class="empty">No lineup data for this player yet.</p>`;
+    const tags = (p.tags || []).length
+      ? `<div class="dtags">${p.tags.map((t) => `<span class="dtag">${esc(t)}</span>`).join("")}</div>`
+      : `<div class="dtags"><span class="dtag none">No defensive role tag</span></div>`;
+    const seasons = Object.keys(p.shots || {}).sort();
+    let shots = `<p class="empty">Not enough shots on record for a chart (60 in a season).</p>`;
+    if (seasons.length && window.NBAF && window.NBAF.court) {
+      shots = `<div class="shots-head"><h3 class="pd-sub" style="margin:0">Where they shoot</h3>${seasons.length > 1
+        ? `<div class="seg small" role="group" aria-label="Season">${seasons.map((s) => `<button type="button" data-pseason="${s}" aria-pressed="false">${s}</button>`).join("")}</div>` : ""}</div>
+        <div class="pd-court" data-seasons="${seasons.join(",")}"></div>${window.NBAF.courtLegend}`;
+    }
+    return `<div class="prof"><div>${left}<h3 class="pd-sub">Defensive role</h3>${tags}
+      <p class="note">From size and blocks / steals per 36 minutes, given only when the defense rating agrees.</p></div><div>${shots}</div></div>`;
+  }
+
+  function drawCourt(p, season) {
+    const box = body.querySelector(".pd-court");
+    if (!box) return;
+    box.innerHTML = window.NBAF.court(p.shots[season], p.league[season], `${p.name}, ${season}`) +
+      `<p class="court-sum">${window.NBAF.courtSummary(p.shots[season])}</p>`;
+    body.querySelectorAll("[data-pseason]").forEach((b) => b.setAttribute("aria-pressed", b.dataset.pseason === season));
   }
 
   function gameLog(p) {
@@ -91,7 +139,7 @@
   }
 
   function render(p) {
-    const tabs = [["season", "This season", gameLog(p)], ["career", "Career", career(p)], ["gmsc", "Game Score", gameScore(p)]];
+    const tabs = [["profile", "Profile", profile(p)], ["season", "This season", gameLog(p)], ["career", "Career", career(p)], ["gmsc", "Game Score", gameScore(p)]];
     body.innerHTML = header(p) + `
       <div class="pd-tabs" role="tablist">${tabs.map(([id, label], i) => `<button role="tab" id="t-${id}" aria-controls="p-${id}" aria-selected="${i === 0}" tabindex="${i === 0 ? 0 : -1}">${label}</button>`).join("")}</div>
       ${tabs.map(([id, , html], i) => `<section role="tabpanel" id="p-${id}" aria-labelledby="t-${id}"${i ? " hidden" : ""}>${html}</section>`).join("")}`;
@@ -105,6 +153,14 @@
         }
       });
     });
+    const seasons = Object.keys(p.shots || {}).sort();
+    if (seasons.length && window.NBAF && window.NBAF.court) {
+      // this season once there's a real sample, else whichever season has more shots
+      const shots = (k) => Object.values(p.shots[k]).reduce((a, z) => a + z[0], 0);
+      const latest = seasons[seasons.length - 1];
+      drawCourt(p, shots(latest) >= 200 ? latest : seasons.reduce((a, b) => (shots(b) > shots(a) ? b : a)));
+      body.querySelectorAll("[data-pseason]").forEach((b) => b.addEventListener("click", () => drawCourt(p, b.dataset.pseason)));
+    }
     function select(i) {
       buttons.forEach((b, j) => { b.setAttribute("aria-selected", i === j); b.tabIndex = i === j ? 0 : -1; });
       body.querySelectorAll('[role="tabpanel"]').forEach((panel, j) => { panel.hidden = i !== j; });

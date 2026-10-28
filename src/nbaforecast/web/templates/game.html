@@ -1,0 +1,112 @@
+{% extends "base.html" %}
+{% from "_macros.html" import logo, team_href, player %}
+{% set m = gp.m %}
+{% set v = gp.venue %}
+{% block title %}{{ m.away.short }} at {{ m.home.short }} · NBA Forecast{% endblock %}
+
+{% block hero %}
+<section class="hero game-hero matchup-vars" aria-labelledby="hero-h" style="--home-l: {{ m.colors.home_l }}; --away-l: {{ m.colors.away_l }}; --home-d: {{ m.colors.home_d }}; --away-d: {{ m.colors.away_d }}">
+  <div class="wrap">
+    <p class="kicker"><a href="index.html#g-{{ m.game_id }}">Tonight</a> · {{ m.tip }} CT{% if m.final %} · Final{% endif %}</p>
+    <h1 id="hero-h" class="sr-only">{{ m.away.name }} at {{ m.home.name }}</h1>
+    <div class="gh-teams">
+      {% for side, team, p, score in [("away", m.away, 1 - m.p_home, m.away_score), ("home", m.home, m.p_home, m.home_score)] %}
+      <div class="gh-side {{ side }}">
+        <a href="{{ team_href(team) }}" class="gh-logo" aria-label="{{ team.name }}: team page">{{ logo(team, on_dark=true) }}</a>
+        <div class="gh-name"><span class="city">{{ team.city }}</span><a href="{{ team_href(team) }}" class="display">{{ team.short }}</a>
+          <span class="meta">{{ team.record }}{% if team.rating is not none %} · {{ team.rating | signed }} rating{% endif %}</span></div>
+        <div class="gh-pct display">{% if m.final %}{{ score }}{% else %}{{ p | pct }}{% endif %}</div>
+      </div>
+      {% if side == "away" %}<div class="gh-at" aria-hidden="true">@</div>{% endif %}
+      {% endfor %}
+    </div>
+    <div class="split" role="img" aria-label="Forecast: {{ m.away.name }} {{ (1 - m.p_home) | pct }}, {{ m.home.name }} {{ m.p_home | pct }}">
+      <span class="away" style="width: {{ ((1 - m.p_home) * 100) | round(1) }}%"></span>
+      <span class="home" style="width: {{ (m.p_home * 100) | round(1) }}%"></span>
+    </div>
+    <div class="gh-where">
+      {% if v %}
+      <span class="pin" aria-hidden="true">📍</span>
+      <span><strong>{{ v.arena }}</strong>{% if v.city %} · {{ v.city }}{% if v.state %}, {{ v.state }}{% endif %}{% endif %}{% if v.neutral %} · <span class="badge final">Neutral site</span>{% endif %}{% if v.assumed %} <span class="muted">(home arena)</span>{% endif %}</span>
+      {% else %}
+      <span class="muted">Venue not listed yet.</span>
+      {% endif %}
+    </div>
+  </div>
+</section>
+{% endblock %}
+
+{% block content %}
+<div class="game-grid">
+  <section class="panel tape" aria-labelledby="tape-h">
+    <h3 id="tape-h">Team stats</h3>
+    {% if gp.tape %}
+    <p class="small">This season so far ({{ gp.games_played[m.away.team_id] }} and {{ gp.games_played[m.home.team_id] }} games). Small numbers are league ranks; the better side of each row is highlighted.</p>
+    <table class="tape-table">
+      <thead><tr><th class="a">{{ m.away.abbr }}</th><th></th><th class="h">{{ m.home.abbr }}</th></tr></thead>
+      <tbody>
+        {% for r in gp.tape %}
+        {% if loop.first or r.side != gp.tape[loop.index0 - 1].side %}<tr class="grp"><td colspan="3">{{ {"offense": "Offense", "defense": "Defense", "style": "Style"}[r.side] }}</td></tr>{% endif %}
+        <tr>
+          <td class="a{% if r.better == 'away' %} better{% endif %}"><b>{{ r.away | metric(r.format) }}</b>{% if r.away_rank %}<span class="rk">{{ r.away_rank }}</span>{% endif %}</td>
+          <td class="lb">{{ r.label }}</td>
+          <td class="h{% if r.better == 'home' %} better{% endif %}"><b>{{ r.home | metric(r.format) }}</b>{% if r.home_rank %}<span class="rk">{{ r.home_rank }}</span>{% endif %}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    {% else %}
+    <p class="empty">Team stats appear once both teams have played this season.</p>
+    {% endif %}
+  </section>
+
+  <section class="panel shots" aria-labelledby="shots-h">
+    <div class="shots-head">
+      <h3 id="shots-h">Shot tendencies</h3>
+      {% if gp.chart.seasons | length > 1 %}
+      <div class="seg" role="group" aria-label="Season">
+        {% for s in gp.chart.seasons %}<button type="button" data-season="{{ s }}" aria-pressed="false">{{ s }}</button>{% endfor %}
+      </div>
+      {% endif %}
+    </div>
+    {% if gp.chart.seasons %}
+    <div class="court-pair">
+      {% for team in [m.away, m.home] %}
+      <div class="court-team" data-court-team="{{ team.team_id }}" data-name="{{ team.name }}">
+        <div class="ct-head">
+          <h4>{{ team.short }}</h4>
+          <div class="seg small" role="group" aria-label="{{ team.short }}: whose shots">
+            <button type="button" data-mode="off" aria-pressed="true">Their shots</button>
+            <button type="button" data-mode="def" aria-pressed="false">Shots allowed</button>
+          </div>
+        </div>
+        <div class="court-box"></div>
+      </div>
+      {% endfor %}
+    </div>
+    <div class="court-legend">
+      <span><i class="sw hot"></i>Hotter than league average</span><span><i class="sw cold"></i>Colder</span>
+      <span><b>41%</b> FG% in the zone · <b>18%</b> share of shots</span><span>▲▼ more / fewer shots from there than the league</span>
+    </div>
+    <p class="note">From ESPN's shot locations. Everything inside 14 feet is one zone: where scorekeepers put a shot near the rim varies by arena, so finer splits mostly measure the arena.</p>
+    {% else %}
+    <p class="empty">No shot locations yet.</p>
+    {% endif %}
+  </section>
+
+  {% if m.home_lineup and m.away_lineup %}
+  <section class="matchup game-players" aria-label="Key players" style="--home-l: {{ m.colors.home_l }}; --away-l: {{ m.colors.away_l }}; --home-d: {{ m.colors.home_d }}; --away-d: {{ m.colors.away_d }}">
+    <div class="m-players">
+      {% for team, lineup, side in [(m.away, m.away_lineup, "away"), (m.home, m.home_lineup, "home")] %}
+      <div class="roster">
+        <h4>{{ team.abbr }} key players · projected Game Score <span class="hint">tap a player for their profile</span></h4>
+        <ul>{% for p in lineup.key %}{{ player(p, side) }}{% endfor %}</ul>
+        {% if lineup.out %}<ul class="outs">{% for p in lineup.out %}{{ player(p, side, out=true) }}{% endfor %}</ul>{% endif %}
+      </div>
+      {% endfor %}
+    </div>
+  </section>
+  {% endif %}
+</div>
+<script type="application/json" id="court-data">{{ gp.chart | tojson }}</script>
+{% endblock %}

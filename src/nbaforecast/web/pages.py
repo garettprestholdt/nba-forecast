@@ -12,8 +12,8 @@ from datetime import datetime
 from pathlib import Path
 from typing import Any
 
-from nbaforecast import availability, boxlog, metrics, projections, seasonelo, shadow
-from nbaforecast.ingest import rosters
+from nbaforecast import availability, boxlog, court, impact, metrics, projections, seasonelo, shadow
+from nbaforecast.ingest import rosters, venues
 from nbaforecast.live import Store
 from nbaforecast.models.elo import win_probability
 from nbaforecast.web import fan
@@ -32,6 +32,124 @@ def _abbr(team_map: dict[str, fan.Team], tid: str) -> str:
     return team_map[tid].abbr if tid in team_map else tid
 
 
+# --- shot zones and impact ratings (shared by player pop-ups and game pages) -------------
+MIN_CHART_SHOTS = 60  # a player's shot chart needs this many attempts in a season
+REGULAR_POSS = 3000  # impact percentiles compare players with at least this many possessions
+
+
+@dataclass
+class Court:
+    """Shot-zone totals for this season and last, and the impact ratings."""
+
+    seasons: list[str]  # [last, this]
+    players: dict[str, dict[str, dict]]  # season -> player -> zone -> [fga, fgm]
+    offense: dict[str, dict[str, dict]]  # season -> team -> zone -> [fga, fgm]
+    defense: dict[str, dict[str, dict]]  # season -> team -> zone -> [fga, fgm] allowed
+    league: dict[str, dict[str, list[int]]]  # season -> zone -> [fga, fgm]
+    impact: dict[str, dict[str, float]]  # player -> ratings (impact.fit)
+    d_sorted: list[float] = field(default_factory=list)  # regulars' blended defense
+    o_sorted: list[float] = field(default_factory=list)
+
+    def percentile(self, value: float, side: str) -> int | None:
+        pool = self.d_sorted if side == "d" else self.o_sorted
+        if not pool:
+            return None
+        below = sum(1 for v in pool if v < value)
+        return round(100 * below / len(pool))
+
+
+def load_court(root: Path, season: str) -> Court:
+    seasons = [court.previous_season(season), season]
+    players, offense, defense, league = {}, {}, {}, {}
+    for s in seasons:
+        rows = Store.read(court.shots_path(root, s))
+        players[s] = court.totals(rows, "player_id")
+        offense[s] = court.totals(rows, "team_id")
+        defense[s] = court.totals(rows, "opponent_id")
+        league[s] = court.league(rows)
+    ratings = (impact.load(root) or {}).get("players", {})
+    regulars = [impact.blend(r) for r in ratings.values() if r["poss"] >= REGULAR_POSS]
+    return Court(seasons, players, offense, defense, league, ratings,
+                 sorted(d for _, d in regulars), sorted(o for o, _ in regulars))  # fmt: skip
+
+
+def zone_payload(zones: dict[str, list[int]] | None) -> dict[str, list[int]] | None:
+    if not zones or not sum(v[0] for v in zones.values()):
+        return None
+    return {z: zones[z] for z in court.ZONES}
+
+
+def defense_tags(height_in: int | None, blk36: float, stl36: float, d: float | None) -> list[str]:
+    """What kind of defender a player is, from size and box-score rates, but only when their
+    impact rating agrees they're good at it: steals alone don't make a stopper (in 2024-26 data
+    a 6'8" star with plenty of steals rated league-average on defense)."""
+    if not height_in:
+        return []
+    good = d is None or d >= 0.5
+    tags = []
+    if height_in >= 82 and blk36 >= 1.5 and good:
+        tags.append("Rim protector")
+    if height_in <= 77 and stl36 >= 1.4 and good:
+        tags.append("Point-of-attack defender")
+    if 77 <= height_in <= 81 and stl36 + blk36 >= 2.0 and good:
+        tags.append("Wing stopper")
+    if 78 <= height_in <= 82 and stl36 >= 1.0 and blk36 >= 0.8 and (d is None or d >= 0):
+        tags.append("Switchable")
+    return tags
+
+
+def _age(dob: str, on: str) -> int | None:
+    try:
+        born, day = datetime.fromisoformat(dob).date(), datetime.fromisoformat(on).date()
+    except ValueError:
+        return None
+    return day.year - born.year - ((day.month, day.day) < (born.month, born.day))
+
+
+def _height(inches: str) -> str:
+    return f"{int(inches) // 12}' {int(inches) % 12}\"" if inches else ""
+
+
+def _profile(pid: str, info: dict, lines: list[dict], cd: Court, today: str) -> dict[str, Any]:
+    """Bio, impact ratings, defensive role tags and shot chart for one player's pop-up."""
+    g = sum(s["g"] for s in lines)
+    mins = sum(s["min"] * s["g"] for s in lines)
+    rate = (lambda k: 36 * sum(s[k] * s["g"] for s in lines) / mins) if mins else (lambda k: 0.0)
+    r = cd.impact.get(pid)
+    o, d = impact.blend(r) if r else (None, None)
+    small = r is not None and r["poss"] < REGULAR_POSS
+    height = int(info["height_in"]) if info.get("height_in") else None
+    charts = {}
+    for s in cd.seasons:
+        zones = cd.players.get(s, {}).get(pid)
+        if zones and sum(v[0] for v in zones.values()) >= MIN_CHART_SHOTS:
+            charts[s] = zone_payload(zones)
+    return {
+        "bio": {
+            "age": _age(info["dob"], today) if info.get("dob") else None,
+            "height": _height(info.get("height_in", "")),
+            "weight": int(info["weight_lb"]) if info.get("weight_lb") else None,
+        },
+        "impact": (
+            {
+                "o": o,
+                "d": d,
+                "total": round(o + d, 1),
+                "poss": r["poss"],
+                "small_sample": small,
+                "o_pct": cd.percentile(o, "o"),
+                "d_pct": cd.percentile(d, "d"),
+                "fits": {"plain": [r["o"], r["d"]], "box_prior": [r["o_prior"], r["d_prior"]]},
+            }
+            if r
+            else None
+        ),  # fmt: skip
+        "tags": defense_tags(height, rate("blk"), rate("stl"), d) if g else [],
+        "shots": charts or None,
+        "league": {s: zone_payload(cd.league[s]) for s in charts},
+    }
+
+
 # --- players ------------------------------------------------------------------------------
 GAME_SCORE_PARTS = [  # (label, weight, stat) — Hollinger's Game Score, term by term
     ("Points", 1.0, "pts"), ("Field goals made", 0.4, "fgm"), ("Field goal attempts", -0.7, "fga"),
@@ -42,11 +160,15 @@ GAME_SCORE_PARTS = [  # (label, weight, stat) — Hollinger's Game Score, term b
 
 
 def player_payloads(
-    root: Path, season: str, team_map: dict[str, fan.Team]
+    root: Path,
+    season: str,
+    team_map: dict[str, fan.Team],
+    cd: Court | None = None,
+    today: str = "",
 ) -> dict[str, dict[str, Any]]:
-    """One JSON payload per player on a current roster: profile, tonight's projection, this
-    season's game log and stat line, career lines, and their average Game Score broken into
-    its parts."""
+    """One JSON payload per player on a current roster: bio, tonight's projection, impact
+    ratings, defensive role, shot chart, this season's game log and stat line, career lines,
+    and their average Game Score broken into its parts."""
     directory = rosters.load_directory(root)
     if not directory:
         return {}
@@ -117,6 +239,9 @@ def player_payloads(
             "career": history,
             "gmsc_parts": _gmsc_parts(games),
         }
+        if cd is not None:
+            recent = [s for s in history if s["season"] in cd.seasons and s.get("g")]
+            out[pid].update(_profile(pid, info, recent, cd, today or season[:4] + "-12-01"))
     return out
 
 
@@ -450,3 +575,64 @@ def rotation_puzzle(
 
 def today_label(day: str | None) -> str:
     return datetime.fromisoformat(day).strftime("%b %-d") if day else ""
+
+
+# --- game pages ---------------------------------------------------------------------------
+TAPE = ["ortg", "efg", "tov", "oreb", "ftr", "three_rate",  # offense
+        "drtg", "opp_efg", "opp_tov", "dreb", "opp_ftr",  # defense
+        "pace"]  # fmt: skip
+
+
+def game_slug(game_id: str) -> str:
+    return f"game-{game_id}.html"
+
+
+def _venue(game_id: str, home_id: str, known: dict[str, dict]) -> dict | None:
+    """Where a game is played: ESPN's listing for it, else the home team's latest home arena."""
+    if game_id in known:
+        return known[game_id]
+    usual = [v for v in known.values() if v.get("home_team_id") == home_id and not v["neutral"]]
+    return {**usual[-1], "neutral": False, "assumed": True} if usual else None
+
+
+def game_pages(
+    root: Path, season: str, games: list, team_map: dict[str, fan.Team], cd: Court
+) -> list[dict[str, Any]]:
+    """One preview page per game on the slate: where it's played, the two teams' season stats
+    side by side, and each team's shot zones (their shots, and the shots they allow) this
+    season and last."""
+    stats = team_stats(root, season)
+    rk = ranks(stats) if len(stats) == len(team_map) else {}
+    known = venues.load(root)
+    meta = {m[0]: m for m in TEAM_METRICS}
+    out = []
+    for m in games:
+        away, home = m.away.team_id, m.home.team_id
+        tape = []
+        for key in TAPE:
+            if away not in stats or home not in stats:
+                break
+            _, label, side, higher, fmt = meta[key]
+            a, h = stats[away][key], stats[home][key]
+            better = None if key == "pace" or a == h else (
+                "away" if (a > h) == higher else "home")  # fmt: skip
+            tape.append({"key": key, "label": label, "side": side, "format": fmt, "away": a,
+                         "home": h, "away_rank": rk.get(away, {}).get(key),
+                         "home_rank": rk.get(home, {}).get(key), "better": better})  # fmt: skip
+        chart = {"seasons": [s for s in cd.seasons if cd.league[s] and sum(
+                    v[0] for v in cd.league[s].values())], "league": {}, "teams": {}}  # fmt: skip
+        for s in chart["seasons"]:
+            chart["league"][s] = zone_payload(cd.league[s])
+        for tid in (away, home):
+            chart["teams"][tid] = {
+                s: {"off": zone_payload(cd.offense[s].get(tid)),
+                    "def": zone_payload(cd.defense[s].get(tid))}
+                for s in chart["seasons"]
+            }  # fmt: skip
+        out.append({
+            "m": m, "slug": game_slug(m.game_id), "venue": _venue(m.game_id, home, known),
+            "games_played": {tid: int(stats[tid]["games"]) if tid in stats else 0
+                             for tid in (away, home)},
+            "tape": tape, "chart": chart,
+        })  # fmt: skip
+    return out

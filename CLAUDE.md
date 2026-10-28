@@ -52,6 +52,19 @@ See `docs/roadmap.md` for the phased plan.
   `nbaf box-sync` daily; catches up any missed game) and `players/careers.json` (season lines
   through the last completed season, `nbaf careers`, local, once per summer). Stat lines (TS%,
   eFG%, usage, per-36, Game Score) are computed only in `boxlog.season_line`.
+- Shot zones and lineup stints: `nbaf box-sync` also appends `shots/<season>.csv` (FGA/FGM per
+  game, player and zone) and `stints/<season>.csv` (points and possessions per set of ten players)
+  from the same ESPN summary (`court.py`; no extra requests). Nine zones; everything inside 14 ft
+  is one zone because the rim/paint split tracks each arena's scorekeeper, not the teams. A past
+  season (local, ~10 min): `uv run nbaf court-backfill --data-dir <data> --season 2025-26`.
+- Player impact: `nbaf impact` (daily) fits RAPM on this season's and last season's stints
+  (`impact.py`, ridge, plain and box-score-prior fits) into `players/impact.json`; the site shows
+  `impact.blend`. Defensive role tags (`pages.defense_tags`) need size, box rates *and* a
+  defense rating that agrees. Third-party metrics (DARKO, EPM, LEBRON) are not used: their terms
+  don't clearly allow republishing (EPM's forbid it).
+- Game pages: `game-<game_id>.html` for each game on the slate (venue from
+  `schedule/venues.json`, `nbaf venues` daily; team stats; shot charts in `static/court.js`).
+  Rosters (`players/directory.json`) carry date of birth, height and weight for the pop-up bio.
 - Team pages explain ratings by replaying this season from the published season-start ratings
   (`data/published/elo/season_start_<season>.json`, `nbaf season-start`, local, once per season);
   `seasonelo.check` confirms the replay lands on the live ratings.
