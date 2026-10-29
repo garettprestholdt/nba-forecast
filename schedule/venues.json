@@ -198,5 +198,61 @@
   "home_team_id": "22",
   "neutral": false,
   "state": "OR"
+ },
+ "401909896": {
+  "arena": "Delta Center",
+  "city": "Salt Lake City",
+  "country": "",
+  "home_team_id": "26",
+  "neutral": false,
+  "state": "UT"
+ },
+ "401909897": {
+  "arena": "Spectrum Center",
+  "city": "Charlotte",
+  "country": "",
+  "home_team_id": "30",
+  "neutral": false,
+  "state": "NC"
+ },
+ "401909898": {
+  "arena": "Smoothie King Center",
+  "city": "New Orleans",
+  "country": "",
+  "home_team_id": "3",
+  "neutral": false,
+  "state": "LA"
+ },
+ "401909899": {
+  "arena": "FedExForum",
+  "city": "Memphis",
+  "country": "",
+  "home_team_id": "29",
+  "neutral": false,
+  "state": "TN"
+ },
+ "401909900": {
+  "arena": "Fiserv Forum",
+  "city": "Milwaukee",
+  "country": "",
+  "home_team_id": "15",
+  "neutral": false,
+  "state": "WI"
+ },
+ "401909901": {
+  "arena": "Frost Bank Center",
+  "city": "San Antonio",
+  "country": "",
+  "home_team_id": "24",
+  "neutral": false,
+  "state": "TX"
+ },
+ "401909902": {
+  "arena": "Toyota Center (Houston)",
+  "city": "Houston",
+  "country": "",
+  "home_team_id": "10",
+  "neutral": false,
+  "state": "TX"
  }
 }

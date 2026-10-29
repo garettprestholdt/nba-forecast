@@ -55,3 +55,15 @@ game_id,season,season_type,game_date,tipoff_utc,home_team_id,away_team_id,home_t
 401909878,2026-27,regular_season,2026-10-27,2026-10-28T00:00:00+00:00,18,8,New York Knicks,Detroit Pistons,111,97,False
 401909879,2026-27,regular_season,2026-10-27,2026-10-28T00:00:00+00:00,24,23,San Antonio Spurs,Sacramento Kings,130,103,False
 401909880,2026-27,regular_season,2026-10-27,2026-10-28T03:00:00+00:00,13,22,Los Angeles Lakers,Portland Trail Blazers,129,136,False
+401909881,2026-27,regular_season,2026-10-28,2026-10-28T23:00:00+00:00,1,14,Atlanta Hawks,Miami Heat,117,129,False
+401909882,2026-27,regular_season,2026-10-28,2026-10-28T23:00:00+00:00,5,27,Cleveland Cavaliers,Washington Wizards,121,111,False
+401909883,2026-27,regular_season,2026-10-28,2026-10-28T23:00:00+00:00,8,30,Detroit Pistons,Charlotte Hornets,97,89,False
+401909884,2026-27,regular_season,2026-10-28,2026-10-28T23:00:00+00:00,11,20,Indiana Pacers,Philadelphia 76ers,109,114,False
+401909885,2026-27,regular_season,2026-10-28,2026-10-28T23:30:00+00:00,28,19,Toronto Raptors,Orlando Magic,129,99,False
+401909886,2026-27,regular_season,2026-10-28,2026-10-29T00:00:00+00:00,4,18,Chicago Bulls,New York Knicks,127,133,False
+401909887,2026-27,regular_season,2026-10-28,2026-10-29T00:00:00+00:00,15,10,Milwaukee Bucks,Houston Rockets,100,132,False
+401909888,2026-27,regular_season,2026-10-28,2026-10-29T00:00:00+00:00,16,9,Minnesota Timberwolves,Golden State Warriors,114,119,False
+401909889,2026-27,regular_season,2026-10-28,2026-10-29T00:00:00+00:00,3,7,New Orleans Pelicans,Denver Nuggets,91,104,False
+401909890,2026-27,regular_season,2026-10-28,2026-10-29T01:00:00+00:00,26,24,Utah Jazz,San Antonio Spurs,111,117,False
+401909891,2026-27,regular_season,2026-10-28,2026-10-29T01:30:00+00:00,6,25,Dallas Mavericks,Oklahoma City Thunder,120,96,False
+401909892,2026-27,regular_season,2026-10-28,2026-10-29T02:30:00+00:00,12,13,LA Clippers,Los Angeles Lakers,87,103,False
