@@ -1,4 +1,4 @@
-// Cold Case: a daily NBA whodunit. Today's file is picked from the Central-time date (the build
+// Cold Case: a daily NBA puzzle. Today's file is picked from the Central-time date (the build
 // publishes through tomorrow's, so it switches at midnight); ?case=N opens an earlier one.
 // Progress is kept per case in localStorage. The answer and the alibis sit in `sealed` (base64
 // JSON): not secret, just not in plain sight.
@@ -11,7 +11,7 @@
   const pad = (n) => String(n).padStart(3, "0");
   const QUARTER = { 1: "1st", 2: "2nd", 3: "3rd", 4: "4th" };
   const POS = { G: "Guard", F: "Forward", C: "Center" };
-  const RANKS = [[0, "Psychic"], [1, "Hall of Fame detective"], [2, "Lieutenant"], [3, "Detective"], [5, "Beat cop"], [7, "Mall security"], [99, "Desk duty"]];
+  const RANKS = [[0, "Perfect"], [1, "Excellent"], [2, "Great"], [3, "Good"], [99, "Solved"]]; // by hints + 2 x wrong guesses
 
   const centralToday = new Intl.DateTimeFormat("en-CA", { timeZone: "America/Chicago" }).format(new Date());
   const byDate = Math.floor((Date.parse(centralToday) - Date.parse(root.dataset.start)) / 864e5) + 1;
@@ -36,20 +36,22 @@
     const rank = () => RANKS.find(([k]) => st.clues + 2 * st.wrong.length <= k)[1];
 
     // ---- hero ------------------------------------------------------------------------------
-    document.getElementById("cc-no").textContent = `File #${pad(n)}`;
+    document.getElementById("cc-no").textContent = `Case #${pad(n)}`;
     const diff = document.getElementById("cc-diff");
     diff.hidden = false;
     diff.textContent = C.difficulty;
-    document.getElementById("hero-h").textContent = C.title;
+    // keep the score ("19–0") on one line
+    document.getElementById("hero-h").innerHTML = esc(C.title).replace(/(\d+–\d+)/, '<span class="nowrap">$1</span>');
     const q = QUARTER[set.period] ? `${QUARTER[set.period]} quarter` : "Overtime";
     const standing = set.before < 0 ? `trailed ${RD} by <strong>${-set.before}</strong>`
       : set.before > 0 ? `led ${RD} by <strong>${set.before}</strong>` : `were tied with ${RD}`;
     const dek = document.getElementById("cc-dek");
-    dek.innerHTML = `${q}, <strong>${esc(set.clock)}</strong> left, some night in the ${esc(set.season)} season. The
-      <strong>${esc(T.name)}</strong> ${standing}. ${set.run[0]}–${set.run[1]} later, they led by <strong>${set.after}</strong>.
-      Somebody did this. Six suspects, one culprit: find who broke the game open, with as few clues as you can.`;
+    const lead = set.after > 0 ? ` to lead by <strong>${set.after}</strong>` : "";
+    dek.innerHTML = `${q}, <strong>${esc(set.clock)}</strong> left, in a ${esc(set.season)} game. The
+      <strong>${esc(T.name)}</strong> ${standing}, then outscored them <strong>${set.run[0]}–${set.run[1]}</strong>${lead}.
+      One player did the most to make it happen. Work out who, using as few hints as you can.`;
 
-    // ---- exhibit A: the scene --------------------------------------------------------------
+    // ---- the play-by-play ---------------------------------------------------------------------
     const red = (t) => esc(t).replace(/█+/g, RD);
     document.getElementById("cc-log").innerHTML = C.scene.map((s) => `
       <li class="${s.us ? "us" : ""}${s.made ? "" : " miss"}"><span class="t">${esc(s.clock)}</span><span>${red(s.text)}</span>
@@ -61,21 +63,21 @@
       <polyline points="${margins.map((m, i) => `${(i / (margins.length - 1)) * 600},${y(m).toFixed(1)}`).join(" ")}" fill="none" stroke="var(--stamp)" stroke-width="2.5" vector-effect="non-scaling-stroke"/>
       <text x="4" y="${y(0) - 4}" font-size="11" fill="currentColor" opacity=".55">tied</text>`;
 
-    // ---- exhibit B: the suspects -----------------------------------------------------------
+    // ---- the players ------------------------------------------------------------------------
     const line = (s) => s ? `<b>${s.pts}</b> pts · <b>${s.reb}</b> reb · <b>${s.ast}</b> ast · <b>${s.stl}</b> stl · <b>${s.blk}</b> blk <span>(${s.g} games)</span>` : "No season line on file.";
     const mix = (m) => m ? `<div class="cc-mix">${[["inside", "Inside"], ["mid", "Midrange"], ["three", "Three"]].map(([z, l]) =>
       `<div><div class="bar"><span style="height:${Math.round(m[z] * 100)}%"></span></div>${l} ${Math.round(m[z] * 100)}%</div>`).join("")}</div>` : `<div class="meta">No shot profile on file.</div>`;
     const sus = document.getElementById("cc-sus");
     sus.innerHTML = C.suspects.map((p) => `
       <article class="cc-sus" data-id="${p.id}">
-        <span class="cc-stamp cleared">Cleared</span><span class="cc-stamp guilty">Guilty</span>
+        <span class="cc-stamp cleared">Ruled out</span><span class="cc-stamp guilty">Correct</span>
         <div class="top"><span class="cc-mug"><img src="https://a.espncdn.com/combiner/i?img=/i/headshots/nba/players/full/${p.id}.png&w=96&h=70" alt="" onerror="this.remove()"><span class="no">#${esc(p.jersey)}</span></span>
           <div><div class="nm">${esc(p.name)}</div><div class="meta">${POS[p.pos] || esc(p.pos)} · ${esc(p.ht)} · ${p.starter ? "starter" : "bench"}</div></div></div>
         <div class="line">That season: ${line(p.season)}</div>
         ${mix(p.shots)}
         <div class="night">That night: <span class="night-line">${RD}</span></div>
         <div class="alibi"></div>
-        <div class="cc-acts"><button type="button" class="cross" data-id="${p.id}">Cross off</button><button type="button" class="accuse" data-id="${p.id}">Accuse</button></div>
+        <div class="cc-acts"><button type="button" class="cross" data-id="${p.id}">Rule out</button><button type="button" class="accuse" data-id="${p.id}">Guess</button></div>
       </article>`).join("");
     sus.addEventListener("click", (e) => {
       const b = e.target.closest("button");
@@ -96,18 +98,18 @@
       document.getElementById("cc-n-wrong").textContent = st.wrong.length;
       document.getElementById("cc-rank").textContent = rank();
       document.getElementById("cc-clues").innerHTML = C.clues.map((c, i) => i < st.clues
-        ? `<li><span class="n">Clue ${i + 1} · ${c.kind === "witness" ? "witness" : "from the file"}</span>${esc(c.text)}</li>`
-        : i === st.clues && !st.solved ? `<li class="locked"><span class="n">Clue ${i + 1}</span>Sealed. Costs one point.</li>` : "").join("");
+        ? `<li><span class="n">Hint ${i + 1} · ${c.kind === "witness" ? "from the play-by-play" : "from the player cards"}</span>${esc(c.text)}</li>`
+        : i === st.clues && !st.solved ? `<li class="locked"><span class="n">Hint ${i + 1}</span>Hidden until you ask for it.</li>` : "").join("");
       const btn = document.getElementById("cc-clue");
       btn.disabled = st.solved || st.clues >= C.clues.length;
-      btn.textContent = st.solved ? "Case closed" : st.clues >= C.clues.length ? "No more clues" : "Request a clue";
+      btn.textContent = st.solved ? "Solved" : st.clues >= C.clues.length ? "No more hints" : "Get a hint";
       document.querySelectorAll(".cc-sus").forEach((el) => {
         const id = el.dataset.id, out = st.wrong.includes(id) || (st.solved && id !== S.culprit);
         el.classList.toggle("crossed", st.crossed.includes(id) && !out && !st.solved);
         el.classList.toggle("innocent", out);
         el.classList.toggle("guilty", st.solved && id === S.culprit);
         el.querySelector(".alibi").textContent = out ? S.alibis[id] || "" : "";
-        el.querySelector(".cross").textContent = st.crossed.includes(id) ? "Restore" : "Cross off";
+        el.querySelector(".cross").textContent = st.crossed.includes(id) ? "Bring back" : "Rule out";
         el.querySelectorAll("button").forEach((b) => { b.disabled = st.solved || st.wrong.includes(id); });
         if (st.solved) {
           const g = S.lines[id];
@@ -120,10 +122,13 @@
     function close() {
       const date = new Date(S.date + "T12:00:00").toLocaleDateString("en-US", { weekday: "long", month: "long", day: "numeric", year: "numeric" });
       const marks = "🟨".repeat(st.clues) + "🟥".repeat(st.wrong.length) + "🟩";
-      const share = `🕵️ Cold Case #${pad(n)} · ${C.title}\n${marks}\n${rank()} · ${st.clues} clue${st.clues === 1 ? "" : "s"}, ${st.wrong.length} wrong`;
+      const url = `${location.origin}${location.pathname}?case=${n}`;
+      const count = (k, one, many) => `${k} ${k === 1 ? one : many}`;
+      const share = `🏀 Cold Case #${pad(n)}: ${C.title}\n${marks} ${rank()}: ${count(st.clues, "hint", "hints")}, ` +
+        `${count(st.wrong.length, "wrong guess", "wrong guesses")}\n${url}`;
       const box = document.getElementById("cc-closed");
       box.hidden = false;
-      box.innerHTML = `<span class="big-stamp">Case closed</span>
+      box.innerHTML = `<span class="big-stamp">Solved</span>
         <p class="kicker" style="color:var(--stamp)">${esc(rank())}</p>
         <h3>${esc(S.name)}</h3>
         <p>${esc(date)}${S.venue ? " · " + esc(S.venue) : ""}<br>${esc(T.name)} ${S.final[0]}, ${esc(S.opp)} ${S.final[1]}</p>

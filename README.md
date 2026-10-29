@@ -46,12 +46,12 @@ What the research found, one write-up per decision:
   log and career.
 - **Teams:** rating history explained game by game, strengths and weaknesses, roster, full schedule.
 - **Standings and playoff odds** from 10,000 simulated seasons, **prediction history**, and
-  **Cold Case**, a daily whodunit built from real play-by-play.
+  **Cold Case**, a daily puzzle built from real play-by-play: name the player behind a scoring run.
 
 ## How it works
 ```mermaid
 flowchart LR
-  A[ESPN results,<br/>box scores, injuries] --> C[Daily job<br/>14:17 UTC + backups]
+  A[ESPN results,<br/>box scores, injuries] --> C[Daily job<br/>10am CT + backups]
   B[Betting odds] --> C
   C --> D[Ratings and<br/>predictions]
   D --> E[(data branch:<br/>append-only log)]

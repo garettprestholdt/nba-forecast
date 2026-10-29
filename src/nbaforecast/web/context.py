@@ -2,6 +2,7 @@
 
 import csv
 import json
+import math
 from dataclasses import dataclass
 from datetime import UTC, datetime
 from pathlib import Path
@@ -42,18 +43,16 @@ def _simple_backtest(summary: dict, published: Path) -> list[dict]:
     v2 = {r["model"]: r for r in json.loads(v2_path.read_text())["holdout"]} \
         if v2_path.exists() else {}  # fmt: skip
     plan = [
-        (rows.get("Coin flip"), "Coin flip", "Says 50% for every game.", "muted-row"),
+        (rows.get("Coin flip"), "Coin flip", "50% for every game.", "muted-row"),
         (rows.get("Previous season's home win rate"), "Always back the home team",
-         "Says the home team wins as often as home teams did last season.", "muted-row"),
-        (next((r for m, r in rows.items() if "adaptive" in m), None), "Our model (published)",
-         "Rates every team from its results and margins; the forecast on this site.", "ours"),
+         "Last season's home win rate for every game.", "muted-row"),
+        (next((r for m, r in rows.items() if "adaptive" in m), None), "Elo (published)",
+         "Team ratings from results and margins. The forecast on this site.", "ours"),
         (v2.get(shadow_v2.MODEL_NAME), "Player + injury model (challenger)",
-         "Our model plus each available player's production and offense and defense impact, "
-         "and the value of whoever is out. Running in shadow mode against the published model.",
-         ""),
+         "Elo plus each available player's production and impact, from the injury report.", ""),
         (v1.get("Hybrid, realistic"), "Team + player model (earlier challenger)",
-         "Our model plus every player's production and plus-minus, but blind to injuries. "
-         "Replaced by the player + injury model; not shown elsewhere.", "muted-row"),
+         "Elo plus player box scores, without injuries. Replaced by the current challenger.",
+         "muted-row"),
     ]  # fmt: skip
     return [{"name": name, "what": what, "cls": cls, "games": r["n"],
              "accuracy": r["accuracy"], "log_loss": r["log_loss"]}
@@ -176,19 +175,34 @@ def _injury_watch(store: Store, season: str, day: str | None) -> dict[str, Any] 
     return {"date": day, "calls": calls, "scorecard": card} if calls or card else None
 
 
-def _shadow(store: Store, season: str, published: Path) -> dict[str, Any] | None:
-    """The challenger shown on the site (hybrid v2) : its live scorecard and backtest. Hybrid v1
-    keeps logging in shadow (its pre-registered window runs on), but isn't shown."""
-    card_path = shadow_v2.scorecard_path(store.root, season)
-    backtest_path = published / "hybrid_v2" / "backtest.json"
-    if not card_path.exists() or not backtest_path.exists():
+def _race(store: Store, season: str) -> dict[str, Any] | None:
+    """Elo vs. the challenger vs. the betting market, on every finished game all three forecast
+    before tip-off (the same games for each, so the numbers compare directly)."""
+    results = {r["game_id"]: r for r in store.read(store.results_path(season))}
+    v2 = shadow_v2.load_log(store.root, season)
+    games = []
+    for e in store.read(store.predictions_path(season)):
+        r, c = results.get(e["game_id"]), v2.get(e["game_id"])
+        if r is None or c is None or not e["market_p_home"]:
+            continue
+        y = int(int(r["home_score"]) > int(r["away_score"]))
+        games.append((e["game_date"], y, float(e["p_home"]), float(c["p_home"]),
+                      float(e["market_p_home"])))  # fmt: skip
+    if not games:
         return None
-    holdout = {r["model"]: r for r in json.loads(backtest_path.read_text())["holdout"]}
-    return {
-        "card": json.loads(card_path.read_text()),
-        "backtest_challenger": holdout.get(shadow_v2.MODEL_NAME),
-        "backtest_elo": holdout.get("Elo, adaptive home court (published)"),
-    }
+    y = [g[1] for g in games]
+    rows = []
+    for name, i, cls in (("Elo (published)", 2, "s1"), ("Player + injury model", 3, "s3"),
+                         ("Betting market", 4, "s2")):  # fmt: skip
+        probs = [g[i] for g in games]
+        ll = metrics.log_loss(probs, y)
+        rows.append({"name": name, "cls": cls, "log_loss": ll,
+                     "right": sum((p >= 0.5) == bool(o) for p, o in zip(probs, y, strict=True)),
+                     "skill": max(0.0, 1 - ll / math.log(2))})  # fmt: skip
+    best = min(r["log_loss"] for r in rows)
+    for r in rows:
+        r["leads"] = r["log_loss"] == best
+    return {"games": len(games), "since": min(g[0] for g in games), "rows": rows}
 
 
 def _latest_recap(store: Store) -> dict[str, Any] | None:
@@ -324,7 +338,7 @@ def build_context(data_dir: Path, published_dir: Path | None = None) -> dict[str
         "challenger_backtest": (
             json.loads(v2_backtest.read_text())["holdout"] if v2_backtest.exists() else None
         ),
-        "shadow": _shadow(store, season, published),
+        "race": _race(store, season),
         "repo_url": REPO_URL,
         "season": season,
         "built_at": datetime.now(UTC).astimezone(CENTRAL).strftime("%b %-d, %Y %-I:%M %p CT"),

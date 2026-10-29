@@ -20,6 +20,7 @@
   --brand-wash: rgba(232, 80, 30, 0.1);
   --series-1: #2a78d6;
   --series-2: #eb6834;
+  --series-3: #7b52c7;
   --diverge-pos: #2a78d6;
   --diverge-neg: #e34948;
   --status-good: #0b8f0b;
@@ -55,6 +56,8 @@
     --brand-wash: rgba(255, 106, 61, 0.14);
     --series-1: #3987e5;
     --series-2: #d95926;
+  --series-3: #a78bfa;
+    --series-3: #a78bfa;
     --diverge-pos: #3987e5;
     --diverge-neg: #e66767;
     --status-good: #3fbf3f;
@@ -357,6 +360,7 @@ table.data td.num, table.data th.num { text-align: right; font-variant-numeric: 
 .key { display: inline-block; width: 10px; height: 10px; border-radius: 50%; margin-right: 6px; }
 .key.s1 { background: var(--series-1); }
 .key.s2 { background: var(--series-2); }
+.key.s3 { background: var(--series-3); }
 details { margin-top: 10px; }
 summary { cursor: pointer; color: var(--ink-secondary); font-size: 13.5px; }
 .chart { width: 100%; min-height: 120px; }
@@ -487,6 +491,26 @@ table.simple tr.muted-row td { color: var(--ink-muted); }
 table.simple tr.ours td { background: var(--brand-wash); }
 .chart.square { max-width: 360px; margin: 0 auto; }
 details.curious > summary { font-size: 15px; color: var(--ink-primary); }
+
+/* ---------- model race (Tonight) ---------- */
+.race { margin-top: 18px; }
+.race-head { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 4px 12px; margin-bottom: 8px; }
+.race-head h3 { margin: 0; }
+.race-list { list-style: none; margin: 0 0 8px; padding: 0; }
+.race-list li { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(0, 2fr) 52px 76px; gap: 10px; align-items: center; padding: 8px 0; border-top: 1px solid var(--line); font-size: 14px; }
+.race-list li.leads .nm { font-weight: 700; }
+.race-list .bar { height: 10px; background: var(--surface-2); border-radius: 5px; overflow: hidden; }
+.race-list .bar span { display: block; height: 100%; border-radius: 5px; }
+.race-list .bar .s1 { background: var(--series-1); }
+.race-list .bar .s2 { background: var(--series-2); }
+.race-list .bar .s3 { background: var(--series-3); }
+.race-list .v { text-align: right; font-weight: 700; font-variant-numeric: tabular-nums; }
+.race-list .acc { text-align: right; font-size: 12.5px; color: var(--ink-muted); font-variant-numeric: tabular-nums; }
+@media (max-width: 640px) {
+  .race-list li { grid-template-columns: minmax(0, 1fr) 52px; }
+  .race-list .bar { grid-column: 1 / -1; grid-row: 2; }
+  .race-list .acc { display: none; }
+}
 
 /* ---------- team schedule ---------- */
 .sched-head { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 14px; margin-bottom: 8px; }
@@ -772,3 +796,4 @@ footer .fine { font-size: 12px; color: #8d8a83; }
   .panel { padding: 14px 12px; }
   .section-head h2 { font-size: 22px; }
 }
+.nowrap { white-space: nowrap; }

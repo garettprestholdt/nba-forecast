@@ -10,11 +10,6 @@
       <h1 id="hero-h" class="display">
         {% if games %}{{ games | length }} game{{ "s" if games | length != 1 }}<br>tonight{% else %}No games<br>today{% endif %}
       </h1>
-      <p class="dek">
-        Win probabilities from a rating model that's scored in public. Every forecast is
-        <a href="{{ repo_url }}/tree/data">logged before tip-off</a>, so the record can't be edited
-        after the fact. Under each game: the players who'll decide it.
-      </p>
     </div>
     {% set s = spotlight %}
     {% if s %}
@@ -137,7 +132,28 @@
       times their usual minutes. Projections lean toward average for players with little NBA history.
       Injury status from ESPN.
     </p>
-    {% else %}
+    {% endif %}
+
+    {% if race %}
+    <section class="panel race" aria-labelledby="race-h">
+      <div class="race-head">
+        <h3 id="race-h">Model race</h3>
+        <span class="small">{{ race.games }} game{{ "s" if race.games != 1 }} since {{ race.since | nice_date }}</span>
+      </div>
+      <ol class="race-list">
+        {% for r in race.rows %}
+        <li class="{{ 'leads' if r.leads }}">
+          <span class="nm"><span class="key {{ r.cls }}"></span>{{ r.name }}{% if r.leads %} <span class="badge spot">Leading</span>{% endif %}</span>
+          <span class="bar" aria-hidden="true"><span class="{{ r.cls }}" style="width: {{ (r.skill * 100 / 0.35) | round(1) if r.skill < 0.35 else 100 }}%"></span></span>
+          <span class="v">{{ r.log_loss | num }}</span>
+          <span class="acc">{{ r.right }}/{{ race.games }} right</span>
+        </li>
+        {% endfor %}
+      </ol>
+      <p class="note">Log-loss on the same finished games; lower is better, a coin flip scores 0.693. Longer bars beat a coin flip by more. Elo is the published forecast; the player + injury model replaces it only if it wins over the full season, under a <a href="{{ repo_url }}/blob/main/docs/promotion-bar-hybrid-v2.md">rule set in advance</a>.</p>
+    </section>
+    {% endif %}
+    {% if not games %}
     <p class="empty">No games on the schedule today. Projections for the rest of the season are on
       <a href="standings.html">Standings &amp; odds</a>.</p>
     {% endif %}
@@ -166,28 +182,9 @@
         <div class="stat"><div class="k">Picks correct</div><div class="v">{{ (sc.elo.accuracy if sc and sc.elo else none) | pct }}</div><div class="n">{{ games_scored }} games scored</div></div>
         <div class="stat"><div class="k">Log-loss</div><div class="v">{{ (sc.elo.log_loss if sc and sc.elo else none) | num }}</div><div class="n">Coin flip: 0.693</div></div>
       </div>
-      {% set h2h = sc.head_to_head_with_market if sc else none %}
-      {% if h2h and h2h.games and h2h.elo and h2h.market %}
-      <p class="small" style="margin: 12px 0 6px">Against the betting market on the same {{ h2h.games }} games (log-loss; lower is better):</p>
-      <div class="stat-row">
-        <div class="stat"><div class="k"><span class="key s1"></span>Our model</div><div class="v">{{ h2h.elo.log_loss | num }}</div></div>
-        <div class="stat"><div class="k"><span class="key s2"></span>Market</div><div class="v">{{ h2h.market.log_loss | num }}</div></div>
-      </div>
-      {% endif %}
       <p class="note">Every prediction is scored once its game is final. Log-loss rewards confident correct forecasts and punishes confident misses. <a href="model.html">How it's tested →</a></p>
     </section>
 
-    {% if shadow %}
-    {% set hc = shadow.card %}
-    <section class="panel" aria-labelledby="shadow-h">
-      <h3 id="shadow-h">Challenger: player + injury model</h3>
-      <p class="small">Adds each player's production and offense and defense impact, for the players on tonight's injury report as available. It's logged before tip-off next to the published forecast and takes over only if it beats it this season, by a <a href="{{ repo_url }}/blob/main/docs/promotion-bar-hybrid-v2.md">rule set in advance</a>.</p>
-      <div class="stat-row">
-        <div class="stat"><div class="k">Log-loss, same games</div><div class="v">{{ (hc.hybrid.log_loss if hc.hybrid else none) | num }}</div><div class="n">Published model: {{ (hc.elo.log_loss if hc.elo else none) | num }}</div></div>
-        <div class="stat"><div class="k">Games scored</div><div class="v">{{ hc.games_scored }}</div><div class="n">Status: {{ hc.promotion_check.status if hc.promotion_check else "–" }}</div></div>
-      </div>
-    </section>
-    {% endif %}
 
     {% set iw = injury_watch %}
     {% if iw and iw.calls %}

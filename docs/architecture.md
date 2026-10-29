@@ -15,7 +15,7 @@ flowchart LR
     dbt --> research[research/<br/>walk-forward backtests]
     research --> published[(data/published/<br/>on main)]
   end
-  subgraph daily["Daily GitHub Actions (14:17 UTC, backups 16:17 and 18:17)"]
+  subgraph daily["Daily GitHub Actions (10am CT; backups at 11:30 and 1pm if needed)"]
     pipeline[pipeline/ + agents/] --> databranch[(data branch<br/>append-only logs)]
   end
   ingest --> pipeline
@@ -55,7 +55,7 @@ src/nbaforecast/
 ├── research/          local backtests that choose models and write data/published/
 │   backtest (Elo) · challenger (Kalman, rest) · hybrid_backtest (v1) · impact_backtest (v2)
 │   rapm_walk (leak-free RAPM snapshots)
-├── games/             coldcase (the daily whodunit's case generator)
+├── games/             coldcase (case generator for the Cold Case puzzle)
 ├── web/               static site: build · context · charts · filters · fan (teams, colors)
 │   players · teams · games · history · play · links · templates/ · static/
 └── cli/               `nbaf`: data · research · daily · agents · site (one module per area)
