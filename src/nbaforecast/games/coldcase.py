@@ -1,20 +1,19 @@
-"""Cold Case: a daily NBA whodunit built from real play-by-play.
+"""Cold Case: a daily NBA puzzle built from real play-by-play.
 
-Each case is a real scoring run (14+ points while allowing 6 or fewer) with one clear culprit:
-the player who produced the most of it (points + 2 per assist), with 40%+ of the run's points
-produced and a 4+ lead on the next teammate. The player sees:
+Each case is a real scoring run (14+ points while allowing 6 or fewer) and asks which player
+drove it: the one who produced the most of it (points + 2 per assist), with 40%+ of the run's
+points produced and a 4+ lead on the next teammate. The page shows:
 
-- the scene: the run's play-by-play with every name blacked out (shot types, distances,
-  assists and steals left in) and the score flow;
-- six suspects (the team's six biggest minute-getters that night, culprit included), each
-  with a file: position, height, jersey, starter or bench, that season's per-game line and
-  where they took their shots;
-- clues on request: true facts about the culprit from the play-by-play and the files, one
-  family each (height, assists in the run, an alibi...), scheduled so every clue clears at
-  least one more suspect and together they leave exactly one.
+- the play-by-play of the run with every name hidden (shot types, distances, assists and steals
+  left in) and the score flow;
+- the six players who played the most that night for that team (the answer among them), each
+  with position, height, jersey, starter or bench, that season's per-game line and shot mix;
+- hints on request: true facts about the answer from the player files, or a named player ruled
+  out with what he did in the run; scheduled so each hint rules out at least one more player and
+  together they leave exactly one.
 
-Date, opponent, arena, final score, everyone's line that night and the alibis are "sealed"
-(base64 JSON): enough that the answer isn't sitting in plain text, not real secrecy.
+Date, opponent, arena, final score, everyone's line that night and why each wrong guess was
+wrong are "sealed" (base64 JSON): out of plain sight, not secret.
 
 Cases are generated locally once (`nbaf coldcase-bank`) into `data/published/coldcase/`; the
 site publishes one per day starting at `START` (Central time), never ahead of time.
@@ -195,35 +194,35 @@ def _clue_candidates(c: dict, others: list[dict]) -> list[dict]:
     f = c["run"]
     pos = {"G": "guard", "F": "forward", "C": "center"}.get(c["pos"])
     if pos:
-        add(f"The culprit is listed as a {pos}.", "file", lambda s: s["pos"] == c["pos"])
+        add(f"The player is listed as a {pos}.", "file", lambda s: s["pos"] == c["pos"])
     if c["inches"]:
         for cut in range(72, 87):
             label = f"{cut // 12}'{cut % 12}\""
             if c["inches"] >= cut:
-                add(f"The culprit stands {label} or taller.", "file",
+                add(f"The player stands {label} or taller.", "file",
                     lambda s, x=cut: (s["inches"] or 0) >= x, "height")  # fmt: skip
             else:
-                add(f"The culprit is shorter than {label}.", "file",
+                add(f"The player is shorter than {label}.", "file",
                     lambda s, x=cut: (s["inches"] or 99) < x, "height")  # fmt: skip
     if f["starter"]:
-        add("The culprit was in the starting five.", "file", lambda s: s["run"]["starter"])
+        add("The player was in the starting five.", "file", lambda s: s["run"]["starter"])
     else:
-        add("The culprit came off the bench.", "file", lambda s: not s["run"]["starter"])
+        add("The player came off the bench.", "file", lambda s: not s["run"]["starter"])
     if c["jersey"].isdigit():
         odd = int(c["jersey"]) % 2
-        add(f"The culprit's jersey number is {'odd' if odd else 'even'}.", "file",
+        add(f"The player's jersey number is {'odd' if odd else 'even'}.", "file",
             lambda s: s["jersey"].isdigit() and int(s["jersey"]) % 2 == odd)  # fmt: skip
     if c.get("season"):
         ppg = c["season"]["pts"]
         cut = 10 if ppg >= 10 else None
         if cut:
-            add("The culprit averaged double figures that season.", "file",
+            add("The player averaged double figures that season.", "file",
                 lambda s: (s.get("season") or {}).get("pts", 0) >= 10)  # fmt: skip
         else:
-            add("The culprit averaged single digits that season.", "file",
+            add("The player averaged single digits that season.", "file",
                 lambda s: (s.get("season") or {}).get("pts", 99) < 10)  # fmt: skip
     for o in others:  # witnesses: each clears one named suspect, with the tape as the reason
-        add(f"{o['name']} is in the clear: {_reason(o['run'])}.", "witness",
+        add(f"Ruled out: {o['name']} ({_reason(o['run'])}).", "witness",
             lambda s, x=o["id"]: s["id"] != x, f"witness-{o['id']}")  # fmt: skip
     return out
 
@@ -265,13 +264,11 @@ def _redact(text: str, names: list[str]) -> str:
     return text
 
 
-def _title(run: dict, before: int, after: int, period: int) -> str:
-    score = f"{run['for']}–{run['against']}"
-    if before < 0 < after and period >= 4:
-        return f"The fourth-quarter {score} heist"
-    if before < 0 < after:
-        return f"The {score} turnaround"
-    return f"The {score} job"
+def _title(run: dict, team_name: str) -> str:
+    """The case's question, e.g. "Who drove the Hawks' 24–2 run?"."""
+    nick = team_name.split()[-1]
+    owner = f"{nick}'" if nick.endswith("s") else f"{nick}'s"
+    return f"Who drove the {owner} {run['for']}–{run['against']} run?"
 
 
 def seal(obj: Any) -> str:
@@ -371,7 +368,7 @@ def build_case(
     )
     return {
         "game_id": str(game["game_id"]),
-        "title": _title(run, before, after, first["period"]),
+        "title": _title(run, team_name),
         "team": {
             "id": team,
             "name": team_name,
@@ -449,7 +446,8 @@ def _reason(f: dict) -> str:
 
 
 def _alibi(f: dict) -> str:
-    return f"Alibi checks out: {_reason(f)}."
+    reason = _reason(f)
+    return f"Ruled out: {reason[0].upper()}{reason[1:]}."
 
 
 def _story(c, team_name, opp_name, run, before, first, last, plays_of, team) -> str:

@@ -2,15 +2,14 @@ name: Daily predictions
 
 on:
   schedule:
-    # 14:17 UTC = 10:17am ET (9:17 in winter): last night's games are final, today's haven't
-    # started. GitHub can start scheduled runs hours late (2026-10-28's began at 19:10 UTC), so
-    # two backups follow. The job is idempotent: a backup after a good run finds nothing new
-    # and finishes in about 30 seconds; after a missed or failed run it catches up. Games that
-    # have already tipped off are skipped, never predicted late. Off the hour, because GitHub
-    # delays top-of-the-hour schedules most.
-    - cron: "17 14 * * *"
-    - cron: "17 16 * * *" # backup
-    - cron: "17 18 * * *" # backup
+    # 10:05am Central (16:05 UTC; GitHub schedules in UTC, so it's 11:05 CDT before the clocks
+    # change in November and after they change in March). Last night's games are final and
+    # today's haven't started. GitHub can start scheduled runs hours late, so two backups follow
+    # at 1.5-hour steps; the gate job below skips a backup if a run already succeeded today.
+    # Off the hour, because GitHub delays top-of-the-hour schedules most.
+    - cron: "5 16 * * *"
+    - cron: "35 17 * * *" # backup
+    - cron: "5 19 * * *" # backup
   workflow_dispatch:
 
 permissions:
@@ -21,7 +20,32 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
+  # A scheduled run goes ahead only if no daily run has succeeded yet today (Central time), so
+  # the backups do nothing once the main run (or a manual one) has worked. Manual runs always go.
+  gate:
+    runs-on: ubuntu-latest
+    permissions:
+      actions: read
+    outputs:
+      run: ${{ steps.check.outputs.run }}
+    steps:
+      - id: check
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+        run: |
+          if [ "${{ github.event_name }}" != "schedule" ]; then
+            echo "run=true" >> "$GITHUB_OUTPUT"; exit 0
+          fi
+          since=$(TZ=America/Chicago date -d 'today 00:00' --iso-8601=seconds)
+          done=$(gh run list --workflow daily.yml --status success --created ">=$since" \
+                   --json databaseId --jq 'length')
+          echo "successful daily runs since $since: $done"
+          if [ "$done" -gt 0 ]; then echo "run=false" >> "$GITHUB_OUTPUT"; else echo "run=true" >> "$GITHUB_OUTPUT"; fi
+
   daily:
+    needs: gate
+    if: needs.gate.outputs.run == 'true'
     runs-on: ubuntu-latest
     env:
       RECAP_MODEL: claude-sonnet-5-5

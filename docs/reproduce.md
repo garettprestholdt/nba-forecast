@@ -33,8 +33,8 @@ finished seasons and cached games are skipped.
   shows up as a failing data test, not a silent change.
 
 ## The live system
-The daily job (`.github/workflows/daily.yml`, 14:17 UTC with backups at 16:17 and 18:17 in
-case GitHub starts it late) runs the same code against a checkout
+The daily job (`.github/workflows/daily.yml`, 10am Central, with backups at 11:30 and 1pm that
+run only if no run has succeeded that day) runs the same code against a checkout
 of the `data` branch: `nbaf daily` (results, Elo, predictions), `shadow` and `shadow-v2` (the
 challenger models), `box-sync`, `impact`, `venues`, `project`, `rosters`, the agent jobs, and
 `verify` before anything is committed. Any of these can be run locally against a checkout:

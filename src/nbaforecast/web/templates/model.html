@@ -21,47 +21,46 @@
 {% block content %}
 <div class="howto">
   <section class="card prose" aria-labelledby="how1-h">
-    <p class="kicker">1 · Ratings</p>
-    <h2 id="how1-h">Every team gets a number</h2>
-    <p class="sub">An Elo rating, updated after every game: beat a good team by a lot and it goes up a
-      lot. A team's <strong>rating in points</strong> is how much better than an average team it is,
-      per game. Home court is learned from recent games (worth {{ "%.1f" | format(home_court_points) }}
-      points today), and ratings drift {{ "%.0f" | format((1 - model_params.carryover) * 100) }}% back
-      toward average each summer.</p>
+    <p class="kicker">1 · Published forecast</p>
+    <h2 id="how1-h">Team ratings (Elo)</h2>
+    <p class="sub">Each team has a rating that changes after every game, more when the result is a
+      surprise or the margin is large. Ratings are shown in points: how much better than an average
+      team on a neutral floor. Home court is estimated from recent seasons (currently
+      {{ "%.1f" | format(home_court_points) }} points), and each summer ratings move
+      {{ "%.0f" | format((1 - model_params.carryover) * 100) }}% back toward average.</p>
   </section>
   <section class="card prose" aria-labelledby="how2-h">
-    <p class="kicker">2 · Players</p>
-    <h2 id="how2-h">A challenger that knows who's playing</h2>
-    <p class="sub">A second model adds the players: each one's production (Game Score per minute)
-      and offense and defense impact (how the score moves with them on the floor, adjusted for
-      the other nine), weighted by who's available tonight on the morning injury report, plus the
-      value of whoever is out. In testing it beat the published model; it now runs in
-      <strong>shadow mode</strong> and takes over only if it wins this season by a
-      <a href="{{ repo_url }}/blob/main/docs/promotion-bar-hybrid-v2.md">rule set in advance</a>.</p>
+    <p class="kicker">2 · Challenger</p>
+    <h2 id="how2-h">Players and injuries</h2>
+    <p class="sub">The challenger starts from the same ratings and adds the players: each one's
+      box-score production and offensive and defensive impact, counting only players listed as
+      available on that morning's injury report. It forecasts every game next to Elo, and replaces
+      it only if it scores better over the full season, under a
+      <a href="{{ repo_url }}/blob/main/docs/promotion-bar-hybrid-v2.md">rule written before its first forecast</a>.</p>
   </section>
   <section class="card prose" aria-labelledby="how3-h">
-    <p class="kicker">3 · Scored in public</p>
-    <h2 id="how3-h">No editing the past</h2>
-    <p class="sub">Every morning a scheduled job adds last night's results, updates the ratings, and
-      logs today's forecasts to an <a href="{{ repo_url }}/tree/data">append-only record</a>. A check
-      blocks the save unless every forecast is new and made before tip-off. Each one is scored
-      once its game is final, next to the betting market's.</p>
+    <p class="kicker">3 · Record</p>
+    <h2 id="how3-h">Logged before tip-off</h2>
+    <p class="sub">Each morning a scheduled job records last night's results, updates the ratings and
+      logs today's forecasts with a timestamp. The <a href="{{ repo_url }}/tree/data">log</a> is
+      append-only: a check rejects any change to a past forecast and any forecast made after
+      tip-off. Finished games are scored against the betting market.</p>
   </section>
   <section class="card prose" aria-labelledby="how4-h">
-    <p class="kicker">Glossary</p>
+    <p class="kicker">4 · Terms</p>
     <h2 id="how4-h">Reading the numbers</h2>
-    <p class="sub"><strong>Log-loss:</strong> the main score. It rewards confident correct forecasts and
-      punishes confident misses; lower is better, a coin flip scores 0.693.
-      <strong>Calibration:</strong> do 70% forecasts win 70% of the time?
-      <strong>Game Score:</strong> John Hollinger's one-number box score, about 10 for an average game.</p>
+    <p class="sub"><strong>Log-loss</strong> is the main accuracy measure. Lower is better, a coin flip
+      scores 0.693, and confident misses cost the most. <strong>Calibration</strong> is whether 70%
+      forecasts win about 70% of the time. <strong>Game Score</strong> sums up a player's box score in
+      one number; about 10 is an average game.</p>
   </section>
 </div>
 
 <section class="card" aria-labelledby="good-h">
-  <h2 id="good-h">Is it any good?</h2>
-  <p class="sub">Before going live, every approach below predicted six full seasons ({{ "{:,}".format(simple_backtest[0].games) }} games,
-    2020-21 to 2025-26) using only what it could have known at the time. "Picks right" is how often the favorite won.
-    Log-loss also rewards being confident when right and humble when unsure; <strong>lower is better</strong>.</p>
+  <h2 id="good-h">How it tested</h2>
+  <p class="sub">Each approach below forecast six full seasons ({{ "{:,}".format(simple_backtest[0].games) }} games,
+    2020-21 to 2025-26) using only information available before each game. "Picks right" is how often its
+    favorite won; log-loss also accounts for how confident each forecast was (<strong>lower is better</strong>).</p>
   <div class="table-wrap">
     <table class="data simple">
       <thead><tr><th>Approach</th><th>What it does</th><th class="num">Picks right</th><th class="num">Log-loss</th></tr></thead>
@@ -75,9 +74,8 @@
       </tbody>
     </table>
   </div>
-  <p class="sub" style="margin-top: 12px">In plain terms: the model picks the winner about two games in three, far better
-    than guessing or always backing the home team. The challenger adds the players and tonight's injury report,
-    and it did better again in testing. Whether it keeps doing better this season decides if it takes over.</p>
+  <p class="sub" style="margin-top: 12px">The published model picks the winner about two games in three. The
+    challenger did better in testing; this season's results decide whether it replaces Elo.</p>
 </section>
 
 <div class="grid-2">

@@ -5,9 +5,9 @@
 {% block hero %}
 <section class="hero" aria-labelledby="hero-h">
   <div class="wrap">
-    <p class="kicker">Cold Case · a daily NBA whodunit · <span id="cc-no">File</span><span class="diff" id="cc-diff" hidden></span></p>
-    <h1 id="hero-h" class="display">{% if coldcase %}Loading the file…{% else %}Cold Case{% endif %}</h1>
-    <p class="dek" id="cc-dek">{% if not coldcase %}The first case file opens soon.{% endif %}</p>
+    <p class="kicker">Cold Case · a daily NBA puzzle · <span id="cc-no">Case</span><span class="diff" id="cc-diff" hidden></span></p>
+    <h1 id="hero-h" class="display">{% if coldcase %}Loading today's case…{% else %}Cold Case{% endif %}</h1>
+    <p class="dek" id="cc-dek">{% if not coldcase %}The first case opens soon.{% endif %}</p>
   </div>
 </section>
 {% endblock %}
@@ -16,45 +16,47 @@
 {% if coldcase %}
 <div class="cold" id="cold" data-today="{{ coldcase.today }}" data-start="{{ coldcase.start }}">
   <div class="cc-main">
-    <section class="cc-file" data-tab="Exhibit A" aria-labelledby="scene-h">
-      <h3 id="scene-h">The scene</h3>
-      <p class="sub">The real play-by-play of the run, every name blacked out. Their possessions are plain; ours are marked.</p>
+    <section class="cc-file" data-tab="The run" aria-labelledby="scene-h">
+      <h3 id="scene-h">Play-by-play</h3>
+      <p class="sub">Every play of the run, with names hidden. The highlighted rows are the team on the run.</p>
       <svg class="cc-flow" id="cc-flow" viewBox="0 0 600 70" preserveAspectRatio="none" role="img" aria-label="Score margin through the run"></svg>
       <ol class="cc-log cc-type" id="cc-log"></ol>
     </section>
-    <section class="cc-file" data-tab="Exhibit B" aria-labelledby="sus-h">
-      <h3 id="sus-h">The suspects</h3>
-      <p class="sub">Six players who played that night. One of them broke the game open: the most points and assists in the run.
-        Their files show that season. <b>Cross off</b> anyone you've ruled out; <b>Accuse</b> when you're sure. A wrong accusation costs two.</p>
+    <section class="cc-file" data-tab="The players" aria-labelledby="sus-h">
+      <h3 id="sus-h">Who drove it?</h3>
+      <p class="sub">The six players who played the most that night, with their numbers from that season. The answer had
+        the most points plus assists during the run. <b>Rule out</b> players as you go and <b>guess</b> when you're
+        ready; a wrong guess counts as two hints.</p>
       <div class="cc-sus-grid" id="cc-sus"></div>
     </section>
   </div>
   <aside class="cc-side" aria-live="polite">
     <div class="cc-inv">
-      <p class="kicker">The investigation</p>
-      <div class="row"><span>Clues requested</span><b id="cc-n-clues">0</b></div>
-      <div class="row"><span>Wrong accusations</span><b id="cc-n-wrong">0</b></div>
-      <div class="row"><span>Detective rating</span><b id="cc-rank">–</b></div>
+      <p class="kicker">Your progress</p>
+      <div class="row"><span>Hints used</span><b id="cc-n-clues">0</b></div>
+      <div class="row"><span>Wrong guesses</span><b id="cc-n-wrong">0</b></div>
+      <div class="row"><span>Rating</span><b id="cc-rank">–</b></div>
       <ol class="cc-clues" id="cc-clues"></ol>
-      <button type="button" class="btn" id="cc-clue">Request a clue</button>
+      <button type="button" class="btn" id="cc-clue">Get a hint</button>
     </div>
     <div class="cc-closed" id="cc-closed" hidden></div>
     <details class="panel">
-      <summary>Case archive</summary>
-      <p class="small">Every file opened so far. A ✓ means you've closed it on this device.</p>
+      <summary>Past cases</summary>
+      <p class="small">Every case so far. A ✓ means you solved it on this device.</p>
       <div class="cc-archive" id="cc-archive"></div>
     </details>
     <details class="panel">
       <summary>How it works</summary>
-      <p class="small">Each case is a real run from the 2024-25 or 2025-26 season: 14+ points while allowing 6 or fewer, with one
-        player clearly responsible (the most points plus assists in the run). Clues are true, and each one rules out at least one
-        more suspect: file clues match the suspect files; witnesses clear a named player. Read the scene well and you won't need them.</p>
+      <p class="small">Each case is a real run from the 2024-25 or 2025-26 season: at least 14 points while allowing 6 or
+        fewer, with one player clearly responsible (the most points plus assists during the run). Every hint is true and
+        rules out at least one more player, either through the player cards or by naming someone who didn't do it. A
+        close read of the play-by-play can get you there without any.</p>
     </details>
   </aside>
 </div>
 <script type="application/json" id="cc-index">{{ coldcase.cases | tojson }}</script>
 <script src="assets/coldcase.js?v={{ asset_version }}" defer></script>
 {% else %}
-<p class="empty">No case files are open yet.</p>
+<p class="empty">No cases are open yet.</p>
 {% endif %}
 {% endblock %}

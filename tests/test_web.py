@@ -1,4 +1,5 @@
 import json
+import math
 import re
 from datetime import date
 
@@ -6,7 +7,7 @@ import pytest
 
 from nbaforecast import config, web
 from nbaforecast.models.elo import EloState
-from nbaforecast.pipeline import live
+from nbaforecast.pipeline import live, shadow_v2
 from nbaforecast.web import charts
 
 FRANCHISES = [str(i) for i in range(1, 31)]
@@ -160,7 +161,7 @@ def test_model_page_is_plain_and_simple(site):
         if "series" in row
     }
     assert series == {charts.ADAPTIVE}  # one model on the honesty chart; live joins after 100 games
-    for approach in ("Coin flip", "Always back the home team", "Our model (published)",
+    for approach in ("Coin flip", "Always back the home team", "Elo (published)",
                      "Player + injury model (challenger)",
                      "Team + player model (earlier challenger)"):  # fmt: skip
         assert approach in html
@@ -259,38 +260,28 @@ def test_injury_watch_card(data_dir, tmp_path_factory):
     assert "<q>White is probable</q>" in html
 
 
-def test_shadow_card_only_when_the_challenger_has_a_scorecard(data_dir, tmp_path_factory):
-    out = tmp_path_factory.mktemp("site_no_shadow")
+def test_model_race_needs_all_three_forecasts(data_dir, tmp_path_factory):
+    out = tmp_path_factory.mktemp("site_no_race")
     web.build(data_dir, out, published_dir=config.PUBLISHED_DIR)
-    assert "Challenger" not in (out / "index.html").read_text()
+    assert "Model race" not in (out / "index.html").read_text()  # no challenger log yet
 
-    card = {
-        "season": "2026-27", "model": "hybrid-lineup-v2", "updated_at": "",
-        "games_predicted": 12, "games_scored": 9,
-        "hybrid": {"log_loss": 0.61234, "brier": 0.21, "accuracy": 0.66667},
-        "elo": {"log_loss": 0.64321, "brier": 0.22, "accuracy": 0.55556},
-        "head_to_head_with_market": {"games": 0, "hybrid": None, "elo": None, "market": None},
-        "promotion_check": {"status": "in progress", "games": 9, "mean_difference": 0.031,
-                            "ci95": [-0.02, 0.082]},
-    }  # fmt: skip
-    v1 = data_dir / "scorecard" / "2026-27-hybrid.json"  # v1 still logs, but isn't shown
-    v1.parent.mkdir(parents=True, exist_ok=True)
-    v1.write_text(json.dumps({**card, "model": "hybrid-realistic-v1"}))
-    out = tmp_path_factory.mktemp("site_v1_only")
-    web.build(data_dir, out, published_dir=config.PUBLISHED_DIR)
-    assert "Challenger" not in (out / "index.html").read_text()
-
-    path = data_dir / "scorecard" / "2026-27-hybrid-v2.json"
-    path.parent.mkdir(parents=True, exist_ok=True)
-    path.write_text(json.dumps(card))
-    out = tmp_path_factory.mktemp("site_shadow")
+    log = shadow_v2.log_path(data_dir, "2026-27")
+    # g1 is final with a market line; g2 has no result and no line, so only g1 counts
+    rows = [{"game_id": g, "p_home": p, "missing_away": "", "missing_home": ""}
+            for g, p in (("g1", 0.9), ("g2", 0.6))]  # fmt: skip
+    live.Store(data_dir).append(log, list(rows[0]), rows)
+    out = tmp_path_factory.mktemp("site_race")
     web.build(data_dir, out, published_dir=config.PUBLISHED_DIR)
     html = (out / "index.html").read_text()
-    assert "Challenger: player + injury model" in html and "0.612" in html and "0.643" in html
-    assert "promotion-bar-hybrid-v2.md" in html and "in progress" in html
+    race = html[html.index('class="panel race"') :]
+    race = race[: race.index("</section>")]
+    assert "1 game since" in race and race.count("1/1 right") == 3
+    assert "Elo (published)" in race and "Betting market" in race
+    leader = race[race.index('class="leads"') :]
+    assert leader.index("Player + injury model") < leader.index("Leading") < leader.index("</li>")
+    assert f"{-math.log(0.9):.3f}" in race  # the challenger's log-loss on g1
     assert "team + player" not in html.lower()  # v1 is only on the model page
-    path.unlink()
-    v1.unlink()
+    log.unlink()
 
 
 def test_live_scores_are_wired_and_display_only(site):

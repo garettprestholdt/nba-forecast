@@ -95,7 +95,7 @@ scorecard covers as much of it as possible. Everything after that is improvement
       history (league, by team, filterable log), a plainer model page, Central time
 - [x] Game pages (arena, team stats, half-court shot charts), player profiles (age, RAPM,
       defensive role, shot chart) and full team schedules
-- [x] Cold Case: a daily whodunit built from real play-by-play (replaced The Rotation, a
+- [x] Cold Case: a daily puzzle built from real play-by-play (replaced The Rotation, a
       minutes-allocation puzzle that wasn't fun)
 
 ## Phase 7: Write-up
