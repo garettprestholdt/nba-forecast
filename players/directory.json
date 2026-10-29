@@ -293,7 +293,7 @@
    "name": "Dennis Schroder",
    "position": "G",
    "short": "D. Schroder",
-   "status": "",
+   "status": "Day-To-Day",
    "team_id": "30",
    "weight_lb": "175"
   },
@@ -821,7 +821,7 @@
    "name": "Dejounte Murray",
    "position": "G",
    "short": "D. Murray",
-   "status": "",
+   "status": "Out",
    "team_id": "3",
    "weight_lb": "180"
   },
@@ -920,7 +920,7 @@
    "name": "Jaylen Brown",
    "position": "G",
    "short": "J. Brown",
-   "status": "",
+   "status": "Day-To-Day",
    "team_id": "20",
    "weight_lb": "223"
   },
@@ -1514,7 +1514,7 @@
    "name": "Jordan Poole",
    "position": "G",
    "short": "J. Poole",
-   "status": "Day-To-Day",
+   "status": "Out",
    "team_id": "3",
    "weight_lb": "194"
   },
@@ -1877,7 +1877,7 @@
    "name": "Andrew Nembhard",
    "position": "G",
    "short": "A. Nembhard",
-   "status": "",
+   "status": "Day-To-Day",
    "team_id": "11",
    "weight_lb": "191"
   },
@@ -1943,7 +1943,7 @@
    "name": "Aaron Nesmith",
    "position": "G",
    "short": "A. Nesmith",
-   "status": "",
+   "status": "Day-To-Day",
    "team_id": "11",
    "weight_lb": "215"
   },
@@ -2570,7 +2570,7 @@
    "name": "Jabari Walker",
    "position": "F",
    "short": "J. Walker",
-   "status": "Day-To-Day",
+   "status": "Out",
    "team_id": "20",
    "weight_lb": "240"
   },
@@ -5518,7 +5518,7 @@
    "name": "Sergio de Larrea",
    "position": "F",
    "short": "S. de Larrea",
-   "status": "Day-To-Day",
+   "status": "Out",
    "team_id": "6",
    "weight_lb": "202"
   },
@@ -5710,5 +5710,5 @@
    "weight_lb": "222"
   }
  },
- "updated_at": "2026-10-29T21:06:54+00:00"
+ "updated_at": "2026-10-29T22:48:34+00:00"
 }
