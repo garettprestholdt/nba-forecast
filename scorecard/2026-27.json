@@ -1,7 +1,7 @@
 {
   "season": "2026-27",
   "model": "elo-adaptive-v1",
-  "updated_at": "2026-10-29T16:13:40+00:00",
+  "updated_at": "2026-10-29T19:39:40+00:00",
   "games_predicted": 19,
   "games_scored": 16,
   "elo": {

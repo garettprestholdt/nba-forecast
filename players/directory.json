@@ -1173,7 +1173,7 @@
    "name": "Robert Williams III",
    "position": "C",
    "short": "R. Williams III",
-   "status": "",
+   "status": "Day-To-Day",
    "team_id": "22",
    "weight_lb": "249"
   },
@@ -2075,7 +2075,7 @@
    "name": "Jalen Smith",
    "position": "F",
    "short": "J. Smith",
-   "status": "",
+   "status": "Day-To-Day",
    "team_id": "4",
    "weight_lb": "215"
   },
@@ -3472,7 +3472,7 @@
    "name": "Jaylon Tyson",
    "position": "G",
    "short": "J. Tyson",
-   "status": "",
+   "status": "Day-To-Day",
    "team_id": "5",
    "weight_lb": "215"
   },
@@ -4451,7 +4451,7 @@
    "name": "Meleek Thomas",
    "position": "G",
    "short": "M. Thomas",
-   "status": "",
+   "status": "Day-To-Day",
    "team_id": "5",
    "weight_lb": "190"
   },
@@ -5287,7 +5287,7 @@
    "name": "Egor Demin",
    "position": "G",
    "short": "E. Demin",
-   "status": "Day-To-Day",
+   "status": "Out",
    "team_id": "17",
    "weight_lb": "200"
   },
@@ -5710,5 +5710,5 @@
    "weight_lb": "222"
   }
  },
- "updated_at": "2026-10-29T16:13:56+00:00"
+ "updated_at": "2026-10-29T19:39:48+00:00"
 }
