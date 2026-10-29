@@ -1052,7 +1052,7 @@
    "name": "Ivica Zubac",
    "position": "C",
    "short": "I. Zubac",
-   "status": "Day-To-Day",
+   "status": "Out",
    "team_id": "11",
    "weight_lb": "240"
   },
@@ -3901,7 +3901,7 @@
    "name": "Reed Sheppard",
    "position": "G",
    "short": "R. Sheppard",
-   "status": "",
+   "status": "Out",
    "team_id": "10",
    "weight_lb": "185"
   },
@@ -5710,5 +5710,5 @@
    "weight_lb": "222"
   }
  },
- "updated_at": "2026-10-29T19:39:48+00:00"
+ "updated_at": "2026-10-29T21:06:54+00:00"
 }
