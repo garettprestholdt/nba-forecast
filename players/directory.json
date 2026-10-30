@@ -590,7 +590,7 @@
    "name": "Karl-Anthony Towns",
    "position": "C",
    "short": "K. Towns",
-   "status": "",
+   "status": "Day-To-Day",
    "team_id": "18",
    "weight_lb": "248"
   },
@@ -821,7 +821,7 @@
    "name": "Dejounte Murray",
    "position": "G",
    "short": "D. Murray",
-   "status": "Out",
+   "status": "Day-To-Day",
    "team_id": "3",
    "weight_lb": "180"
   },
@@ -997,7 +997,7 @@
    "name": "Luka Doncic",
    "position": "G",
    "short": "L. Doncic",
-   "status": "Day-To-Day",
+   "status": "",
    "team_id": "13",
    "weight_lb": "230"
   },
@@ -1514,7 +1514,7 @@
    "name": "Jordan Poole",
    "position": "G",
    "short": "J. Poole",
-   "status": "Out",
+   "status": "Day-To-Day",
    "team_id": "3",
    "weight_lb": "194"
   },
@@ -1646,7 +1646,7 @@
    "name": "Obi Toppin",
    "position": "F",
    "short": "O. Toppin",
-   "status": "",
+   "status": "Day-To-Day",
    "team_id": "11",
    "weight_lb": "220"
   },
@@ -1734,7 +1734,7 @@
    "name": "Ja Morant",
    "position": "G",
    "short": "J. Morant",
-   "status": "",
+   "status": "Out",
    "team_id": "22",
    "weight_lb": "174"
   },
@@ -1866,7 +1866,7 @@
    "name": "Isaiah Joe",
    "position": "G",
    "short": "I. Joe",
-   "status": "Day-To-Day",
+   "status": "Out",
    "team_id": "8",
    "weight_lb": "165"
   },
@@ -2001,6 +2001,17 @@
    "status": "",
    "team_id": "13",
    "weight_lb": "210"
+  },
+  "4397018": {
+   "dob": "2000-04-20",
+   "height_in": "77",
+   "jersey": "30",
+   "name": "Ochai Agbaji",
+   "position": "G",
+   "short": "O. Agbaji",
+   "status": "",
+   "team_id": "25",
+   "weight_lb": "215"
   },
   "4397020": {
    "dob": "1999-04-19",
@@ -2284,7 +2295,7 @@
    "name": "Patrick Williams",
    "position": "F",
    "short": "P. Williams",
-   "status": "Out",
+   "status": "",
    "team_id": "4",
    "weight_lb": "215"
   },
@@ -2801,7 +2812,7 @@
    "name": "Ziaire Williams",
    "position": "F",
    "short": "Z. Williams",
-   "status": "Day-To-Day",
+   "status": "Out",
    "team_id": "13",
    "weight_lb": "185"
   },
@@ -3208,7 +3219,7 @@
    "name": "Quinten Post",
    "position": "C",
    "short": "Q. Post",
-   "status": "",
+   "status": "Day-To-Day",
    "team_id": "29",
    "weight_lb": "238"
   },
@@ -3472,7 +3483,7 @@
    "name": "Jaylon Tyson",
    "position": "G",
    "short": "J. Tyson",
-   "status": "Day-To-Day",
+   "status": "",
    "team_id": "5",
    "weight_lb": "215"
   },
@@ -3552,6 +3563,17 @@
    "status": "",
    "team_id": "29",
    "weight_lb": "197"
+  },
+  "4683935": {
+   "dob": "2003-03-16",
+   "height_in": "76",
+   "jersey": "20",
+   "name": "Blake Wesley",
+   "position": "G",
+   "short": "B. Wesley",
+   "status": "",
+   "team_id": "12",
+   "weight_lb": "190"
   },
   "4684208": {
    "dob": "2002-03-02",
@@ -3967,7 +3989,7 @@
    "name": "Noah Clowney",
    "position": "F",
    "short": "N. Clowney",
-   "status": "",
+   "status": "Day-To-Day",
    "team_id": "17",
    "weight_lb": "210"
   },
@@ -4055,7 +4077,7 @@
    "name": "Dailyn Swain",
    "position": "G",
    "short": "D. Swain",
-   "status": "",
+   "status": "Day-To-Day",
    "team_id": "4",
    "weight_lb": "211"
   },
@@ -4939,6 +4961,17 @@
    "team_id": "12",
    "weight_lb": "200"
   },
+  "5106261": {
+   "dob": "2004-01-08",
+   "height_in": "81",
+   "jersey": "88",
+   "name": "Ernest Udeh Jr.",
+   "position": "C",
+   "short": "E. Udeh Jr.",
+   "status": "",
+   "team_id": "5",
+   "weight_lb": "266"
+  },
   "5106262": {
    "dob": "2004-04-20",
    "height_in": "80",
@@ -5067,7 +5100,7 @@
    "name": "Cameron Carr",
    "position": "G",
    "short": "C. Carr",
-   "status": "Out",
+   "status": "",
    "team_id": "13",
    "weight_lb": "184"
   },
@@ -5188,7 +5221,7 @@
    "name": "Johnny Furphy",
    "position": "G",
    "short": "J. Furphy",
-   "status": "",
+   "status": "Out",
    "team_id": "11",
    "weight_lb": "200"
   },
@@ -5710,5 +5743,5 @@
    "weight_lb": "222"
   }
  },
- "updated_at": "2026-10-29T22:48:34+00:00"
+ "updated_at": "2026-10-30T20:38:57+00:00"
 }

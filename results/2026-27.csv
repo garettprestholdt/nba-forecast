@@ -67,3 +67,6 @@ game_id,season,season_type,game_date,tipoff_utc,home_team_id,away_team_id,home_t
 401909890,2026-27,regular_season,2026-10-28,2026-10-29T01:00:00+00:00,26,24,Utah Jazz,San Antonio Spurs,111,117,False
 401909891,2026-27,regular_season,2026-10-28,2026-10-29T01:30:00+00:00,6,25,Dallas Mavericks,Oklahoma City Thunder,120,96,False
 401909892,2026-27,regular_season,2026-10-28,2026-10-29T02:30:00+00:00,12,13,LA Clippers,Los Angeles Lakers,87,103,False
+401909893,2026-27,regular_season,2026-10-29,2026-10-30T00:00:00+00:00,1,5,Atlanta Hawks,Cleveland Cavaliers,114,111,False
+401909894,2026-27,regular_season,2026-10-29,2026-10-30T00:00:00+00:00,3,23,New Orleans Pelicans,Sacramento Kings,132,120,False
+401909895,2026-27,regular_season,2026-10-29,2026-10-30T02:00:00+00:00,22,29,Portland Trail Blazers,Memphis Grizzlies,103,124,False

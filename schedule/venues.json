@@ -254,5 +254,37 @@
   "home_team_id": "10",
   "neutral": false,
   "state": "TX"
+ },
+ "401909903": {
+  "arena": "Kia Center",
+  "city": "Orlando",
+  "country": "",
+  "home_team_id": "19",
+  "neutral": false,
+  "state": "FL"
+ },
+ "401909904": {
+  "arena": "Gainbridge Fieldhouse",
+  "city": "Indianapolis",
+  "country": "",
+  "home_team_id": "11",
+  "neutral": false,
+  "state": "IN"
+ },
+ "401909905": {
+  "arena": "Chase Center",
+  "city": "San Francisco",
+  "country": "",
+  "home_team_id": "9",
+  "neutral": false,
+  "state": "CA"
+ },
+ "401909906": {
+  "arena": "crypto.com Arena",
+  "city": "Los Angeles",
+  "country": "",
+  "home_team_id": "13",
+  "neutral": false,
+  "state": "CA"
  }
 }
