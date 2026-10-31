@@ -286,5 +286,125 @@
   "home_team_id": "13",
   "neutral": false,
   "state": "CA"
+ },
+ "401909907": {
+  "arena": "Rocket Arena",
+  "city": "Cleveland",
+  "country": "",
+  "home_team_id": "5",
+  "neutral": false,
+  "state": "OH"
+ },
+ "401909908": {
+  "arena": "Spectrum Center",
+  "city": "Charlotte",
+  "country": "",
+  "home_team_id": "30",
+  "neutral": false,
+  "state": "NC"
+ },
+ "401909909": {
+  "arena": "Gainbridge Fieldhouse",
+  "city": "Indianapolis",
+  "country": "",
+  "home_team_id": "11",
+  "neutral": false,
+  "state": "IN"
+ },
+ "401909910": {
+  "arena": "Madison Square Garden",
+  "city": "New York",
+  "country": "",
+  "home_team_id": "18",
+  "neutral": false,
+  "state": "NY"
+ },
+ "401909911": {
+  "arena": "Kia Center",
+  "city": "Orlando",
+  "country": "",
+  "home_team_id": "19",
+  "neutral": false,
+  "state": "FL"
+ },
+ "401909912": {
+  "arena": "Xfinity Mobile Arena",
+  "city": "Philadelphia",
+  "country": "",
+  "home_team_id": "20",
+  "neutral": false,
+  "state": "PA"
+ },
+ "401909913": {
+  "arena": "American Airlines Center",
+  "city": "Dallas",
+  "country": "",
+  "home_team_id": "6",
+  "neutral": false,
+  "state": "TX"
+ },
+ "401909914": {
+  "arena": "FedExForum",
+  "city": "Memphis",
+  "country": "",
+  "home_team_id": "29",
+  "neutral": false,
+  "state": "TN"
+ },
+ "401909915": {
+  "arena": "Target Center",
+  "city": "Minneapolis",
+  "country": "",
+  "home_team_id": "16",
+  "neutral": false,
+  "state": "MN"
+ },
+ "401909916": {
+  "arena": "Toyota Center (Houston)",
+  "city": "Houston",
+  "country": "",
+  "home_team_id": "10",
+  "neutral": false,
+  "state": "TX"
+ },
+ "401909917": {
+  "arena": "Frost Bank Center",
+  "city": "San Antonio",
+  "country": "",
+  "home_team_id": "24",
+  "neutral": false,
+  "state": "TX"
+ },
+ "401909918": {
+  "arena": "Ball Arena",
+  "city": "Denver",
+  "country": "",
+  "home_team_id": "7",
+  "neutral": false,
+  "state": "CO"
+ },
+ "401909919": {
+  "arena": "Chase Center",
+  "city": "San Francisco",
+  "country": "",
+  "home_team_id": "9",
+  "neutral": false,
+  "state": "CA"
+ },
+ "401909920": {
+  "arena": "Intuit Dome",
+  "city": "Inglewood",
+  "country": "",
+  "home_team_id": "12",
+  "neutral": false,
+  "state": "CA"
+ },
+ "401909921": {
+  "arena": "crypto.com Arena",
+  "city": "Los Angeles",
+  "country": "",
+  "home_team_id": "13",
+  "neutral": false,
+  "state": "CA"
  }
 }

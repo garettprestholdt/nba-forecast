@@ -7,7 +7,7 @@
    "name": "LeBron James",
    "position": "F",
    "short": "L. James",
-   "status": "",
+   "status": "Out",
    "team_id": "20",
    "weight_lb": "250"
   },
@@ -172,7 +172,7 @@
    "name": "Marcus Smart",
    "position": "G",
    "short": "M. Smart",
-   "status": "Out",
+   "status": "",
    "team_id": "10",
    "weight_lb": "220"
   },
@@ -216,7 +216,7 @@
    "name": "Fred VanVleet",
    "position": "G",
    "short": "F. VanVleet",
-   "status": "",
+   "status": "Out",
    "team_id": "10",
    "weight_lb": "197"
   },
@@ -271,7 +271,7 @@
    "name": "Rudy Gobert",
    "position": "C",
    "short": "R. Gobert",
-   "status": "",
+   "status": "Day-To-Day",
    "team_id": "16",
    "weight_lb": "258"
   },
@@ -293,7 +293,7 @@
    "name": "Dennis Schroder",
    "position": "G",
    "short": "D. Schroder",
-   "status": "Day-To-Day",
+   "status": "",
    "team_id": "30",
    "weight_lb": "175"
   },
@@ -315,7 +315,7 @@
    "name": "Joel Embiid",
    "position": "C",
    "short": "J. Embiid",
-   "status": "",
+   "status": "Out",
    "team_id": "20",
    "weight_lb": "270"
   },
@@ -590,7 +590,7 @@
    "name": "Karl-Anthony Towns",
    "position": "C",
    "short": "K. Towns",
-   "status": "Day-To-Day",
+   "status": "",
    "team_id": "18",
    "weight_lb": "248"
   },
@@ -634,7 +634,7 @@
    "name": "Cameron Johnson",
    "position": "F",
    "short": "C. Johnson",
-   "status": "Out",
+   "status": "",
    "team_id": "7",
    "weight_lb": "210"
   },
@@ -788,7 +788,7 @@
    "name": "Simone Fontecchio",
    "position": "F",
    "short": "S. Fontecchio",
-   "status": "Day-To-Day",
+   "status": "",
    "team_id": "14",
    "weight_lb": "220"
   },
@@ -821,7 +821,7 @@
    "name": "Dejounte Murray",
    "position": "G",
    "short": "D. Murray",
-   "status": "Day-To-Day",
+   "status": "",
    "team_id": "3",
    "weight_lb": "180"
   },
@@ -1008,7 +1008,7 @@
    "name": "Stephen Curry",
    "position": "G",
    "short": "S. Curry",
-   "status": "",
+   "status": "Out",
    "team_id": "9",
    "weight_lb": "185"
   },
@@ -1129,7 +1129,7 @@
    "name": "Ty Jerome",
    "position": "G",
    "short": "T. Jerome",
-   "status": "",
+   "status": "Day-To-Day",
    "team_id": "29",
    "weight_lb": "195"
   },
@@ -1173,7 +1173,7 @@
    "name": "Robert Williams III",
    "position": "C",
    "short": "R. Williams III",
-   "status": "Day-To-Day",
+   "status": "",
    "team_id": "22",
    "weight_lb": "249"
   },
@@ -1261,7 +1261,7 @@
    "name": "Lauri Markkanen",
    "position": "F",
    "short": "L. Markkanen",
-   "status": "Day-To-Day",
+   "status": "",
    "team_id": "26",
    "weight_lb": "240"
   },
@@ -1338,7 +1338,7 @@
    "name": "Rui Hachimura",
    "position": "F",
    "short": "R. Hachimura",
-   "status": "Day-To-Day",
+   "status": "",
    "team_id": "12",
    "weight_lb": "230"
   },
@@ -1514,7 +1514,7 @@
    "name": "Jordan Poole",
    "position": "G",
    "short": "J. Poole",
-   "status": "Day-To-Day",
+   "status": "Out",
    "team_id": "3",
    "weight_lb": "194"
   },
@@ -1712,7 +1712,7 @@
    "name": "Naji Marshall",
    "position": "F",
    "short": "N. Marshall",
-   "status": "Day-To-Day",
+   "status": "",
    "team_id": "6",
    "weight_lb": "220"
   },
@@ -1877,7 +1877,7 @@
    "name": "Andrew Nembhard",
    "position": "G",
    "short": "A. Nembhard",
-   "status": "Day-To-Day",
+   "status": "",
    "team_id": "11",
    "weight_lb": "191"
   },
@@ -1943,20 +1943,9 @@
    "name": "Aaron Nesmith",
    "position": "G",
    "short": "A. Nesmith",
-   "status": "Day-To-Day",
+   "status": "",
    "team_id": "11",
    "weight_lb": "215"
-  },
-  "4396963": {
-   "dob": "1999-12-26",
-   "height_in": "80",
-   "jersey": "25",
-   "name": "Blake Hinson",
-   "position": "F",
-   "short": "B. Hinson",
-   "status": "Out",
-   "team_id": "26",
-   "weight_lb": "230"
   },
   "4396971": {
    "dob": "1999-08-26",
@@ -2001,17 +1990,6 @@
    "status": "",
    "team_id": "13",
    "weight_lb": "210"
-  },
-  "4397018": {
-   "dob": "2000-04-20",
-   "height_in": "77",
-   "jersey": "30",
-   "name": "Ochai Agbaji",
-   "position": "G",
-   "short": "O. Agbaji",
-   "status": "",
-   "team_id": "25",
-   "weight_lb": "215"
   },
   "4397020": {
    "dob": "1999-04-19",
@@ -2086,7 +2064,7 @@
    "name": "Jalen Smith",
    "position": "F",
    "short": "J. Smith",
-   "status": "Day-To-Day",
+   "status": "",
    "team_id": "4",
    "weight_lb": "215"
   },
@@ -2394,7 +2372,7 @@
    "name": "Scotty Pippen Jr.",
    "position": "G",
    "short": "S. Pippen Jr.",
-   "status": "",
+   "status": "Day-To-Day",
    "team_id": "29",
    "weight_lb": "170"
   },
@@ -2812,7 +2790,7 @@
    "name": "Ziaire Williams",
    "position": "F",
    "short": "Z. Williams",
-   "status": "Out",
+   "status": "Day-To-Day",
    "team_id": "13",
    "weight_lb": "185"
   },
@@ -2911,7 +2889,7 @@
    "name": "Chet Holmgren",
    "position": "C",
    "short": "C. Holmgren",
-   "status": "Day-To-Day",
+   "status": "Out",
    "team_id": "25",
    "weight_lb": "208"
   },
@@ -3351,7 +3329,7 @@
    "name": "Oso Ighodaro",
    "position": "F",
    "short": "O. Ighodaro",
-   "status": "Day-To-Day",
+   "status": "",
    "team_id": "21",
    "weight_lb": "235"
   },
@@ -3465,6 +3443,17 @@
    "team_id": "18",
    "weight_lb": "195"
   },
+  "4683736": {
+   "dob": "2003-09-21",
+   "height_in": "76",
+   "jersey": "4",
+   "name": "Kobe Bufkin",
+   "position": "G",
+   "short": "K. Bufkin",
+   "status": "",
+   "team_id": "26",
+   "weight_lb": "195"
+  },
   "4683742": {
    "dob": "2003-06-30",
    "height_in": "81",
@@ -3483,7 +3472,7 @@
    "name": "Jaylon Tyson",
    "position": "G",
    "short": "J. Tyson",
-   "status": "",
+   "status": "Out",
    "team_id": "5",
    "weight_lb": "215"
   },
@@ -3890,7 +3879,7 @@
    "name": "Chris Youngblood",
    "position": "G",
    "short": "C. Youngblood",
-   "status": "Out",
+   "status": "",
    "team_id": "22",
    "weight_lb": "221"
   },
@@ -3989,7 +3978,7 @@
    "name": "Noah Clowney",
    "position": "F",
    "short": "N. Clowney",
-   "status": "Day-To-Day",
+   "status": "",
    "team_id": "17",
    "weight_lb": "210"
   },
@@ -4055,7 +4044,7 @@
    "name": "Stephon Castle",
    "position": "G",
    "short": "S. Castle",
-   "status": "",
+   "status": "Day-To-Day",
    "team_id": "24",
    "weight_lb": "220"
   },
@@ -4154,7 +4143,7 @@
    "name": "Alperen Sengun",
    "position": "C",
    "short": "A. Sengun",
-   "status": "Day-To-Day",
+   "status": "",
    "team_id": "10",
    "weight_lb": "243"
   },
@@ -4374,7 +4363,7 @@
    "name": "Gui Santos",
    "position": "F",
    "short": "G. Santos",
-   "status": "Day-To-Day",
+   "status": "",
    "team_id": "9",
    "weight_lb": "185"
   },
@@ -4737,7 +4726,7 @@
    "name": "Tobe Awaka",
    "position": "F",
    "short": "T. Awaka",
-   "status": "Day-To-Day",
+   "status": "",
    "team_id": "4",
    "weight_lb": "255"
   },
@@ -5463,7 +5452,7 @@
    "name": "Tre Johnson",
    "position": "G",
    "short": "T. Johnson",
-   "status": "Day-To-Day",
+   "status": "",
    "team_id": "27",
    "weight_lb": "190"
   },
@@ -5743,5 +5732,5 @@
    "weight_lb": "222"
   }
  },
- "updated_at": "2026-10-30T20:38:57+00:00"
+ "updated_at": "2026-10-31T19:51:48+00:00"
 }
