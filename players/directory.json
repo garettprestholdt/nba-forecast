@@ -7,7 +7,7 @@
    "name": "LeBron James",
    "position": "F",
    "short": "L. James",
-   "status": "Out",
+   "status": "Day-To-Day",
    "team_id": "20",
    "weight_lb": "250"
   },
@@ -216,7 +216,7 @@
    "name": "Fred VanVleet",
    "position": "G",
    "short": "F. VanVleet",
-   "status": "Out",
+   "status": "Day-To-Day",
    "team_id": "10",
    "weight_lb": "197"
   },
@@ -315,7 +315,7 @@
    "name": "Joel Embiid",
    "position": "C",
    "short": "J. Embiid",
-   "status": "Out",
+   "status": "Day-To-Day",
    "team_id": "20",
    "weight_lb": "270"
   },
@@ -645,7 +645,7 @@
    "name": "Jock Landale",
    "position": "C",
    "short": "J. Landale",
-   "status": "",
+   "status": "Day-To-Day",
    "team_id": "1",
    "weight_lb": "255"
   },
@@ -799,7 +799,7 @@
    "name": "Tacko Fall",
    "position": "C",
    "short": "T. Fall",
-   "status": "Out",
+   "status": "",
    "team_id": "20",
    "weight_lb": "299"
   },
@@ -821,7 +821,7 @@
    "name": "Dejounte Murray",
    "position": "G",
    "short": "D. Murray",
-   "status": "",
+   "status": "Day-To-Day",
    "team_id": "3",
    "weight_lb": "180"
   },
@@ -920,7 +920,7 @@
    "name": "Jaylen Brown",
    "position": "G",
    "short": "J. Brown",
-   "status": "Day-To-Day",
+   "status": "",
    "team_id": "20",
    "weight_lb": "223"
   },
@@ -1789,7 +1789,7 @@
    "name": "Mitchell Robinson",
    "position": "C",
    "short": "M. Robinson",
-   "status": "",
+   "status": "Out",
    "team_id": "2",
    "weight_lb": "240"
   },
@@ -1943,7 +1943,7 @@
    "name": "Aaron Nesmith",
    "position": "G",
    "short": "A. Nesmith",
-   "status": "",
+   "status": "Day-To-Day",
    "team_id": "11",
    "weight_lb": "215"
   },
@@ -2040,7 +2040,7 @@
    "height_in": "80",
    "jersey": "41",
    "name": "Saddiq Bey",
-   "position": "G",
+   "position": "F",
    "short": "S. Bey",
    "status": "",
    "team_id": "3",
@@ -2141,7 +2141,7 @@
    "name": "Trey Murphy III",
    "position": "F",
    "short": "T. Murphy III",
-   "status": "",
+   "status": "Day-To-Day",
    "team_id": "3",
    "weight_lb": "206"
   },
@@ -2559,7 +2559,7 @@
    "name": "Jabari Walker",
    "position": "F",
    "short": "J. Walker",
-   "status": "Out",
+   "status": "",
    "team_id": "20",
    "weight_lb": "240"
   },
@@ -3472,7 +3472,7 @@
    "name": "Jaylon Tyson",
    "position": "G",
    "short": "J. Tyson",
-   "status": "Out",
+   "status": "Day-To-Day",
    "team_id": "5",
    "weight_lb": "215"
   },
@@ -3725,7 +3725,7 @@
    "name": "Jalen Johnson",
    "position": "F",
    "short": "J. Johnson",
-   "status": "",
+   "status": "Day-To-Day",
    "team_id": "1",
    "weight_lb": "219"
   },
@@ -3912,7 +3912,7 @@
    "name": "Reed Sheppard",
    "position": "G",
    "short": "R. Sheppard",
-   "status": "Out",
+   "status": "Day-To-Day",
    "team_id": "10",
    "weight_lb": "185"
   },
@@ -4044,7 +4044,7 @@
    "name": "Stephon Castle",
    "position": "G",
    "short": "S. Castle",
-   "status": "Day-To-Day",
+   "status": "",
    "team_id": "24",
    "weight_lb": "220"
   },
@@ -4363,7 +4363,7 @@
    "name": "Gui Santos",
    "position": "F",
    "short": "G. Santos",
-   "status": "",
+   "status": "Day-To-Day",
    "team_id": "9",
    "weight_lb": "185"
   },
@@ -4462,7 +4462,7 @@
    "name": "Meleek Thomas",
    "position": "G",
    "short": "M. Thomas",
-   "status": "Day-To-Day",
+   "status": "",
    "team_id": "5",
    "weight_lb": "190"
   },
@@ -4649,7 +4649,7 @@
    "name": "Mikel Brown Jr.",
    "position": "G",
    "short": "M. Brown Jr.",
-   "status": "",
+   "status": "Out",
    "team_id": "17",
    "weight_lb": "180"
   },
@@ -5705,7 +5705,7 @@
    "name": "Draymond Green",
    "position": "F",
    "short": "D. Green",
-   "status": "",
+   "status": "Out",
    "team_id": "9",
    "weight_lb": "230"
   },
@@ -5732,5 +5732,5 @@
    "weight_lb": "222"
   }
  },
- "updated_at": "2026-10-31T19:51:48+00:00"
+ "updated_at": "2026-11-01T20:25:31+00:00"
 }
