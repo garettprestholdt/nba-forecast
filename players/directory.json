@@ -73,7 +73,7 @@
    "name": "Larry Nance Jr.",
    "position": "F",
    "short": "L. Nance Jr.",
-   "status": "Out",
+   "status": "Day-To-Day",
    "team_id": "11",
    "weight_lb": "245"
   },
@@ -95,7 +95,7 @@
    "name": "Anthony Gill",
    "position": "F",
    "short": "A. Gill",
-   "status": "Out",
+   "status": "Day-To-Day",
    "team_id": "27",
    "weight_lb": "230"
   },
@@ -315,7 +315,7 @@
    "name": "Joel Embiid",
    "position": "C",
    "short": "J. Embiid",
-   "status": "Day-To-Day",
+   "status": "",
    "team_id": "20",
    "weight_lb": "270"
   },
@@ -359,7 +359,7 @@
    "name": "Zach LaVine",
    "position": "G",
    "short": "Z. LaVine",
-   "status": "Day-To-Day",
+   "status": "",
    "team_id": "23",
    "weight_lb": "200"
   },
@@ -414,7 +414,7 @@
    "name": "Clint Capela",
    "position": "C",
    "short": "C. Capela",
-   "status": "Out",
+   "status": "Day-To-Day",
    "team_id": "10",
    "weight_lb": "256"
   },
@@ -469,7 +469,7 @@
    "name": "Kelly Oubre Jr.",
    "position": "G",
    "short": "K. Oubre Jr.",
-   "status": "",
+   "status": "Day-To-Day",
    "team_id": "11",
    "weight_lb": "203"
   },
@@ -645,7 +645,7 @@
    "name": "Jock Landale",
    "position": "C",
    "short": "J. Landale",
-   "status": "Out",
+   "status": "Day-To-Day",
    "team_id": "1",
    "weight_lb": "255"
   },
@@ -667,7 +667,7 @@
    "name": "Pascal Siakam",
    "position": "F",
    "short": "P. Siakam",
-   "status": "Out",
+   "status": "Day-To-Day",
    "team_id": "11",
    "weight_lb": "245"
   },
@@ -755,7 +755,7 @@
    "name": "Al Horford",
    "position": "C",
    "short": "A. Horford",
-   "status": "Out",
+   "status": "Day-To-Day",
    "team_id": "9",
    "weight_lb": "240"
   },
@@ -975,7 +975,7 @@
    "name": "Derrick Jones Jr.",
    "position": "F",
    "short": "D. Jones Jr.",
-   "status": "Out",
+   "status": "Day-To-Day",
    "team_id": "12",
    "weight_lb": "210"
   },
@@ -1063,7 +1063,7 @@
    "name": "Jayson Tatum",
    "position": "F",
    "short": "J. Tatum",
-   "status": "",
+   "status": "Day-To-Day",
    "team_id": "2",
    "weight_lb": "224"
   },
@@ -1162,7 +1162,7 @@
    "name": "Alpha Diallo",
    "position": "F",
    "short": "A. Diallo",
-   "status": "Out",
+   "status": "",
    "team_id": "7",
    "weight_lb": "210"
   },
@@ -1272,7 +1272,7 @@
    "name": "Payton Pritchard",
    "position": "G",
    "short": "P. Pritchard",
-   "status": "",
+   "status": "Day-To-Day",
    "team_id": "2",
    "weight_lb": "211"
   },
@@ -1338,7 +1338,7 @@
    "name": "Rui Hachimura",
    "position": "F",
    "short": "R. Hachimura",
-   "status": "Out",
+   "status": "Day-To-Day",
    "team_id": "12",
    "weight_lb": "230"
   },
@@ -1393,7 +1393,7 @@
    "name": "Paul George",
    "position": "F",
    "short": "P. George",
-   "status": "Out",
+   "status": "",
    "team_id": "2",
    "weight_lb": "221"
   },
@@ -1657,7 +1657,7 @@
    "name": "Jordan Goodwin",
    "position": "G",
    "short": "J. Goodwin",
-   "status": "",
+   "status": "Day-To-Day",
    "team_id": "21",
    "weight_lb": "215"
   },
@@ -1877,7 +1877,7 @@
    "name": "Andrew Nembhard",
    "position": "G",
    "short": "A. Nembhard",
-   "status": "Out",
+   "status": "Day-To-Day",
    "team_id": "11",
    "weight_lb": "191"
   },
@@ -1943,7 +1943,7 @@
    "name": "Aaron Nesmith",
    "position": "G",
    "short": "A. Nesmith",
-   "status": "Out",
+   "status": "Day-To-Day",
    "team_id": "11",
    "weight_lb": "215"
   },
@@ -2064,7 +2064,7 @@
    "name": "Jalen Smith",
    "position": "F",
    "short": "J. Smith",
-   "status": "",
+   "status": "Day-To-Day",
    "team_id": "4",
    "weight_lb": "215"
   },
@@ -2581,7 +2581,7 @@
    "name": "Max Christie",
    "position": "G",
    "short": "M. Christie",
-   "status": "",
+   "status": "Day-To-Day",
    "team_id": "6",
    "weight_lb": "190"
   },
@@ -2658,7 +2658,7 @@
    "name": "LaMelo Ball",
    "position": "G",
    "short": "L. Ball",
-   "status": "Day-To-Day",
+   "status": "",
    "team_id": "16",
    "weight_lb": "180"
   },
@@ -2713,7 +2713,7 @@
    "name": "Terrence Shannon Jr.",
    "position": "G",
    "short": "T. Shannon Jr.",
-   "status": "Out",
+   "status": "Day-To-Day",
    "team_id": "16",
    "weight_lb": "215"
   },
@@ -2768,7 +2768,7 @@
    "name": "Scottie Barnes",
    "position": "F",
    "short": "S. Barnes",
-   "status": "Day-To-Day",
+   "status": "",
    "team_id": "28",
    "weight_lb": "237"
   },
@@ -3043,7 +3043,7 @@
    "name": "Peyton Watson",
    "position": "G",
    "short": "P. Watson",
-   "status": "Out",
+   "status": "Day-To-Day",
    "team_id": "5",
    "weight_lb": "200"
   },
@@ -3142,7 +3142,7 @@
    "name": "Enrique Freeman",
    "position": "F",
    "short": "E. Freeman",
-   "status": "",
+   "status": "Out",
    "team_id": "16",
    "weight_lb": "220"
   },
@@ -3472,7 +3472,7 @@
    "name": "Jaylon Tyson",
    "position": "G",
    "short": "J. Tyson",
-   "status": "Out",
+   "status": "Day-To-Day",
    "team_id": "5",
    "weight_lb": "215"
   },
@@ -3725,7 +3725,7 @@
    "name": "Jalen Johnson",
    "position": "F",
    "short": "J. Johnson",
-   "status": "Out",
+   "status": "Day-To-Day",
    "team_id": "1",
    "weight_lb": "219"
   },
@@ -3912,7 +3912,7 @@
    "name": "Reed Sheppard",
    "position": "G",
    "short": "R. Sheppard",
-   "status": "Day-To-Day",
+   "status": "",
    "team_id": "10",
    "weight_lb": "185"
   },
@@ -3945,7 +3945,7 @@
    "name": "Anthony Black",
    "position": "G",
    "short": "A. Black",
-   "status": "Out",
+   "status": "Day-To-Day",
    "team_id": "19",
    "weight_lb": "200"
   },
@@ -4363,7 +4363,7 @@
    "name": "Gui Santos",
    "position": "F",
    "short": "G. Santos",
-   "status": "Out",
+   "status": "Day-To-Day",
    "team_id": "9",
    "weight_lb": "185"
   },
@@ -5188,7 +5188,7 @@
    "name": "Kingston Flemings",
    "position": "G",
    "short": "K. Flemings",
-   "status": "Suspension",
+   "status": "",
    "team_id": "1",
    "weight_lb": "183"
   },
@@ -5243,7 +5243,7 @@
    "name": "Alex Sarr",
    "position": "C",
    "short": "A. Sarr",
-   "status": "Out",
+   "status": "Day-To-Day",
    "team_id": "27",
    "weight_lb": "205"
   },
@@ -5617,7 +5617,7 @@
    "name": "Kyrie Irving",
    "position": "G",
    "short": "K. Irving",
-   "status": "Out",
+   "status": "Day-To-Day",
    "team_id": "6",
    "weight_lb": "195"
   },
@@ -5732,5 +5732,5 @@
    "weight_lb": "222"
   }
  },
- "updated_at": "2026-11-02T23:24:47+00:00"
+ "updated_at": "2026-11-03T21:40:41+00:00"
 }
