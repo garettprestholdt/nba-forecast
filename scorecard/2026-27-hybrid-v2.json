@@ -1,8 +1,8 @@
 {
   "season": "2026-27",
   "model": "hybrid-lineup-v2",
-  "updated_at": "2026-11-03T21:40:59+00:00",
-  "games_predicted": 50,
+  "updated_at": "2026-11-04T21:48:36+00:00",
+  "games_predicted": 64,
   "games_scored": 50,
   "hybrid": {
     "log_loss": 0.60034,
