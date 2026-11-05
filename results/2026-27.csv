@@ -106,3 +106,17 @@ game_id,season,season_type,game_date,tipoff_utc,home_team_id,away_team_id,home_t
 401909919,2026-27,regular_season,2026-11-02,2026-11-03T03:00:00+00:00,9,21,Golden State Warriors,Phoenix Suns,116,113,False
 401909920,2026-27,regular_season,2026-11-02,2026-11-03T03:00:00+00:00,12,28,LA Clippers,Toronto Raptors,118,125,False
 401909921,2026-27,regular_season,2026-11-02,2026-11-03T03:00:00+00:00,13,14,Los Angeles Lakers,Miami Heat,138,117,False
+401909922,2026-27,regular_season,2026-11-04,2026-11-05T00:00:00+00:00,8,20,Detroit Pistons,Philadelphia 76ers,106,112,False
+401909923,2026-27,regular_season,2026-11-04,2026-11-05T00:00:00+00:00,27,1,Washington Wizards,Atlanta Hawks,105,120,False
+401909924,2026-27,regular_season,2026-11-04,2026-11-05T00:30:00+00:00,2,15,Boston Celtics,Milwaukee Bucks,109,102,False
+401909925,2026-27,regular_season,2026-11-04,2026-11-05T00:30:00+00:00,17,30,Brooklyn Nets,Charlotte Hornets,114,104,False
+401909926,2026-27,regular_season,2026-11-04,2026-11-05T00:30:00+00:00,18,4,New York Knicks,Chicago Bulls,135,105,False
+401909927,2026-27,regular_season,2026-11-04,2026-11-05T01:00:00+00:00,29,11,Memphis Grizzlies,Indiana Pacers,103,107,False
+401909928,2026-27,regular_season,2026-11-04,2026-11-05T01:00:00+00:00,3,26,New Orleans Pelicans,Utah Jazz,120,113,False
+401909929,2026-27,regular_season,2026-11-04,2026-11-05T01:00:00+00:00,25,5,Oklahoma City Thunder,Cleveland Cavaliers,124,116,False
+401909930,2026-27,regular_season,2026-11-04,2026-11-05T01:30:00+00:00,10,16,Houston Rockets,Minnesota Timberwolves,107,117,False
+401909931,2026-27,regular_season,2026-11-04,2026-11-05T02:00:00+00:00,7,28,Denver Nuggets,Toronto Raptors,128,109,False
+401909932,2026-27,regular_season,2026-11-04,2026-11-05T02:00:00+00:00,21,22,Phoenix Suns,Portland Trail Blazers,119,132,False
+401909933,2026-27,regular_season,2026-11-04,2026-11-05T02:30:00+00:00,24,6,San Antonio Spurs,Dallas Mavericks,112,111,False
+401909934,2026-27,regular_season,2026-11-04,2026-11-05T03:00:00+00:00,23,13,Sacramento Kings,Los Angeles Lakers,103,116,False
+401909935,2026-27,regular_season,2026-11-04,2026-11-05T03:30:00+00:00,12,14,LA Clippers,Miami Heat,116,117,False

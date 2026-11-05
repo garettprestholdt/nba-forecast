@@ -606,5 +606,61 @@
   "home_team_id": "9",
   "neutral": false,
   "state": "CA"
+ },
+ "401909938": {
+  "arena": "Arena CDMX",
+  "city": "Mexico City",
+  "country": "",
+  "home_team_id": "11",
+  "neutral": true,
+  "state": ""
+ },
+ "401909939": {
+  "arena": "State Farm Arena",
+  "city": "Atlanta",
+  "country": "",
+  "home_team_id": "1",
+  "neutral": false,
+  "state": "GA"
+ },
+ "401909940": {
+  "arena": "Rocket Arena",
+  "city": "Cleveland",
+  "country": "",
+  "home_team_id": "5",
+  "neutral": false,
+  "state": "OH"
+ },
+ "401909941": {
+  "arena": "Paycom Center",
+  "city": "Oklahoma City",
+  "country": "",
+  "home_team_id": "25",
+  "neutral": false,
+  "state": "OK"
+ },
+ "401909942": {
+  "arena": "Chase Center",
+  "city": "San Francisco",
+  "country": "",
+  "home_team_id": "9",
+  "neutral": false,
+  "state": "CA"
+ },
+ "401909943": {
+  "arena": "Mortgage Matchup Center",
+  "city": "Phoenix",
+  "country": "",
+  "home_team_id": "21",
+  "neutral": false,
+  "state": "AZ"
+ },
+ "401909944": {
+  "arena": "Moda Center",
+  "city": "Portland",
+  "country": "",
+  "home_team_id": "22",
+  "neutral": false,
+  "state": "OR"
  }
 }
