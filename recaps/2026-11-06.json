@@ -1,0 +1,144 @@
+{
+  "recap_date": "2026-11-06",
+  "recap_date_label": "Friday, November 6",
+  "last_night_date": "2026-11-05",
+  "last_night": [
+    {
+      "matchup": "Orlando Magic at Phoenix Suns",
+      "final_score": "Orlando Magic 104, Phoenix Suns 117",
+      "winner": "Phoenix Suns",
+      "loser": "Orlando Magic",
+      "margin": 13,
+      "elo_pick": "Phoenix Suns",
+      "elo_chance_for_winner": "51%",
+      "elo_correct": true,
+      "upset_by_elo": false,
+      "market_chance_for_winner": "52%",
+      "market_correct": true,
+      "elo_minus_market_for_winner_points": "-0",
+      "elo_rating_change": {
+        "Phoenix Suns": "+12",
+        "Orlando Magic": "-12"
+      }
+    },
+    {
+      "matchup": "Miami Heat at Golden State Warriors",
+      "final_score": "Miami Heat 100, Golden State Warriors 120",
+      "winner": "Golden State Warriors",
+      "loser": "Miami Heat",
+      "margin": 20,
+      "elo_pick": "Golden State Warriors",
+      "elo_chance_for_winner": "56%",
+      "elo_correct": true,
+      "upset_by_elo": false,
+      "market_chance_for_winner": "59%",
+      "market_correct": true,
+      "elo_minus_market_for_winner_points": "-3",
+      "elo_rating_change": {
+        "Golden State Warriors": "+14",
+        "Miami Heat": "-14"
+      }
+    }
+  ],
+  "last_night_summary": {
+    "games": 2,
+    "elo_correct": 2,
+    "games_with_market": 2,
+    "market_correct": 2,
+    "upsets_by_elo": 0
+  },
+  "tonight": [
+    {
+      "matchup": "Washington Wizards at Atlanta Hawks",
+      "tip_off": "7:00 PM ET",
+      "elo_pick": "Atlanta Hawks",
+      "elo_chance_for_pick": "78%",
+      "market_chance_for_elo_pick": "73%",
+      "elo_minus_market_points": "+4"
+    },
+    {
+      "matchup": "Boston Celtics at Charlotte Hornets",
+      "tip_off": "7:00 PM ET",
+      "elo_pick": "Boston Celtics",
+      "elo_chance_for_pick": "63%",
+      "market_chance_for_elo_pick": "77%",
+      "elo_minus_market_points": "-14"
+    },
+    {
+      "matchup": "Philadelphia 76ers at Cleveland Cavaliers",
+      "tip_off": "7:30 PM ET",
+      "elo_pick": "Cleveland Cavaliers",
+      "elo_chance_for_pick": "52%",
+      "market_chance_for_elo_pick": "43%",
+      "elo_minus_market_points": "+9"
+    },
+    {
+      "matchup": "Utah Jazz at Dallas Mavericks",
+      "tip_off": "8:00 PM ET",
+      "elo_pick": "Dallas Mavericks",
+      "elo_chance_for_pick": "71%",
+      "market_chance_for_elo_pick": "70%",
+      "elo_minus_market_points": "+1"
+    },
+    {
+      "matchup": "Oklahoma City Thunder at Memphis Grizzlies",
+      "tip_off": "8:00 PM ET",
+      "elo_pick": "Oklahoma City Thunder",
+      "elo_chance_for_pick": "76%",
+      "market_chance_for_elo_pick": "61%",
+      "elo_minus_market_points": "+15"
+    },
+    {
+      "matchup": "Toronto Raptors at Milwaukee Bucks",
+      "tip_off": "8:00 PM ET",
+      "elo_pick": "Toronto Raptors",
+      "elo_chance_for_pick": "71%",
+      "market_chance_for_elo_pick": "62%",
+      "elo_minus_market_points": "+9"
+    },
+    {
+      "matchup": "Minnesota Timberwolves at New Orleans Pelicans",
+      "tip_off": "8:00 PM ET",
+      "elo_pick": "Minnesota Timberwolves",
+      "elo_chance_for_pick": "67%",
+      "market_chance_for_elo_pick": "60%",
+      "elo_minus_market_points": "+8"
+    },
+    {
+      "matchup": "Portland Trail Blazers at Los Angeles Lakers",
+      "tip_off": "10:00 PM ET",
+      "elo_pick": "Los Angeles Lakers",
+      "elo_chance_for_pick": "59%",
+      "market_chance_for_elo_pick": "58%",
+      "elo_minus_market_points": "+1"
+    },
+    {
+      "matchup": "San Antonio Spurs at Sacramento Kings",
+      "tip_off": "10:00 PM ET",
+      "elo_pick": "San Antonio Spurs",
+      "elo_chance_for_pick": "85%",
+      "market_chance_for_elo_pick": "89%",
+      "elo_minus_market_points": "-4"
+    }
+  ],
+  "tonight_summary": {
+    "games": 9
+  },
+  "tonight_highlights": {
+    "closest_game": "Philadelphia 76ers at Cleveland Cavaliers",
+    "biggest_elo_market_disagreement": "Oklahoma City Thunder at Memphis Grizzlies"
+  },
+  "season_to_date": {
+    "games_scored": 70,
+    "elo_log_loss": "0.621",
+    "elo_pick_accuracy": "69%",
+    "coin_flip_log_loss": "0.693",
+    "games_with_market": 70,
+    "elo_log_loss_on_market_games": "0.621",
+    "market_log_loss_on_market_games": "0.563"
+  },
+  "home_court": {
+    "elo_points": "32",
+    "home_chance_between_equal_teams": "55%"
+  }
+}

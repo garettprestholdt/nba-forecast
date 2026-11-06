@@ -249,7 +249,7 @@
    "name": "Kyle Anderson",
    "position": "F",
    "short": "K. Anderson",
-   "status": "",
+   "status": "Day-To-Day",
    "team_id": "28",
    "weight_lb": "230"
   },
@@ -293,7 +293,7 @@
    "name": "Dennis Schroder",
    "position": "G",
    "short": "D. Schroder",
-   "status": "",
+   "status": "Out",
    "team_id": "30",
    "weight_lb": "175"
   },
@@ -414,7 +414,7 @@
    "name": "Clint Capela",
    "position": "C",
    "short": "C. Capela",
-   "status": "Day-To-Day",
+   "status": "Out",
    "team_id": "10",
    "weight_lb": "256"
   },
@@ -535,7 +535,7 @@
    "name": "Jakob Poeltl",
    "position": "C",
    "short": "J. Poeltl",
-   "status": "",
+   "status": "Day-To-Day",
    "team_id": "28",
    "weight_lb": "253"
   },
@@ -645,7 +645,7 @@
    "name": "Jock Landale",
    "position": "C",
    "short": "J. Landale",
-   "status": "Day-To-Day",
+   "status": "Out",
    "team_id": "1",
    "weight_lb": "255"
   },
@@ -1118,7 +1118,7 @@
    "name": "De'Andre Hunter",
    "position": "F",
    "short": "D. Hunter",
-   "status": "",
+   "status": "Day-To-Day",
    "team_id": "23",
    "weight_lb": "221"
   },
@@ -1272,7 +1272,7 @@
    "name": "Payton Pritchard",
    "position": "G",
    "short": "P. Pritchard",
-   "status": "Day-To-Day",
+   "status": "",
    "team_id": "2",
    "weight_lb": "211"
   },
@@ -1657,7 +1657,7 @@
    "name": "Jordan Goodwin",
    "position": "G",
    "short": "J. Goodwin",
-   "status": "Out",
+   "status": "Day-To-Day",
    "team_id": "21",
    "weight_lb": "215"
   },
@@ -1723,7 +1723,7 @@
    "name": "Daeqwon Plowden",
    "position": "G",
    "short": "D. Plowden",
-   "status": "Day-To-Day",
+   "status": "",
    "team_id": "23",
    "weight_lb": "216"
   },
@@ -1899,7 +1899,7 @@
    "name": "Immanuel Quickley",
    "position": "G",
    "short": "I. Quickley",
-   "status": "",
+   "status": "Day-To-Day",
    "team_id": "28",
    "weight_lb": "190"
   },
@@ -2141,7 +2141,7 @@
    "name": "Trey Murphy III",
    "position": "F",
    "short": "T. Murphy III",
-   "status": "Day-To-Day",
+   "status": "",
    "team_id": "3",
    "weight_lb": "206"
   },
@@ -2203,7 +2203,7 @@
   "4411057": {
    "dob": "2001-03-15",
    "height_in": "78",
-   "jersey": "",
+   "jersey": "9",
    "name": "Kevin McCullar Jr.",
    "position": "G",
    "short": "K. McCullar Jr.",
@@ -2302,7 +2302,7 @@
   "4431695": {
    "dob": "2000-09-09",
    "height_in": "82",
-   "jersey": "",
+   "jersey": "2",
    "name": "Drew Timme",
    "position": "F",
    "short": "D. Timme",
@@ -2599,7 +2599,7 @@
   "4432586": {
    "dob": "2003-06-03",
    "height_in": "84",
-   "jersey": "",
+   "jersey": "12",
    "name": "Nate Bittle",
    "position": "C",
    "short": "N. Bittle",
@@ -2647,7 +2647,7 @@
    "name": "Isaiah Stewart",
    "position": "C",
    "short": "I. Stewart",
-   "status": "Day-To-Day",
+   "status": "Out",
    "team_id": "29",
    "weight_lb": "250"
   },
@@ -2702,7 +2702,7 @@
    "name": "Jaylin Williams",
    "position": "F",
    "short": "J. Williams",
-   "status": "Day-To-Day",
+   "status": "Out",
    "team_id": "25",
    "weight_lb": "240"
   },
@@ -2724,7 +2724,7 @@
    "name": "Terrence Shannon Jr.",
    "position": "G",
    "short": "T. Shannon Jr.",
-   "status": "Day-To-Day",
+   "status": "Out",
    "team_id": "16",
    "weight_lb": "215"
   },
@@ -2779,7 +2779,7 @@
    "name": "Scottie Barnes",
    "position": "F",
    "short": "S. Barnes",
-   "status": "",
+   "status": "Day-To-Day",
    "team_id": "28",
    "weight_lb": "237"
   },
@@ -2900,7 +2900,7 @@
    "name": "Moussa Diabate",
    "position": "F",
    "short": "M. Diabate",
-   "status": "",
+   "status": "Out",
    "team_id": "30",
    "weight_lb": "210"
   },
@@ -3087,7 +3087,7 @@
    "name": "Keshon Gilbert",
    "position": "G",
    "short": "K. Gilbert",
-   "status": "",
+   "status": "Out",
    "team_id": "1",
    "weight_lb": "200"
   },
@@ -3762,6 +3762,17 @@
    "team_id": "5",
    "weight_lb": "180"
   },
+  "4702134": {
+   "dob": "2001-08-28",
+   "height_in": "79",
+   "jersey": "15",
+   "name": "Norchad Omier",
+   "position": "C",
+   "short": "N. Omier",
+   "status": "",
+   "team_id": "5",
+   "weight_lb": "248"
+  },
   "4702177": {
    "dob": "2000-01-08",
    "height_in": "76",
@@ -3864,7 +3875,7 @@
   "4703396": {
    "dob": "2002-08-03",
    "height_in": "81",
-   "jersey": "",
+   "jersey": "45",
    "name": "Graham Ike",
    "position": "F",
    "short": "G. Ike",
@@ -3989,7 +4000,7 @@
    "name": "Noah Clowney",
    "position": "F",
    "short": "N. Clowney",
-   "status": "Day-To-Day",
+   "status": "",
    "team_id": "17",
    "weight_lb": "210"
   },
@@ -4209,7 +4220,7 @@
    "name": "Asa Newell",
    "position": "F",
    "short": "A. Newell",
-   "status": "Day-To-Day",
+   "status": "Out",
    "team_id": "1",
    "weight_lb": "224"
   },
@@ -4374,7 +4385,7 @@
    "name": "Gui Santos",
    "position": "F",
    "short": "G. Santos",
-   "status": "Out",
+   "status": "Day-To-Day",
    "team_id": "9",
    "weight_lb": "185"
   },
@@ -4517,7 +4528,7 @@
    "name": "Adou Thiero",
    "position": "F",
    "short": "A. Thiero",
-   "status": "Out",
+   "status": "",
    "team_id": "13",
    "weight_lb": "220"
   },
@@ -4550,7 +4561,7 @@
    "name": "Kon Knueppel",
    "position": "G",
    "short": "K. Knueppel",
-   "status": "Day-To-Day",
+   "status": "Out",
    "team_id": "30",
    "weight_lb": "215"
   },
@@ -4862,17 +4873,6 @@
    "team_id": "12",
    "weight_lb": "224"
   },
-  "5105837": {
-   "dob": "2003-09-14",
-   "height_in": "72",
-   "jersey": "2",
-   "name": "Bruce Thornton",
-   "position": "G",
-   "short": "B. Thornton",
-   "status": "",
-   "team_id": "10",
-   "weight_lb": "223"
-  },
   "5105839": {
    "dob": "2003-10-30",
    "height_in": "78",
@@ -4886,7 +4886,7 @@
   },
   "5105841": {
    "dob": "2004-04-20",
-   "height_in": "82",
+   "height_in": "83",
    "jersey": "34",
    "name": "Felix Okpara",
    "position": "F",
@@ -4913,7 +4913,7 @@
    "name": "Rasheer Fleming",
    "position": "F",
    "short": "R. Fleming",
-   "status": "Out",
+   "status": "Day-To-Day",
    "team_id": "21",
    "weight_lb": "240"
   },
@@ -5137,17 +5137,6 @@
    "team_id": "23",
    "weight_lb": "186"
   },
-  "5142621": {
-   "dob": "2007-02-01",
-   "height_in": "83",
-   "jersey": "12",
-   "name": "Chris Cenac Jr.",
-   "position": "F",
-   "short": "C. Cenac Jr.",
-   "status": "",
-   "team_id": "2",
-   "weight_lb": "240"
-  },
   "5142718": {
    "dob": "2007-01-29",
    "height_in": "81",
@@ -5346,16 +5335,16 @@
    "team_id": "9",
    "weight_lb": "241"
   },
-  "5177362": {
-   "dob": "2000-09-22",
+  "5176517": {
+   "dob": "2003-05-23",
    "height_in": "79",
-   "jersey": "12",
-   "name": "Riley Minix",
+   "jersey": "10",
+   "name": "Michael Ajayi",
    "position": "F",
-   "short": "R. Minix",
+   "short": "M. Ajayi",
    "status": "",
-   "team_id": "5",
-   "weight_lb": "230"
+   "team_id": "30",
+   "weight_lb": "228"
   },
   "5203685": {
    "dob": "2006-09-14",
@@ -5628,7 +5617,7 @@
    "name": "Kyrie Irving",
    "position": "G",
    "short": "K. Irving",
-   "status": "",
+   "status": "Day-To-Day",
    "team_id": "6",
    "weight_lb": "195"
   },
@@ -5694,7 +5683,7 @@
    "name": "Anthony Davis",
    "position": "F",
    "short": "A. Davis",
-   "status": "",
+   "status": "Day-To-Day",
    "team_id": "27",
    "weight_lb": "253"
   },
@@ -5743,5 +5732,5 @@
    "weight_lb": "222"
   }
  },
- "updated_at": "2026-11-05T21:54:44+00:00"
+ "updated_at": "2026-11-06T21:26:05+00:00"
 }

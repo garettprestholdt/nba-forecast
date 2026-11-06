@@ -662,5 +662,61 @@
   "home_team_id": "22",
   "neutral": false,
   "state": "OR"
+ },
+ "401909945": {
+  "arena": "United Center",
+  "city": "Chicago",
+  "country": "",
+  "home_team_id": "4",
+  "neutral": false,
+  "state": "IL"
+ },
+ "401909946": {
+  "arena": "Little Caesars Arena",
+  "city": "Detroit",
+  "country": "",
+  "home_team_id": "8",
+  "neutral": false,
+  "state": "MI"
+ },
+ "401909947": {
+  "arena": "Target Center",
+  "city": "Minneapolis",
+  "country": "",
+  "home_team_id": "16",
+  "neutral": false,
+  "state": "MN"
+ },
+ "401909948": {
+  "arena": "American Airlines Center",
+  "city": "Dallas",
+  "country": "",
+  "home_team_id": "6",
+  "neutral": false,
+  "state": "TX"
+ },
+ "401909949": {
+  "arena": "Fiserv Forum",
+  "city": "Milwaukee",
+  "country": "",
+  "home_team_id": "15",
+  "neutral": false,
+  "state": "WI"
+ },
+ "401909950": {
+  "arena": "Intuit Dome",
+  "city": "Inglewood",
+  "country": "",
+  "home_team_id": "12",
+  "neutral": false,
+  "state": "CA"
+ },
+ "401909951": {
+  "arena": "Golden 1 Center",
+  "city": "Sacramento",
+  "country": "",
+  "home_team_id": "23",
+  "neutral": false,
+  "state": "CA"
  }
 }
