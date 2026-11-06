@@ -10,7 +10,7 @@ from jinja2 import Environment, FileSystemLoader, select_autoescape
 from nbaforecast import config
 from nbaforecast.ingest.espn import EASTERN  # noqa: F401  (slate dates stay US Eastern)
 from nbaforecast.pipeline.live import Store
-from nbaforecast.web import fan, games, history, play, players, teams
+from nbaforecast.web import fan, games, play, players, scorecard, teams
 from nbaforecast.web.context import build_context
 from nbaforecast.web.filters import (
     _long_date,
@@ -31,10 +31,15 @@ HERE = Path(__file__).parent
 PAGES = {
     "index.html": "index.html",
     "standings.html": "standings.html",
-    "history.html": "history.html",
-    "model.html": "model.html",
+    "scorecard.html": "scorecard.html",
     "play.html": "play.html",
-    "ratings.html": "ratings.html",  # redirect to standings.html#power
+}
+
+# Old addresses that still get a page: (new address, its name).
+REDIRECTS = {
+    "ratings.html": ("standings.html#power", "Standings & odds"),
+    "model.html": ("scorecard.html", "Scorecard"),
+    "history.html": ("scorecard.html", "Scorecard"),
 }
 
 
@@ -56,7 +61,7 @@ def build(
     env.filters["metric"] = _metric
     env.filters["tip_day"] = _tip_day
     env.filters["tip_time"] = _tip_time
-    context = build_context(data_dir, published_dir)
+    context = build_context(data_dir)
     # Cache-busting: asset URLs change whenever the CSS or JS changes.
     digest = hashlib.sha256()
     for asset in sorted((HERE / "static").iterdir()):
@@ -71,7 +76,8 @@ def build(
     payloads = players.player_payloads(root, season, team_map, court_data, context["slate_date"])
     published = published_dir or config.PUBLISHED_DIR
     context.update(
-        history=history.history(Store(root), season, team_map),
+        model_scorecard=scorecard.scorecard(Store(root), season, team_map, published),
+        models=scorecard.MODELS,
         coldcase=play.coldcase(published, out_dir, today or datetime.now(fan.CENTRAL).date()),
         team_list=sorted(team_map.values(), key=lambda t: t.name),
         team_metrics=teams.TEAM_METRICS,
@@ -79,6 +85,10 @@ def build(
     for name, template in PAGES.items():
         path = out_dir / name
         path.write_text(env.get_template(template).render(page=name, **context))
+        written.append(path)
+    for name, (to, label) in REDIRECTS.items():
+        path = out_dir / name
+        path.write_text(env.get_template("redirect.html").render(to=to, label=label))
         written.append(path)
     state = Store(root).load_state()
     slate_ids = {m.game_id for m in context["games"]}

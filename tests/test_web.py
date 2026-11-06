@@ -8,7 +8,7 @@ import pytest
 from nbaforecast import config, web
 from nbaforecast.models.elo import EloState
 from nbaforecast.pipeline import live, shadow_v2
-from nbaforecast.web import charts
+from nbaforecast.web import scorecard
 
 FRANCHISES = [str(i) for i in range(1, 31)]
 
@@ -88,17 +88,6 @@ def specs(html: str) -> dict[str, dict]:
     return {m.group(1): json.loads(m.group(2)) for m in re.finditer(pattern, html, re.S)}
 
 
-def fields(node):
-    if isinstance(node, dict):
-        for key, value in node.items():
-            if key == "field" and isinstance(value, str):
-                yield value
-            yield from fields(value)
-    elif isinstance(node, list):
-        for item in node:
-            yield from fields(item)
-
-
 @pytest.fixture
 def site(data_dir, tmp_path_factory):
     out = tmp_path_factory.mktemp("site")
@@ -110,10 +99,12 @@ def test_builds_every_page_and_assets(site):
     for name in [
         "index.html",
         "standings.html",
-        "model.html",
+        "scorecard.html",
         "ratings.html",
+        "model.html",
+        "history.html",
         "assets/style.css",
-        "assets/charts.js",
+        "assets/scorecard.js",
         "assets/court.svg",
         "assets/mark.svg",
         ".nojekyll",
@@ -139,58 +130,58 @@ def test_standings_page_power_ratings_without_projections(site):
     assert power.index("Atlanta Hawks") < power.index("Charlotte Hornets")  # ID 1 rated highest
 
 
-def test_old_ratings_page_redirects(site):
+def test_old_pages_redirect(site):
     assert "url=standings.html#power" in (site / "ratings.html").read_text()
+    for old in ("model.html", "history.html"):
+        assert "url=scorecard.html" in (site / old).read_text()
+    nav = (site / "index.html").read_text()
+    assert 'href="scorecard.html"' in nav and 'href="model.html"' not in nav
 
 
-def test_chart_specs_are_valid_json_with_safe_field_names(site):
-    for page in ["index.html", "standings.html", "model.html"]:
-        for spec_id, spec in specs((site / page).read_text()).items():
-            for field in fields(spec):
-                # Vega reads ' . [ ] in a field name as path syntax.
-                assert not re.search(r"['.\[\]]", field), f"{page}:{spec_id} field {field!r}"
+def test_scorecard_page(site):
+    html = (site / "scorecard.html").read_text()
+    data = specs(html)["scorecard-data"]
+    # the fixture's one finished game (g1: BOS 110-101 BKN) has Elo and market, no challenger
+    assert len(data["games"]) == 1 and data["common"] == 0 and data["cards"] == []
+    g = data["games"][0]
+    assert (g["home"], g["away"], g["hs"], g["as"]) == ("BOS", "BKN", 110, 101)
+    assert g["elo"] == 0.867 and g["mkt"] == 0.823 and g["v2"] is None and g["books"] == 9
+    assert data["how"]["mkt"] == {"min": 9, "max": 9, "avg": 9.0}
+    groups = {x["group"]: x for x in data["how"]["v2"]}
+    assert list(groups) == ["Team", "Players tonight", "Recent form", "Schedule and roster"]
+    assert sum(x["share"] for x in groups.values()) == pytest.approx(1.0)
+    assert "assets/scorecard.js" in html and "promotion-bar-hybrid-v2.md" in html
 
 
-def test_model_page_is_plain_and_simple(site):
-    html = (site / "model.html").read_text()
-    calibration = specs(html)["spec-calibration"]
-    series = {
-        row["series"]
-        for layer in calibration["layer"]
-        for row in layer.get("data", {}).get("values", [])
-        if "series" in row
-    }
-    assert series == {charts.ADAPTIVE}  # one model on the honesty chart; live joins after 100 games
-    for approach in ("Coin flip", "Always back the home team", "Elo (published)",
-                     "Player + injury model (challenger)",
-                     "Team + player model (earlier challenger)"):  # fmt: skip
-        assert approach in html
-    assert "promotion-bar-hybrid-v2.md" in html and "promotion-bar-hybrid.md" not in html
-    assert "For the curious" in html  # the technical tables are tucked away, not gone
-    market = specs(html)["spec-market"]
-    assert market["width"] == market["height"]  # same scale on both axes
-    for layer in market["layer"]:
-        enc = layer["encoding"]
-        assert enc["x"]["scale"]["domain"] == enc["y"]["scale"]["domain"] == [0, 1]
+def test_scorecard_cards_compare_the_same_games(data_dir, tmp_path_factory):
+    log = shadow_v2.log_path(data_dir, "2026-27")
+    rows = [{"game_id": "g1", "p_home": 0.9, "missing_away": "", "missing_home": ""}]
+    live.Store(data_dir).append(log, list(rows[0]), rows)
+    out = tmp_path_factory.mktemp("site_cards")
+    web.build(data_dir, out, published_dir=config.PUBLISHED_DIR)
+    html = (out / "scorecard.html").read_text()
+    cards = {c["key"]: c for c in specs(html)["scorecard-data"]["cards"]}
+    assert list(cards) == ["elo", "v2", "mkt"]
+    assert cards["v2"]["log_loss"] == pytest.approx(-math.log(0.9)) and cards["v2"]["leads"]
+    assert all(c["games"] == 1 and c["right"] == 1 for c in cards.values())
+    assert html.count('class="sc-card m-') == 3 and "Tue night" in html and "best so far" in html
+    log.unlink()
+
+
+def test_v2_inputs_all_have_plain_labels():
+    features = json.loads((config.PUBLISHED_DIR / "hybrid_v2" / "model.json").read_text())
+    assert set(scorecard.V2_FEATURES) == set(features["features"])
 
 
 def test_new_pages_are_built(site):
-    for name in ("history.html", "play.html", "team-bos.html", "team-bkn.html",
+    for name in ("play.html", "team-bos.html", "team-bkn.html",
                  "assets/app.js", "assets/coldcase.js"):  # fmt: skip
         assert (site / name).exists(), name
     team = (site / "team-bos.html").read_text()
     assert "Boston Celtics" in team and "Why +" in team
-    history = (site / "history.html").read_text()
-    assert "1 of 1 picks right" in history  # the fixture's one finished, predicted game
     index = (site / "index.html").read_text()
     assert "team-bos.html" in index and 'id="player-dialog"' in index
     assert "6:30 PM CT" in index
-
-
-def test_colors_are_tokens_not_hex(site):
-    for page in ["index.html", "standings.html", "model.html"]:
-        for spec in specs((site / page).read_text()).values():
-            assert not re.search(r"#[0-9a-fA-F]{6}", json.dumps(spec)), page
 
 
 def test_latest_recap_shown_with_its_source(data_dir, tmp_path_factory):
