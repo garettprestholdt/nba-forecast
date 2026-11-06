@@ -28,7 +28,7 @@ from data available before each tip-off. Lower log-loss is better.
 \*v2's features were chosen after comparing ten candidates on these same seasons, so its
 held-out number is optimistic. Its pre-registered live window (the 2026-27 regular season) is
 the real test: [promotion bar](docs/promotion-bar-hybrid-v2.md). The live season scorecard,
-including the betting market, is on the [model page](https://garettprestholdt.github.io/nba-forecast/model.html).
+including the betting market, is on the [Scorecard](https://garettprestholdt.github.io/nba-forecast/scorecard.html).
 
 What the research found, one write-up per decision:
 - [Home-court advantage drifted](docs/findings/elo-backtest.md); a fixed Elo bonus miscalibrates.
@@ -45,8 +45,10 @@ What the research found, one write-up per decision:
 - **Player profiles:** age, offense and defense impact (RAPM), defensive role, shot chart, game
   log and career.
 - **Teams:** rating history explained game by game, strengths and weaknesses, roster, full schedule.
-- **Standings and playoff odds** from 10,000 simulated seasons, **prediction history**, and
-  **Cold Case**, a daily puzzle built from real play-by-play: name the player behind a scoring run.
+- **Scorecard:** Elo, the challenger and the betting market side by side, night by night. Each
+  one opens to what goes into it (the challenger's inputs by weight, how the market line is
+  built) and every pick it's made, filterable by night, team, confidence and agreement.
+- **Standings and playoff odds** from 10,000 simulated seasons, and **Cold Case**, a daily puzzle built from real play-by-play: name the player behind a scoring run.
 
 ## How it works
 ```mermaid
@@ -98,7 +100,7 @@ Game data from ESPN's public JSON endpoints; betting lines from [The Odds API](h
 Raw data stays on the maintainer's machine; only small outputs are committed. Team names and
 logos are trademarks of the NBA and its teams.
 
-Python · uv · DuckDB · dbt · pandas · NumPy · Jinja2 · Vega-Lite · GitHub Actions · GitHub Pages · Claude Code
+Python · uv · DuckDB · dbt · pandas · NumPy · Jinja2 · GitHub Actions · GitHub Pages · Claude Code
 
 ## License
 Code is [MIT](LICENSE). The data belongs to its sources (above); this repo doesn't relicense it.

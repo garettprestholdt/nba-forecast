@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+{% block title %}Scorecard · NBA Forecast{% endblock %}
+{% set sc = model_scorecard %}
+
+{% block hero %}
+<section class="hero" aria-labelledby="hero-h">
+  <div class="wrap">
+    <p class="kicker">{{ season }} season · scored every morning</p>
+    <h1 id="hero-h" class="display">Scorecard</h1>
+    <p class="dek">Three forecasts for every game, each logged before tip-off in a
+      <a href="{{ repo_url }}/tree/data">public, append-only record</a>. Pick one to see how it works and every call it's made.</p>
+  </div>
+</section>
+{% endblock %}
+
+{% block content %}
+{% if sc %}
+<div class="sc-cards">
+  {% for c in sc.cards %}
+  <button type="button" class="sc-card m-{{ c.key }}" data-model="{{ c.key }}" aria-haspopup="dialog">
+    <span class="top"><span class="nm">{{ c.name }}</span><span class="badge {{ 'spot' if c.role == 'Published' else 'final' }}">{{ c.role }}</span></span>
+    <span class="big"><span class="v">{{ c.log_loss | num }}</span><span class="k">log-loss{% if c.leads %} · <b>best so far</b>{% endif %}</span></span>
+    <span class="bar" aria-hidden="true"><span style="width: {{ (c.skill * 100 / 0.35) | round(1) if c.skill < 0.35 else 100 }}%"></span></span>
+    <span class="facts">
+      <span><span class="k">Picks right</span><b>{{ (c.right / c.games) | pct }}</b><span class="n">{{ c.right }} of {{ c.games }}</span></span>
+      <span><span class="k">Brier</span><b>{{ c.brier | num }}</b></span>
+      <span><span class="k">{{ sc.last_label }}</span>{% if c.last %}<b>{{ c.last.right }} of {{ c.last.games }}</b>{% else %}<b>–</b>{% endif %}</span>
+    </span>
+    <span class="more">How it works and every pick →</span>
+  </button>
+  {% endfor %}
+</div>
+<p class="sc-note">All three scored on the same {{ sc.common }} finished game{{ "s" if sc.common != 1 }}. Log-loss: lower is better, and a coin flip scores 0.693; the bar shows how far each beats a coin flip. Elo is the published forecast; the challenger replaces it only if it wins over the full season, under a <a href="{{ repo_url }}/blob/main/{{ sc.rule }}">rule set in advance</a>.</p>
+
+<section class="panel night" aria-labelledby="night-h">
+  <div class="log-head">
+    <h3 id="night-h">Night by night</h3>
+    <label class="filter">Night <select id="night"></select></label>
+    <div class="night-sum" id="night-sum" aria-live="polite"></div>
+  </div>
+  <div class="table-wrap">
+    <table class="data compact" id="night-table">
+      <thead><tr><th>Game</th><th>Final</th>{% for key, name, role, cls in models %}<th><span class="key {{ cls }}"></span>{{ {"elo": "Elo", "v2": "Player + injury", "mkt": "Market"}[key] }}</th>{% endfor %}</tr></thead>
+      <tbody></tbody>
+    </table>
+  </div>
+</section>
+<script type="application/json" id="scorecard-data">{{ sc | tojson }}</script>
+{% else %}
+<p class="empty">The scorecard starts the morning after the first predicted games are played.</p>
+{% endif %}
+{% endblock %}
+
+{% block specs %}<script src="assets/scorecard.js?v={{ asset_version }}" defer></script>{% endblock %}

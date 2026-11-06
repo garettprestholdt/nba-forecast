@@ -56,8 +56,8 @@ src/nbaforecast/
 │   backtest (Elo) · challenger (Kalman, rest) · hybrid_backtest (v1) · impact_backtest (v2)
 │   rapm_walk (leak-free RAPM snapshots)
 ├── games/             coldcase (case generator for the Cold Case puzzle)
-├── web/               static site: build · context · charts · filters · fan (teams, colors)
-│   players · teams · games · history · play · links · templates/ · static/
+├── web/               static site: build · context · filters · fan (teams, colors)
+│   players · teams · games · scorecard · play · links · templates/ · static/
 └── cli/               `nbaf`: data · research · daily · agents · site (one module per area)
 ```
 
@@ -148,14 +148,16 @@ summer). Stat lines are computed only in `pipeline/boxlog.season_line`.
   issue labeled `triage`; fixes go through a normal PR.
 
 **Site.** `nbaf site` renders everything at build time; Pages deploys after every daily run and
-every merge to `main`. Pages: Tonight (matchup cards), Standings & odds, Prediction history, The
-model, Play (Cold Case), `team-<abbr>.html`, `game-<id>.html`, and the player pop-up
-(`static/app.js` loads `players/<id>.json`).
+every merge to `main`. Pages: Tonight (matchup cards), Standings & odds, Scorecard, Play (Cold
+Case), `team-<abbr>.html`, `game-<id>.html`, and the player pop-up (`static/app.js` loads
+`players/<id>.json`). Old addresses (`ratings`, `model`, `history`) redirect (`web/build.REDIRECTS`).
 - Logos and headshots load from ESPN's image resizer at view time; `fan.USE_ESPN_IMAGES = False`
   falls back to monograms. Team colors go through `fan.display_color` / `matchup_colors`
   (contrast-checked per theme; `tests/test_fan.py` checks all 30 teams).
-- Charts are Vega-Lite specs (`web/charts.py`) with color tokens (`@series-1`) resolved by
-  `static/charts.js`; field names must not contain `' . [ ]` (`tests/test_web.py`).
+- Scorecard (`web/scorecard.py`, `static/scorecard.js`): cards are rendered at build time on the
+  games all three forecasts share; the night picker and each model's pop-up (in the player
+  dialog) read the finished games embedded in the page. The challenger's inputs are labeled in
+  `scorecard.V2_FEATURES`; a new feature in its `model.json` needs a label there (a test checks).
 - Live scores (`static/live.js`) poll ESPN in the visitor's browser: display only, never written
   to the data branch, and ESPN's win probability is always labeled as ESPN's.
 - Shot charts (`static/court.js`) share zones with `pipeline/court.py`.

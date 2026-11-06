@@ -7,7 +7,7 @@ import pytest
 from nbaforecast.models import elo
 from nbaforecast.models.elo import EloState
 from nbaforecast.pipeline import boxlog, live, seasonelo
-from nbaforecast.web import fan, history, teams
+from nbaforecast.web import fan, scorecard, teams
 
 FIXTURE = json.loads(
     (
@@ -113,13 +113,17 @@ def test_ranks_respect_direction():
     assert rk["b"]["tov"] == 2
 
 
-def test_history_counts_and_buckets(tmp_path):
+def test_scorecard_records_from_the_log(tmp_path):
     store = live.Store(tmp_path)
     blank = dict.fromkeys(live.PREDICTION_FIELDS, "")
     preds = [{**blank, "game_id": "a", "game_date": "2026-10-27", "home_team_id": "2",
-              "away_team_id": "17", "p_home": "0.8", "season": "2026-27"},
-             {**blank, "game_id": "b", "game_date": "2026-10-27", "home_team_id": "1",
-              "away_team_id": "5", "p_home": "0.55", "season": "2026-27"}]  # fmt: skip
+              "away_team_id": "17", "p_home": "0.8", "market_p_home": "0.7", "market_books": "8",
+              "home_elo": "1600", "away_elo": "1500", "season": "2026-27"},
+             {**blank, "game_id": "b", "game_date": "2026-10-28", "home_team_id": "1",
+              "away_team_id": "5", "p_home": "0.55", "home_elo": "1500", "away_elo": "1520",
+              "season": "2026-27"},
+             {**blank, "game_id": "c", "game_date": "2026-10-28", "home_team_id": "3",
+              "away_team_id": "4", "p_home": "0.6", "season": "2026-27"}]  # fmt: skip
     results = [{**dict.fromkeys(live.RESULT_FIELDS, ""), "game_id": "a", "home_score": 110,
                 "away_score": 100},
                {**dict.fromkeys(live.RESULT_FIELDS, ""), "game_id": "b", "home_score": 90,
@@ -127,11 +131,14 @@ def test_history_counts_and_buckets(tmp_path):
     store.append(store.predictions_path("2026-27"), live.PREDICTION_FIELDS, preds)
     store.append(store.results_path("2026-27"), live.RESULT_FIELDS, results)
     team_map = fan.teams(tmp_path, {}, 1505.0)
-    h = history.history(store, "2026-27", team_map)
-    assert h["summary"]["games"] == 2 and h["summary"]["correct"] == 1
-    assert {b["label"]: b["games"] for b in h["buckets"]} == {"50–60%": 1, "80%+": 1}
-    boston = next(t for t in h["teams"] if t["team"].abbr == "BOS")
-    assert boston["games"] == 1 and boston["accuracy"] == 1.0
+    games = scorecard.finished_games(store, "2026-27", team_map)
+    assert [g["date"] for g in games] == ["2026-10-28", "2026-10-27"]  # c isn't final yet
+    assert games[1]["home"] == "BOS" and games[1]["gap"] == 100.0 and games[1]["books"] == 8
+    assert games[0]["mkt"] is None and games[0]["gap"] == -20.0
+    elo = scorecard.record(games, "elo")
+    assert elo["games"] == 2 and elo["right"] == 1  # a right at 80%, b wrong at 55%
+    assert scorecard.record(games, "mkt")["games"] == 1
+    assert scorecard.record(games, "v2") is None
 
 
 def test_team_schedule_marks_results_forecasts_and_tonight():

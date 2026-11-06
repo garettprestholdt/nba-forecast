@@ -188,11 +188,6 @@
     dialog.addEventListener("click", (e) => { if (e.target === dialog) dialog.close(); });  // backdrop
   }
 
-  // Charts inside a closed <details> render at zero width; redraw them when it opens.
-  document.querySelectorAll("details").forEach((d) => d.addEventListener("toggle", () => {
-    if (d.open) window.dispatchEvent(new Event("resize"));
-  }));
-
   // Team pages: show all games, only played, or only to come.
   document.querySelectorAll("[data-sched]").forEach((b) => b.addEventListener("click", () => {
     const v = b.dataset.sched;
@@ -201,20 +196,4 @@
       tr.hidden = v !== "all" && (tr.classList.contains("month") ? false : !tr.classList.contains(v));
     });
   }));
-
-  // History page: filter the game log by team.
-  const filter = document.getElementById("team-filter");
-  if (filter) {
-    filter.addEventListener("change", () => {
-      const v = filter.value;
-      let shown = 0, right = 0;
-      document.querySelectorAll("#log tbody tr").forEach((tr) => {
-        const on = !v || tr.dataset.teams.split(" ").includes(v);
-        tr.hidden = !on;
-        if (on) { shown += 1; right += tr.dataset.correct === "1" ? 1 : 0; }
-      });
-      document.getElementById("filter-summary").textContent = shown
-        ? `${right} of ${shown} picks right (${Math.round((100 * right) / shown)}%)` : "No games yet";
-    });
-  }
 })();

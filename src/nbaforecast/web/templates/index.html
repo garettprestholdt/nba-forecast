@@ -150,7 +150,7 @@
         </li>
         {% endfor %}
       </ol>
-      <p class="note">Log-loss on the same finished games; lower is better, a coin flip scores 0.693. Longer bars beat a coin flip by more. Elo is the published forecast; the player + injury model replaces it only if it wins over the full season, under a <a href="{{ repo_url }}/blob/main/docs/promotion-bar-hybrid-v2.md">rule set in advance</a>.</p>
+      <p class="note">Log-loss on the same finished games; lower is better, a coin flip scores 0.693. Longer bars beat a coin flip by more. Elo is the published forecast; the player + injury model replaces it only if it wins over the full season, under a <a href="{{ repo_url }}/blob/main/docs/promotion-bar-hybrid-v2.md">rule set in advance</a>. <a href="scorecard.html">Full scorecard →</a></p>
     </section>
     {% endif %}
     {% if not games %}
@@ -182,7 +182,7 @@
         <div class="stat"><div class="k">Picks correct</div><div class="v">{{ (sc.elo.accuracy if sc and sc.elo else none) | pct }}</div><div class="n">{{ games_scored }} games scored</div></div>
         <div class="stat"><div class="k">Log-loss</div><div class="v">{{ (sc.elo.log_loss if sc and sc.elo else none) | num }}</div><div class="n">Coin flip: 0.693</div></div>
       </div>
-      <p class="note">Every prediction is scored once its game is final. Log-loss rewards confident correct forecasts and punishes confident misses. <a href="model.html">How it's tested →</a></p>
+      <p class="note">Every prediction is scored once its game is final. Log-loss rewards confident correct forecasts and punishes confident misses. <a href="scorecard.html">Full scorecard →</a></p>
     </section>
 
 
