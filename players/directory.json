@@ -249,7 +249,7 @@
    "name": "Kyle Anderson",
    "position": "F",
    "short": "K. Anderson",
-   "status": "Day-To-Day",
+   "status": "",
    "team_id": "28",
    "weight_lb": "230"
   },
@@ -337,7 +337,7 @@
    "name": "Josh Hart",
    "position": "G",
    "short": "J. Hart",
-   "status": "Day-To-Day",
+   "status": "Out",
    "team_id": "18",
    "weight_lb": "215"
   },
@@ -513,7 +513,7 @@
    "name": "Gary Payton II",
    "position": "G",
    "short": "G. Payton II",
-   "status": "",
+   "status": "Day-To-Day",
    "team_id": "9",
    "weight_lb": "195"
   },
@@ -535,7 +535,7 @@
    "name": "Jakob Poeltl",
    "position": "C",
    "short": "J. Poeltl",
-   "status": "Day-To-Day",
+   "status": "",
    "team_id": "28",
    "weight_lb": "253"
   },
@@ -1239,7 +1239,7 @@
    "name": "Desmond Bane",
    "position": "G",
    "short": "D. Bane",
-   "status": "",
+   "status": "Out",
    "team_id": "19",
    "weight_lb": "215"
   },
@@ -1250,7 +1250,7 @@
    "name": "Jarrett Allen",
    "position": "C",
    "short": "J. Allen",
-   "status": "Day-To-Day",
+   "status": "Out",
    "team_id": "5",
    "weight_lb": "243"
   },
@@ -1360,7 +1360,7 @@
    "name": "Sam Merrill",
    "position": "G",
    "short": "S. Merrill",
-   "status": "",
+   "status": "Out",
    "team_id": "5",
    "weight_lb": "205"
   },
@@ -2592,7 +2592,7 @@
    "name": "Max Christie",
    "position": "G",
    "short": "M. Christie",
-   "status": "Day-To-Day",
+   "status": "",
    "team_id": "6",
    "weight_lb": "190"
   },
@@ -2856,7 +2856,7 @@
    "name": "Devin Carter",
    "position": "G",
    "short": "D. Carter",
-   "status": "Out",
+   "status": "",
    "team_id": "2",
    "weight_lb": "188"
   },
@@ -2900,7 +2900,7 @@
    "name": "Moussa Diabate",
    "position": "F",
    "short": "M. Diabate",
-   "status": "Out",
+   "status": "Day-To-Day",
    "team_id": "30",
    "weight_lb": "210"
   },
@@ -2922,7 +2922,7 @@
    "name": "Trey Alexander",
    "position": "G",
    "short": "T. Alexander",
-   "status": "Out",
+   "status": "",
    "team_id": "26",
    "weight_lb": "185"
   },
@@ -2933,7 +2933,7 @@
    "name": "Brandon Miller",
    "position": "F",
    "short": "B. Miller",
-   "status": "",
+   "status": "Day-To-Day",
    "team_id": "30",
    "weight_lb": "200"
   },
@@ -3065,7 +3065,7 @@
    "name": "Peyton Watson",
    "position": "G",
    "short": "P. Watson",
-   "status": "Day-To-Day",
+   "status": "",
    "team_id": "5",
    "weight_lb": "200"
   },
@@ -3109,7 +3109,7 @@
    "name": "Spencer Jones",
    "position": "F",
    "short": "S. Jones",
-   "status": "Out",
+   "status": "",
    "team_id": "7",
    "weight_lb": "225"
   },
@@ -3241,7 +3241,7 @@
    "name": "Santi Aldama",
    "position": "F",
    "short": "S. Aldama",
-   "status": "Out",
+   "status": "",
    "team_id": "6",
    "weight_lb": "215"
   },
@@ -3670,7 +3670,7 @@
    "name": "Kam Jones",
    "position": "G",
    "short": "K. Jones",
-   "status": "Day-To-Day",
+   "status": "",
    "team_id": "15",
    "weight_lb": "200"
   },
@@ -3736,7 +3736,7 @@
    "name": "Jalen Johnson",
    "position": "F",
    "short": "J. Johnson",
-   "status": "Day-To-Day",
+   "status": "Out",
    "team_id": "1",
    "weight_lb": "219"
   },
@@ -4000,7 +4000,7 @@
    "name": "Noah Clowney",
    "position": "F",
    "short": "N. Clowney",
-   "status": "",
+   "status": "Day-To-Day",
    "team_id": "17",
    "weight_lb": "210"
   },
@@ -4418,7 +4418,7 @@
    "name": "Tyrese Proctor",
    "position": "G",
    "short": "T. Proctor",
-   "status": "Day-To-Day",
+   "status": "",
    "team_id": "5",
    "weight_lb": "185"
   },
@@ -4719,6 +4719,17 @@
    "team_id": "24",
    "weight_lb": "235"
   },
+  "5105462": {
+   "dob": "2001-09-19",
+   "height_in": "77",
+   "jersey": "5",
+   "name": "Richie Saunders",
+   "position": "G",
+   "short": "R. Saunders",
+   "status": "Out",
+   "team_id": "29",
+   "weight_lb": "205"
+  },
   "5105550": {
    "dob": "2004-12-17",
    "height_in": "81",
@@ -4803,7 +4814,7 @@
    "name": "Tyler Bilodeau",
    "position": "F",
    "short": "T. Bilodeau",
-   "status": "Out",
+   "status": "",
    "team_id": "17",
    "weight_lb": "228"
   },
@@ -5232,7 +5243,7 @@
    "name": "Nikola Topic",
    "position": "G",
    "short": "N. Topic",
-   "status": "Out",
+   "status": "",
    "team_id": "25",
    "weight_lb": "200"
   },
@@ -5562,7 +5573,7 @@
    "name": "Joan Beringer",
    "position": "F",
    "short": "J. Beringer",
-   "status": "",
+   "status": "Day-To-Day",
    "team_id": "16",
    "weight_lb": "230"
   },
@@ -5617,7 +5628,7 @@
    "name": "Kyrie Irving",
    "position": "G",
    "short": "K. Irving",
-   "status": "Day-To-Day",
+   "status": "",
    "team_id": "6",
    "weight_lb": "195"
   },
@@ -5705,7 +5716,7 @@
    "name": "Draymond Green",
    "position": "F",
    "short": "D. Green",
-   "status": "",
+   "status": "Day-To-Day",
    "team_id": "9",
    "weight_lb": "230"
   },
@@ -5732,5 +5743,5 @@
    "weight_lb": "222"
   }
  },
- "updated_at": "2026-11-06T21:26:05+00:00"
+ "updated_at": "2026-11-07T20:07:46+00:00"
 }
