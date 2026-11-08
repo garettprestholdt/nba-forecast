@@ -1,13 +1,13 @@
 {
   "season": "2026-27",
   "model": "elo-adaptive-v1",
-  "updated_at": "2026-11-07T20:07:38+00:00",
-  "games_predicted": 86,
-  "games_scored": 79,
+  "updated_at": "2026-11-08T20:22:19+00:00",
+  "games_predicted": 93,
+  "games_scored": 86,
   "elo": {
-    "log_loss": 0.59336,
-    "brier": 0.20551,
-    "accuracy": 0.72152
+    "log_loss": 0.58159,
+    "brier": 0.20023,
+    "accuracy": 0.73256
   },
   "coin_flip": {
     "log_loss": 0.69315,
@@ -15,16 +15,16 @@
     "accuracy": 0.5
   },
   "head_to_head_with_market": {
-    "games": 79,
+    "games": 86,
     "elo": {
-      "log_loss": 0.59336,
-      "brier": 0.20551,
-      "accuracy": 0.72152
+      "log_loss": 0.58159,
+      "brier": 0.20023,
+      "accuracy": 0.73256
     },
     "market": {
-      "log_loss": 0.54883,
-      "brier": 0.18551,
-      "accuracy": 0.72152
+      "log_loss": 0.54232,
+      "brier": 0.18222,
+      "accuracy": 0.73256
     }
   }
 }
