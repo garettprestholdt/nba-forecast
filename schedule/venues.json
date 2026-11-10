@@ -910,5 +910,37 @@
   "home_team_id": "22",
   "neutral": false,
   "state": "OR"
+ },
+ "401909976": {
+  "arena": "Xfinity Mobile Arena",
+  "city": "Philadelphia",
+  "country": "",
+  "home_team_id": "20",
+  "neutral": false,
+  "state": "PA"
+ },
+ "401909977": {
+  "arena": "Capital One Arena",
+  "city": "Washington",
+  "country": "",
+  "home_team_id": "27",
+  "neutral": false,
+  "state": "DC"
+ },
+ "401909978": {
+  "arena": "Target Center",
+  "city": "Minneapolis",
+  "country": "",
+  "home_team_id": "16",
+  "neutral": false,
+  "state": "MN"
+ },
+ "401909979": {
+  "arena": "Mortgage Matchup Center",
+  "city": "Phoenix",
+  "country": "",
+  "home_team_id": "21",
+  "neutral": false,
+  "state": "AZ"
  }
 }
