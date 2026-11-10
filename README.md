@@ -26,15 +26,17 @@ from data available before each tip-off. Lower log-loss is better.
 | Hybrid v1: team history + player box scores | earlier challenger, replaced by v2 | 0.6171 | 0.2142 | 66.0% |
 
 \*v2's features were chosen after comparing ten candidates on these same seasons, so its
-held-out number is optimistic. Its pre-registered live window (the 2026-27 regular season) is
-the real test: [promotion bar](docs/promotion-bar-hybrid-v2.md). The live season scorecard,
+held-out number is optimistic. On ten earlier seasons no choice ever saw (2007-08 to 2016-17,
+12,897 games), it still beats v1 by 0.0059 and Elo by 0.0117, and both in every one of the ten
+([fresh-season test](docs/findings/impact-challenger.md#fresh-seasons-play-by-play-back-to-2004-05)).
+Its pre-registered live window (the 2026-27 regular season) is the real test: [promotion bar](docs/promotion-bar-hybrid-v2.md). The live season scorecard,
 including the betting market, is on the [Scorecard](https://garettprestholdt.github.io/nba-forecast/scorecard.html).
 
 What the research found, one write-up per decision:
 - [Home-court advantage drifted](docs/findings/elo-backtest.md); a fixed Elo bonus miscalibrates.
 - [Rest matters; the model family doesn't](docs/findings/kalman-vs-elo.md) (Kalman vs. Elo).
 - [Players add signal to team history](docs/findings/hybrid-model.md), and knowing who's out adds as much again.
-- [Defense ratings and who's missing help](docs/findings/impact-challenger.md); a multicollinearity and overfitting review.
+- [Defense ratings and who's missing help](docs/findings/impact-challenger.md); a multicollinearity and overfitting review, re-tested on ten fresh seasons.
 - [Blank box scores can be rebuilt from play-by-play](docs/findings/pbp-box-rebuild.md), and checked.
 
 ## On the site
@@ -75,8 +77,8 @@ Requires Python 3.12+ and [uv](https://docs.astral.sh/uv/). Dependencies are pin
 
 ```bash
 make setup      # install pinned dependencies and git hooks
-make check      # lint + 340 tests (no network)
-make reproduce  # rebuild every published number from public data (~6 h the first time)
+make check      # lint + 347 tests (no network)
+make reproduce  # rebuild every published number from public data (~8 h the first time)
 ```
 
 Each stage (`data`, `plays`, `backtests`, `models`, `site`) is its own target; `make help`

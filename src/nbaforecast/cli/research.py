@@ -107,6 +107,25 @@ def _impact_backtest(args: argparse.Namespace) -> int:
     return 0
 
 
+def _impact_history(args: argparse.Namespace) -> int:
+    from nbaforecast import config, warehouse
+    from nbaforecast.research import impact_history
+
+    logging.basicConfig(level=logging.INFO, format="%(asctime)s %(message)s")
+    feats = impact_history.build(
+        warehouse.load_games(), warehouse.load_team_games(), warehouse.load_player_games(),
+        warehouse.load_box_rows("2004-05"), config.local_data_dir(),
+    )  # fmt: skip
+    result = impact_history.run(feats)
+    impact_history.write(result)
+    cols = ["model", "n", "log_loss", "brier", "reliability"]
+    for name in ("fresh", "holdout"):
+        print(f"\n{name}:")
+        print(result[name]["models"][cols].to_string(index=False))
+    print(f"Wrote {impact_history.OUT_DIR}")
+    return 0
+
+
 def _hybrid_v2_fit(args: argparse.Namespace) -> int:
     import json
 
@@ -150,6 +169,11 @@ def register(sub: argparse._SubParsersAction) -> None:
         "impact-backtest", help="challenger with RAPM + availability: walk-forward and diagnostics"
     )
     ib.set_defaults(func=_impact_backtest)
+
+    ih = sub.add_parser(
+        "impact-history", help="hybrid v2 on fresh seasons, with play-by-play back to 2004-05"
+    )
+    ih.set_defaults(func=_impact_history)
 
     hv = sub.add_parser("hybrid-v2-fit", help="fit hybrid v2 (RAPM + who's missing) (local)")
     hv.set_defaults(func=_hybrid_v2_fit)

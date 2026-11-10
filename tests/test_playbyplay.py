@@ -168,3 +168,19 @@ def test_split_substitution_sides():
     assert pbp._sub_sides(entering) == ("3448", None)
     assert pbp._sub_sides(leaving) == (None, "6472")
     assert pbp._sub_sides(whole) == ("a", "b")
+
+
+def test_rebuild_only_the_selected_games(tmp_path):
+    # Whole seasons are cached for RAPM too; only the blank games and the sample get rebuilt.
+    for summary, game in ((FULL, FULL_GAME), (BLANK, BLANK_GAME)):
+        path = pbp.plays_dir(tmp_path, game["season"]) / f"{game['game_id']}.json.gz"
+        path.parent.mkdir(parents=True, exist_ok=True)
+        path.write_bytes(gzip.compress(json.dumps(summary).encode()))
+    raw = tmp_path / "raw" / "espn_games"
+    raw.mkdir(parents=True)
+    pd.DataFrame([FULL_GAME, BLANK_GAME]).to_parquet(raw / "season=all.parquet")
+    selected = pd.DataFrame({"season": ["2016-17"], "game_id": ["400899923"], "blank": [True]})
+    written = pbp.rebuild(tmp_path, selected)
+    assert list(written) == ["2016-17"]
+    assert not pbp.rebuilt_path(tmp_path, "2013-14").exists()
+    assert set(pd.read_parquet(pbp.rebuilt_path(tmp_path, "2016-17"))["game_id"]) == {"400899923"}

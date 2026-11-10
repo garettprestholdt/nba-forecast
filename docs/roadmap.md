@@ -81,6 +81,9 @@ scorecard covers as much of it as possible. Everything after that is improvement
 - [x] Feed pre-game availability (the injury report and the injury agent's calls) into a lineup
       model: [hybrid v2, chosen with a multicollinearity and overfitting review](findings/impact-challenger.md),
       in shadow with its own [pre-registered bar](promotion-bar-hybrid-v2.md)
+- [x] Play-by-play back to 2004-05 (22 seasons of lineup stints) and a re-test of v2 on seasons
+      its choice never saw: [+0.0059 over v1 on 2007-17, ahead in all ten seasons; longer RAPM
+      windows don't hold up](findings/impact-challenger.md#fresh-seasons-play-by-play-back-to-2004-05)
 - [ ] Test whether players have real individual home/away effects (hierarchical shrinkage)
 - [ ] Champion vs. challenger: shadow predictions, promote only on backtest + live wins
 

@@ -4,7 +4,8 @@
 # checkout of the `data` branch, for `make site`
 DATA ?= .data-branch
 SITE ?= _site
-PLAY_SEASONS ?= 2017-18 2018-19 2019-20 2020-21 2021-22 2022-23 2023-24 2024-25 2025-26
+PLAY_SEASONS ?= 2004-05 2005-06 2006-07 2007-08 2008-09 2009-10 2010-11 2011-12 2012-13 2013-14 \
+	2014-15 2015-16 2016-17 2017-18 2018-19 2019-20 2020-21 2021-22 2022-23 2023-24 2024-25 2025-26
 
 .PHONY: help setup check lint test data plays backtests models site reproduce clean-site
 
@@ -30,7 +31,7 @@ data:  ## games, box scores, play-by-play rebuilds, then the dbt warehouse (~4 h
 	uv run nbaf pbp
 	uv run nbaf dbt build
 
-plays:  ## full play-by-play for the RAPM backtest seasons (~5 min per season)
+plays:  ## full play-by-play for every season since 2004-05, for RAPM (~3 h first time)
 	uv run nbaf plays --seasons $(PLAY_SEASONS)
 
 backtests:  ## every model comparison in docs/findings (writes data/published/)
@@ -38,6 +39,7 @@ backtests:  ## every model comparison in docs/findings (writes data/published/)
 	uv run nbaf challenger
 	uv run nbaf hybrid
 	uv run nbaf impact-backtest
+	uv run nbaf impact-history
 
 models:  ## the model files and season inputs the daily job reads (writes data/published/)
 	uv run nbaf hybrid-fit
