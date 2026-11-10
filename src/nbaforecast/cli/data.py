@@ -67,8 +67,8 @@ def _pbp(args: argparse.Namespace) -> int:
     from nbaforecast.ingest.injuries import fetch_summary
 
     data_dir = config.local_data_dir()
+    games = playbyplay.select_games(data_dir, args.per_season)
     if not args.rebuild_only:
-        games = playbyplay.select_games(data_dir, args.per_season)
         blank = int(games["blank"].sum())
         print(f"Caching plays for {blank:,} blank games + {len(games) - blank:,} to validate on")
         session = requests.Session()
@@ -76,7 +76,7 @@ def _pbp(args: argparse.Namespace) -> int:
             data_dir, games, lambda gid: fetch_summary(gid, session), pause=args.pause
         )
         print(f"Fetched {fetched:,} games ({missing} without plays)")
-    written = playbyplay.rebuild(data_dir)
+    written = playbyplay.rebuild(data_dir, games)
     for season, rows in written.items():
         print(f"{season}: {rows:,} rebuilt player rows")
     return 0

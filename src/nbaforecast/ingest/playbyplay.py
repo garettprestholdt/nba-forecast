@@ -375,19 +375,22 @@ def select_games(data_dir: Path, per_season: int) -> pd.DataFrame:
     return games.sort_values(["season", "game_id"]).reset_index(drop=True)
 
 
-def rebuild(data_dir: Path) -> dict[str, int]:
-    """Rebuild every cached game; one Parquet file per season. Returns rows per season."""
+def rebuild(data_dir: Path, games: pd.DataFrame) -> dict[str, int]:
+    """Rebuild `games` (from `select_games`) where their plays are cached; one Parquet file per
+    season. The cache also holds whole seasons for RAPM (`nbaf plays`); those aren't rebuilt.
+    Returns rows per season."""
     games_raw = pd.concat(
         pd.read_parquet(path) for path in (data_dir / "raw" / "espn_games").glob("*.parquet")
     )
     games_raw["game_id"] = games_raw["game_id"].astype(str)
     lookup = games_raw.set_index("game_id").to_dict("index")
     written = {}
-    for season_dir in sorted((data_dir / "raw" / "espn_plays").glob("season=*")):
-        season = season_dir.name.removeprefix("season=")
+    for season, ids in games.groupby("season")["game_id"]:
         rows = []
-        for path in sorted(season_dir.glob("*.json.gz")):
-            game_id = path.name.removesuffix(".json.gz")
+        for game_id in sorted(ids.astype(str)):
+            path = _cache_path(data_dir, str(season), game_id)
+            if not path.exists():
+                continue
             game = {**lookup[game_id], "game_id": game_id}
             summary = json.loads(gzip.decompress(path.read_bytes()))
             rows.extend(rebuild_boxscore(summary, game))

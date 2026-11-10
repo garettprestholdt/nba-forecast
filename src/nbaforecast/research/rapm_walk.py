@@ -4,6 +4,7 @@ The live site refits RAPM every morning (`impact.py`) on last season's and this 
 stints. The backtest does the same thing as of each date: every REFIT_DAYS it refits on the
 stints of the previous season and the current season *before that date*, with the box-score
 prior built from the same games, so a game's features never see that game or anything after it.
+`window` reaches further back (3 = the two previous seasons and this one), for research only.
 
 Stints come from the local play-by-play cache (`ingest/playbyplay.py`, the same slim summaries
 `nbaf pbp` keeps) through `court.parse_stints`, and are cached as one parquet file per season
@@ -72,8 +73,12 @@ def load_stints(data_dir: Path, seasons: Iterable[str], games: pd.DataFrame) -> 
     return out
 
 
-def _season_window(season: str) -> list[str]:
-    return [court.previous_season(season), season]
+def season_window(season: str, seasons: int = 2) -> list[str]:
+    """`season` and the `seasons - 1` before it, oldest first."""
+    out = [season]
+    for _ in range(seasons - 1):
+        out.insert(0, court.previous_season(out[0]))
+    return out
 
 
 class Ratings:
@@ -105,18 +110,23 @@ def refit_dates(games: pd.DataFrame, seasons: Iterable[str]) -> list[tuple[str, 
 
 
 def walk_ratings(
-    stints: pd.DataFrame, box_rows: pd.DataFrame, games: pd.DataFrame, seasons: Iterable[str]
+    stints: pd.DataFrame,
+    box_rows: pd.DataFrame,
+    games: pd.DataFrame,
+    seasons: Iterable[str],
+    window: int = 2,
 ) -> Ratings:
-    """Refit RAPM (plain and box-prior, blended as on the site) as of each refit date."""
+    """Refit RAPM (plain and box-prior, blended as on the site) as of each refit date, on the
+    last `window` seasons' stints (2, as live)."""
     box = box_rows.copy()
     box["game_date"] = pd.to_datetime(box["game_date"]).dt.date
     snaps = []
     for season, day in refit_dates(games, seasons):
-        window = _season_window(season)
-        s = stints[stints["season"].isin(window) & (stints["game_date"] < day)]
+        span = season_window(season, window)
+        s = stints[stints["season"].isin(span) & (stints["game_date"] < day)]
         if s.empty:
             continue
-        b = box[box["season"].isin(window) & (box["game_date"] < day) & (box["minutes"] > 0)]
+        b = box[box["season"].isin(span) & (box["game_date"] < day) & (box["minutes"] > 0)]
         lines = b.groupby("player_id")[["minutes", "blk", "stl", "reb"]].sum().reset_index()
         lines["player_id"] = lines["player_id"].astype(str)
         rows = s[["offense", "defense", "pts", "poss", "home"]].astype(str).to_dict("records")

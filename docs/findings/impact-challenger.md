@@ -115,3 +115,58 @@ On 2026-10-28 (Warriors at Timberwolves; ESPN: Edwards and DiVincenzo out for Mi
 Porziņģis and Moody out for Golden State), v2 gives Minnesota **66.1%**. With Edwards marked
 available and nothing else changed, **72.5%**. Elo says 72.9% either way; the betting market,
 which knows the injuries, had Minnesota at 58%.
+
+## Fresh seasons: play-by-play back to 2004-05
+*Added 2026-11-09. Full tables: [data/published/impact_history](../../data/published/impact_history/).
+Code: `research/impact_history.py` (`nbaf impact-history`). The live model is unchanged.*
+
+The holdout above was looked at for ten candidates before v2 was chosen, so its 0.6074 is
+optimistic. ESPN's play-by-play turns out to be usable well before 2017-18, so `nbaf plays` now
+caches every season since 2004-05: 26,594 games of lineup stints (22 seasons, 990 to 1,255 a
+season; 12 games of 14,500 newly downloaded had no plays). Older feeds are clean: 98–100% of
+points land in a valid stint, and 97% of 2015-16 games keep at least 90% (2018-19: 88%).
+
+With a previous season's stints, RAPM starts in 2005-06. Everything below is walk-forward from
+there, as in the backtest above: each season is predicted by a fit on every earlier season, and
+RAPM is refit every 14 days on the previous and current season. **2007-08 to 2016-17 are
+seasons no v2 choice ever saw.**
+
+### Ten fresh seasons (2007-08 to 2016-17, 12,897 games)
+| Model | Log-loss | Accuracy | vs. hybrid v1 (95% CI) |
+|---|---|---|---|
+| Elo, adaptive (published) | 0.5954 | 67.9% | −0.0058 (−0.0081, −0.0036) |
+| Team stack only (Elo + rest + form) | 0.5942 | 67.5% | −0.0046 (−0.0065, −0.0028) |
+| Hybrid v1, realistic | 0.5896 | 68.1% | |
+| Hybrid v1, knows the lineup | 0.5870 | 68.3% | +0.0026 (+0.0016, +0.0037) |
+| **Hybrid v2** | **0.5837** | **68.8%** | **+0.0059 (+0.0039, +0.0079)** |
+
+v2 beats Elo by 0.0117 (95% CI +0.0087 to +0.0148), and it beats both v1 and Elo in **every one
+of the ten seasons**: by 0.0016 to 0.0106 over v1 and 0.0077 to 0.0198 over Elo, most in the
+2011-12 lockout season. The ranking is the same as on the holdout, so the choice holds up on
+data it never saw.
+
+One caveat: the hybrid's player and form settings (`impact_backtest.chosen()`) were tuned on
+walk-forward predictions for 2007-08 to 2018-19, so these seasons are fresh for v2's features
+and weights, not for those settings.
+
+### More history on the usual holdout (2020-21 to 2025-26, 7,776 games)
+| Model | Log-loss | vs. v2 as live (95% CI) |
+|---|---|---|
+| Elo, adaptive (published) | 0.6254 | −0.0180 (−0.0225, −0.0135) |
+| Hybrid v2, trained from 2018-19 (as live) | 0.6074 | |
+| Hybrid v2, trained from 2005-06 | 0.6067 | +0.0007 (−0.0005, +0.0019) |
+| … with 3 seasons of RAPM stints | 0.6059 | +0.0015 (−0.0000, +0.0030) |
+| … with 4 seasons of RAPM stints | 0.6052 | +0.0022 (+0.0006, +0.0039) |
+
+Training from 2005-06 instead of 2018-19 changes nothing measurable. A longer RAPM window looks
+better here, mostly from 2021-22 (0.6100 vs. 0.6180), but on the fresh seasons it doesn't help:
+
+| RAPM window (fresh seasons) | Log-loss | vs. hybrid v1 |
+|---|---|---|
+| 2 seasons (as live) | 0.5837 | +0.0059 |
+| 3 seasons | 0.5837 | +0.0059 |
+| 4 seasons | 0.5840 | +0.0056 |
+
+A gain that shows on one stretch of seasons and not the other isn't one to act on, so there is
+no v3. The window stays at two seasons, and v2's live window and
+[promotion bar](../promotion-bar-hybrid-v2.md) are untouched.

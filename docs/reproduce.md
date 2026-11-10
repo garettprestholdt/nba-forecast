@@ -11,10 +11,10 @@ never into the repo; ESPN's public JSON is the only data source the history need
 |---|---|---|---|
 | 1. Setup | `make setup` | 1 min | `.venv/`, git hooks |
 | 2. History | `make data` | ~4 h | games since 2004-05, box scores, rebuilt blank box scores, the dbt warehouse (all tests must pass) |
-| 3. Play-by-play | `make plays` | ~45 min | full play-by-play for 2017-18 to 2025-26 (for RAPM) |
-| 4. Backtests | `make backtests` | ~25 min | `data/published/{backtest,challenger,hybrid,impact_challenger}/` |
+| 3. Play-by-play | `make plays` | ~3 h | full play-by-play for every season since 2004-05 (for RAPM) |
+| 4. Backtests | `make backtests` | ~55 min | `data/published/{backtest,challenger,hybrid,impact_challenger,impact_history}/` |
 | 5. Model files | `make models` | ~5 min | `data/published/hybrid*/model.json`, season-start ratings, the Cold Case bank |
-| 6. Checks | `make check` | 1 min | lint, format, 340+ tests |
+| 6. Checks | `make check` | 1 min | lint, format, 347 tests |
 
 After stage 5, `git diff data/published/` should show only the `generated_at` / `created_at`
 timestamps changing: every number matches the committed files. Re-running any stage is safe;

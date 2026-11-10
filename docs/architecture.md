@@ -54,7 +54,7 @@ src/nbaforecast/
 │   recap (morning recap + fact-check) · triage (failed-run issues) · availability (injury calls)
 ├── research/          local backtests that choose models and write data/published/
 │   backtest (Elo) · challenger (Kalman, rest) · hybrid_backtest (v1) · impact_backtest (v2)
-│   rapm_walk (leak-free RAPM snapshots)
+│   impact_history (v2 on fresh 2007-17 seasons) · rapm_walk (leak-free RAPM snapshots)
 ├── games/             coldcase (case generator for the Cold Case puzzle)
 ├── web/               static site: build · context · filters · fan (teams, colors)
 │   players · teams · games · scorecard · play · links · templates/ · static/
@@ -108,7 +108,8 @@ Details that matter when changing one part. Each component's module docstring ha
 **Data and warehouse.** `nbaf backfill` (games since 2004-05), `boxscores` (~3 h; plus-minus
 from 2008-09), `pbp` (rebuilds the ~13% of 2012-18 box scores ESPN left blank; used only if
 points match and lineups stayed consistent: `docs/findings/pbp-box-rebuild.md`), `plays` (full
-play-by-play for RAPM), `dbt build`. ESPN source errors go in `dbt/seeds/known_data_issues.csv`;
+play-by-play for every season since 2004-05, for RAPM; `pbp` rebuilds only its own blank and
+sample games from that cache), `dbt build`. ESPN source errors go in `dbt/seeds/known_data_issues.csv`;
 duplicate or missing player ids in `dbt/seeds/player_id_aliases.csv`.
 
 **Published model (Elo).** `pipeline/live.py`: adaptive home court
@@ -127,8 +128,9 @@ the live ratings.
   tonight's lineup from the injury report (Out = 0, Day-To-Day = the injury watch's chance) +
   the value of missing minutes (`docs/findings/impact-challenger.md`). Runs after the injury
   calls; no prediction if `players/impact.json` or the directory is missing or stale. Model:
-  `nbaf hybrid-v2-fit`; research harness `nbaf impact-backtest` (leak-free RAPM every 14 days,
-  `research/rapm_walk.py`, needs `make plays`).
+  `nbaf hybrid-v2-fit`; research harnesses `nbaf impact-backtest` (leak-free RAPM every 14 days,
+  `research/rapm_walk.py`, needs `make plays`) and `nbaf impact-history` (the same model on
+  2007-08 to 2016-17, seasons its feature choice never saw).
 
 **Player data.** `nbaf box-sync` appends box scores, shot zones and lineup stints from one ESPN
 summary per game (`pipeline/boxlog.py`, `pipeline/court.py`); it catches up any missed day.

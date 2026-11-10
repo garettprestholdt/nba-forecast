@@ -51,3 +51,8 @@ def test_vif_flags_a_copy():
     )
     v = impact_backtest.vif(df)
     assert v["a"] > 100 and v["a2"] > 100 and v["b"] < 1.5
+
+
+def test_season_window_reaches_back():
+    assert rapm_walk.season_window("2025-26") == ["2024-25", "2025-26"]  # as live
+    assert rapm_walk.season_window("2005-06", 3) == ["2003-04", "2004-05", "2005-06"]
