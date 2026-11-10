@@ -1,0 +1,202 @@
+{
+  "recap_date": "2026-11-09",
+  "recap_date_label": "Monday, November 9",
+  "last_night_date": "2026-11-08",
+  "last_night": [
+    {
+      "matchup": "Philadelphia 76ers at Chicago Bulls",
+      "final_score": "Philadelphia 76ers 127, Chicago Bulls 121",
+      "winner": "Philadelphia 76ers",
+      "loser": "Chicago Bulls",
+      "margin": 6,
+      "elo_pick": "Philadelphia 76ers",
+      "elo_chance_for_winner": "74%",
+      "elo_correct": true,
+      "upset_by_elo": false,
+      "market_chance_for_winner": "77%",
+      "market_correct": true,
+      "elo_minus_market_for_winner_points": "-3",
+      "elo_rating_change": {
+        "Chicago Bulls": "-4",
+        "Philadelphia 76ers": "+4"
+      }
+    },
+    {
+      "matchup": "Los Angeles Lakers at Detroit Pistons",
+      "final_score": "Los Angeles Lakers 121, Detroit Pistons 116",
+      "winner": "Los Angeles Lakers",
+      "loser": "Detroit Pistons",
+      "margin": 5,
+      "elo_pick": "Detroit Pistons",
+      "elo_chance_for_winner": "39%",
+      "elo_correct": false,
+      "upset_by_elo": false,
+      "market_chance_for_winner": "30%",
+      "market_correct": false,
+      "elo_minus_market_for_winner_points": "+9",
+      "elo_rating_change": {
+        "Detroit Pistons": "-9",
+        "Los Angeles Lakers": "+9"
+      }
+    },
+    {
+      "matchup": "Utah Jazz at Minnesota Timberwolves",
+      "final_score": "Utah Jazz 100, Minnesota Timberwolves 115",
+      "winner": "Minnesota Timberwolves",
+      "loser": "Utah Jazz",
+      "margin": 15,
+      "elo_pick": "Minnesota Timberwolves",
+      "elo_chance_for_winner": "87%",
+      "elo_correct": true,
+      "upset_by_elo": false,
+      "market_chance_for_winner": "83%",
+      "market_correct": true,
+      "elo_minus_market_for_winner_points": "+4",
+      "elo_rating_change": {
+        "Minnesota Timberwolves": "+3",
+        "Utah Jazz": "-3"
+      }
+    },
+    {
+      "matchup": "Brooklyn Nets at Dallas Mavericks",
+      "final_score": "Brooklyn Nets 93, Dallas Mavericks 130",
+      "winner": "Dallas Mavericks",
+      "loser": "Brooklyn Nets",
+      "margin": 37,
+      "elo_pick": "Dallas Mavericks",
+      "elo_chance_for_winner": "70%",
+      "elo_correct": true,
+      "upset_by_elo": false,
+      "market_chance_for_winner": "72%",
+      "market_correct": true,
+      "elo_minus_market_for_winner_points": "-3",
+      "elo_rating_change": {
+        "Dallas Mavericks": "+14",
+        "Brooklyn Nets": "-14"
+      }
+    },
+    {
+      "matchup": "Boston Celtics at Milwaukee Bucks",
+      "final_score": "Boston Celtics 117, Milwaukee Bucks 97",
+      "winner": "Boston Celtics",
+      "loser": "Milwaukee Bucks",
+      "margin": 20,
+      "elo_pick": "Boston Celtics",
+      "elo_chance_for_winner": "81%",
+      "elo_correct": true,
+      "upset_by_elo": false,
+      "market_chance_for_winner": "84%",
+      "market_correct": true,
+      "elo_minus_market_for_winner_points": "-4",
+      "elo_rating_change": {
+        "Milwaukee Bucks": "-5",
+        "Boston Celtics": "+5"
+      }
+    },
+    {
+      "matchup": "New Orleans Pelicans at LA Clippers",
+      "final_score": "New Orleans Pelicans 123, LA Clippers 139",
+      "winner": "LA Clippers",
+      "loser": "New Orleans Pelicans",
+      "margin": 16,
+      "elo_pick": "LA Clippers",
+      "elo_chance_for_winner": "58%",
+      "elo_correct": true,
+      "upset_by_elo": false,
+      "market_chance_for_winner": "47%",
+      "market_correct": false,
+      "elo_minus_market_for_winner_points": "+11",
+      "elo_rating_change": {
+        "LA Clippers": "+11",
+        "New Orleans Pelicans": "-11"
+      }
+    },
+    {
+      "matchup": "Miami Heat at Sacramento Kings",
+      "final_score": "Miami Heat 114, Sacramento Kings 108",
+      "winner": "Miami Heat",
+      "loser": "Sacramento Kings",
+      "margin": 6,
+      "elo_pick": "Miami Heat",
+      "elo_chance_for_winner": "65%",
+      "elo_correct": true,
+      "upset_by_elo": false,
+      "market_chance_for_winner": "78%",
+      "market_correct": true,
+      "elo_minus_market_for_winner_points": "-14",
+      "elo_rating_change": {
+        "Sacramento Kings": "-5",
+        "Miami Heat": "+5"
+      }
+    }
+  ],
+  "last_night_summary": {
+    "games": 7,
+    "elo_correct": 6,
+    "games_with_market": 7,
+    "market_correct": 5,
+    "upsets_by_elo": 0
+  },
+  "tonight": [
+    {
+      "matchup": "Memphis Grizzlies at Toronto Raptors",
+      "tip_off": "7:30 PM ET",
+      "elo_pick": "Toronto Raptors",
+      "elo_chance_for_pick": "72%",
+      "market_chance_for_elo_pick": "48%",
+      "elo_minus_market_points": "+24"
+    },
+    {
+      "matchup": "Indiana Pacers at Dallas Mavericks",
+      "tip_off": "8:00 PM ET",
+      "elo_pick": "Dallas Mavericks",
+      "elo_chance_for_pick": "67%",
+      "market_chance_for_elo_pick": "63%",
+      "elo_minus_market_points": "+5"
+    },
+    {
+      "matchup": "Denver Nuggets at Houston Rockets",
+      "tip_off": "8:30 PM ET",
+      "elo_pick": "Houston Rockets",
+      "elo_chance_for_pick": "59%",
+      "market_chance_for_elo_pick": "61%",
+      "elo_minus_market_points": "-2"
+    },
+    {
+      "matchup": "San Antonio Spurs at Phoenix Suns",
+      "tip_off": "9:00 PM ET",
+      "elo_pick": "San Antonio Spurs",
+      "elo_chance_for_pick": "73%",
+      "market_chance_for_elo_pick": "76%",
+      "elo_minus_market_points": "-3"
+    },
+    {
+      "matchup": "New Orleans Pelicans at Golden State Warriors",
+      "tip_off": "10:00 PM ET",
+      "elo_pick": "Golden State Warriors",
+      "elo_chance_for_pick": "66%",
+      "market_chance_for_elo_pick": "82%",
+      "elo_minus_market_points": "-15"
+    }
+  ],
+  "tonight_summary": {
+    "games": 5
+  },
+  "tonight_highlights": {
+    "closest_game": "Denver Nuggets at Houston Rockets",
+    "biggest_elo_market_disagreement": "Memphis Grizzlies at Toronto Raptors"
+  },
+  "season_to_date": {
+    "games_scored": 93,
+    "elo_log_loss": "0.569",
+    "elo_pick_accuracy": "74%",
+    "coin_flip_log_loss": "0.693",
+    "games_with_market": 93,
+    "elo_log_loss_on_market_games": "0.569",
+    "market_log_loss_on_market_games": "0.535"
+  },
+  "home_court": {
+    "elo_points": "30",
+    "home_chance_between_equal_teams": "54%"
+  }
+}
