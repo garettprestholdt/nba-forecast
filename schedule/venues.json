@@ -151,6 +151,78 @@
   "neutral": false,
   "state": "CA"
  },
+ "401909296": {
+  "arena": "Gainbridge Fieldhouse",
+  "city": "Indianapolis",
+  "country": "",
+  "home_team_id": "11",
+  "neutral": false,
+  "state": "IN"
+ },
+ "401909297": {
+  "arena": "Kia Center",
+  "city": "Orlando",
+  "country": "",
+  "home_team_id": "19",
+  "neutral": false,
+  "state": "FL"
+ },
+ "401909298": {
+  "arena": "Kaseya Center",
+  "city": "Miami",
+  "country": "",
+  "home_team_id": "14",
+  "neutral": false,
+  "state": "FL"
+ },
+ "401909299": {
+  "arena": "United Center",
+  "city": "Chicago",
+  "country": "",
+  "home_team_id": "4",
+  "neutral": false,
+  "state": "IL"
+ },
+ "401909300": {
+  "arena": "Smoothie King Center",
+  "city": "New Orleans",
+  "country": "",
+  "home_team_id": "3",
+  "neutral": false,
+  "state": "LA"
+ },
+ "401909301": {
+  "arena": "Toyota Center (Houston)",
+  "city": "Houston",
+  "country": "",
+  "home_team_id": "10",
+  "neutral": false,
+  "state": "TX"
+ },
+ "401909302": {
+  "arena": "Frost Bank Center",
+  "city": "San Antonio",
+  "country": "",
+  "home_team_id": "24",
+  "neutral": false,
+  "state": "TX"
+ },
+ "401909303": {
+  "arena": "Golden 1 Center",
+  "city": "Sacramento",
+  "country": "",
+  "home_team_id": "23",
+  "neutral": false,
+  "state": "CA"
+ },
+ "401909304": {
+  "arena": "Intuit Dome",
+  "city": "Inglewood",
+  "country": "",
+  "home_team_id": "12",
+  "neutral": false,
+  "state": "CA"
+ },
  "401909881": {
   "arena": "State Farm Arena",
   "city": "Atlanta",

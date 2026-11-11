@@ -7,7 +7,7 @@
    "name": "LeBron James",
    "position": "F",
    "short": "L. James",
-   "status": "",
+   "status": "Day-To-Day",
    "team_id": "20",
    "weight_lb": "250"
   },
@@ -51,7 +51,7 @@
    "name": "T.J. McConnell",
    "position": "G",
    "short": "T.J. McConnell",
-   "status": "",
+   "status": "Day-To-Day",
    "team_id": "11",
    "weight_lb": "190"
   },
@@ -282,7 +282,7 @@
    "name": "Giannis Antetokounmpo",
    "position": "F",
    "short": "G. Antetokounmpo",
-   "status": "Day-To-Day",
+   "status": "",
    "team_id": "14",
    "weight_lb": "243"
   },
@@ -315,7 +315,7 @@
    "name": "Joel Embiid",
    "position": "C",
    "short": "J. Embiid",
-   "status": "",
+   "status": "Day-To-Day",
    "team_id": "20",
    "weight_lb": "270"
   },
@@ -337,7 +337,7 @@
    "name": "Josh Hart",
    "position": "G",
    "short": "J. Hart",
-   "status": "Day-To-Day",
+   "status": "",
    "team_id": "18",
    "weight_lb": "215"
   },
@@ -491,7 +491,7 @@
    "name": "Myles Turner",
    "position": "C",
    "short": "M. Turner",
-   "status": "",
+   "status": "Out",
    "team_id": "15",
    "weight_lb": "250"
   },
@@ -1327,7 +1327,7 @@
    "name": "Austin Reaves",
    "position": "G",
    "short": "A. Reaves",
-   "status": "Day-To-Day",
+   "status": "",
    "team_id": "13",
    "weight_lb": "197"
   },
@@ -1360,7 +1360,7 @@
    "name": "Sam Merrill",
    "position": "G",
    "short": "S. Merrill",
-   "status": "Day-To-Day",
+   "status": "Out",
    "team_id": "5",
    "weight_lb": "205"
   },
@@ -1393,7 +1393,7 @@
    "name": "Paul George",
    "position": "F",
    "short": "P. George",
-   "status": "",
+   "status": "Out",
    "team_id": "2",
    "weight_lb": "221"
   },
@@ -1679,7 +1679,7 @@
    "name": "Jamal Cain",
    "position": "F",
    "short": "J. Cain",
-   "status": "",
+   "status": "Day-To-Day",
    "team_id": "19",
    "weight_lb": "191"
   },
@@ -1899,7 +1899,7 @@
    "name": "Immanuel Quickley",
    "position": "G",
    "short": "I. Quickley",
-   "status": "Day-To-Day",
+   "status": "",
    "team_id": "28",
    "weight_lb": "190"
   },
@@ -1987,7 +1987,7 @@
    "name": "Quentin Grimes",
    "position": "G",
    "short": "Q. Grimes",
-   "status": "Day-To-Day",
+   "status": "Out",
    "team_id": "13",
    "weight_lb": "210"
   },
@@ -2251,7 +2251,7 @@
    "name": "Precious Achiuwa",
    "position": "F",
    "short": "P. Achiuwa",
-   "status": "",
+   "status": "Day-To-Day",
    "team_id": "23",
    "weight_lb": "243"
   },
@@ -2273,7 +2273,7 @@
    "name": "Trayce Jackson-Davis",
    "position": "F",
    "short": "T. Jackson-Davis",
-   "status": "",
+   "status": "Out",
    "team_id": "28",
    "weight_lb": "245"
   },
@@ -2768,7 +2768,7 @@
    "name": "Scottie Barnes",
    "position": "F",
    "short": "S. Barnes",
-   "status": "Day-To-Day",
+   "status": "Out",
    "team_id": "28",
    "weight_lb": "237"
   },
@@ -2966,7 +2966,7 @@
    "name": "Keyonte George",
    "position": "G",
    "short": "K. George",
-   "status": "Out",
+   "status": "Day-To-Day",
    "team_id": "26",
    "weight_lb": "185"
   },
@@ -3186,7 +3186,7 @@
    "name": "Quinten Post",
    "position": "C",
    "short": "Q. Post",
-   "status": "Day-To-Day",
+   "status": "Out",
    "team_id": "29",
    "weight_lb": "238"
   },
@@ -3289,17 +3289,6 @@
    "team_id": "29",
    "weight_lb": "230"
   },
-  "4596528": {
-   "dob": "2003-05-09",
-   "height_in": "85",
-   "jersey": "",
-   "name": "Lawson Lovering",
-   "position": "C",
-   "short": "L. Lovering",
-   "status": "",
-   "team_id": "13",
-   "weight_lb": "233"
-  },
   "4600663": {
    "dob": "2002-03-14",
    "height_in": "87",
@@ -3373,7 +3362,7 @@
    "name": "Bennedict Mathurin",
    "position": "G",
    "short": "B. Mathurin",
-   "status": "",
+   "status": "Out",
    "team_id": "3",
    "weight_lb": "210"
   },
@@ -3674,17 +3663,6 @@
    "team_id": "14",
    "weight_lb": "255"
   },
-  "4700852": {
-   "dob": "2001-12-19",
-   "height_in": "75",
-   "jersey": "8",
-   "name": "Chaz Lanier",
-   "position": "G",
-   "short": "C. Lanier",
-   "status": "",
-   "team_id": "8",
-   "weight_lb": "206"
-  },
   "4701208": {
    "dob": "2002-09-10",
    "height_in": "83",
@@ -3813,7 +3791,7 @@
    "name": "Grant Nelson",
    "position": "F",
    "short": "G. Nelson",
-   "status": "Day-To-Day",
+   "status": "",
    "team_id": "17",
    "weight_lb": "230"
   },
@@ -3879,7 +3857,7 @@
    "name": "Chris Youngblood",
    "position": "G",
    "short": "C. Youngblood",
-   "status": "",
+   "status": "Out",
    "team_id": "22",
    "weight_lb": "221"
   },
@@ -4242,7 +4220,7 @@
    "name": "Will Richard",
    "position": "G",
    "short": "W. Richard",
-   "status": "Out",
+   "status": "Day-To-Day",
    "team_id": "9",
    "weight_lb": "206"
   },
@@ -4297,7 +4275,7 @@
    "name": "Ajay Mitchell",
    "position": "G",
    "short": "A. Mitchell",
-   "status": "",
+   "status": "Out",
    "team_id": "25",
    "weight_lb": "190"
   },
@@ -4429,7 +4407,7 @@
    "name": "Ugonna Onyenso",
    "position": "C",
    "short": "U. Onyenso",
-   "status": "",
+   "status": "Day-To-Day",
    "team_id": "8",
    "weight_lb": "236"
   },
@@ -4543,17 +4521,6 @@
    "team_id": "30",
    "weight_lb": "215"
   },
-  "5061585": {
-   "dob": "2005-12-06",
-   "height_in": "78",
-   "jersey": "33",
-   "name": "Isaiah Evans",
-   "position": "F",
-   "short": "I. Evans",
-   "status": "",
-   "team_id": "16",
-   "weight_lb": "186"
-  },
   "5061589": {
    "dob": "2004-05-14",
    "height_in": "83",
@@ -4616,7 +4583,7 @@
    "name": "Collin Murray-Boyles",
    "position": "F",
    "short": "C. Murray-Boyles",
-   "status": "Day-To-Day",
+   "status": "",
    "team_id": "28",
    "weight_lb": "245"
   },
@@ -4627,7 +4594,7 @@
    "name": "Caleb Wilson",
    "position": "F",
    "short": "C. Wilson",
-   "status": "",
+   "status": "Day-To-Day",
    "team_id": "4",
    "weight_lb": "211"
   },
@@ -4649,7 +4616,7 @@
    "name": "Mikel Brown Jr.",
    "position": "G",
    "short": "M. Brown Jr.",
-   "status": "Day-To-Day",
+   "status": "Out",
    "team_id": "17",
    "weight_lb": "180"
   },
@@ -4671,7 +4638,7 @@
    "name": "Bilal Coulibaly",
    "position": "G",
    "short": "B. Coulibaly",
-   "status": "Day-To-Day",
+   "status": "",
    "team_id": "27",
    "weight_lb": "195"
   },
@@ -4737,7 +4704,7 @@
    "name": "Tobe Awaka",
    "position": "F",
    "short": "T. Awaka",
-   "status": "",
+   "status": "Out",
    "team_id": "4",
    "weight_lb": "255"
   },
@@ -4781,7 +4748,7 @@
    "name": "Kel'el Ware",
    "position": "C",
    "short": "K. Ware",
-   "status": "Day-To-Day",
+   "status": "",
    "team_id": "15",
    "weight_lb": "250"
   },
@@ -4843,12 +4810,12 @@
   "5105817": {
    "dob": "2004-04-09",
    "height_in": "83",
-   "jersey": "20",
+   "jersey": "",
    "name": "Carson Cooper",
    "position": "C",
    "short": "C. Cooper",
    "status": "",
-   "team_id": "29",
+   "team_id": "13",
    "weight_lb": "245"
   },
   "5105832": {
@@ -5137,6 +5104,17 @@
    "team_id": "23",
    "weight_lb": "186"
   },
+  "5142621": {
+   "dob": "2007-02-01",
+   "height_in": "83",
+   "jersey": "12",
+   "name": "Chris Cenac Jr.",
+   "position": "F",
+   "short": "C. Cenac Jr.",
+   "status": "",
+   "team_id": "2",
+   "weight_lb": "240"
+  },
   "5142718": {
    "dob": "2007-01-29",
    "height_in": "81",
@@ -5309,7 +5287,7 @@
    "name": "Egor Demin",
    "position": "G",
    "short": "E. Demin",
-   "status": "Out",
+   "status": "",
    "team_id": "17",
    "weight_lb": "200"
   },
@@ -5562,7 +5540,7 @@
    "name": "Nolan Traore",
    "position": "G",
    "short": "N. Traore",
-   "status": "",
+   "status": "Out",
    "team_id": "17",
    "weight_lb": "185"
   },
@@ -5743,5 +5721,5 @@
    "weight_lb": "222"
   }
  },
- "updated_at": "2026-11-10T21:45:45+00:00"
+ "updated_at": "2026-11-11T22:36:19+00:00"
 }
