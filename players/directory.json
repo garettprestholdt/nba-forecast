@@ -62,7 +62,7 @@
    "name": "T.J. McConnell",
    "position": "G",
    "short": "T.J. McConnell",
-   "status": "Day-To-Day",
+   "status": "",
    "team_id": "11",
    "weight_lb": "190"
   },
@@ -205,7 +205,7 @@
    "name": "Jerami Grant",
    "position": "F",
    "short": "J. Grant",
-   "status": "",
+   "status": "Day-To-Day",
    "team_id": "29",
    "weight_lb": "213"
   },
@@ -293,7 +293,7 @@
    "name": "Giannis Antetokounmpo",
    "position": "F",
    "short": "G. Antetokounmpo",
-   "status": "",
+   "status": "Day-To-Day",
    "team_id": "14",
    "weight_lb": "243"
   },
@@ -865,7 +865,7 @@
    "name": "Donovan Mitchell",
    "position": "G",
    "short": "D. Mitchell",
-   "status": "",
+   "status": "Day-To-Day",
    "team_id": "5",
    "weight_lb": "215"
   },
@@ -1041,7 +1041,7 @@
    "name": "James Harden",
    "position": "G",
    "short": "J. Harden",
-   "status": "",
+   "status": "Day-To-Day",
    "team_id": "5",
    "weight_lb": "220"
   },
@@ -1140,7 +1140,7 @@
    "name": "Ty Jerome",
    "position": "G",
    "short": "T. Jerome",
-   "status": "",
+   "status": "Out",
    "team_id": "29",
    "weight_lb": "195"
   },
@@ -1206,7 +1206,7 @@
    "name": "De'Aaron Fox",
    "position": "G",
    "short": "D. Fox",
-   "status": "Day-To-Day",
+   "status": "",
    "team_id": "24",
    "weight_lb": "190"
   },
@@ -1261,7 +1261,7 @@
    "name": "Jarrett Allen",
    "position": "C",
    "short": "J. Allen",
-   "status": "",
+   "status": "Day-To-Day",
    "team_id": "5",
    "weight_lb": "243"
   },
@@ -1580,7 +1580,7 @@
    "name": "Nic Claxton",
    "position": "C",
    "short": "N. Claxton",
-   "status": "",
+   "status": "Day-To-Day",
    "team_id": "4",
    "weight_lb": "215"
   },
@@ -1690,7 +1690,7 @@
    "name": "Jamal Cain",
    "position": "F",
    "short": "J. Cain",
-   "status": "Day-To-Day",
+   "status": "",
    "team_id": "19",
    "weight_lb": "191"
   },
@@ -1844,7 +1844,7 @@
    "name": "Devin Vassell",
    "position": "G",
    "short": "D. Vassell",
-   "status": "Day-To-Day",
+   "status": "",
    "team_id": "24",
    "weight_lb": "205"
   },
@@ -2031,7 +2031,7 @@
    "name": "Jaxson Hayes",
    "position": "C",
    "short": "J. Hayes",
-   "status": "",
+   "status": "Day-To-Day",
    "team_id": "26",
    "weight_lb": "220"
   },
@@ -2075,7 +2075,7 @@
    "name": "Jalen Smith",
    "position": "F",
    "short": "J. Smith",
-   "status": "",
+   "status": "Day-To-Day",
    "team_id": "4",
    "weight_lb": "215"
   },
@@ -2185,7 +2185,7 @@
    "name": "Charles Bassey",
    "position": "C",
    "short": "C. Bassey",
-   "status": "Day-To-Day",
+   "status": "",
    "team_id": "9",
    "weight_lb": "230"
   },
@@ -2262,7 +2262,7 @@
    "name": "Precious Achiuwa",
    "position": "F",
    "short": "P. Achiuwa",
-   "status": "Out",
+   "status": "Day-To-Day",
    "team_id": "23",
    "weight_lb": "243"
   },
@@ -2460,7 +2460,7 @@
    "name": "Jalen Suggs",
    "position": "G",
    "short": "J. Suggs",
-   "status": "Out",
+   "status": "",
    "team_id": "19",
    "weight_lb": "205"
   },
@@ -2592,7 +2592,7 @@
    "name": "Max Christie",
    "position": "G",
    "short": "M. Christie",
-   "status": "",
+   "status": "Day-To-Day",
    "team_id": "6",
    "weight_lb": "190"
   },
@@ -3065,7 +3065,7 @@
    "name": "Peyton Watson",
    "position": "G",
    "short": "P. Watson",
-   "status": "",
+   "status": "Day-To-Day",
    "team_id": "5",
    "weight_lb": "200"
   },
@@ -3234,6 +3234,17 @@
    "team_id": "22",
    "weight_lb": "225"
   },
+  "4593049": {
+   "dob": "2000-07-10",
+   "height_in": "82",
+   "jersey": "00",
+   "name": "Orlando Robinson",
+   "position": "C",
+   "short": "O. Robinson",
+   "status": "",
+   "team_id": "4",
+   "weight_lb": "235"
+  },
   "4593125": {
    "dob": "2001-01-10",
    "height_in": "84",
@@ -3318,7 +3329,7 @@
    "name": "Zach Edey",
    "position": "C",
    "short": "Z. Edey",
-   "status": "Out",
+   "status": "Day-To-Day",
    "team_id": "29",
    "weight_lb": "305"
   },
@@ -3384,7 +3395,7 @@
    "name": "Bennedict Mathurin",
    "position": "G",
    "short": "B. Mathurin",
-   "status": "Day-To-Day",
+   "status": "",
    "team_id": "3",
    "weight_lb": "210"
   },
@@ -3446,7 +3457,7 @@
   "4683736": {
    "dob": "2003-09-21",
    "height_in": "76",
-   "jersey": "4",
+   "jersey": "0",
    "name": "Kobe Bufkin",
    "position": "G",
    "short": "K. Bufkin",
@@ -3743,7 +3754,7 @@
   "4702134": {
    "dob": "2001-08-28",
    "height_in": "79",
-   "jersey": "15",
+   "jersey": "77",
    "name": "Norchad Omier",
    "position": "C",
    "short": "N. Omier",
@@ -3780,7 +3791,7 @@
    "name": "Tristan da Silva",
    "position": "F",
    "short": "T. da Silva",
-   "status": "Day-To-Day",
+   "status": "",
    "team_id": "19",
    "weight_lb": "217"
   },
@@ -3879,7 +3890,7 @@
    "name": "Chris Youngblood",
    "position": "G",
    "short": "C. Youngblood",
-   "status": "Out",
+   "status": "Day-To-Day",
    "team_id": "22",
    "weight_lb": "221"
   },
@@ -4066,7 +4077,7 @@
    "name": "Dailyn Swain",
    "position": "G",
    "short": "D. Swain",
-   "status": "Day-To-Day",
+   "status": "",
    "team_id": "4",
    "weight_lb": "211"
   },
@@ -4187,7 +4198,7 @@
    "name": "Morez Johnson Jr.",
    "position": "F",
    "short": "M. Johnson Jr.",
-   "status": "",
+   "status": "Day-To-Day",
    "team_id": "6",
    "weight_lb": "250"
   },
@@ -4260,7 +4271,7 @@
   "4897943": {
    "dob": "2001-04-19",
    "height_in": "78",
-   "jersey": "99",
+   "jersey": "1",
    "name": "Dalton Knecht",
    "position": "F",
    "short": "D. Knecht",
@@ -4355,6 +4366,17 @@
    "status": "",
    "team_id": "14",
    "weight_lb": "240"
+  },
+  "4997530": {
+   "dob": "2002-01-15",
+   "height_in": "83",
+   "jersey": "18",
+   "name": "Khalifa Diop",
+   "position": "C",
+   "short": "K. Diop",
+   "status": "",
+   "team_id": "5",
+   "weight_lb": "231"
   },
   "4997536": {
    "dob": "2002-06-22",
@@ -4982,6 +5004,17 @@
    "status": "",
    "team_id": "1",
    "weight_lb": "245"
+  },
+  "5106268": {
+   "dob": "2000-12-19",
+   "height_in": "80",
+   "jersey": "35",
+   "name": "Nae'Qwan Tomlin",
+   "position": "F",
+   "short": "N. Tomlin",
+   "status": "Out",
+   "team_id": "5",
+   "weight_lb": "210"
   },
   "5106283": {
    "dob": "2003-10-03",
@@ -5754,5 +5787,5 @@
    "weight_lb": "222"
   }
  },
- "updated_at": "2026-11-13T21:54:06+00:00"
+ "updated_at": "2026-11-14T20:34:29+00:00"
 }

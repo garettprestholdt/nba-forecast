@@ -1126,5 +1126,69 @@
   "home_team_id": "23",
   "neutral": false,
   "state": "CA"
+ },
+ "401909994": {
+  "arena": "TD Garden",
+  "city": "Boston",
+  "country": "",
+  "home_team_id": "2",
+  "neutral": false,
+  "state": "MA"
+ },
+ "401909995": {
+  "arena": "Rocket Arena",
+  "city": "Cleveland",
+  "country": "",
+  "home_team_id": "5",
+  "neutral": false,
+  "state": "OH"
+ },
+ "401909996": {
+  "arena": "Capital One Arena",
+  "city": "Washington",
+  "country": "",
+  "home_team_id": "27",
+  "neutral": false,
+  "state": "DC"
+ },
+ "401909997": {
+  "arena": "Barclays Center",
+  "city": "Brooklyn",
+  "country": "",
+  "home_team_id": "17",
+  "neutral": false,
+  "state": "NY"
+ },
+ "401909998": {
+  "arena": "Kaseya Center",
+  "city": "Miami",
+  "country": "",
+  "home_team_id": "14",
+  "neutral": false,
+  "state": "FL"
+ },
+ "401909999": {
+  "arena": "Target Center",
+  "city": "Minneapolis",
+  "country": "",
+  "home_team_id": "16",
+  "neutral": false,
+  "state": "MN"
+ },
+ "401910000": {
+  "arena": "Smoothie King Center",
+  "city": "New Orleans",
+  "country": "",
+  "home_team_id": "3",
+  "neutral": false,
+  "state": "LA"
+ },
+ "401910001": {
+  "arena": "Ball Arena",
+  "city": "Denver",
+  "country": "",
+  "home_team_id": "7",
+  "neutral": false,
+  "state": "CO"
  }
 }
