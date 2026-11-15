@@ -1190,5 +1190,45 @@
   "home_team_id": "7",
   "neutral": false,
   "state": "CO"
+ },
+ "401910002": {
+  "arena": "Scotiabank Arena",
+  "city": "Toronto",
+  "country": "",
+  "home_team_id": "28",
+  "neutral": false,
+  "state": "ON"
+ },
+ "401910003": {
+  "arena": "Target Center",
+  "city": "Minneapolis",
+  "country": "",
+  "home_team_id": "16",
+  "neutral": false,
+  "state": "MN"
+ },
+ "401910004": {
+  "arena": "Frost Bank Center",
+  "city": "San Antonio",
+  "country": "",
+  "home_team_id": "24",
+  "neutral": false,
+  "state": "TX"
+ },
+ "401910005": {
+  "arena": "crypto.com Arena",
+  "city": "Los Angeles",
+  "country": "",
+  "home_team_id": "13",
+  "neutral": false,
+  "state": "CA"
+ },
+ "401910006": {
+  "arena": "Intuit Dome",
+  "city": "Inglewood",
+  "country": "",
+  "home_team_id": "12",
+  "neutral": false,
+  "state": "CA"
  }
 }
