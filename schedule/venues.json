@@ -1230,5 +1230,101 @@
   "home_team_id": "12",
   "neutral": false,
   "state": "CA"
+ },
+ "401910007": {
+  "arena": "Rocket Arena",
+  "city": "Cleveland",
+  "country": "",
+  "home_team_id": "5",
+  "neutral": false,
+  "state": "OH"
+ },
+ "401910008": {
+  "arena": "Gainbridge Fieldhouse",
+  "city": "Indianapolis",
+  "country": "",
+  "home_team_id": "11",
+  "neutral": false,
+  "state": "IN"
+ },
+ "401910009": {
+  "arena": "Kaseya Center",
+  "city": "Miami",
+  "country": "",
+  "home_team_id": "14",
+  "neutral": false,
+  "state": "FL"
+ },
+ "401910010": {
+  "arena": "Kia Center",
+  "city": "Orlando",
+  "country": "",
+  "home_team_id": "19",
+  "neutral": false,
+  "state": "FL"
+ },
+ "401910011": {
+  "arena": "Barclays Center",
+  "city": "Brooklyn",
+  "country": "",
+  "home_team_id": "17",
+  "neutral": false,
+  "state": "NY"
+ },
+ "401910012": {
+  "arena": "Scotiabank Arena",
+  "city": "Toronto",
+  "country": "",
+  "home_team_id": "28",
+  "neutral": false,
+  "state": "ON"
+ },
+ "401910013": {
+  "arena": "Smoothie King Center",
+  "city": "New Orleans",
+  "country": "",
+  "home_team_id": "3",
+  "neutral": false,
+  "state": "LA"
+ },
+ "401910014": {
+  "arena": "Paycom Center",
+  "city": "Oklahoma City",
+  "country": "",
+  "home_team_id": "25",
+  "neutral": false,
+  "state": "OK"
+ },
+ "401910015": {
+  "arena": "Ball Arena",
+  "city": "Denver",
+  "country": "",
+  "home_team_id": "7",
+  "neutral": false,
+  "state": "CO"
+ },
+ "401910016": {
+  "arena": "American Airlines Center",
+  "city": "Dallas",
+  "country": "",
+  "home_team_id": "6",
+  "neutral": false,
+  "state": "TX"
+ },
+ "401910017": {
+  "arena": "crypto.com Arena",
+  "city": "Los Angeles",
+  "country": "",
+  "home_team_id": "13",
+  "neutral": false,
+  "state": "CA"
+ },
+ "401910018": {
+  "arena": "Golden 1 Center",
+  "city": "Sacramento",
+  "country": "",
+  "home_team_id": "23",
+  "neutral": false,
+  "state": "CA"
  }
 }
