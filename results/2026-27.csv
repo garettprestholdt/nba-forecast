@@ -196,3 +196,11 @@ game_id,season,season_type,game_date,tipoff_utc,home_team_id,away_team_id,home_t
 401909991,2026-27,regular_season,2026-11-15,2026-11-16T00:00:00+00:00,27,10,Washington Wizards,Houston Rockets,119,147,False
 401909992,2026-27,regular_season,2026-11-15,2026-11-16T01:00:00+00:00,15,1,Milwaukee Bucks,Atlanta Hawks,106,113,False
 401909993,2026-27,regular_season,2026-11-15,2026-11-16T02:00:00+00:00,23,25,Sacramento Kings,Oklahoma City Thunder,103,125,False
+401909994,2026-27,regular_season,2026-11-16,2026-11-17T00:00:00+00:00,2,19,Boston Celtics,Orlando Magic,105,115,False
+401909995,2026-27,regular_season,2026-11-16,2026-11-17T00:00:00+00:00,5,4,Cleveland Cavaliers,Chicago Bulls,126,115,False
+401909996,2026-27,regular_season,2026-11-16,2026-11-17T00:00:00+00:00,27,29,Washington Wizards,Memphis Grizzlies,120,136,False
+401909997,2026-27,regular_season,2026-11-16,2026-11-17T00:30:00+00:00,17,20,Brooklyn Nets,Philadelphia 76ers,123,135,False
+401909998,2026-27,regular_season,2026-11-16,2026-11-17T00:30:00+00:00,14,10,Miami Heat,Houston Rockets,128,110,False
+401909999,2026-27,regular_season,2026-11-16,2026-11-17T01:00:00+00:00,16,22,Minnesota Timberwolves,Portland Trail Blazers,106,98,False
+401910000,2026-27,regular_season,2026-11-16,2026-11-17T01:00:00+00:00,3,9,New Orleans Pelicans,Golden State Warriors,115,94,False
+401910001,2026-27,regular_season,2026-11-16,2026-11-17T02:00:00+00:00,7,21,Denver Nuggets,Phoenix Suns,105,117,False
