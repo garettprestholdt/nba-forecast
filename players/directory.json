@@ -62,7 +62,7 @@
    "name": "T.J. McConnell",
    "position": "G",
    "short": "T.J. McConnell",
-   "status": "Day-To-Day",
+   "status": "",
    "team_id": "11",
    "weight_lb": "190"
   },
@@ -370,7 +370,7 @@
    "name": "Zach LaVine",
    "position": "G",
    "short": "Z. LaVine",
-   "status": "Day-To-Day",
+   "status": "",
    "team_id": "23",
    "weight_lb": "200"
   },
@@ -568,7 +568,7 @@
    "name": "Grayson Allen",
    "position": "G",
    "short": "G. Allen",
-   "status": "",
+   "status": "Day-To-Day",
    "team_id": "30",
    "weight_lb": "198"
   },
@@ -887,7 +887,7 @@
    "name": "Dean Wade",
    "position": "F",
    "short": "D. Wade",
-   "status": "",
+   "status": "Day-To-Day",
    "team_id": "20",
    "weight_lb": "223"
   },
@@ -1129,7 +1129,7 @@
    "name": "De'Andre Hunter",
    "position": "F",
    "short": "D. Hunter",
-   "status": "Day-To-Day",
+   "status": "",
    "team_id": "23",
    "weight_lb": "221"
   },
@@ -1217,7 +1217,7 @@
    "name": "Bam Adebayo",
    "position": "C",
    "short": "B. Adebayo",
-   "status": "Day-To-Day",
+   "status": "",
    "team_id": "14",
    "weight_lb": "260"
   },
@@ -1811,7 +1811,7 @@
    "name": "RJ Barrett",
    "position": "F",
    "short": "R. Barrett",
-   "status": "",
+   "status": "Out",
    "team_id": "28",
    "weight_lb": "214"
   },
@@ -1888,7 +1888,7 @@
    "name": "Andrew Nembhard",
    "position": "G",
    "short": "A. Nembhard",
-   "status": "Day-To-Day",
+   "status": "Out",
    "team_id": "11",
    "weight_lb": "191"
   },
@@ -2031,7 +2031,7 @@
    "name": "Jaxson Hayes",
    "position": "C",
    "short": "J. Hayes",
-   "status": "Out",
+   "status": "Day-To-Day",
    "team_id": "26",
    "weight_lb": "220"
   },
@@ -2218,7 +2218,7 @@
    "name": "Kevin McCullar Jr.",
    "position": "G",
    "short": "K. McCullar Jr.",
-   "status": "Day-To-Day",
+   "status": "",
    "team_id": "28",
    "weight_lb": "210"
   },
@@ -2262,7 +2262,7 @@
    "name": "Precious Achiuwa",
    "position": "F",
    "short": "P. Achiuwa",
-   "status": "Day-To-Day",
+   "status": "",
    "team_id": "23",
    "weight_lb": "243"
   },
@@ -2295,7 +2295,7 @@
    "name": "Patrick Williams",
    "position": "F",
    "short": "P. Williams",
-   "status": "Day-To-Day",
+   "status": "",
    "team_id": "4",
    "weight_lb": "215"
   },
@@ -2372,7 +2372,7 @@
    "name": "Myron Gardner",
    "position": "F",
    "short": "M. Gardner",
-   "status": "Day-To-Day",
+   "status": "Out",
    "team_id": "14",
    "weight_lb": "225"
   },
@@ -2471,7 +2471,7 @@
    "name": "Cade Cunningham",
    "position": "G",
    "short": "C. Cunningham",
-   "status": "",
+   "status": "Day-To-Day",
    "team_id": "8",
    "weight_lb": "220"
   },
@@ -2779,7 +2779,7 @@
    "name": "Scottie Barnes",
    "position": "F",
    "short": "S. Barnes",
-   "status": "",
+   "status": "Out",
    "team_id": "28",
    "weight_lb": "237"
   },
@@ -2790,7 +2790,7 @@
    "name": "Walker Kessler",
    "position": "C",
    "short": "W. Kessler",
-   "status": "Out",
+   "status": "",
    "team_id": "13",
    "weight_lb": "245"
   },
@@ -2878,7 +2878,7 @@
    "name": "Jonathan Kuminga",
    "position": "F",
    "short": "J. Kuminga",
-   "status": "Out",
+   "status": "Day-To-Day",
    "team_id": "16",
    "weight_lb": "225"
   },
@@ -3076,7 +3076,7 @@
    "name": "Ryan Rollins",
    "position": "G",
    "short": "R. Rollins",
-   "status": "",
+   "status": "Out",
    "team_id": "15",
    "weight_lb": "180"
   },
@@ -3175,7 +3175,7 @@
    "name": "Zyon Pullin",
    "position": "G",
    "short": "Z. Pullin",
-   "status": "Out",
+   "status": "Day-To-Day",
    "team_id": "16",
    "weight_lb": "206"
   },
@@ -3461,7 +3461,7 @@
    "name": "Jaylon Tyson",
    "position": "G",
    "short": "J. Tyson",
-   "status": "Day-To-Day",
+   "status": "Out",
    "team_id": "5",
    "weight_lb": "215"
   },
@@ -3597,6 +3597,17 @@
    "team_id": "1",
    "weight_lb": "224"
   },
+  "4684682": {
+   "dob": "2002-12-10",
+   "height_in": "83",
+   "jersey": "13",
+   "name": "Jonas Aidoo",
+   "position": "C",
+   "short": "J. Aidoo",
+   "status": "",
+   "team_id": "26",
+   "weight_lb": "240"
+  },
   "4684740": {
    "dob": "2003-01-30",
    "height_in": "79",
@@ -3604,7 +3615,7 @@
    "name": "Amen Thompson",
    "position": "G",
    "short": "A. Thompson",
-   "status": "Day-To-Day",
+   "status": "",
    "team_id": "10",
    "weight_lb": "200"
   },
@@ -3685,6 +3696,17 @@
    "team_id": "14",
    "weight_lb": "255"
   },
+  "4700852": {
+   "dob": "2001-12-19",
+   "height_in": "75",
+   "jersey": "8",
+   "name": "Chaz Lanier",
+   "position": "G",
+   "short": "C. Lanier",
+   "status": "",
+   "team_id": "8",
+   "weight_lb": "206"
+  },
   "4701208": {
    "dob": "2002-09-10",
    "height_in": "83",
@@ -3739,6 +3761,17 @@
    "status": "",
    "team_id": "5",
    "weight_lb": "180"
+  },
+  "4702099": {
+   "dob": "2001-08-11",
+   "height_in": "77",
+   "jersey": "55",
+   "name": "Zack Austin",
+   "position": "G",
+   "short": "Z. Austin",
+   "status": "",
+   "team_id": "5",
+   "weight_lb": "216"
   },
   "4702134": {
    "dob": "2001-08-28",
@@ -4352,7 +4385,7 @@
    "name": "Nikola Jovic",
    "position": "F",
    "short": "N. Jovic",
-   "status": "Day-To-Day",
+   "status": "",
    "team_id": "14",
    "weight_lb": "240"
   },
@@ -4418,7 +4451,7 @@
    "name": "Dylan Harper",
    "position": "G",
    "short": "D. Harper",
-   "status": "",
+   "status": "Day-To-Day",
    "team_id": "24",
    "weight_lb": "220"
   },
@@ -4737,7 +4770,7 @@
    "name": "Julian Phillips",
    "position": "F",
    "short": "J. Phillips",
-   "status": "Day-To-Day",
+   "status": "",
    "team_id": "10",
    "weight_lb": "198"
   },
@@ -5749,7 +5782,7 @@
    "name": "Draymond Green",
    "position": "F",
    "short": "D. Green",
-   "status": "",
+   "status": "Day-To-Day",
    "team_id": "9",
    "weight_lb": "230"
   },
@@ -5776,5 +5809,5 @@
    "weight_lb": "222"
   }
  },
- "updated_at": "2026-11-17T23:27:15+00:00"
+ "updated_at": "2026-11-18T22:54:41+00:00"
 }

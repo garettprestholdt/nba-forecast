@@ -223,6 +223,78 @@
   "neutral": false,
   "state": "CA"
  },
+ "401909305": {
+  "arena": "State Farm Arena",
+  "city": "Atlanta",
+  "country": "",
+  "home_team_id": "1",
+  "neutral": false,
+  "state": "GA"
+ },
+ "401909306": {
+  "arena": "Barclays Center",
+  "city": "Brooklyn",
+  "country": "",
+  "home_team_id": "17",
+  "neutral": false,
+  "state": "NY"
+ },
+ "401909307": {
+  "arena": "Rocket Arena",
+  "city": "Cleveland",
+  "country": "",
+  "home_team_id": "5",
+  "neutral": false,
+  "state": "OH"
+ },
+ "401909308": {
+  "arena": "Little Caesars Arena",
+  "city": "Detroit",
+  "country": "",
+  "home_team_id": "8",
+  "neutral": false,
+  "state": "MI"
+ },
+ "401909309": {
+  "arena": "United Center",
+  "city": "Chicago",
+  "country": "",
+  "home_team_id": "4",
+  "neutral": false,
+  "state": "IL"
+ },
+ "401909310": {
+  "arena": "Paycom Center",
+  "city": "Oklahoma City",
+  "country": "",
+  "home_team_id": "25",
+  "neutral": false,
+  "state": "OK"
+ },
+ "401909311": {
+  "arena": "Delta Center",
+  "city": "Salt Lake City",
+  "country": "",
+  "home_team_id": "26",
+  "neutral": false,
+  "state": "UT"
+ },
+ "401909312": {
+  "arena": "Ball Arena",
+  "city": "Denver",
+  "country": "",
+  "home_team_id": "7",
+  "neutral": false,
+  "state": "CO"
+ },
+ "401909313": {
+  "arena": "crypto.com Arena",
+  "city": "Los Angeles",
+  "country": "",
+  "home_team_id": "13",
+  "neutral": false,
+  "state": "CA"
+ },
  "401909881": {
   "arena": "State Farm Arena",
   "city": "Atlanta",
