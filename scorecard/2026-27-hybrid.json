@@ -1,35 +1,35 @@
 {
   "season": "2026-27",
   "model": "hybrid-realistic-v1",
-  "updated_at": "2026-11-18T22:54:32+00:00",
-  "games_predicted": 159,
-  "games_scored": 147,
+  "updated_at": "2026-11-19T22:59:26+00:00",
+  "games_predicted": 163,
+  "games_scored": 159,
   "hybrid": {
-    "log_loss": 0.57272,
-    "brier": 0.1951,
-    "accuracy": 0.70748
+    "log_loss": 0.58669,
+    "brier": 0.20094,
+    "accuracy": 0.69182
   },
   "elo": {
-    "log_loss": 0.58877,
-    "brier": 0.20237,
-    "accuracy": 0.72789
+    "log_loss": 0.60596,
+    "brier": 0.20965,
+    "accuracy": 0.71069
   },
   "head_to_head_with_market": {
-    "games": 147,
+    "games": 159,
     "hybrid": {
-      "log_loss": 0.57272,
-      "brier": 0.1951,
-      "accuracy": 0.70748
+      "log_loss": 0.58669,
+      "brier": 0.20094,
+      "accuracy": 0.69182
     },
     "elo": {
-      "log_loss": 0.58877,
-      "brier": 0.20237,
-      "accuracy": 0.72789
+      "log_loss": 0.60596,
+      "brier": 0.20965,
+      "accuracy": 0.71069
     },
     "market": {
-      "log_loss": 0.55722,
-      "brier": 0.18798,
-      "accuracy": 0.73129
+      "log_loss": 0.57057,
+      "brier": 0.19398,
+      "accuracy": 0.71069
     }
   },
   "promotion_check": {
@@ -37,18 +37,18 @@
       "2026-27"
     ],
     "rule": "docs/promotion-bar-hybrid.md",
-    "games": 147,
+    "games": 159,
     "status": "in progress",
     "regular_season_over": false,
-    "mean_difference": 0.01605,
+    "mean_difference": 0.01927,
     "ci95": [
-      -0.00453,
-      0.03663
+      -0.00047,
+      0.039
     ],
-    "coverage": 0.98,
+    "coverage": 0.9815,
     "reliability": {
-      "hybrid": 0.01048,
-      "published": 0.01973
+      "hybrid": 0.01176,
+      "published": 0.0201
     },
     "conditions": {
       "better_on_average": true,

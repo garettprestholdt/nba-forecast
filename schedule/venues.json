@@ -1430,5 +1430,53 @@
   "home_team_id": "24",
   "neutral": false,
   "state": "TX"
+ },
+ "401910023": {
+  "arena": "Xfinity Mobile Arena",
+  "city": "Philadelphia",
+  "country": "",
+  "home_team_id": "20",
+  "neutral": false,
+  "state": "PA"
+ },
+ "401910024": {
+  "arena": "Madison Square Garden",
+  "city": "New York",
+  "country": "",
+  "home_team_id": "18",
+  "neutral": false,
+  "state": "NY"
+ },
+ "401910025": {
+  "arena": "American Airlines Center",
+  "city": "Dallas",
+  "country": "",
+  "home_team_id": "6",
+  "neutral": false,
+  "state": "TX"
+ },
+ "401910026": {
+  "arena": "Target Center",
+  "city": "Minneapolis",
+  "country": "",
+  "home_team_id": "16",
+  "neutral": false,
+  "state": "MN"
+ },
+ "401910027": {
+  "arena": "Frost Bank Center",
+  "city": "San Antonio",
+  "country": "",
+  "home_team_id": "24",
+  "neutral": false,
+  "state": "TX"
+ },
+ "401910028": {
+  "arena": "Golden 1 Center",
+  "city": "Sacramento",
+  "country": "",
+  "home_team_id": "23",
+  "neutral": false,
+  "state": "CA"
  }
 }
