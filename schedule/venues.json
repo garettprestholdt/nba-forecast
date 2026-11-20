@@ -1478,5 +1478,61 @@
   "home_team_id": "23",
   "neutral": false,
   "state": "CA"
+ },
+ "401910029": {
+  "arena": "State Farm Arena",
+  "city": "Atlanta",
+  "country": "",
+  "home_team_id": "1",
+  "neutral": false,
+  "state": "GA"
+ },
+ "401910030": {
+  "arena": "Kaseya Center",
+  "city": "Miami",
+  "country": "",
+  "home_team_id": "14",
+  "neutral": false,
+  "state": "FL"
+ },
+ "401910031": {
+  "arena": "Capital One Arena",
+  "city": "Washington",
+  "country": "",
+  "home_team_id": "27",
+  "neutral": false,
+  "state": "DC"
+ },
+ "401910032": {
+  "arena": "United Center",
+  "city": "Chicago",
+  "country": "",
+  "home_team_id": "4",
+  "neutral": false,
+  "state": "IL"
+ },
+ "401910033": {
+  "arena": "Delta Center",
+  "city": "Salt Lake City",
+  "country": "",
+  "home_team_id": "26",
+  "neutral": false,
+  "state": "UT"
+ },
+ "401910034": {
+  "arena": "Madison Square Garden",
+  "city": "New York",
+  "country": "",
+  "home_team_id": "18",
+  "neutral": false,
+  "state": "NY"
+ },
+ "401910035": {
+  "arena": "Chase Center",
+  "city": "San Francisco",
+  "country": "",
+  "home_team_id": "9",
+  "neutral": false,
+  "state": "CA"
  }
 }
