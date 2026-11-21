@@ -205,7 +205,7 @@
    "name": "Jerami Grant",
    "position": "F",
    "short": "J. Grant",
-   "status": "Day-To-Day",
+   "status": "Out",
    "team_id": "29",
    "weight_lb": "213"
   },
@@ -238,7 +238,7 @@
    "name": "Steven Adams",
    "position": "C",
    "short": "S. Adams",
-   "status": "Day-To-Day",
+   "status": "",
    "team_id": "10",
    "weight_lb": "265"
   },
@@ -293,7 +293,7 @@
    "name": "Giannis Antetokounmpo",
    "position": "F",
    "short": "G. Antetokounmpo",
-   "status": "",
+   "status": "Day-To-Day",
    "team_id": "14",
    "weight_lb": "243"
   },
@@ -414,7 +414,7 @@
    "name": "Derrick White",
    "position": "G",
    "short": "D. White",
-   "status": "",
+   "status": "Out",
    "team_id": "2",
    "weight_lb": "200"
   },
@@ -568,7 +568,7 @@
    "name": "Grayson Allen",
    "position": "G",
    "short": "G. Allen",
-   "status": "Out",
+   "status": "Day-To-Day",
    "team_id": "30",
    "weight_lb": "198"
   },
@@ -601,7 +601,7 @@
    "name": "Karl-Anthony Towns",
    "position": "C",
    "short": "K. Towns",
-   "status": "",
+   "status": "Day-To-Day",
    "team_id": "18",
    "weight_lb": "248"
   },
@@ -1074,7 +1074,7 @@
    "name": "Jayson Tatum",
    "position": "F",
    "short": "J. Tatum",
-   "status": "",
+   "status": "Out",
    "team_id": "2",
    "weight_lb": "224"
   },
@@ -1129,7 +1129,7 @@
    "name": "De'Andre Hunter",
    "position": "F",
    "short": "D. Hunter",
-   "status": "Day-To-Day",
+   "status": "",
    "team_id": "23",
    "weight_lb": "221"
   },
@@ -1140,7 +1140,7 @@
    "name": "Ty Jerome",
    "position": "G",
    "short": "T. Jerome",
-   "status": "Out",
+   "status": "",
    "team_id": "29",
    "weight_lb": "195"
   },
@@ -1195,7 +1195,7 @@
    "name": "Grant Williams",
    "position": "F",
    "short": "G. Williams",
-   "status": "Out",
+   "status": "Day-To-Day",
    "team_id": "30",
    "weight_lb": "236"
   },
@@ -1624,7 +1624,7 @@
    "name": "P.J. Washington",
    "position": "F",
    "short": "P.J. Washington",
-   "status": "",
+   "status": "Day-To-Day",
    "team_id": "6",
    "weight_lb": "230"
   },
@@ -1800,7 +1800,7 @@
    "name": "Mitchell Robinson",
    "position": "C",
    "short": "M. Robinson",
-   "status": "",
+   "status": "Out",
    "team_id": "2",
    "weight_lb": "240"
   },
@@ -1888,7 +1888,7 @@
    "name": "Andrew Nembhard",
    "position": "G",
    "short": "A. Nembhard",
-   "status": "Day-To-Day",
+   "status": "",
    "team_id": "11",
    "weight_lb": "191"
   },
@@ -2251,7 +2251,7 @@
    "name": "Tyrese Maxey",
    "position": "G",
    "short": "T. Maxey",
-   "status": "Day-To-Day",
+   "status": "",
    "team_id": "20",
    "weight_lb": "204"
   },
@@ -2262,7 +2262,7 @@
    "name": "Precious Achiuwa",
    "position": "F",
    "short": "P. Achiuwa",
-   "status": "Out",
+   "status": "Day-To-Day",
    "team_id": "23",
    "weight_lb": "243"
   },
@@ -2471,7 +2471,7 @@
    "name": "Cade Cunningham",
    "position": "G",
    "short": "C. Cunningham",
-   "status": "Day-To-Day",
+   "status": "",
    "team_id": "8",
    "weight_lb": "220"
   },
@@ -3054,7 +3054,7 @@
    "name": "Peyton Watson",
    "position": "G",
    "short": "P. Watson",
-   "status": "Day-To-Day",
+   "status": "",
    "team_id": "5",
    "weight_lb": "200"
   },
@@ -3307,7 +3307,7 @@
    "name": "Zach Edey",
    "position": "C",
    "short": "Z. Edey",
-   "status": "Day-To-Day",
+   "status": "",
    "team_id": "29",
    "weight_lb": "305"
   },
@@ -3494,7 +3494,7 @@
    "name": "Ronald Holland II",
    "position": "F",
    "short": "R. Holland II",
-   "status": "Day-To-Day",
+   "status": "Out",
    "team_id": "8",
    "weight_lb": "206"
   },
@@ -3846,7 +3846,7 @@
    "name": "Grant Nelson",
    "position": "F",
    "short": "G. Nelson",
-   "status": "Out",
+   "status": "Day-To-Day",
    "team_id": "17",
    "weight_lb": "230"
   },
@@ -4033,7 +4033,7 @@
    "name": "Javon Small",
    "position": "G",
    "short": "J. Small",
-   "status": "",
+   "status": "Out",
    "team_id": "29",
    "weight_lb": "190"
   },
@@ -4143,7 +4143,7 @@
    "name": "Dominick Barlow",
    "position": "F",
    "short": "D. Barlow",
-   "status": "Out",
+   "status": "",
    "team_id": "20",
    "weight_lb": "238"
   },
@@ -4176,7 +4176,7 @@
    "name": "Alperen Sengun",
    "position": "C",
    "short": "A. Sengun",
-   "status": "Day-To-Day",
+   "status": "",
    "team_id": "10",
    "weight_lb": "243"
   },
@@ -4242,7 +4242,7 @@
    "name": "Ryan Dunn",
    "position": "F",
    "short": "R. Dunn",
-   "status": "",
+   "status": "Day-To-Day",
    "team_id": "21",
    "weight_lb": "216"
   },
@@ -4264,7 +4264,7 @@
    "name": "Walter Clayton Jr.",
    "position": "G",
    "short": "W. Clayton Jr.",
-   "status": "",
+   "status": "Day-To-Day",
    "team_id": "6",
    "weight_lb": "195"
   },
@@ -4484,7 +4484,7 @@
    "name": "Cameron Boozer",
    "position": "F",
    "short": "C. Boozer",
-   "status": "",
+   "status": "Out",
    "team_id": "29",
    "weight_lb": "253"
   },
@@ -4660,7 +4660,7 @@
    "name": "Collin Murray-Boyles",
    "position": "F",
    "short": "C. Murray-Boyles",
-   "status": "Out",
+   "status": "Day-To-Day",
    "team_id": "28",
    "weight_lb": "245"
   },
@@ -4935,7 +4935,7 @@
    "name": "Felix Okpara",
    "position": "F",
    "short": "F. Okpara",
-   "status": "Day-To-Day",
+   "status": "",
    "team_id": "27",
    "weight_lb": "237"
   },
@@ -4946,7 +4946,7 @@
    "name": "Braden Smith",
    "position": "G",
    "short": "B. Smith",
-   "status": "Day-To-Day",
+   "status": "",
    "team_id": "11",
    "weight_lb": "167"
   },
@@ -4968,7 +4968,7 @@
    "name": "Tobi Lawal",
    "position": "F",
    "short": "T. Lawal",
-   "status": "Day-To-Day",
+   "status": "Out",
    "team_id": "6",
    "weight_lb": "215"
   },
@@ -5298,7 +5298,7 @@
    "name": "Nikola Topic",
    "position": "G",
    "short": "N. Topic",
-   "status": "Out",
+   "status": "Day-To-Day",
    "team_id": "25",
    "weight_lb": "200"
   },
@@ -5573,7 +5573,7 @@
    "name": "Noa Essengue",
    "position": "F",
    "short": "N. Essengue",
-   "status": "Day-To-Day",
+   "status": "",
    "team_id": "4",
    "weight_lb": "206"
   },
@@ -5606,7 +5606,7 @@
    "name": "Ebuka Okorie",
    "position": "G",
    "short": "E. Okorie",
-   "status": "Out",
+   "status": "Day-To-Day",
    "team_id": "8",
    "weight_lb": "186"
   },
@@ -5628,7 +5628,7 @@
    "name": "Nolan Traore",
    "position": "G",
    "short": "N. Traore",
-   "status": "",
+   "status": "Day-To-Day",
    "team_id": "17",
    "weight_lb": "185"
   },
@@ -5809,5 +5809,5 @@
    "weight_lb": "222"
   }
  },
- "updated_at": "2026-11-20T22:35:55+00:00"
+ "updated_at": "2026-11-21T21:34:24+00:00"
 }

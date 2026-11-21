@@ -1534,5 +1534,85 @@
   "home_team_id": "9",
   "neutral": false,
   "state": "CA"
+ },
+ "401910036": {
+  "arena": "Spectrum Center",
+  "city": "Charlotte",
+  "country": "",
+  "home_team_id": "30",
+  "neutral": false,
+  "state": "NC"
+ },
+ "401910037": {
+  "arena": "Xfinity Mobile Arena",
+  "city": "Philadelphia",
+  "country": "",
+  "home_team_id": "20",
+  "neutral": false,
+  "state": "PA"
+ },
+ "401910038": {
+  "arena": "Gainbridge Fieldhouse",
+  "city": "Indianapolis",
+  "country": "",
+  "home_team_id": "11",
+  "neutral": false,
+  "state": "IN"
+ },
+ "401910039": {
+  "arena": "Scotiabank Arena",
+  "city": "Toronto",
+  "country": "",
+  "home_team_id": "28",
+  "neutral": false,
+  "state": "ON"
+ },
+ "401910040": {
+  "arena": "Target Center",
+  "city": "Minneapolis",
+  "country": "",
+  "home_team_id": "16",
+  "neutral": false,
+  "state": "MN"
+ },
+ "401910041": {
+  "arena": "United Center",
+  "city": "Chicago",
+  "country": "",
+  "home_team_id": "4",
+  "neutral": false,
+  "state": "IL"
+ },
+ "401910042": {
+  "arena": "Smoothie King Center",
+  "city": "New Orleans",
+  "country": "",
+  "home_team_id": "3",
+  "neutral": false,
+  "state": "LA"
+ },
+ "401910043": {
+  "arena": "Toyota Center (Houston)",
+  "city": "Houston",
+  "country": "",
+  "home_team_id": "10",
+  "neutral": false,
+  "state": "TX"
+ },
+ "401910044": {
+  "arena": "crypto.com Arena",
+  "city": "Los Angeles",
+  "country": "",
+  "home_team_id": "13",
+  "neutral": false,
+  "state": "CA"
+ },
+ "401910045": {
+  "arena": "Golden 1 Center",
+  "city": "Sacramento",
+  "country": "",
+  "home_team_id": "23",
+  "neutral": false,
+  "state": "CA"
  }
 }
