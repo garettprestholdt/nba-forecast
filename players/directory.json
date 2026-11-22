@@ -62,7 +62,7 @@
    "name": "T.J. McConnell",
    "position": "G",
    "short": "T.J. McConnell",
-   "status": "Day-To-Day",
+   "status": "Out",
    "team_id": "11",
    "weight_lb": "190"
   },
@@ -128,7 +128,7 @@
    "name": "Norman Powell",
    "position": "G",
    "short": "N. Powell",
-   "status": "",
+   "status": "Out",
    "team_id": "4",
    "weight_lb": "215"
   },
@@ -205,7 +205,7 @@
    "name": "Jerami Grant",
    "position": "F",
    "short": "J. Grant",
-   "status": "Out",
+   "status": "Day-To-Day",
    "team_id": "29",
    "weight_lb": "213"
   },
@@ -249,7 +249,7 @@
    "name": "Alex Caruso",
    "position": "G",
    "short": "A. Caruso",
-   "status": "Day-To-Day",
+   "status": "Out",
    "team_id": "25",
    "weight_lb": "186"
   },
@@ -414,7 +414,7 @@
    "name": "Derrick White",
    "position": "G",
    "short": "D. White",
-   "status": "Out",
+   "status": "",
    "team_id": "2",
    "weight_lb": "200"
   },
@@ -425,7 +425,7 @@
    "name": "Clint Capela",
    "position": "C",
    "short": "C. Capela",
-   "status": "Out",
+   "status": "",
    "team_id": "10",
    "weight_lb": "256"
   },
@@ -678,7 +678,7 @@
    "name": "Pascal Siakam",
    "position": "F",
    "short": "P. Siakam",
-   "status": "",
+   "status": "Day-To-Day",
    "team_id": "11",
    "weight_lb": "245"
   },
@@ -887,7 +887,7 @@
    "name": "Dean Wade",
    "position": "F",
    "short": "D. Wade",
-   "status": "Out",
+   "status": "Day-To-Day",
    "team_id": "20",
    "weight_lb": "223"
   },
@@ -931,7 +931,7 @@
    "name": "Jaylen Brown",
    "position": "G",
    "short": "J. Brown",
-   "status": "Out",
+   "status": "Day-To-Day",
    "team_id": "20",
    "weight_lb": "223"
   },
@@ -964,7 +964,7 @@
    "name": "OG Anunoby",
    "position": "F",
    "short": "O. Anunoby",
-   "status": "Day-To-Day",
+   "status": "Out",
    "team_id": "18",
    "weight_lb": "240"
   },
@@ -1074,7 +1074,7 @@
    "name": "Jayson Tatum",
    "position": "F",
    "short": "J. Tatum",
-   "status": "Out",
+   "status": "",
    "team_id": "2",
    "weight_lb": "224"
   },
@@ -1404,7 +1404,7 @@
    "name": "Paul George",
    "position": "F",
    "short": "P. George",
-   "status": "",
+   "status": "Out",
    "team_id": "2",
    "weight_lb": "221"
   },
@@ -1580,7 +1580,7 @@
    "name": "Nic Claxton",
    "position": "C",
    "short": "N. Claxton",
-   "status": "",
+   "status": "Out",
    "team_id": "4",
    "weight_lb": "215"
   },
@@ -1591,7 +1591,7 @@
    "name": "Shai Gilgeous-Alexander",
    "position": "G",
    "short": "S. Gilgeous-Alexander",
-   "status": "",
+   "status": "Out",
    "team_id": "25",
    "weight_lb": "195"
   },
@@ -1646,7 +1646,7 @@
    "name": "Deandre Ayton",
    "position": "C",
    "short": "D. Ayton",
-   "status": "",
+   "status": "Day-To-Day",
    "team_id": "27",
    "weight_lb": "252"
   },
@@ -1833,7 +1833,7 @@
    "name": "Zion Williamson",
    "position": "F",
    "short": "Z. Williamson",
-   "status": "",
+   "status": "Day-To-Day",
    "team_id": "3",
    "weight_lb": "284"
   },
@@ -2152,7 +2152,7 @@
    "name": "Trey Murphy III",
    "position": "F",
    "short": "T. Murphy III",
-   "status": "Out",
+   "status": "Day-To-Day",
    "team_id": "3",
    "weight_lb": "206"
   },
@@ -2262,7 +2262,7 @@
    "name": "Precious Achiuwa",
    "position": "F",
    "short": "P. Achiuwa",
-   "status": "Day-To-Day",
+   "status": "",
    "team_id": "23",
    "weight_lb": "243"
   },
@@ -2295,7 +2295,7 @@
    "name": "Patrick Williams",
    "position": "F",
    "short": "P. Williams",
-   "status": "",
+   "status": "Day-To-Day",
    "team_id": "4",
    "weight_lb": "215"
   },
@@ -2372,7 +2372,7 @@
    "name": "Myron Gardner",
    "position": "F",
    "short": "M. Gardner",
-   "status": "Day-To-Day",
+   "status": "",
    "team_id": "14",
    "weight_lb": "225"
   },
@@ -2702,7 +2702,7 @@
    "name": "Jaylin Williams",
    "position": "F",
    "short": "J. Williams",
-   "status": "",
+   "status": "Out",
    "team_id": "25",
    "weight_lb": "240"
   },
@@ -3362,7 +3362,7 @@
    "name": "Deni Avdija",
    "position": "F",
    "short": "D. Avdija",
-   "status": "Day-To-Day",
+   "status": "",
    "team_id": "22",
    "weight_lb": "228"
   },
@@ -3494,7 +3494,7 @@
    "name": "Ronald Holland II",
    "position": "F",
    "short": "R. Holland II",
-   "status": "Out",
+   "status": "",
    "team_id": "8",
    "weight_lb": "206"
   },
@@ -4033,7 +4033,7 @@
    "name": "Javon Small",
    "position": "G",
    "short": "J. Small",
-   "status": "Out",
+   "status": "Day-To-Day",
    "team_id": "29",
    "weight_lb": "190"
   },
@@ -4088,7 +4088,7 @@
    "name": "Bub Carrington",
    "position": "G",
    "short": "B. Carrington",
-   "status": "",
+   "status": "Day-To-Day",
    "team_id": "27",
    "weight_lb": "190"
   },
@@ -4473,7 +4473,7 @@
    "name": "Ugonna Onyenso",
    "position": "C",
    "short": "U. Onyenso",
-   "status": "Day-To-Day",
+   "status": "",
    "team_id": "8",
    "weight_lb": "236"
   },
@@ -4484,7 +4484,7 @@
    "name": "Cameron Boozer",
    "position": "F",
    "short": "C. Boozer",
-   "status": "Out",
+   "status": "Day-To-Day",
    "team_id": "29",
    "weight_lb": "253"
   },
@@ -4781,7 +4781,7 @@
    "name": "Tobe Awaka",
    "position": "F",
    "short": "T. Awaka",
-   "status": "Out",
+   "status": "",
    "team_id": "4",
    "weight_lb": "255"
   },
@@ -5254,7 +5254,7 @@
    "name": "Kingston Flemings",
    "position": "G",
    "short": "K. Flemings",
-   "status": "Out",
+   "status": "",
    "team_id": "1",
    "weight_lb": "183"
   },
@@ -5298,7 +5298,7 @@
    "name": "Nikola Topic",
    "position": "G",
    "short": "N. Topic",
-   "status": "Day-To-Day",
+   "status": "Out",
    "team_id": "25",
    "weight_lb": "200"
   },
@@ -5606,7 +5606,7 @@
    "name": "Ebuka Okorie",
    "position": "G",
    "short": "E. Okorie",
-   "status": "Day-To-Day",
+   "status": "Out",
    "team_id": "8",
    "weight_lb": "186"
   },
@@ -5628,7 +5628,7 @@
    "name": "Nolan Traore",
    "position": "G",
    "short": "N. Traore",
-   "status": "Day-To-Day",
+   "status": "Out",
    "team_id": "17",
    "weight_lb": "185"
   },
@@ -5782,7 +5782,7 @@
    "name": "Draymond Green",
    "position": "F",
    "short": "D. Green",
-   "status": "Day-To-Day",
+   "status": "",
    "team_id": "9",
    "weight_lb": "230"
   },
@@ -5809,5 +5809,5 @@
    "weight_lb": "222"
   }
  },
- "updated_at": "2026-11-21T21:34:24+00:00"
+ "updated_at": "2026-11-22T21:40:28+00:00"
 }

@@ -295,6 +295,30 @@
   "neutral": false,
   "state": "CA"
  },
+ "401909314": {
+  "arena": "Kia Center",
+  "city": "Orlando",
+  "country": "",
+  "home_team_id": "19",
+  "neutral": false,
+  "state": "FL"
+ },
+ "401909315": {
+  "arena": "Capital One Arena",
+  "city": "Washington",
+  "country": "",
+  "home_team_id": "27",
+  "neutral": false,
+  "state": "DC"
+ },
+ "401909316": {
+  "arena": "Ball Arena",
+  "city": "Denver",
+  "country": "",
+  "home_team_id": "7",
+  "neutral": false,
+  "state": "CO"
+ },
  "401909881": {
   "arena": "State Farm Arena",
   "city": "Atlanta",
