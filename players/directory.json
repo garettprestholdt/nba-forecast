@@ -84,7 +84,7 @@
    "name": "Larry Nance Jr.",
    "position": "F",
    "short": "L. Nance Jr.",
-   "status": "",
+   "status": "Day-To-Day",
    "team_id": "11",
    "weight_lb": "245"
   },
@@ -205,7 +205,7 @@
    "name": "Jerami Grant",
    "position": "F",
    "short": "J. Grant",
-   "status": "Day-To-Day",
+   "status": "Out",
    "team_id": "29",
    "weight_lb": "213"
   },
@@ -326,7 +326,7 @@
    "name": "Joel Embiid",
    "position": "C",
    "short": "J. Embiid",
-   "status": "",
+   "status": "Out",
    "team_id": "20",
    "weight_lb": "270"
   },
@@ -568,7 +568,7 @@
    "name": "Grayson Allen",
    "position": "G",
    "short": "G. Allen",
-   "status": "Day-To-Day",
+   "status": "Out",
    "team_id": "30",
    "weight_lb": "198"
   },
@@ -601,7 +601,7 @@
    "name": "Karl-Anthony Towns",
    "position": "C",
    "short": "K. Towns",
-   "status": "Day-To-Day",
+   "status": "",
    "team_id": "18",
    "weight_lb": "248"
   },
@@ -626,6 +626,17 @@
    "status": "",
    "team_id": "10",
    "weight_lb": "230"
+  },
+  "3137259": {
+   "dob": "1996-06-14",
+   "height_in": "74",
+   "jersey": "",
+   "name": "Gabe Vincent",
+   "position": "G",
+   "short": "G. Vincent",
+   "status": "",
+   "team_id": "23",
+   "weight_lb": "200"
   },
   "3138160": {
    "dob": "1995-09-28",
@@ -678,7 +689,7 @@
    "name": "Pascal Siakam",
    "position": "F",
    "short": "P. Siakam",
-   "status": "Day-To-Day",
+   "status": "",
    "team_id": "11",
    "weight_lb": "245"
   },
@@ -887,7 +898,7 @@
    "name": "Dean Wade",
    "position": "F",
    "short": "D. Wade",
-   "status": "Day-To-Day",
+   "status": "",
    "team_id": "20",
    "weight_lb": "223"
   },
@@ -909,7 +920,7 @@
    "name": "Brandon Ingram",
    "position": "F",
    "short": "B. Ingram",
-   "status": "Out",
+   "status": "",
    "team_id": "12",
    "weight_lb": "190"
   },
@@ -931,7 +942,7 @@
    "name": "Jaylen Brown",
    "position": "G",
    "short": "J. Brown",
-   "status": "Day-To-Day",
+   "status": "",
    "team_id": "20",
    "weight_lb": "223"
   },
@@ -964,7 +975,7 @@
    "name": "OG Anunoby",
    "position": "F",
    "short": "O. Anunoby",
-   "status": "Out",
+   "status": "Day-To-Day",
    "team_id": "18",
    "weight_lb": "240"
   },
@@ -1195,7 +1206,7 @@
    "name": "Grant Williams",
    "position": "F",
    "short": "G. Williams",
-   "status": "Day-To-Day",
+   "status": "Out",
    "team_id": "30",
    "weight_lb": "236"
   },
@@ -1206,7 +1217,7 @@
    "name": "De'Aaron Fox",
    "position": "G",
    "short": "D. Fox",
-   "status": "",
+   "status": "Out",
    "team_id": "24",
    "weight_lb": "190"
   },
@@ -1404,7 +1415,7 @@
    "name": "Paul George",
    "position": "F",
    "short": "P. George",
-   "status": "Out",
+   "status": "",
    "team_id": "2",
    "weight_lb": "221"
   },
@@ -1580,7 +1591,7 @@
    "name": "Nic Claxton",
    "position": "C",
    "short": "N. Claxton",
-   "status": "Out",
+   "status": "",
    "team_id": "4",
    "weight_lb": "215"
   },
@@ -1591,7 +1602,7 @@
    "name": "Shai Gilgeous-Alexander",
    "position": "G",
    "short": "S. Gilgeous-Alexander",
-   "status": "Out",
+   "status": "",
    "team_id": "25",
    "weight_lb": "195"
   },
@@ -1646,7 +1657,7 @@
    "name": "Deandre Ayton",
    "position": "C",
    "short": "D. Ayton",
-   "status": "Day-To-Day",
+   "status": "",
    "team_id": "27",
    "weight_lb": "252"
   },
@@ -1712,7 +1723,7 @@
    "name": "Collin Gillespie",
    "position": "G",
    "short": "C. Gillespie",
-   "status": "",
+   "status": "Day-To-Day",
    "team_id": "21",
    "weight_lb": "195"
   },
@@ -1833,7 +1844,7 @@
    "name": "Zion Williamson",
    "position": "F",
    "short": "Z. Williamson",
-   "status": "Day-To-Day",
+   "status": "",
    "team_id": "3",
    "weight_lb": "284"
   },
@@ -1954,7 +1965,7 @@
    "name": "Aaron Nesmith",
    "position": "G",
    "short": "A. Nesmith",
-   "status": "",
+   "status": "Out",
    "team_id": "11",
    "weight_lb": "215"
   },
@@ -2031,7 +2042,7 @@
    "name": "Jaxson Hayes",
    "position": "C",
    "short": "J. Hayes",
-   "status": "",
+   "status": "Out",
    "team_id": "26",
    "weight_lb": "220"
   },
@@ -2075,7 +2086,7 @@
    "name": "Jalen Smith",
    "position": "F",
    "short": "J. Smith",
-   "status": "Day-To-Day",
+   "status": "",
    "team_id": "4",
    "weight_lb": "215"
   },
@@ -2152,7 +2163,7 @@
    "name": "Trey Murphy III",
    "position": "F",
    "short": "T. Murphy III",
-   "status": "Day-To-Day",
+   "status": "",
    "team_id": "3",
    "weight_lb": "206"
   },
@@ -2295,7 +2306,7 @@
    "name": "Patrick Williams",
    "position": "F",
    "short": "P. Williams",
-   "status": "Day-To-Day",
+   "status": "",
    "team_id": "4",
    "weight_lb": "215"
   },
@@ -2405,7 +2416,7 @@
    "name": "Miles McBride",
    "position": "G",
    "short": "M. McBride",
-   "status": "",
+   "status": "Day-To-Day",
    "team_id": "18",
    "weight_lb": "195"
   },
@@ -2471,7 +2482,7 @@
    "name": "Cade Cunningham",
    "position": "G",
    "short": "C. Cunningham",
-   "status": "",
+   "status": "Day-To-Day",
    "team_id": "8",
    "weight_lb": "220"
   },
@@ -2504,7 +2515,7 @@
    "name": "Julian Strawther",
    "position": "G",
    "short": "J. Strawther",
-   "status": "Out",
+   "status": "",
    "team_id": "7",
    "weight_lb": "205"
   },
@@ -3032,7 +3043,7 @@
    "name": "Ryan Kalkbrenner",
    "position": "C",
    "short": "R. Kalkbrenner",
-   "status": "",
+   "status": "Day-To-Day",
    "team_id": "30",
    "weight_lb": "256"
   },
@@ -3043,7 +3054,7 @@
    "name": "Bryce McGowens",
    "position": "G",
    "short": "B. McGowens",
-   "status": "Out",
+   "status": "",
    "team_id": "3",
    "weight_lb": "190"
   },
@@ -3461,7 +3472,7 @@
    "name": "Jaylon Tyson",
    "position": "G",
    "short": "J. Tyson",
-   "status": "Out",
+   "status": "",
    "team_id": "5",
    "weight_lb": "215"
   },
@@ -3846,7 +3857,7 @@
    "name": "Grant Nelson",
    "position": "F",
    "short": "G. Nelson",
-   "status": "Day-To-Day",
+   "status": "",
    "team_id": "17",
    "weight_lb": "230"
   },
@@ -4033,7 +4044,7 @@
    "name": "Javon Small",
    "position": "G",
    "short": "J. Small",
-   "status": "Day-To-Day",
+   "status": "",
    "team_id": "29",
    "weight_lb": "190"
   },
@@ -4088,7 +4099,7 @@
    "name": "Bub Carrington",
    "position": "G",
    "short": "B. Carrington",
-   "status": "Day-To-Day",
+   "status": "",
    "team_id": "27",
    "weight_lb": "190"
   },
@@ -4242,7 +4253,7 @@
    "name": "Ryan Dunn",
    "position": "F",
    "short": "R. Dunn",
-   "status": "Day-To-Day",
+   "status": "",
    "team_id": "21",
    "weight_lb": "216"
   },
@@ -4264,7 +4275,7 @@
    "name": "Walter Clayton Jr.",
    "position": "G",
    "short": "W. Clayton Jr.",
-   "status": "Day-To-Day",
+   "status": "",
    "team_id": "6",
    "weight_lb": "195"
   },
@@ -4374,7 +4385,7 @@
    "name": "Ousmane Dieng",
    "position": "F",
    "short": "O. Dieng",
-   "status": "Out",
+   "status": "",
    "team_id": "15",
    "weight_lb": "185"
   },
@@ -4484,7 +4495,7 @@
    "name": "Cameron Boozer",
    "position": "F",
    "short": "C. Boozer",
-   "status": "Day-To-Day",
+   "status": "Out",
    "team_id": "29",
    "weight_lb": "253"
   },
@@ -4660,7 +4671,7 @@
    "name": "Collin Murray-Boyles",
    "position": "F",
    "short": "C. Murray-Boyles",
-   "status": "Day-To-Day",
+   "status": "",
    "team_id": "28",
    "weight_lb": "245"
   },
@@ -4726,7 +4737,7 @@
    "name": "Victor Wembanyama",
    "position": "F",
    "short": "V. Wembanyama",
-   "status": "",
+   "status": "Out",
    "team_id": "24",
    "weight_lb": "240"
   },
@@ -4847,7 +4858,7 @@
    "name": "Adem Bona",
    "position": "C",
    "short": "A. Bona",
-   "status": "Out",
+   "status": "",
    "team_id": "20",
    "weight_lb": "239"
   },
@@ -5364,7 +5375,7 @@
    "name": "Aday Mara",
    "position": "C",
    "short": "A. Mara",
-   "status": "",
+   "status": "Out",
    "team_id": "25",
    "weight_lb": "262"
   },
@@ -5809,5 +5820,5 @@
    "weight_lb": "222"
   }
  },
- "updated_at": "2026-11-22T21:40:28+00:00"
+ "updated_at": "2026-11-24T02:51:39+00:00"
 }
