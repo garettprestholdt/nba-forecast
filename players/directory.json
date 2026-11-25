@@ -62,7 +62,7 @@
    "name": "T.J. McConnell",
    "position": "G",
    "short": "T.J. McConnell",
-   "status": "Out",
+   "status": "Day-To-Day",
    "team_id": "11",
    "weight_lb": "190"
   },
@@ -249,7 +249,7 @@
    "name": "Alex Caruso",
    "position": "G",
    "short": "A. Caruso",
-   "status": "Out",
+   "status": "",
    "team_id": "25",
    "weight_lb": "186"
   },
@@ -326,7 +326,7 @@
    "name": "Joel Embiid",
    "position": "C",
    "short": "J. Embiid",
-   "status": "Out",
+   "status": "Day-To-Day",
    "team_id": "20",
    "weight_lb": "270"
   },
@@ -348,7 +348,7 @@
    "name": "Josh Hart",
    "position": "G",
    "short": "J. Hart",
-   "status": "",
+   "status": "Day-To-Day",
    "team_id": "18",
    "weight_lb": "215"
   },
@@ -601,7 +601,7 @@
    "name": "Karl-Anthony Towns",
    "position": "C",
    "short": "K. Towns",
-   "status": "",
+   "status": "Day-To-Day",
    "team_id": "18",
    "weight_lb": "248"
   },
@@ -975,7 +975,7 @@
    "name": "OG Anunoby",
    "position": "F",
    "short": "O. Anunoby",
-   "status": "Day-To-Day",
+   "status": "Out",
    "team_id": "18",
    "weight_lb": "240"
   },
@@ -1206,7 +1206,7 @@
    "name": "Grant Williams",
    "position": "F",
    "short": "G. Williams",
-   "status": "Out",
+   "status": "",
    "team_id": "30",
    "weight_lb": "236"
   },
@@ -1217,7 +1217,7 @@
    "name": "De'Aaron Fox",
    "position": "G",
    "short": "D. Fox",
-   "status": "Out",
+   "status": "Day-To-Day",
    "team_id": "24",
    "weight_lb": "190"
   },
@@ -1723,7 +1723,7 @@
    "name": "Collin Gillespie",
    "position": "G",
    "short": "C. Gillespie",
-   "status": "Day-To-Day",
+   "status": "",
    "team_id": "21",
    "weight_lb": "195"
   },
@@ -1965,7 +1965,7 @@
    "name": "Aaron Nesmith",
    "position": "G",
    "short": "A. Nesmith",
-   "status": "Out",
+   "status": "Day-To-Day",
    "team_id": "11",
    "weight_lb": "215"
   },
@@ -2042,7 +2042,7 @@
    "name": "Jaxson Hayes",
    "position": "C",
    "short": "J. Hayes",
-   "status": "Out",
+   "status": "Day-To-Day",
    "team_id": "26",
    "weight_lb": "220"
   },
@@ -2086,7 +2086,7 @@
    "name": "Jalen Smith",
    "position": "F",
    "short": "J. Smith",
-   "status": "",
+   "status": "Day-To-Day",
    "team_id": "4",
    "weight_lb": "215"
   },
@@ -2482,7 +2482,7 @@
    "name": "Cade Cunningham",
    "position": "G",
    "short": "C. Cunningham",
-   "status": "Day-To-Day",
+   "status": "Out",
    "team_id": "8",
    "weight_lb": "220"
   },
@@ -2691,7 +2691,7 @@
    "name": "Tre Mann",
    "position": "G",
    "short": "T. Mann",
-   "status": "",
+   "status": "Day-To-Day",
    "team_id": "27",
    "weight_lb": "178"
   },
@@ -3351,7 +3351,7 @@
    "name": "Sion James",
    "position": "G",
    "short": "S. James",
-   "status": "",
+   "status": "Day-To-Day",
    "team_id": "30",
    "weight_lb": "220"
   },
@@ -4737,7 +4737,7 @@
    "name": "Victor Wembanyama",
    "position": "F",
    "short": "V. Wembanyama",
-   "status": "Out",
+   "status": "Day-To-Day",
    "team_id": "24",
    "weight_lb": "240"
   },
@@ -5287,7 +5287,7 @@
    "name": "Johnny Furphy",
    "position": "G",
    "short": "J. Furphy",
-   "status": "Out",
+   "status": "",
    "team_id": "11",
    "weight_lb": "200"
   },
@@ -5408,7 +5408,7 @@
    "name": "Yaxel Lendeborg",
    "position": "F",
    "short": "Y. Lendeborg",
-   "status": "",
+   "status": "Day-To-Day",
    "team_id": "9",
    "weight_lb": "241"
   },
@@ -5820,5 +5820,5 @@
    "weight_lb": "222"
   }
  },
- "updated_at": "2026-11-24T02:51:39+00:00"
+ "updated_at": "2026-11-25T00:32:36+00:00"
 }
