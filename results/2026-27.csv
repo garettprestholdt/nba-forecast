@@ -257,3 +257,6 @@ game_id,season,season_type,game_date,tipoff_utc,home_team_id,away_team_id,home_t
 401910043,2026-27,regular_season,2026-11-23,2026-11-24T01:30:00+00:00,10,12,Houston Rockets,LA Clippers,116,104,False
 401910044,2026-27,regular_season,2026-11-23,2026-11-24T03:00:00+00:00,13,26,Los Angeles Lakers,Utah Jazz,109,94,False
 401910045,2026-27,regular_season,2026-11-23,2026-11-24T03:00:00+00:00,23,24,Sacramento Kings,San Antonio Spurs,107,123,False
+401909314,2026-27,regular_season,2026-11-24,2026-11-25T00:00:00+00:00,19,8,Orlando Magic,Detroit Pistons,86,104,False
+401909315,2026-27,regular_season,2026-11-24,2026-11-25T01:00:00+00:00,27,2,Washington Wizards,Boston Celtics,116,131,False
+401909316,2026-27,regular_season,2026-11-24,2026-11-25T03:00:00+00:00,7,6,Denver Nuggets,Dallas Mavericks,101,120,False

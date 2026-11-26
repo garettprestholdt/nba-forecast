@@ -1,22 +1,22 @@
 {
   "season": "2026-27",
-  "updated_at": "2026-11-25T00:33:04+00:00",
-  "calls_logged": 245,
-  "calls_scored": 243,
-  "played_rate": 0.539,
+  "updated_at": "2026-11-26T00:09:13+00:00",
+  "calls_logged": 248,
+  "calls_scored": 245,
+  "played_rate": 0.543,
   "keyword_rule_all": {
-    "log_loss": 0.5581,
-    "brier": 0.1921
+    "log_loss": 0.5592,
+    "brier": 0.1925
   },
   "head_to_head": {
-    "calls": 228,
+    "calls": 230,
     "agent": {
-      "log_loss": 0.5006,
-      "brier": 0.1732
+      "log_loss": 0.5014,
+      "brier": 0.1735
     },
     "keyword_rule": {
-      "log_loss": 0.5493,
-      "brier": 0.1888
+      "log_loss": 0.5506,
+      "brier": 0.1893
     }
   }
 }
