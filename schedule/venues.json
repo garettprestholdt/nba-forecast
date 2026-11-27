@@ -1838,5 +1838,85 @@
   "home_team_id": "10",
   "neutral": false,
   "state": "TX"
+ },
+ "401910051": {
+  "arena": "FedExForum",
+  "city": "Memphis",
+  "country": "",
+  "home_team_id": "29",
+  "neutral": false,
+  "state": "TN"
+ },
+ "401910052": {
+  "arena": "Frost Bank Center",
+  "city": "San Antonio",
+  "country": "",
+  "home_team_id": "24",
+  "neutral": false,
+  "state": "TX"
+ },
+ "401910053": {
+  "arena": "Delta Center",
+  "city": "Salt Lake City",
+  "country": "",
+  "home_team_id": "26",
+  "neutral": false,
+  "state": "UT"
+ },
+ "401910054": {
+  "arena": "Rocket Arena",
+  "city": "Cleveland",
+  "country": "",
+  "home_team_id": "5",
+  "neutral": false,
+  "state": "OH"
+ },
+ "401910055": {
+  "arena": "Little Caesars Arena",
+  "city": "Detroit",
+  "country": "",
+  "home_team_id": "8",
+  "neutral": false,
+  "state": "MI"
+ },
+ "401910056": {
+  "arena": "Madison Square Garden",
+  "city": "New York",
+  "country": "",
+  "home_team_id": "18",
+  "neutral": false,
+  "state": "NY"
+ },
+ "401910057": {
+  "arena": "Scotiabank Arena",
+  "city": "Toronto",
+  "country": "",
+  "home_team_id": "28",
+  "neutral": false,
+  "state": "ON"
+ },
+ "401910058": {
+  "arena": "Moda Center",
+  "city": "Portland",
+  "country": "",
+  "home_team_id": "22",
+  "neutral": false,
+  "state": "OR"
+ },
+ "401910059": {
+  "arena": "Chase Center",
+  "city": "San Francisco",
+  "country": "",
+  "home_team_id": "9",
+  "neutral": false,
+  "state": "CA"
+ },
+ "401910060": {
+  "arena": "Golden 1 Center",
+  "city": "Sacramento",
+  "country": "",
+  "home_team_id": "23",
+  "neutral": false,
+  "state": "CA"
  }
 }

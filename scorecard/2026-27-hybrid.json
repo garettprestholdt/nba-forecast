@@ -1,8 +1,8 @@
 {
   "season": "2026-27",
   "model": "hybrid-realistic-v1",
-  "updated_at": "2026-11-27T00:29:55+00:00",
-  "games_predicted": 194,
+  "updated_at": "2026-11-27T23:59:00+00:00",
+  "games_predicted": 205,
   "games_scored": 194,
   "hybrid": {
     "log_loss": 0.58043,

@@ -1,6 +1,6 @@
 {
  "elo_per_point": 25.2,
- "ratings_through": "2026-11-25",
+ "ratings_through": "2026-11-26",
  "season": "2026-27",
  "simulations": 10000,
  "teams": {
@@ -455,5 +455,5 @@
    "wins_p90": 49.0
   }
  },
- "updated_at": "2026-11-27T00:30:00+00:00"
+ "updated_at": "2026-11-27T23:59:02+00:00"
 }
