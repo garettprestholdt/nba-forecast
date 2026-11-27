@@ -1798,5 +1798,45 @@
   "home_team_id": "23",
   "neutral": false,
   "state": "CA"
+ },
+ "401910046": {
+  "arena": "Capital One Arena",
+  "city": "Washington",
+  "country": "",
+  "home_team_id": "27",
+  "neutral": false,
+  "state": "DC"
+ },
+ "401910047": {
+  "arena": "Spectrum Center",
+  "city": "Charlotte",
+  "country": "",
+  "home_team_id": "30",
+  "neutral": false,
+  "state": "NC"
+ },
+ "401910048": {
+  "arena": "United Center",
+  "city": "Chicago",
+  "country": "",
+  "home_team_id": "4",
+  "neutral": false,
+  "state": "IL"
+ },
+ "401910049": {
+  "arena": "Fiserv Forum",
+  "city": "Milwaukee",
+  "country": "",
+  "home_team_id": "15",
+  "neutral": false,
+  "state": "WI"
+ },
+ "401910050": {
+  "arena": "Toyota Center (Houston)",
+  "city": "Houston",
+  "country": "",
+  "home_team_id": "10",
+  "neutral": false,
+  "state": "TX"
  }
 }

@@ -293,7 +293,7 @@
    "name": "Giannis Antetokounmpo",
    "position": "F",
    "short": "G. Antetokounmpo",
-   "status": "",
+   "status": "Day-To-Day",
    "team_id": "14",
    "weight_lb": "243"
   },
@@ -326,7 +326,7 @@
    "name": "Joel Embiid",
    "position": "C",
    "short": "J. Embiid",
-   "status": "Out",
+   "status": "Day-To-Day",
    "team_id": "20",
    "weight_lb": "270"
   },
@@ -337,7 +337,7 @@
    "name": "Andrew Wiggins",
    "position": "F",
    "short": "A. Wiggins",
-   "status": "",
+   "status": "Day-To-Day",
    "team_id": "14",
    "weight_lb": "210"
   },
@@ -370,7 +370,7 @@
    "name": "Zach LaVine",
    "position": "G",
    "short": "Z. LaVine",
-   "status": "Out",
+   "status": "Day-To-Day",
    "team_id": "23",
    "weight_lb": "200"
   },
@@ -700,7 +700,7 @@
    "name": "Moritz Wagner",
    "position": "C",
    "short": "M. Wagner",
-   "status": "",
+   "status": "Out",
    "team_id": "17",
    "weight_lb": "245"
   },
@@ -2031,7 +2031,7 @@
    "name": "Brandon Williams",
    "position": "G",
    "short": "B. Williams",
-   "status": "Out",
+   "status": "",
    "team_id": "9",
    "weight_lb": "190"
   },
@@ -2068,6 +2068,17 @@
    "team_id": "3",
    "weight_lb": "215"
   },
+  "4397140": {
+   "dob": "2000-05-04",
+   "height_in": "77",
+   "jersey": "7",
+   "name": "Kevin Porter Jr.",
+   "position": "G",
+   "short": "K. Porter Jr.",
+   "status": "",
+   "team_id": "19",
+   "weight_lb": "203"
+  },
   "4397183": {
    "dob": "1999-01-02",
    "height_in": "77",
@@ -2086,7 +2097,7 @@
    "name": "Jalen Smith",
    "position": "F",
    "short": "J. Smith",
-   "status": "Out",
+   "status": "Day-To-Day",
    "team_id": "4",
    "weight_lb": "215"
   },
@@ -2097,7 +2108,7 @@
    "name": "Colin Castleton",
    "position": "C",
    "short": "C. Castleton",
-   "status": "",
+   "status": "Day-To-Day",
    "team_id": "19",
    "weight_lb": "250"
   },
@@ -2416,7 +2427,7 @@
    "name": "Miles McBride",
    "position": "G",
    "short": "M. McBride",
-   "status": "Out",
+   "status": "Day-To-Day",
    "team_id": "18",
    "weight_lb": "195"
   },
@@ -2482,7 +2493,7 @@
    "name": "Cade Cunningham",
    "position": "G",
    "short": "C. Cunningham",
-   "status": "Day-To-Day",
+   "status": "Out",
    "team_id": "8",
    "weight_lb": "220"
   },
@@ -2658,7 +2669,7 @@
    "name": "Isaiah Stewart",
    "position": "C",
    "short": "I. Stewart",
-   "status": "",
+   "status": "Day-To-Day",
    "team_id": "29",
    "weight_lb": "250"
   },
@@ -2680,7 +2691,7 @@
    "name": "LaMelo Ball",
    "position": "G",
    "short": "L. Ball",
-   "status": "",
+   "status": "Day-To-Day",
    "team_id": "16",
    "weight_lb": "180"
   },
@@ -3043,7 +3054,7 @@
    "name": "Ryan Kalkbrenner",
    "position": "C",
    "short": "R. Kalkbrenner",
-   "status": "Out",
+   "status": "Day-To-Day",
    "team_id": "30",
    "weight_lb": "256"
   },
@@ -3318,7 +3329,7 @@
    "name": "Zach Edey",
    "position": "C",
    "short": "Z. Edey",
-   "status": "",
+   "status": "Day-To-Day",
    "team_id": "29",
    "weight_lb": "305"
   },
@@ -3846,7 +3857,7 @@
    "name": "Alijah Martin",
    "position": "G",
    "short": "A. Martin",
-   "status": "",
+   "status": "Day-To-Day",
    "team_id": "28",
    "weight_lb": "212"
   },
@@ -4737,7 +4748,7 @@
    "name": "Victor Wembanyama",
    "position": "F",
    "short": "V. Wembanyama",
-   "status": "Day-To-Day",
+   "status": "",
    "team_id": "24",
    "weight_lb": "240"
   },
@@ -5408,7 +5419,7 @@
    "name": "Yaxel Lendeborg",
    "position": "F",
    "short": "Y. Lendeborg",
-   "status": "Day-To-Day",
+   "status": "",
    "team_id": "9",
    "weight_lb": "241"
   },
@@ -5782,7 +5793,7 @@
    "name": "Andre Drummond",
    "position": "C",
    "short": "A. Drummond",
-   "status": "",
+   "status": "Day-To-Day",
    "team_id": "18",
    "weight_lb": "279"
   },
@@ -5820,5 +5831,5 @@
    "weight_lb": "222"
   }
  },
- "updated_at": "2026-11-26T00:08:48+00:00"
+ "updated_at": "2026-11-27T00:30:07+00:00"
 }
